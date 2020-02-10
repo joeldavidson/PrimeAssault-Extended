@@ -26,6 +26,16 @@ namespace UnitTests.ViewModels
             ViewModel = ItemIndexViewModel.Instance;
         }
 
+        /// <summary>
+        /// Reset the data store
+        /// </summary>
+        public async Task ResetData()
+        {
+            await ViewModel.WipeDataListAsync();
+            ViewModel.Dataset.Clear();
+            ViewModel.ForceDataRefresh();
+        }
+
         [Test]
         public async Task ItemIndexViewModel_Read_Invalid_ID_Bogus_Should_Fail()
         {
@@ -74,6 +84,52 @@ namespace UnitTests.ViewModels
             Assert.AreEqual("a", result[0].Name);
             Assert.AreEqual("m", result[1].Name);
             Assert.AreEqual("z", result[2].Name);
+        }
+
+        [Test]
+        public async Task ItemIndexViewModel_CheckIfItemExists_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Add items into the list Z ordered
+            var dataTest = new ItemModel { Name = "test" };
+            await ViewModel.CreateAsync(dataTest);
+
+            await ViewModel.CreateAsync(new ItemModel { Name = "z" });
+            await ViewModel.CreateAsync(new ItemModel { Name = "m" });
+            await ViewModel.CreateAsync(new ItemModel { Name = "a" });
+
+            // Act
+            var result = ViewModel.CheckIfItemExists(dataTest);
+
+            // Reset
+            await ResetData();
+
+            // Assert
+            Assert.AreEqual(dataTest.Id, result.Id);
+        }
+
+        [Test]
+        public async Task ItemIndexViewModel_CheckIfItemExists_InValid_Missing_Should_Fail()
+        {
+            // Arrange
+
+            // Add items into the list Z ordered
+            var dataTest = new ItemModel { Name = "test" };
+            // Don't add it to the list await ViewModel.CreateAsync(dataTest);
+
+            await ViewModel.CreateAsync(new ItemModel { Name = "z" });
+            await ViewModel.CreateAsync(new ItemModel { Name = "m" });
+            await ViewModel.CreateAsync(new ItemModel { Name = "a" });
+
+            // Act
+            var result = ViewModel.CheckIfItemExists(dataTest);
+
+            // Reset
+            await ResetData();
+
+            // Assert
+            Assert.AreEqual(null, result);
         }
     }
 }
