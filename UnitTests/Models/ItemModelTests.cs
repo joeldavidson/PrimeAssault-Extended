@@ -33,6 +33,10 @@ namespace UnitTests.Models
 
             // Assert 
             Assert.IsNotNull(result.Value);
+            Assert.IsNotNull(result.Range);
+            Assert.IsNotNull(result.Damage);
+            Assert.IsNotNull(result.Attribute);
+            Assert.IsNotNull(result.Location);
         }
 
         [Test]
@@ -43,11 +47,19 @@ namespace UnitTests.Models
             // Act
             var result = new ItemModel();
             result.Value = 6;
+            result.Range = 7;
+            result.Damage = 8;
+            result.Attribute = AttributeEnum.Attack;
+            result.Location = ItemLocationEnum.Feet;
 
             // Reset
 
             // Assert 
-            Assert.AreEqual(6,result.Value);
+            Assert.AreEqual(6, result.Value);
+            Assert.AreEqual(7, result.Range);
+            Assert.AreEqual(8, result.Damage);
+            Assert.AreEqual(AttributeEnum.Attack, result.Attribute);
+            Assert.AreEqual(ItemLocationEnum.Feet, result.Location);
         }
 
         [Test]
@@ -56,7 +68,7 @@ namespace UnitTests.Models
             // Arrange
             var dataOriginal = new ItemModel();
             dataOriginal.Value = 1;
-            
+
             var dataNew = new ItemModel();
             dataNew.Value = 2;
 
