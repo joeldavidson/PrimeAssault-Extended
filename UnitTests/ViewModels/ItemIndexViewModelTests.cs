@@ -9,6 +9,8 @@ namespace UnitTests.ViewModels
 {
     public class ItemIndexViewModelTests
     {
+        ItemIndexViewModel ViewModel;
+
         [SetUp]
         public void Setup()
         {
@@ -18,6 +20,8 @@ namespace UnitTests.ViewModels
             // Activate the Datastore
             ScoreIndexViewModel.Instance.GetCurrentDataSource();
             ItemIndexViewModel.Instance.GetCurrentDataSource();
+
+            ViewModel = ItemIndexViewModel.Instance;
         }
 
         [Test]
@@ -26,12 +30,26 @@ namespace UnitTests.ViewModels
             // Arrange
 
             // Act
-            var result = await ItemIndexViewModel.Instance.ReadAsync("bogus");
+            var result = await ViewModel.ReadAsync("bogus");
 
             // Reset
 
             // Assert
             Assert.IsNull(result);
+        }
+
+        [Test]
+        public void ItemIndexViewModel_Constructor_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var result = ViewModel;
+
+            // Reset
+
+            // Assert
+            Assert.IsNotNull(result);
         }
     }
 }
