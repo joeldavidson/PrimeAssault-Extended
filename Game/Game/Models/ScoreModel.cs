@@ -43,15 +43,15 @@ namespace Game.Models
 
         // A list of all the characters at the time of death and their stats.  
         // Only use Get only, set will be done by the Add feature.
-        public string CharacterAtDeathList { get; set; }
+        public string CharacterAtDeathList { get; set; } = string.Empty;
 
         // All of the monsters killed and their stats. 
         // Only use Get only, set will be done by the Add feature.
-        public string MonstersKilledList { get; set; }
+        public string MonstersKilledList { get; set; } = string.Empty;
 
         // All of the items dropped and their stats. 
         // Only use Get only, set will be done by the Add feature.
-        public string ItemsDroppedList { get; set; }
+        public string ItemsDroppedList { get; set; } = string.Empty;
 
         /// <summary>
         /// Instantiate new Score 
@@ -60,10 +60,6 @@ namespace Game.Models
         {
             GameDate = DateTime.Now;    // Set to be now by default.
             AutoBattle = false;         //assume user battle
-
-            CharacterAtDeathList = null;
-            MonstersKilledList = null;
-            ItemsDroppedList = null;
 
             TurnCount = 0;
             RoundCount = 0;
@@ -78,7 +74,7 @@ namespace Game.Models
         /// <param name="data"></param>
         public ScoreModel(ScoreModel data)
         {
-            Id = data.Id;
+            // Id = data.Id;
             Update(data);
         }
 
