@@ -22,6 +22,23 @@ namespace UnitTests.Models
         }
 
         [Test]
+        public void ItemModel_Constructor_New_Item_Should_Copy()
+        {
+            // Arrange
+            var dataNew = new ItemModel();
+            dataNew.Value = 2;
+            dataNew.Id = "oldID";
+
+            // Act
+            var result = new ItemModel(dataNew);
+
+            // Reset
+
+            // Assert 
+            Assert.AreNotEqual("oldID", result.Id);
+        }
+
+        [Test]
         public void ItemModel_Get_Default_Should_Pass()
         {
             // Arrange
