@@ -80,5 +80,21 @@ namespace UnitTests.Models
             // Assert 
             Assert.AreEqual(2, dataOriginal.Value);
         }
+
+        [Test]
+        public void ItemModel_Update_InValid_Null_Should_Fail()
+        {
+            // Arrange
+            var dataOriginal = new ItemModel();
+            dataOriginal.Value = 2;
+
+            // Act
+            var result = dataOriginal.Update(null);
+
+            // Reset
+
+            // Assert 
+            Assert.AreEqual(2, dataOriginal.Value);
+        }
     }
 }
