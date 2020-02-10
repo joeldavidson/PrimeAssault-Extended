@@ -4,6 +4,8 @@ using Xamarin.Forms.Mocks;
 using Xamarin.Forms;
 using Game.Services;
 using System.Threading.Tasks;
+using Game.Models;
+using System.Collections.Generic;
 
 namespace UnitTests.ViewModels
 {
@@ -50,6 +52,28 @@ namespace UnitTests.ViewModels
 
             // Assert
             Assert.IsNotNull(result);
+        }
+
+        [Test]
+        public void ItemIndexViewModel_SortDataSet_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Add items into the list Z ordered
+            var dataList = new List<ItemModel>();
+            dataList.Add(new ItemModel { Name = "z" });
+            dataList.Add(new ItemModel { Name = "m" });
+            dataList.Add(new ItemModel { Name = "a" });
+
+            // Act
+            var result = ViewModel.SortDataset(dataList);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual("a", result[0].Name);
+            Assert.AreEqual("m", result[1].Name);
+            Assert.AreEqual("z", result[2].Name);
         }
     }
 }
