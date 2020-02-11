@@ -11,7 +11,7 @@ namespace Game.Views
     [DesignTimeVisible(false)]
     public partial class MenuPage : ContentPage
     {
-        MainPage RootPage { get => Application.Current.MainPage as MainPage; }
+        public MainPage RootPage { get => Application.Current.MainPage as MainPage; }
 
         // List of Menu Items
         readonly List<HomeMenuItemModel> menuItems;
