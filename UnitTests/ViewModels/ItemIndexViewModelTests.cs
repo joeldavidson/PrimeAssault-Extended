@@ -6,6 +6,7 @@ using Game.Services;
 using System.Threading.Tasks;
 using Game.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace UnitTests.ViewModels
 {
@@ -14,7 +15,7 @@ namespace UnitTests.ViewModels
         ItemIndexViewModel ViewModel;
 
         [SetUp]
-        public void Setup()
+        public async Task Setup()
         {
             // Initilize Xamarin Forms
             MockForms.Init();
@@ -24,12 +25,14 @@ namespace UnitTests.ViewModels
             ItemIndexViewModel.Instance.GetCurrentDataSource();
 
             ViewModel = ItemIndexViewModel.Instance;
+
+            //await ResetDataAsync();
         }
 
         /// <summary>
         /// Reset the data store
         /// </summary>
-        public async Task ResetData()
+        public async Task ResetDataAsync()
         {
             await ViewModel.WipeDataListAsync();
             ViewModel.Dataset.Clear();
@@ -103,7 +106,7 @@ namespace UnitTests.ViewModels
             var result = ViewModel.CheckIfItemExists(dataTest);
 
             // Reset
-            await ResetData();
+            await ResetDataAsync();
 
             // Assert
             Assert.AreEqual(dataTest.Id, result.Id);
@@ -126,10 +129,80 @@ namespace UnitTests.ViewModels
             var result = ViewModel.CheckIfItemExists(dataTest);
 
             // Reset
-            await ResetData();
+            await ResetDataAsync();
 
             // Assert
             Assert.AreEqual(null, result);
+        }
+
+        [Test]
+        public async Task ItemIndexViewModel_Message_Delete_Valid_Should_Pass()
+        {
+            // Arrange
+
+            // Get the item to delete
+            var first = ViewModel.Dataset.FirstOrDefault();
+
+            // Make a Delete Page
+            var myPage = new Game.Views.ItemDeletePage();
+
+            // Act
+            MessagingCenter.Send(myPage, "Delete", first);
+
+            var data = await ViewModel.ReadAsync(first.Id);
+
+            // Reset
+            await ResetDataAsync();
+
+            // Assert
+            Assert.AreEqual(null, data); // Item is removed
+        }
+
+        [Test]
+        public async Task ItemIndexViewModel_Message_Create_Valid_Should_Pass()
+        {
+            // Arrange
+
+            // Make a new Item
+            var data = new ItemModel();
+
+            // Make a Delete Page
+            var myPage = new Game.Views.ItemCreatePage();
+
+            var countBefore = ViewModel.Dataset.Count();
+
+            // Act
+            MessagingCenter.Send(myPage, "Create", data);
+            var countAfter = ViewModel.Dataset.Count();
+
+            // Reset
+            await ResetDataAsync();
+
+            // Assert
+            Assert.AreEqual(countBefore + 1, countAfter); // Count of 0 for the load was skipped
+        }
+
+        [Test]
+        public async Task ItemIndexViewModel_Message_Update_Valid_Should_Pass()
+        {
+            // Arrange
+
+            // Get the item to delete
+            var first = ViewModel.Dataset.FirstOrDefault();
+            first.Name = "test";
+
+            // Make a Delete Page
+            var myPage = new Game.Views.ItemUpdatePage();
+
+            // Act
+            MessagingCenter.Send(myPage, "Update", first);
+            var result = await ViewModel.ReadAsync(first.Id);
+
+            // Reset
+            await ResetDataAsync();
+
+            // Assert
+            Assert.AreEqual("test", result.Name); // Count of 0 for the load was skipped
         }
     }
 }

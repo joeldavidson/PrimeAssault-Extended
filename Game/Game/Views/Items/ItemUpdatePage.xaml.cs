@@ -15,6 +15,12 @@ namespace Game.Views
         // View Model for Item
         readonly GenericViewModel<ItemModel> ViewModel;
 
+        // Empty Constructor for Tests
+        public ItemUpdatePage()
+        {
+
+        }
+
         /// <summary>
         /// Constructor that takes and existing data item
         /// </summary>
