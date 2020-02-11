@@ -10,6 +10,9 @@ namespace Game.Views
     [DesignTimeVisible(false)]
     public partial class AboutPage : ContentPage
     {
+        // Constructor for UnitTests
+        public AboutPage(bool UnitTest){}
+
         /// <summary>
         /// Constructor for About Page
         /// </summary>
