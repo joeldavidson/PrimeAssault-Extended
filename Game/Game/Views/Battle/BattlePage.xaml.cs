@@ -23,7 +23,7 @@ namespace Game.Views
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		void AttackButton_Clicked(object sender, EventArgs e)
+		public void AttackButton_Clicked(object sender, EventArgs e)
 		{
 			DisplayAlert("SU", "Attack !!!", "OK");
 		}
@@ -34,23 +34,21 @@ namespace Game.Views
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		async void RoundOverButton_Clicked(object sender, EventArgs e)
+		public async void RoundOverButton_Clicked(object sender, EventArgs e)
 		{
 			await Navigation.PushModalAsync(new RoundOverPage());
 		}
 
-
 		/// <summary>
 		/// Battle Over
 		/// Battle Over button shows when all characters are dead
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		async void NewRoundButton_Clicked(object sender, EventArgs e)
+		public async void NewRoundButton_Clicked(object sender, EventArgs e)
 		{
 			await Navigation.PushModalAsync(new NewRoundPage());
 		}
-		
 
 		/// <summary>
 		/// Battle Over
@@ -58,7 +56,7 @@ namespace Game.Views
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		async void BattleOverButton_Clicked(object sender, EventArgs e)
+		public async void BattleOverButton_Clicked(object sender, EventArgs e)
 		{
 			await Navigation.PushModalAsync(new ScorePage());
 		}
@@ -70,7 +68,7 @@ namespace Game.Views
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		async void ExitButton_Clicked(object sender, EventArgs e)
+		public async void ExitButton_Clicked(object sender, EventArgs e)
 		{
 			await Navigation.PopModalAsync();
 		}
@@ -82,7 +80,7 @@ namespace Game.Views
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		async void QuitButton_Clicked(object sender, EventArgs e)
+		public async void QuitButton_Clicked(object sender, EventArgs e)
 		{
 			bool answer = await DisplayAlert("Battle", "Are you sure you want to Quit?", "Yes", "No");
 
