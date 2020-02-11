@@ -117,5 +117,27 @@ namespace UnitTests.ViewModels
             {
             }
         }
+
+        [Test]
+        public void BaseViewModel_SortDataset_Default_Should_Pass()
+        {
+            // Arrange
+            var ViewModel = new BaseViewModel<ItemModel>();
+
+            var dataList = new List<ItemModel>();
+            dataList.Add(new ItemModel { Name = "z" });
+            dataList.Add(new ItemModel { Name = "m" });
+            dataList.Add(new ItemModel { Name = "a" });
+
+            // Act
+            var result = ViewModel.SortDataset(dataList);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual("z", result[0].Name);
+            Assert.AreEqual("m", result[1].Name);
+            Assert.AreEqual("a", result[2].Name);
+        }
     }
 }
