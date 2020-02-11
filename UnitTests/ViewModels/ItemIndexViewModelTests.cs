@@ -249,5 +249,59 @@ namespace UnitTests.ViewModels
             // Assert
             Assert.AreEqual(countBefore -1, countAfter); // Count of 0 for the load was skipped
         }
+
+        [Test]
+        public async Task ItemIndexViewModel_Update_Valid_Should_Pass()
+        {
+            // Arrange
+
+            // Find the First ID
+            var first = ViewModel.Dataset.FirstOrDefault();
+
+            // Make a new item
+            first.Name = "New Item";
+            first.Value = 1000;
+
+            // Act
+            var result = await ViewModel.UpdateAsync(first);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, result);  // Update returned Pas
+            Assert.AreEqual("New Item", first.Name);  // The Name was updated
+            Assert.AreEqual(1000, first.Value);  // The Value was updated
+        }
+
+        [Test]
+        public async Task ItemIndexViewModel_Update_Invalid_Bogus_Should_Fail()
+        {
+            // Arrange
+
+            // Update only updates what is in the list, so update on something that does not exist will fail
+            var newData = new ItemModel();
+
+            // Act
+            var result = await ViewModel.UpdateAsync(newData);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(false, result);  // Update returned fail
+        }
+
+        [Test]
+        public async Task ItemIndexViewModel_Update_Invalid_Null_Should_Fail()
+        {
+            // Arrange
+
+            // Act
+            var result = await ViewModel.UpdateAsync(null);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(false, result);
+        }
     }
 }
