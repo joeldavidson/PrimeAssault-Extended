@@ -1,0 +1,113 @@
+﻿using NUnit.Framework;
+
+using Game.Engine;
+using Game.Models;
+using System.Threading.Tasks;
+using System.Linq;
+
+namespace UnitTests.Engine
+{
+    [TestFixture]
+    public class BattleEngineTests
+    {
+        BattleEngine Engine;
+
+        [SetUp]
+        public void Setup()
+        {
+            Engine = new BattleEngine();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+        }
+
+        [Test]
+        public void BattleEngine_Constructor_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var result = Engine;
+
+            // Reset
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
+        public void BattleEngine_StartBattle_AutoModel_True_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var result = Engine.StartBattle(true);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true,result);
+            Assert.AreEqual(true, Engine.BattleScore.AutoBattle);
+        }
+
+        [Test]
+        public void BattleEngine_EndBattle_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var result = Engine.EndBattle();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [Test]
+        public void BattleEngine_NewRound_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var result = Engine.NewRound();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true,result);
+        }
+
+        [Test]
+        public void BattleEngine_PopulateCharacterList_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var result = Engine.PopulateCharacterList();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, result);
+            Assert.AreEqual(6, Engine.CharacterList.Count());
+        }
+
+        [Test]
+        public void BattleEngine_PopulateMonsterList_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var result = Engine.PopulateMonsterList();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, result);
+            Assert.AreEqual(6, Engine.MonsterList.Count());
+        }
+    }
+}
