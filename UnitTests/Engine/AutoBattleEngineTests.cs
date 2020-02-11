@@ -37,17 +37,33 @@ namespace UnitTests.Engine
         }
 
         [Test]
-        public async Task AutoBattleEngine_RunAutoBattle_Default_Should_Pass()
+        public async Task AutoBattleEngine_RunAutoBattle_Default_CharactersDie_Should_Pass()
         {
             // Arrange
 
             // Act
+            Engine.FlagWhoDies = true;
             var result = await Engine.RunAutoBattle();
 
             // Reset
 
             // Assert
             Assert.AreEqual(true,result);
+        }
+
+        [Test]
+        public async Task AutoBattleEngine_RunAutoBattle_Default_MonstersDie_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            Engine.FlagWhoDies = false;
+            var result = await Engine.RunAutoBattle();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, result);
         }
 
         [Test]

@@ -13,6 +13,7 @@ namespace Game.Engine
     {
         // Temprorary hold Character until refactored
         public class CharacterModel : BaseModel<CharacterModel>{}
+        public enum RoundEnum {Unknown = 0,NextTurn = 1,NewRound = 2,GameOver = 3,}
 
         // List of Characters
         public List<CharacterModel> CharacterList = new List<CharacterModel>();
@@ -74,6 +75,33 @@ namespace Game.Engine
             BattleScore.RoundCount++;
 
             return true;
+        }
+
+        public RoundEnum NextTurn(bool killme)
+        {
+            if (killme)
+            {
+                CharacterList.RemoveAt(0);
+            }
+            else
+            {
+                MonsterList.RemoveAt(0);
+            }
+
+            if (MonsterList.Count == 0)
+            {
+                // Kill off a character, so the game will end...
+                CharacterList.RemoveAt(0);
+
+                return RoundEnum.NewRound;
+            }
+
+            if (CharacterList.Count == 0)
+            {
+                return RoundEnum.GameOver;
+            }
+
+            return RoundEnum.NextTurn;
         }
     }
 }

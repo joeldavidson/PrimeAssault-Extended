@@ -102,8 +102,13 @@ namespace Game.Engine
     */
 
         #region RunAutoBattleFight
+
+        public bool FlagWhoDies = false;
+
         public async Task<bool> RunAutoBattle()
         {
+            BattleEngine.RoundEnum RoundCondition;
+
             // Auto Battle, does all the steps that a human would do.
 
             // Prepare for Battle
@@ -115,19 +120,24 @@ namespace Game.Engine
             // Start Battle in AutoBattle mode
             Engine.StartBattle(true);
 
-            // Initialize the Rounds
-            Engine.NewRound();
-
             // Fight
 
+            // Populate the Round
+            Engine.NewRound();
+
             // Fight Loop. Continue until Game is Over...
-            bool GameContinueCondition = false;
             do
             {
                 // Do the turn...
                 // If the round is over start a new one...
+                RoundCondition = Engine.NextTurn(FlagWhoDies);
 
-            } while (GameContinueCondition);
+                if (RoundCondition == BattleEngine.RoundEnum.NewRound)
+                {
+                    Engine.NewRound();
+                }
+
+            } while (RoundCondition != BattleEngine.RoundEnum.GameOver);
 
             // Wrap up
             Engine.EndBattle();
