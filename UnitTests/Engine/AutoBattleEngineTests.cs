@@ -2,6 +2,7 @@
 
 using Game.Engine;
 using Game.Models;
+using System.Threading.Tasks;
 
 namespace UnitTests.Engine
 {
@@ -36,12 +37,12 @@ namespace UnitTests.Engine
         }
 
         [Test]
-        public void AutoBattleEngine_RunAutoBattle_Default_Should_Pass()
+        public async Task AutoBattleEngine_RunAutoBattle_Default_Should_Pass()
         {
             // Arrange
 
             // Act
-            var result = Engine.RunAutoBattle();
+            var result = await Engine.RunAutoBattle();
 
             // Reset
 
