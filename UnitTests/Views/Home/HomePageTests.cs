@@ -14,13 +14,10 @@ using Xamarin.Forms;
 namespace UnitTests.Views.Game
 {
     [TestFixture]
-    public class HomePageTests : HomePage
+    public class HomePageTests
     {
         App app;
         HomePage page;
-
-        // Base Constructor
-        //public HomePageTests() : base(true) { }
 
         [SetUp]
         public void Setup()
