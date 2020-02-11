@@ -545,5 +545,41 @@ namespace UnitTests.ViewModels
             // Assert
             Assert.AreEqual(false, result);  // Update returned Pass
         }
+
+        [Test]
+        public void ItemIndexViewModel_Create_Sync_Valid_Update_Should_Pass()
+        {
+            // Arrange
+            var data = new ItemModel
+            {
+                Name = "New Item"
+            };
+
+            // Act
+            var result = ViewModel.Create_Sync(data);
+
+            // Reset
+
+            // Need to clear the added item, and reload the dataset
+            ViewModel.Dataset.Clear();
+            ViewModel.ForceDataRefresh();
+
+            // Assert
+            Assert.AreEqual(true, result);  // Update returned Pass
+        }
+
+        [Test]
+        public void ItemIndexViewModel_Create_Sync_InValid_Null_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var result = ViewModel.Create_Sync(null);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(false, result);  // Update returned Pass
+        }
     }
 }
