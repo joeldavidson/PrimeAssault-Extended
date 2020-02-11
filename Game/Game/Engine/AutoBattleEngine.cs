@@ -28,35 +28,6 @@ namespace Game.Engine
         // Output Score
         #endregion Algrorithm
 
-            /*
-        #region RunAutoBattle
-        public async Task<bool> RunAutoBattle()
-        {
-
-            // Auto Battle, does all the steps that a human would do.
-
-            // Prepare for Battle
-
-            // Picks 6 Characters
-            // Start
-            // Initialize the Rounds
-
-            // Fight
-
-            // Fight Loop. Continue until Game is Over...
-            bool GameContinueCondition = false;
-            do
-            {
-                // Do the turn...
-                // If the round is over start a new one...
-            } while (GameContinueCondition);
-
-            // Wrap up
-            return true;
-        }
-        #endregion RunAutoBattle
-    */
-
         #region ScoreInformation
         public int GetScoreValue() { return 0; }
         public ScoreModel GetScoreObject() { return new ScoreModel(); }
@@ -64,6 +35,36 @@ namespace Game.Engine
         public string GetResultsOutput() { return "done"; }
         #endregion ScoreInformation
 
+        /*
+    #region RunAutoBattle
+    public async Task<bool> RunAutoBattle()
+    {
+
+        // Auto Battle, does all the steps that a human would do.
+
+        // Prepare for Battle
+
+        // Picks 6 Characters
+        // Start
+        // Initialize the Rounds
+
+        // Fight
+
+        // Fight Loop. Continue until Game is Over...
+        bool GameContinueCondition = false;
+        do
+        {
+            // Do the turn...
+            // If the round is over start a new one...
+        } while (GameContinueCondition);
+
+        // Wrap up
+        return true;
+    }
+    #endregion RunAutoBattle
+*/
+
+        /*
         #region RunAutoBattlePrepare
         public async Task<bool> RunAutoBattle()
         {
@@ -98,5 +99,41 @@ namespace Game.Engine
             return true;
         }
         #endregion RunAutoBattlePrepare
+    */
+
+        #region RunAutoBattleFight
+        public async Task<bool> RunAutoBattle()
+        {
+            // Auto Battle, does all the steps that a human would do.
+
+            // Prepare for Battle
+            var Engine = new BattleEngine();
+
+            // Picks 6 Characters
+            Engine.PopulateCharacterList();
+
+            // Start Battle in AutoBattle mode
+            Engine.StartBattle(true);
+
+            // Initialize the Rounds
+            Engine.NewRound();
+
+            // Fight
+
+            // Fight Loop. Continue until Game is Over...
+            bool GameContinueCondition = false;
+            do
+            {
+                // Do the turn...
+                // If the round is over start a new one...
+
+            } while (GameContinueCondition);
+
+            // Wrap up
+            Engine.EndBattle();
+
+            return true;
+        }
+        #endregion RunAutoBattleFight
     }
 }
