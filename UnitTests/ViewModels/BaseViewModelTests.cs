@@ -246,5 +246,19 @@ namespace UnitTests.ViewModels
             // Assert
             Assert.AreEqual(false, result);
         }
+
+        [Test]
+        public void BaseViewModel_GetDefaultData_Valid_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var result = ViewModel.GetDefaultData();
+
+            // Reset
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
     }
 }
