@@ -47,7 +47,6 @@ namespace UnitTests.Views.Game
         public void ItemCreatePage_Constructor_Default_Should_Pass()
         {
             // Arrange
-            var ViewModel = new ItemViewModel();
 
             // Act
             var result = page;
