@@ -94,5 +94,62 @@ namespace UnitTests.Views.Game
             // Assert
             Assert.IsTrue(!current); // Got to here, so it happened...
         }
+
+        [Test]
+        public void AboutPage_DataSource_Toggled_Default_Should_Pass()
+        {
+            // Arrange
+
+            var control = (Switch)page.FindByName("DataSourceValue");
+            var current = control.IsToggled;
+
+            ToggledEventArgs args = new ToggledEventArgs(current);
+
+            // Act
+            page.DataSource_Toggled(null, args);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(!current); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void AboutPage_DataSource_Toggled_False_Should_Pass()
+        {
+            // Arrange
+
+            var control = (Switch)page.FindByName("DataSourceValue");
+            var current = control.IsToggled = false;
+
+            // Act
+            control.IsToggled = true;
+
+            var result = control.IsToggled;
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(!current,result); 
+        }
+
+        [Test]
+        public void AboutPage_DataSource_Toggled_True_Should_Pass()
+        {
+            // Arrange
+
+            var control = (Switch)page.FindByName("DataSourceValue");
+            var current = control.IsToggled = true;
+
+            // Act
+            control.IsToggled = false;
+
+            var result = control.IsToggled;
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(!current, result); 
+        }
     }
 }
