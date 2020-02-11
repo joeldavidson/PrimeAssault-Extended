@@ -225,5 +225,29 @@ namespace UnitTests.ViewModels
             // Assert
             Assert.AreEqual(0, result); // Count of 0 for the load was skipped
         }
+
+        [Test]
+        public async Task ItemIndexViewModel_Message_WipeDataList_Valid_Should_Pass()
+        {
+            // Arrange
+
+            // Make the page Page
+            var myPage = new Game.Views.AboutPage(true);
+
+            var data = new ItemModel();
+            await ViewModel.CreateAsync(data);
+
+            var countBefore = ViewModel.Dataset.Count();
+
+            // Act
+            MessagingCenter.Send(myPage, "WipeDataList", true);
+            var countAfter = ViewModel.Dataset.Count();
+
+            // Reset
+            await ResetDataAsync();
+
+            // Assert
+            Assert.AreEqual(countBefore -1, countAfter); // Count of 0 for the load was skipped
+        }
     }
 }
