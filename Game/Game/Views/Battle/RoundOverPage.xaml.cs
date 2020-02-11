@@ -23,7 +23,7 @@ namespace Game.Views
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		async void NextButton_Clicked(object sender, EventArgs e)
+		public async void NextButton_Clicked(object sender, EventArgs e)
 		{
 			await Navigation.PopModalAsync();
 		}
@@ -33,7 +33,7 @@ namespace Game.Views
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		async void PickItems_Clicked(object sender, EventArgs e)
+		public async void PickItems_Clicked(object sender, EventArgs e)
 		{
 			await Navigation.PushModalAsync(new PickItemsPage());
 		}
