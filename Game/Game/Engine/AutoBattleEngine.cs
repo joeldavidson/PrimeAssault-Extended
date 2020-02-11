@@ -2,7 +2,13 @@
 
 namespace Game.Engine
 {
-    class AutoBattleEngine
+    /// <summary>
+    /// AutoBattle Engine
+    /// 
+    /// Runs the engine simulation with no user interaction
+    /// 
+    /// </summary>
+    public class AutoBattleEngine
     {
         #region Algrorithm
         // Prepare for Battle
@@ -52,7 +58,7 @@ namespace Game.Engine
         public int GetScoreValue() { return 0; }
         public ScoreModel GetScoreObject() { return new ScoreModel(); }
         public int GetRoundsValue() { return 0; }
-        public string GetResultsOutput() { return "the score"; }
+        public string GetResultsOutput() { return "done"; }
         #endregion ScoreInformation
     }
 }
