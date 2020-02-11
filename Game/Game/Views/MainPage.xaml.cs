@@ -13,7 +13,7 @@ namespace Game.Views
     public partial class MainPage : MasterDetailPage
     {
         // Collection of Navigation Pages
-        readonly Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
+        public readonly Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
 
         /// <summary>
         /// Constructor setups the behavior and menu pages
