@@ -119,6 +119,34 @@ namespace UnitTests.ViewModels
         }
 
         [Test]
+        public void BaseViewModel_OnPropertyChanged_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            OnPropertyChanged();
+            
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true);
+        }
+
+        [Test]
+        public void BaseViewModel_OnPropertyChanged_Default_Name_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            OnPropertyChanged("Name");
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true);
+        }
+
+        [Test]
         public void BaseViewModel_SortDataset_Default_Should_Pass()
         {
             // Arrange
