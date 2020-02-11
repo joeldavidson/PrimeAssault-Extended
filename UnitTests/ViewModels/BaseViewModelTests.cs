@@ -14,6 +14,14 @@ namespace UnitTests.ViewModels
     [TestFixture]
     public class BaseViewModelTests : BaseViewModel<ItemModel>
     {
+        BaseViewModel<ItemModel> ViewModel;
+
+        [SetUp]
+        public void Setup()
+        {
+            ViewModel = new BaseViewModel<ItemModel>();
+        }
+
         [Test]
         public void BaseViewModel_Constructor_Default_Should_Pass()
         {
@@ -21,6 +29,20 @@ namespace UnitTests.ViewModels
 
             // Act
             var result = new BaseViewModel<ItemModel>();
+
+            // Reset
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
+        public void BaseViewModel_Get_Title_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var result = new BaseViewModel<ItemModel>().Title;
 
             // Reset
 
@@ -150,8 +172,6 @@ namespace UnitTests.ViewModels
         public void BaseViewModel_SortDataset_Default_Should_Pass()
         {
             // Arrange
-            var ViewModel = new BaseViewModel<ItemModel>();
-
             var dataList = new List<ItemModel>();
             dataList.Add(new ItemModel { Name = "z" });
             dataList.Add(new ItemModel { Name = "m" });
@@ -166,6 +186,65 @@ namespace UnitTests.ViewModels
             Assert.AreEqual("z", result[0].Name);
             Assert.AreEqual("m", result[1].Name);
             Assert.AreEqual("a", result[2].Name);
+        }
+
+        [Test]
+        public void BaseViewModel_SetNeedsRefresh_Valid_True_Should_Pass()
+        {
+            // Arrange
+            var originalState = ViewModel.GetNeedsRefresh();
+
+            // Act
+            ViewModel.SetNeedsRefresh(true);
+            var newState = ViewModel.GetNeedsRefresh();
+
+            // Reset
+
+            // Turn it back to the original state
+            ViewModel.SetNeedsRefresh(originalState);
+
+            // Assert
+            Assert.AreEqual(true, newState);
+        }
+
+        [Test]
+        public void BaseViewModel_NeedsRefresh_Valid_True_Should_Pass()
+        {
+            // Arrange
+            var originalState = ViewModel.GetNeedsRefresh();
+
+            ViewModel.SetNeedsRefresh(true);
+
+            // Act
+            var result = ViewModel.NeedsRefresh();
+
+            // Reset
+
+            // Turn it back to the original state
+            ViewModel.SetNeedsRefresh(originalState);
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [Test]
+        public void BaseViewModel_NeedsRefresh_Valid_False_Should_Pass()
+        {
+            // Arrange
+            var originalState = ViewModel.GetNeedsRefresh();
+
+            ViewModel.SetNeedsRefresh(false);
+
+            // Act
+            var result = ViewModel.NeedsRefresh();
+
+            // Reset
+
+            // Turn it back to the original state
+            ViewModel.SetNeedsRefresh(originalState);
+
+            // Assert
+            Assert.AreEqual(false, result);
         }
     }
 }

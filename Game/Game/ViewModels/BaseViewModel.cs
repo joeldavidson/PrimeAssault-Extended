@@ -216,6 +216,16 @@ namespace Game.ViewModels
             return false;
         }
 
+
+        /// <summary>
+        /// Returns the needs refresh value
+        /// </summary>
+        /// <returns></returns>
+        public bool GetNeedsRefresh()
+        {
+            return _needsRefresh;
+        }
+
         /// <summary>
         /// Sets the need to refresh 
         /// </summary>
