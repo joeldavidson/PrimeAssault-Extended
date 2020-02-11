@@ -13,7 +13,7 @@ namespace Game.Views
     public partial class ItemUpdatePage : ContentPage
     {
         // View Model for Item
-        readonly GenericViewModel<ItemModel> ViewModel;
+        public readonly GenericViewModel<ItemModel> ViewModel;
 
         // Empty Constructor for Tests
         public ItemUpdatePage(bool UnitTest){ }
@@ -39,7 +39,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        async void Save_Clicked(object sender, EventArgs e)
+        public async void Save_Clicked(object sender, EventArgs e)
         {
             // If the image in the data box is empty, use the default one..
             if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
@@ -56,7 +56,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        async void Cancel_Clicked(object sender, EventArgs e)
+        public async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
         }
@@ -66,7 +66,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void Range_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        public void Range_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             RangeValue.Text = String.Format("{0}", e.NewValue);
         }
@@ -76,7 +76,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void Value_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        public void Value_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             ValueValue.Text = String.Format("{0}", e.NewValue);
         }
@@ -86,7 +86,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void Damage_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        public void Damage_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             DamageValue.Text = String.Format("{0}", e.NewValue);
         }
