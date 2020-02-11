@@ -13,7 +13,7 @@ namespace Game.Views
     public partial class ScoreUpdatePage : ContentPage
     {
         // View Model for Score
-        readonly GenericViewModel<ScoreModel> ViewModel;
+        public readonly GenericViewModel<ScoreModel> ViewModel;
 
         // Constructor for Unit Testing
         public ScoreUpdatePage(bool UnitTest) { }
@@ -35,7 +35,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        async void Save_Clicked(object sender, EventArgs e)
+        public async void Save_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "Update", ViewModel.Data);
             await Navigation.PopModalAsync();
@@ -46,7 +46,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        async void Cancel_Clicked(object sender, EventArgs e)
+        public async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
         }
