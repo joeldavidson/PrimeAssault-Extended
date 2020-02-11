@@ -15,7 +15,7 @@ namespace UnitTests.ViewModels
         ItemIndexViewModel ViewModel;
 
         [SetUp]
-        public async Task Setup()
+        public void Setup()
         {
             // Initilize Xamarin Forms
             MockForms.Init();
@@ -25,8 +25,6 @@ namespace UnitTests.ViewModels
             ItemIndexViewModel.Instance.GetCurrentDataSource();
 
             ViewModel = ItemIndexViewModel.Instance;
-
-            //await ResetDataAsync();
         }
 
         /// <summary>
@@ -144,7 +142,7 @@ namespace UnitTests.ViewModels
             var first = ViewModel.Dataset.FirstOrDefault();
 
             // Make a Delete Page
-            var myPage = new Game.Views.ItemDeletePage();
+            var myPage = new Game.Views.ItemDeletePage(true);
 
             // Act
             MessagingCenter.Send(myPage, "Delete", first);
@@ -167,7 +165,7 @@ namespace UnitTests.ViewModels
             var data = new ItemModel();
 
             // Make a Delete Page
-            var myPage = new Game.Views.ItemCreatePage();
+            var myPage = new Game.Views.ItemCreatePage(true);
 
             var countBefore = ViewModel.Dataset.Count();
 
@@ -192,7 +190,7 @@ namespace UnitTests.ViewModels
             first.Name = "test";
 
             // Make a Delete Page
-            var myPage = new Game.Views.ItemUpdatePage();
+            var myPage = new Game.Views.ItemUpdatePage(true);
 
             // Act
             MessagingCenter.Send(myPage, "Update", first);
@@ -203,6 +201,29 @@ namespace UnitTests.ViewModels
 
             // Assert
             Assert.AreEqual("test", result.Name); // Count of 0 for the load was skipped
+        }
+
+        [Test]
+        public async Task ItemIndexViewModel_Message_SetDataSource_Valid_Should_Pass()
+        {
+            // Arrange
+
+            // Get the item to delete
+            var data = 3000; // Non existing value
+
+            // Make the page Page
+            var myPage = new Game.Views.AboutPage(true);
+
+            // Act
+            MessagingCenter.Send(myPage, "SetDataSource", data);
+            var result = ViewModel.GetCurrentDataSource();
+
+            // Reset
+            await ViewModel.SetDataSource(0);
+            await ResetDataAsync();
+
+            // Assert
+            Assert.AreEqual(0, result); // Count of 0 for the load was skipped
         }
     }
 }
