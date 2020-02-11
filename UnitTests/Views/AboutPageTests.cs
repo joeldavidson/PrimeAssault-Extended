@@ -56,6 +56,45 @@ namespace UnitTests.Views.Game
         }
 
         [Test]
+        public void AboutPage_Elements_Get_Set_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            ((StackLayout)page.FindByName("DatabaseSettingsFrame")).IsVisible = true;
+            ((StackLayout)page.FindByName("DebugSettingsFrame")).IsVisible = true;
+
+            ((Switch)page.FindByName("DatabaseSettingsSwitch")).IsVisible = true;
+            ((Switch)page.FindByName("DatabaseSettingsSwitch")).IsToggled = true;
+            ((Switch)page.FindByName("DatabaseSettingsSwitch")).IsToggled = false;
+
+            ((Switch)page.FindByName("DebugSettingsSwitch")).IsVisible = true;
+            ((Switch)page.FindByName("DebugSettingsSwitch")).IsToggled = true;
+            ((Switch)page.FindByName("DebugSettingsSwitch")).IsToggled = false;
+
+            ((Switch)page.FindByName("DataSourceValue")).IsVisible = true;
+            ((Switch)page.FindByName("DataSourceValue")).IsToggled = true;
+            ((Switch)page.FindByName("DataSourceValue")).IsToggled = false;
+
+            ((Label)page.FindByName("CurrentDateTime")).Text = "test";
+
+            ((StackLayout)page.FindByName("DatabaseSettingsFrame")).IsVisible = false;
+            ((StackLayout)page.FindByName("DebugSettingsFrame")).IsVisible = false;
+
+            // Reset
+
+            // Assert
+            Assert.IsNotNull((StackLayout)page.FindByName("DebugSettingsFrame"));
+            Assert.IsNotNull(((StackLayout)page.FindByName("DatabaseSettingsFrame")));
+
+            Assert.IsNotNull((Label)page.FindByName("CurrentDateTime"));
+
+            Assert.IsNotNull((Switch)page.FindByName("DatabaseSettingsSwitch"));
+            Assert.IsNotNull((Switch)page.FindByName("DataSourceValue"));
+            Assert.IsNotNull((Switch)page.FindByName("DebugSettingsSwitch"));
+        }
+
+        [Test]
         public void AboutPage_DatabaseSettingsSwitch_OnToggled_Default_Should_Pass()
         {
             // Arrange
