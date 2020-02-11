@@ -365,6 +365,11 @@ namespace Game.ViewModels
         /// <returns></returns>
         public async Task<bool> CreateUpdateAsync(T data)
         {
+            if (data == null)
+            {
+                return false;
+            }
+
             // Check to see if the data exist
             var oldData = await ReadAsync(((BaseModel<T>)(object)data).Id);
             if (oldData == null)
