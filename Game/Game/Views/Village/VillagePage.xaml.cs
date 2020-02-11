@@ -25,7 +25,7 @@ namespace Game.Views
 		/// <param name="e"></param>
 		public async void MonstersButton_Clicked(object sender, EventArgs e)
 		{
-			await DisplayAlert("SU", "Go RedHawks", "OK");
+			//await DisplayAlert("SU", "Go RedHawks", "OK");
 		}
 
 		/// <summary>
@@ -35,7 +35,7 @@ namespace Game.Views
 		/// <param name="e"></param>
 		public async void CharactersButton_Clicked(object sender, EventArgs e)
 		{
-			await DisplayAlert("SU", "Go RedHawks", "OK");
+			//await DisplayAlert("SU", "Go RedHawks", "OK");
 		}
 
 		/// <summary>
