@@ -21,7 +21,22 @@ namespace Game.Views
 		public async void AutobattleButton_Clicked(object sender, EventArgs e)
 		{
 			// Call into Auto Battle from here to do the Battle...
-			BattleMessageValue.Text = "Done";
+
+			var Engine = new Game.Engine.AutoBattleEngine();
+
+			string BattleMessage = "";
+
+			var result = await Engine.RunAutoBattle();
+			
+			BattleMessage = "Done";
+
+			// Error Occured
+			if (result == false)
+			{
+				BattleMessage = "Error Occured";
+			}
+
+			BattleMessageValue.Text = BattleMessage;
 		}
 	}
 }
