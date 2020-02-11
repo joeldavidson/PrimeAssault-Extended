@@ -13,7 +13,7 @@ namespace Game.Views
     public partial class ScoreCreatePage : ContentPage
     {
         // The item to create
-        GenericViewModel<ScoreModel> ViewModel { get; set; }
+        public GenericViewModel<ScoreModel> ViewModel { get; set; }
 
         // Constructor for Unit Testing
         public ScoreCreatePage(bool UnitTest) { }
@@ -37,7 +37,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        async void Save_Clicked(object sender, EventArgs e)
+        public async void Save_Clicked(object sender, EventArgs e)
         {
             // If the image in the data box is empty, use the default one..
             if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
@@ -54,7 +54,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        async void Cancel_Clicked(object sender, EventArgs e)
+        public async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
         }
