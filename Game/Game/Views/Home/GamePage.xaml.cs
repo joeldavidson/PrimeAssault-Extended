@@ -23,7 +23,7 @@ namespace Game.Views
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-        async void DungeonButton_Clicked(object sender, EventArgs e)
+        public async void DungeonButton_Clicked(object sender, EventArgs e)
         {
 			await Navigation.PushAsync(new PickCharactersPage());
 		}
@@ -33,7 +33,7 @@ namespace Game.Views
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		async void VillageButton_Clicked(object sender, EventArgs e)
+		public async void VillageButton_Clicked(object sender, EventArgs e)
 		{
 			await Navigation.PushAsync(new VillagePage());
 		}
@@ -43,7 +43,7 @@ namespace Game.Views
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		async void AutobattleButton_Clicked(object sender, EventArgs e)
+		public async void AutobattleButton_Clicked(object sender, EventArgs e)
 		{
 			// Run the Autobattle simulation from here
 
