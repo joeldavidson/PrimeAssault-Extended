@@ -28,7 +28,7 @@ namespace Game.Views
 
 			var result = await Engine.RunAutoBattle();
 			
-			BattleMessage = "Done";
+			BattleMessage = Engine.GetResultsOutput();
 
 			// Error Occured
 			if (result == false)
