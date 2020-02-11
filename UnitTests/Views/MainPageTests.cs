@@ -92,6 +92,48 @@ namespace UnitTests.Views.Game
         }
 
         [Test]
+        public async Task MainPage_Navigate_Score_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            await page.NavigateFromMenu((int)MenuItemEnum.Score);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true);
+        }
+
+        [Test]
+        public async Task MainPage_Navigate_Village_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            await page.NavigateFromMenu((int)MenuItemEnum.Village);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true);
+        }
+
+        [Test]
+        public async Task MainPage_Navigate_Battle_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            await page.NavigateFromMenu((int)MenuItemEnum.Battle);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true);
+        }
+
+        [Test]
         public async Task MainPage_Navigate_Game_Twice_Should_Skip()
         {
             // Arrange
@@ -127,6 +169,7 @@ namespace UnitTests.Views.Game
         public async Task MainPage_Navigate_Device_Android_Game_Should_Pass()
         {
             // Arrange
+            MockForms.Init(Device.Android);
 
             await page.NavigateFromMenu((int)MenuItemEnum.Game);
 
