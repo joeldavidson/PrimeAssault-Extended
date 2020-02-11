@@ -107,20 +107,5 @@ namespace UnitTests.Engine
             // Assert
             Assert.AreEqual(0, result);
         }
-
-        [Test]
-        public void AutoBattleEngine_GetResultsOutput_Default_Should_Pass()
-        {
-            // Arrange
-
-            // Act
-            var result = Engine.GetResultsOutput();
-
-            // Reset
-
-            // Assert
-            Assert.AreEqual("done", result);
-        }
-
     }
 }
