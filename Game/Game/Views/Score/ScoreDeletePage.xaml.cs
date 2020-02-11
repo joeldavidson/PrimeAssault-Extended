@@ -13,7 +13,7 @@ namespace Game.Views
     public partial class ScoreDeletePage : ContentPage
     {
         // View Model for Item
-        readonly GenericViewModel<ScoreModel> viewModel;
+        public readonly GenericViewModel<ScoreModel> viewModel;
 
         // Constructor for Unit Testing
         public ScoreDeletePage(bool UnitTest) { }
@@ -34,7 +34,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        async void Delete_Clicked(object sender, EventArgs e)
+        public async void Delete_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "Delete", viewModel.Data);
             await Navigation.PopModalAsync();
@@ -45,7 +45,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        async void Cancel_Clicked(object sender, EventArgs e)
+        public async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
         }
