@@ -30,13 +30,15 @@ namespace Game.Engine
         // Output Score
         #endregion Algrorithm
 
+        BattleEngine Engine = new BattleEngine();
+        public bool FlagWhoDies = false;
+
         #region ScoreInformation
         public int GetScoreValue() { return 0; }
         public ScoreModel GetScoreObject() { return Engine.BattleScore; }
         public int GetRoundsValue() { return 0; }
         #endregion ScoreInformation
-
-        /*
+/*
     #region RunAutoBattle
     public async Task<bool> RunAutoBattle()
     {
@@ -62,50 +64,45 @@ namespace Game.Engine
         // Wrap up
         return true;
     }
-    #endregion RunAutoBattle
+        #endregion RunAutoBattle
+*/
+/*
+ #region RunAutoBattlePrepare
+ public async Task<bool> RunAutoBattle()
+ {
+     // Auto Battle, does all the steps that a human would do.
+
+     // Picks 6 Characters
+     Engine.PopulateCharacterList();
+
+     // Start Battle in AutoBattle mode
+     Engine.StartBattle(true);
+
+     // Initialize the Rounds
+     Engine.NewRound();
+
+     // Fight
+
+     // Fight Loop. Continue until Game is Over...
+     bool GameContinueCondition = false;
+     do
+     {
+         // Do the turn...
+         // If the round is over start a new one...
+
+     } while (GameContinueCondition);
+
+     // Wrap up
+     Engine.EndBattle();
+
+     return true;
+ }
+ #endregion RunAutoBattlePrepare
+
 */
 
-        /*
-        #region RunAutoBattlePrepare
-        public async Task<bool> RunAutoBattle()
-        {
-            // Auto Battle, does all the steps that a human would do.
-
-            // Prepare for Battle
-            var Engine = new BattleEngine();
-
-            // Picks 6 Characters
-            Engine.PopulateCharacterList();
-
-            // Start Battle in AutoBattle mode
-            Engine.StartBattle(true);
-
-            // Initialize the Rounds
-            Engine.NewRound();
-
-            // Fight
-
-            // Fight Loop. Continue until Game is Over...
-            bool GameContinueCondition = false;
-            do
-            {
-                // Do the turn...
-                // If the round is over start a new one...
-
-            } while (GameContinueCondition);
-
-            // Wrap up
-            Engine.EndBattle();
-
-            return true;
-        }
-        #endregion RunAutoBattlePrepare
-    */
-
+        
         #region RunAutoBattleFight
-
-        public bool FlagWhoDies = false;
-        BattleEngine Engine = new BattleEngine();
 
         public async Task<bool> RunAutoBattle()
         {
@@ -153,5 +150,6 @@ namespace Game.Engine
             return true;
         }
         #endregion RunAutoBattleFight
+        /**/
     }
 }
