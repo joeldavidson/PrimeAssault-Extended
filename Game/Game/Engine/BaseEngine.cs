@@ -26,16 +26,16 @@ namespace Game.Engine
         public List<CharacterModel> CharacterList = new List<CharacterModel>();
 
         // Current Player who is the attacker
-        public PlayerInfo CurrentAttacker;
+        public PlayerInfoModel CurrentAttacker;
 
         // Current Player who is the Defender
-        public PlayerInfo CurrentDefender;
+        public PlayerInfoModel CurrentDefender;
 
         // Hold the list of players (MonsterModel, and character by guid), and order by speed
-        public List<PlayerInfo> PlayerList;
+        public List<PlayerInfoModel> PlayerList;
 
         // Player currently engaged
-        public PlayerInfo PlayerCurrent;
+        public PlayerInfoModel PlayerCurrent;
 
         public RoundEnum RoundStateEnum = RoundEnum.Unknown;
 

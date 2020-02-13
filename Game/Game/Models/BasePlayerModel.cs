@@ -4,6 +4,7 @@ namespace Game.Models
 {
     public class BasePlayerModel<T> : BaseModel<T>
     {
+        #region Attributes
         #region GameEngineAttributes
         // TurnOrder
         public int Order;
@@ -22,7 +23,7 @@ namespace Game.Models
 
         #endregion GameEngineAttributes
 
-        // Sorting Order is :  Speed, Level, ExperiencePoints, PlayerType, Name, ListOrder
+        #region PlayerAttributes
 
         // Total speed, including level and items
         public int Speed;
@@ -39,6 +40,7 @@ namespace Game.Models
         // Max Health
         public int MaxHealth;
 
+        // Total Experience
         public int ExperienceTotal = 0;
 
         // The defense score, to be used for defending against attacks
@@ -46,7 +48,9 @@ namespace Game.Models
 
         // The Attack score to be used when attacking
         public int Attack { get; set; }
+        #endregion PlayerAttributes
 
+        #region Items
         // Item is a string referencing the database table
         public string Head { get; set; }
 
@@ -67,6 +71,10 @@ namespace Game.Models
 
         // LeftFinger is a string referencing the database table
         public string LeftFinger { get; set; }
+        #endregion Items
+        #endregion Attributes
+
+        #region Methods
 
         public int GetAttack() { return 0; }
         public int GetDefense() { return 0; }
@@ -141,5 +149,6 @@ namespace Game.Models
 
             return null;
         }
+        #endregion Methods
     }
 }
