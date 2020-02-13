@@ -2,7 +2,7 @@
 
 namespace Game.Models
 {
-    public class BasePlayerModel<T> : BaseModel<PlayerInfo>
+    public class BasePlayerModel<T> : BaseModel<T>
     {
         #region GameEngineAttributes
         // TurnOrder
