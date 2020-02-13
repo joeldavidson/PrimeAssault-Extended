@@ -1,5 +1,5 @@
 ﻿
-namespace Game.Models.Enum
+namespace Game.Models
 {
     /// <summary>
     /// The Conditions a round can have

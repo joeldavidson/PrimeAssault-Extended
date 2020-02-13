@@ -1,4 +1,7 @@
-﻿namespace Game.Engine
+﻿
+using Game.Models;
+
+namespace Game.Engine
 {
     /// <summary>
     /// Battle Engine for the Game

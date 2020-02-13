@@ -1,7 +1,8 @@
-﻿using Game.Models;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+
+using Game.Models;
 
 namespace Game.Engine
 {
