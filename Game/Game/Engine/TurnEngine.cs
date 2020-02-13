@@ -23,7 +23,7 @@ namespace Game.Engine
     /// </summary>
     public class TurnEngine
     {
-
+        #region Algrorithm
         // Attack or Move
         // Roll To Hit
         // Decide Hit or Miss
@@ -31,6 +31,7 @@ namespace Game.Engine
         // Death
         // Drop Items
         // Turn Over
+        #endregion Algrorithm
 
         #region Properties
 
@@ -63,8 +64,28 @@ namespace Game.Engine
         /// <returns></returns>
         public bool TakeTurn(CharacterModel Attacker)
         {
-            // Choose Move or Attack
+            // Choose Action.  Such as Move, Attack etc.
 
+            var result = Attack(Attacker);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Attack as a Turn
+        /// 
+        /// Pick who to go after
+        /// 
+        /// Determine Attack Score
+        /// Determine DefenseScore
+        /// 
+        /// Do the Attack
+        /// 
+        /// </summary>
+        /// <param name="Attacker"></param>
+        /// <returns></returns>
+        public bool Attack(CharacterModel Attacker)
+        {
             // For Attack, Choose Who
             var Target = AttackChoice(Attacker);
 
@@ -93,6 +114,27 @@ namespace Game.Engine
         {
             // Choose Move or Attack
 
+            // For Attack, Choose Who
+            var Target = AttackChoice(Attacker);
+
+            if (Target == null)
+            {
+                return false;
+            }
+
+            // Do Attack
+            var AttackScore = Attacker.Level + Attacker.GetAttack();
+            var DefenseScore = Target.GetDefense() + Target.Level;
+            TurnAsAttack(Attacker, AttackScore, Target, DefenseScore);
+
+            CurrentAttacker = new PlayerInfo(Attacker);
+            CurrentDefender = new PlayerInfo(Target);
+
+            return true;
+        }
+
+        public bool Attack(MonsterModel Attacker)
+        {
             // For Attack, Choose Who
             var Target = AttackChoice(Attacker);
 
@@ -149,32 +191,17 @@ namespace Game.Engine
 
             Debug.WriteLine(BattleMessagesModel.GetTurnMessage());
 
+            // It's a Miss
             if (BattleMessagesModel.HitStatus == HitStatusEnum.Miss)
             {
                 return true;
             }
 
-            if (BattleMessagesModel.HitStatus == HitStatusEnum.CriticalMiss)
-            {
-                return true;
-            }
-
-            // It's a Hit or a Critical Hit
-            if (BattleMessagesModel.HitStatus == HitStatusEnum.Hit || BattleMessagesModel.HitStatus == HitStatusEnum.CriticalHit)
+            // It's a Hit
+            if (BattleMessagesModel.HitStatus == HitStatusEnum.Hit)
             {
                 //Calculate Damage
                 BattleMessagesModel.DamageAmount = Attacker.GetDamageRollValue();
-
-                //BattleMessagesModel.DamageAmount += GameGlobals.ForceCharacterDamangeBonusValue;   // Add the Forced Damage Bonus (used for testing...)
-
-                //if (GameGlobals.EnableCriticalHitDamage)
-                //{
-                //    if (BattleMessagesModel.HitStatus == HitStatusEnum.CriticalHit)
-                //    {
-                //        //2x damage
-                //        BattleMessagesModel.DamageAmount += BattleMessagesModel.DamageAmount;
-                //    }
-                //}
 
                 Target.TakeDamage(BattleMessagesModel.DamageAmount);
             }
@@ -194,23 +221,32 @@ namespace Game.Engine
                 // Add the MonsterModel to the killed list
                 BattleScore.CharacterAtDeathList += Target.FormatOutput() + "\n";
 
-                // Drop Items to ItemModel Pool
-                var myItemList = Target.DropAllItems();
-
-                // Add to ScoreModel
-                foreach (var ItemModel in myItemList)
-                {
-                    BattleScore.ItemsDroppedList += ItemModel.FormatOutput() + "\n";
-                    BattleMessagesModel.TurnMessageSpecial += " ItemModel " + ItemModel.Name + " dropped";
-                }
-
-                ItemPool.AddRange(myItemList);
+                DropItems(Target);
             }
 
             BattleMessagesModel.TurnMessage = Attacker.Name + BattleMessagesModel.AttackStatus + Target.Name + BattleMessagesModel.TurnMessageSpecial;
             Debug.WriteLine(BattleMessagesModel.TurnMessage);
 
             return true;
+        }
+
+        /// <summary>
+        /// Drop all the Items the player is holding
+        /// </summary>
+        /// <param name="Target"></param>
+        private void DropItems(CharacterModel Target)
+        {
+            // Drop Items to ItemModel Pool
+            var myItemList = Target.DropAllItems();
+
+            // Add to ScoreModel
+            foreach (var ItemModel in myItemList)
+            {
+                BattleScore.ItemsDroppedList += ItemModel.FormatOutput() + "\n";
+                BattleMessagesModel.TurnMessageSpecial += " ItemModel " + ItemModel.Name + " dropped";
+            }
+
+            ItemPool.AddRange(myItemList);
         }
 
         /// <summary>
@@ -254,31 +290,11 @@ namespace Game.Engine
                 return true;
             }
 
-            if (BattleMessagesModel.HitStatus == HitStatusEnum.CriticalMiss)
-            {
-                //if (GameGlobals.EnableCriticalMissProblems)
-                //{
-                //    BattleMessagesModel.TurnMessage += DetermineCriticalMissProblem(Attacker);
-                //}
-                return true;
-            }
-
-            // It's a Hit or a Critical Hit
-            if (BattleMessagesModel.HitStatus == HitStatusEnum.Hit || BattleMessagesModel.HitStatus == HitStatusEnum.CriticalHit)
+            // It's a Hit
+            if (BattleMessagesModel.HitStatus == HitStatusEnum.Hit)
             {
                 //Calculate Damage
                 BattleMessagesModel.DamageAmount = Attacker.GetDamageRollValue();
-
-                //BattleMessagesModel.DamageAmount += GameGlobals.ForceCharacterDamangeBonusValue;   // Add the Forced Damage Bonus (used for testing...)
-
-                //if (GameGlobals.EnableCriticalHitDamage)
-                //{
-                //    if (BattleMessagesModel.HitStatus == HitStatusEnum.CriticalHit)
-                //    {
-                //        //2x damage
-                //        BattleMessagesModel.DamageAmount += BattleMessagesModel.DamageAmount;
-                //    }
-                //}
 
                 Target.TakeDamage(BattleMessagesModel.DamageAmount);
 
@@ -343,18 +359,6 @@ namespace Game.Engine
         {
             var d20 = DiceHelper.RollDice(1, 20);
 
-            //// Turn On UnitTestingSetRoll
-            //if (DiceHelper.ForceRollsToNotRandom)
-            //{
-            //    // Don't let it be 0, if it was not initialized...
-            //    if (DiceHelper.ForceToHitValue < 1)
-            //    {
-            //        DiceHelper.ForceToHitValue = 1;
-            //    }
-
-            //    d20 = DiceHelper.ForceToHitValue;
-            //}
-
             if (d20 == 1)
             {
                 // Force Miss
@@ -401,19 +405,10 @@ namespace Game.Engine
                 return null;
             }
 
-            //// For now, just use a simple selection of the first in the list.
-            //// Later consider, strongest, closest, with most Health etc...
-            //foreach (var Defender in MonsterList)
-            //{
-            //    if (Defender.Alive)
-            //    {
-            //        return Defender;
-            //    }
-            //}
-
             // Select first one to hit in the list for now...
             // Attack the Weakness (lowest HP) MonsterModel first 
             var DefenderWeakest = MonsterList.OrderBy(m => m.CurrentHealth).FirstOrDefault();
+
             if (DefenderWeakest.Alive)
             {
                 return DefenderWeakest;
@@ -460,43 +455,9 @@ namespace Game.Engine
         /// <returns></returns>
         public List<ItemModel> GetRandomMonsterItemDrops(int round)
         {
+            // You decide how to drop monster items, level, etc.
+
             var myList = new List<ItemModel>();
-
-            ////if (!GameGlobals.AllowMonsterDropItems)
-            ////{
-            ////    return myList;
-            ////}
-
-            //var myItemsViewModel = ItemIndexViewModel.Instance;
-
-            //if (myItemsViewModel.Dataset.Count > 0)
-            //{
-            //    // Random is enabled so build up a list of items dropped...
-            //    var ItemCount = DiceHelper.RollDice(1, 4);
-            //    for (var i = 0; i < ItemCount; i++)
-            //    {
-            //        var rnd = DiceHelper.RollDice(1, myItemsViewModel.Dataset.Count);
-            //        var itemBase = myItemsViewModel.Dataset[rnd - 1];
-            //        var ItemModel = new ItemModel(itemBase);
-            //        ItemModel.ScaleLevel(round);
-
-            //        // Make sure the ItemModel is added to the global list...
-            //        var myItem = ItemIndexViewModel.Instance.CheckIfItemExists(ItemModel);
-            //        if (myItem == null)
-            //        {
-            //            // ItemModel does not exist, so add it to the datstore
-            //            ItemIndexViewModel.Instance.Create_Sync(ItemModel);
-            //        }
-            //        else
-            //        {
-            //            // Swap them becaues it already exists, no need to create a new one...
-            //            ItemModel = myItem;
-            //        }
-
-            //        // Add the ItemModel to the local list...
-            //        myList.Add(ItemModel);
-            //    }
-            //}
             return myList;
         }
     }
