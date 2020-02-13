@@ -36,49 +36,35 @@ namespace UnitTests.Engine
             Assert.IsNotNull(result);
         }
 
-        [Test]
-        public async Task AutoBattleEngine_RunAutoBattle_Default_CharactersDie_Should_Pass()
-        {
-            // Arrange
+        //[Test]
+        //public async Task AutoBattleEngine_RunAutoBattle_Default_CharactersDie_Should_Pass()
+        //{
+        //    // Arrange
 
-            // Act
-            Engine.FlagWhoDies = true;
-            var result = await Engine.RunAutoBattle();
+        //    // Act
+        //    Engine.FlagWhoDies = true;
+        //    var result = await Engine.RunAutoBattle();
 
-            // Reset
+        //    // Reset
 
-            // Assert
-            Assert.AreEqual(true,result);
-        }
+        //    // Assert
+        //    Assert.AreEqual(true,result);
+        //}
 
-        [Test]
-        public async Task AutoBattleEngine_RunAutoBattle_Default_MonstersDie_Should_Pass()
-        {
-            // Arrange
+        //[Test]
+        //public async Task AutoBattleEngine_RunAutoBattle_Default_MonstersDie_Should_Pass()
+        //{
+        //    // Arrange
 
-            // Act
-            Engine.FlagWhoDies = false;
-            var result = await Engine.RunAutoBattle();
+        //    // Act
+        //    Engine.FlagWhoDies = false;
+        //    var result = await Engine.RunAutoBattle();
 
-            // Reset
+        //    // Reset
 
-            // Assert
-            Assert.AreEqual(true, result);
-        }
-
-        [Test]
-        public void AutoBattleEngine_GetScoreValue_Default_Should_Pass()
-        {
-            // Arrange
-
-            // Act
-            var result = Engine.GetScoreValue();
-
-            // Reset
-
-            // Assert
-            Assert.AreEqual(0, result);
-        }
+        //    // Assert
+        //    Assert.AreEqual(true, result);
+        //}
 
         [Test]
         public void AutoBattleEngine_GetScoreObject_Default_Should_Pass()
@@ -92,20 +78,6 @@ namespace UnitTests.Engine
 
             // Assert
             Assert.IsNotNull(result);
-        }
-
-        [Test]
-        public void AutoBattleEngine_GetRoundsValue_Default_Should_Pass()
-        {
-            // Arrange
-
-            // Act
-            var result = Engine.GetRoundsValue();
-
-            // Reset
-
-            // Assert
-            Assert.AreEqual(0, result);
         }
     }
 }
