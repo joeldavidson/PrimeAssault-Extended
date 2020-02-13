@@ -32,7 +32,7 @@ namespace Game.Engine
         public PlayerInfoModel CurrentDefender;
 
         // Hold the list of players (MonsterModel, and character by guid), and order by speed
-        public List<PlayerInfoModel> PlayerList;
+        public List<PlayerInfoModel> PlayerList = new List<PlayerInfoModel>();
 
         // Player currently engaged
         public PlayerInfoModel PlayerCurrent;
