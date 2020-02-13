@@ -80,20 +80,20 @@ namespace UnitTests.Engine
             Assert.AreEqual(true,result);
         }
 
-        [Test]
-        public void BattleEngine_PopulateCharacterList_Default_Should_Pass()
-        {
-            // Arrange
+        //[Test]
+        //public void BattleEngine_PopulateCharacterList_Default_Should_Pass()
+        //{
+        //    // Arrange
 
-            // Act
-            var result = Engine.PopulateCharacterList();
+        //    // Act
+        //    var result = Engine.PopulateCharacterList();
 
-            // Reset
+        //    // Reset
 
-            // Assert
-            Assert.AreEqual(true, result);
-            Assert.AreEqual(6, Engine.CharacterList.Count());
-        }
+        //    // Assert
+        //    Assert.AreEqual(true, result);
+        //    Assert.AreEqual(6, Engine.CharacterList.Count());
+        //}
 
         //[Test]
         //public void BattleEngine_PopulateMonsterList_Default_Should_Pass()
@@ -111,51 +111,51 @@ namespace UnitTests.Engine
         //}
 
         #region KillMeTests
-        [Test]
-        public void BattleEngine_NextTurn_True_Default_Should_Pass()
-        {
-            // Arrange
-            Engine.PopulateCharacterList();
-            Engine.NewRound();
-            var countBefore = Engine.CharacterList.Count();
+        //[Test]
+        //public void BattleEngine_NextTurn_True_Default_Should_Pass()
+        //{
+        //    // Arrange
+        //    Engine.PopulateCharacterList();
+        //    Engine.NewRound();
+        //    var countBefore = Engine.CharacterList.Count();
 
-            // Act
+        //    // Act
 
-            var result = Engine.NextTurn(true);
-            var countAfter = Engine.CharacterList.Count();
+        //    var result = Engine.NextTurn(true);
+        //    var countAfter = Engine.CharacterList.Count();
 
-            // Reset
+        //    // Reset
 
-            // Assert
-            Assert.AreEqual(RoundEnum.NextTurn, result);
-            Assert.AreEqual(countBefore-1, countAfter);
-        }
+        //    // Assert
+        //    Assert.AreEqual(RoundEnum.NextTurn, result);
+        //    Assert.AreEqual(countBefore-1, countAfter);
+        //}
 
-        [Test]
-        public void BattleEngine_NextTurn_True_Loop_Should_Pass()
-        {
-            // Arrange
-            Engine.PopulateCharacterList();
-            Engine.NewRound();
-            var countBefore = Engine.CharacterList.Count();
+        //[Test]
+        //public void BattleEngine_NextTurn_True_Loop_Should_Pass()
+        //{
+        //    // Arrange
+        //    Engine.PopulateCharacterList();
+        //    Engine.NewRound();
+        //    var countBefore = Engine.CharacterList.Count();
 
-            // Remove First 5
-            Engine.NextTurn(true);
-            Engine.NextTurn(true);
-            Engine.NextTurn(true);
-            Engine.NextTurn(true);
-            Engine.NextTurn(true);
+        //    // Remove First 5
+        //    Engine.NextTurn(true);
+        //    Engine.NextTurn(true);
+        //    Engine.NextTurn(true);
+        //    Engine.NextTurn(true);
+        //    Engine.NextTurn(true);
 
-            // Act
-            var result = Engine.NextTurn(true);
-            var countAfter = Engine.CharacterList.Count();
+        //    // Act
+        //    var result = Engine.NextTurn(true);
+        //    var countAfter = Engine.CharacterList.Count();
 
-            // Reset
+        //    // Reset
 
-            // Assert
-            Assert.AreEqual(RoundEnum.GameOver, result);
-            Assert.AreEqual(0, countAfter);
-        }
+        //    // Assert
+        //    Assert.AreEqual(RoundEnum.GameOver, result);
+        //    Assert.AreEqual(0, countAfter);
+        //}
 
         //[Test]
         //public void BattleEngine_NextTurn_False_Default_Should_Pass()
