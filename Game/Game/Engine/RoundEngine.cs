@@ -170,22 +170,22 @@ namespace Game.Engine
         /// </summary>
         private List<PlayerInfoModel> MakePlayerList()
         {
-            PlayerList = new List<PlayerInfoModel>();
-            PlayerInfoModel tempPlayer;
+            // Start from a clean list of players
+            PlayerList.Clear();
 
+            // Remeber the Insert order, used for Sorting
             var ListOrder = 0;
 
             foreach (var data in CharacterList)
             {
                 if (data.Alive)
                 {
-                    tempPlayer = new PlayerInfoModel(data)
-                    {
-                        // Remember the order
-                        ListOrder = ListOrder
-                    };
-
-                    PlayerList.Add(tempPlayer);
+                    PlayerList.Add(
+                        new PlayerInfoModel(data)
+                        {
+                            // Remember the order
+                            ListOrder = ListOrder
+                        });
 
                     ListOrder++;
                 }
@@ -195,14 +195,12 @@ namespace Game.Engine
             {
                 if (data.Alive)
                 {
-
-                    tempPlayer = new PlayerInfoModel(data)
-                    {
-                        // Remember the order
-                        ListOrder = ListOrder
-                    };
-
-                    PlayerList.Add(tempPlayer);
+                    PlayerList.Add(
+                        new PlayerInfoModel(data)
+                        {
+                            // Remember the order
+                            ListOrder = ListOrder
+                        });
 
                     ListOrder++;
                 }
