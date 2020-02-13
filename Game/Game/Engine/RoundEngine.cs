@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 using Game.Models;
-using System.Diagnostics;
 
 namespace Game.Engine
 {
@@ -19,30 +17,14 @@ namespace Game.Engine
 
         const int MaxNumberPartyPlayers = 6;
 
-        public RoundEngine()
-        {
-            ClearLists();
-        }
-
+        /// <summary>
+        /// Clear the List between Rounds
+        /// </summary>
+        /// <returns></returns>
         private bool ClearLists()
         {
-            ItemPool = new List<ItemModel>();
-            MonsterList = new List<MonsterModel>();
-
-            return true;
-        }
-
-        // Start the round, need to get the ItemPool, and Characters
-        public bool StartRound()
-        {
-            // Start on 0, the turns will increment...
-            BattleScore.RoundCount = 0;
-
-            // Start the first round...
-            NewRound();
-
-            Debug.WriteLine("Start Round :" + BattleScore.RoundCount);
-
+            ItemPool.Clear();
+            MonsterList.Clear();
             return true;
         }
 
@@ -65,64 +47,38 @@ namespace Game.Engine
         }
 
         /// <summary>
-        /// Will return the Min, Max, Average for the Characters in the party
-        /// So the MonsterModel can get scaled to the appropraite level
+        /// Add Monsters to the Round
+        /// 
+        /// Because Monsters can be duplicated, will add 1, 2, 3 to their name
+        ///   
+        /*
+            * Hint: 
+            * I don't have crudi monsters yet so will add 6 new ones...
+            * If you have crudi monsters, then pick from the list
+
+            * Consdier how you will scale the monsters up to be appropriate for the characters to fight
+            */
         /// </summary>
         /// <returns></returns>
-        public int GetAverageCharacterLevel()
-        {
-            var data = CharacterList.Average(m => m.Level);
-            return (int)Math.Floor(data);
-        }
-
-        /// <summary>
-        /// Will return the Min, Max, Average for the Characters in the party
-        /// So the MonsterModel can get scaled to the appropraite level
-        /// </summary>
-        /// <returns></returns>
-        public int GetMinCharacterLevel()
-        {
-            var data = CharacterList.Min(m => m.Level);
-            return data;
-        }
-
-        /// <summary>
-        /// Will return the Min, Max, Average for the Characters in the party
-        /// So the MonsterModel can get scaled to the appropraite level
-        /// </summary>
-        /// <returns></returns>
-        public int GetMaxCharacterLevel()
-        {
-            var data = CharacterList.Max(m => m.Level);
-            return data;
-        }
-
-        // Add Monsters
-        // Scale them to meet Character Strength...
         public int AddMonstersToRound()
         {
-
-            // Check to see if the MonsterModel list is full, if so, no need to add more...
-            if (MonsterList.Count() >= MaxNumberPartyPlayers)
-            {
-                return 0;
-            }
-
-            // No monsters in DB, so add 6 new ones...
             for (var i = 0; i < MaxNumberPartyPlayers; i++)
             {
-                var ItemModel = new MonsterModel();
-                // Help identify which MonsterModel it is...
-                ItemModel.Name += " " + MonsterList.Count() + 1;
-                MonsterList.Add(ItemModel);
+                var data = new MonsterModel();
+                // Help identify which Monster it is
+                data.Name += " " + MonsterList.Count() + 1;
+                MonsterList.Add(data);
             }
 
             return MonsterList.Count();
         }
 
-        // At the end of the round
-        // Clear the ItemModel List
-        // Clear the MonsterModel List
+        /// <summary>
+        /// At the end of the round
+        /// Clear the ItemModel List
+        /// Clear the MonsterModel List
+        /// </summary>
+        /// <returns></returns>
         public bool EndRound()
         {
             // Have each character pickup items...
@@ -131,16 +87,22 @@ namespace Game.Engine
                 PickupItemsFromPool(character);
             }
 
+            // Reset Monster and Item Lists
             ClearLists();
 
             return true;
         }
 
-        // Get Round Turn Order
-
-        // Rember Who's Turn
-
-        // RoundNextTurn
+        /// <summary>
+        /// Manage Next Turn
+        /// 
+        /// Decides Who's Turn
+        /// Remembers Current Player
+        /// 
+        /// Starts the Turn
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public RoundEnum RoundNextTurn()
         {
             // No characters, game is over...
@@ -198,9 +160,8 @@ namespace Game.Engine
             // Recalculate Order
             OrderPlayerListByTurnOrder();
 
+            // Get Next Player
             var PlayerCurrent = GetNextPlayerInList();
-            // Lookup CurrentPlayer in the list
-            // Find the player next to Current Player in order
 
             return PlayerCurrent;
         }
@@ -320,12 +281,6 @@ namespace Game.Engine
         {
             // Have the character, walk the items in the pool, and decide if any are better than current one.
 
-            // No items in the pool...
-            if (ItemPool.Count < 1)
-            {
-                return false;
-            }
-
             GetItemFromPoolIfBetter(character, ItemLocationEnum.Head);
             GetItemFromPoolIfBetter(character, ItemLocationEnum.Necklass);
             GetItemFromPoolIfBetter(character, ItemLocationEnum.PrimaryHand);
@@ -356,23 +311,23 @@ namespace Game.Engine
                 return false;
             }
 
-            var currentItem = character.GetItemByLocation(setLocation);
-            if (currentItem == null)
+            var CharacterItem = character.GetItemByLocation(setLocation);
+            if (CharacterItem == null)
             {
                 // If no ItemModel in the slot then put on the first in the list
                 character.AddItem(setLocation, myList.FirstOrDefault().Id);
                 return false;
             }
 
-            foreach (var ItemModel in myList)
+            foreach (var PoolItem in myList)
             {
-                if (ItemModel.Value > currentItem.Value)
+                if (PoolItem.Value > CharacterItem.Value)
                 {
                     // Put on the new ItemModel, which drops the one back to the pool
-                    var droppedItem = character.AddItem(setLocation, ItemModel.Id);
+                    var droppedItem = character.AddItem(setLocation, PoolItem.Id);
 
                     // Remove the ItemModel just put on from the pool
-                    ItemPool.Remove(ItemModel);
+                    ItemPool.Remove(PoolItem);
 
                     if (droppedItem != null)
                     {
