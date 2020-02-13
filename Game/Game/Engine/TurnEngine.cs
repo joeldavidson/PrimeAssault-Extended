@@ -4,7 +4,6 @@ using System.Diagnostics;
 
 using Game.Models;
 using Game.Services;
-using Game.Engine;
 
 namespace Game.Engine
 {
@@ -21,7 +20,7 @@ namespace Game.Engine
     /// 
     /// A turn is when a Character takes an action or a Monster takes an action
     /// </summary>
-    public class TurnEngine
+    public class TurnEngine : BaseEngine
     {
         #region Algrorithm
         // Attack or Move
@@ -32,30 +31,6 @@ namespace Game.Engine
         // Drop Items
         // Turn Over
         #endregion Algrorithm
-
-        #region Properties
-
-        // Holds the official ScoreModel
-        public ScoreModel BattleScore = new ScoreModel();
-
-        // Holds the Battle Messages as they happen
-        public BattleMessagesModel BattleMessagesModel = new BattleMessagesModel();
-
-        // The Pool of items collected during the round as turns happen
-        public List<ItemModel> ItemPool = new List<ItemModel>();
-
-        // List of Monsters
-        public List<MonsterModel> MonsterList = new List<MonsterModel>();
-
-        // List of Characters
-        public List<CharacterModel> CharacterList = new List<CharacterModel>();
-
-        // Current Player who is the attacker
-        public PlayerInfo CurrentAttacker;
-
-        // Current Player who is the Defender
-        public PlayerInfo CurrentDefender;
-        #endregion Properties
 
         /// <summary>
         /// CharacterModel Attacks...

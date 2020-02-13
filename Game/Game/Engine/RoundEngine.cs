@@ -7,16 +7,6 @@ namespace Game.Engine
 {
     public class RoundEngine : TurnEngine
     {
-        // Hold the list of players (MonsterModel, and character by guid), and order by speed
-        public List<PlayerInfo> PlayerList;
-
-        // Player currently engaged
-        public PlayerInfo PlayerCurrent;
-
-        public RoundEnum RoundStateEnum = RoundEnum.Unknown;
-
-        const int MaxNumberPartyPlayers = 6;
-
         /// <summary>
         /// Clear the List between Rounds
         /// </summary>
