@@ -12,7 +12,7 @@ namespace Game.Engine
 
         public bool PopulateCharacterList(CharacterModel data)
         {
-            CharacterList.Add(data);
+            CharacterList.Add(new PlayerInfoModel(data));
 
             return true;
         }

@@ -13,7 +13,7 @@ namespace Game.Models
         public string Guid;
 
         // alive status, !alive will be removed from the list
-        public bool Alive;
+        public bool Alive = true;
 
         // The type of player, character comes before monster
         public PlayerTypeEnum PlayerType;

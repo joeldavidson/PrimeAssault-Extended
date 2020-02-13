@@ -57,7 +57,7 @@ namespace Game.Engine
                 var data = new MonsterModel();
                 // Help identify which Monster it is
                 data.Name += " " + MonsterList.Count() + 1;
-                MonsterList.Add(data);
+                MonsterList.Add(new PlayerInfoModel(data));
             }
 
             return MonsterList.Count();
@@ -115,26 +115,8 @@ namespace Game.Engine
             // Remember who just went...
             PlayerCurrent = GetNextPlayerTurn();
 
-            // Decide Who to Attack
-            // Do the Turn         
-            if (PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
-            {
-                // Get the player
-                var myPlayer = CharacterList.Where(a => a.Id == PlayerCurrent.Guid).FirstOrDefault();
-
-                // Do the turn....
-                TakeTurn(myPlayer);
-            }
-
-            // Add MonsterModel turn here...
-            else if (PlayerCurrent.PlayerType == PlayerTypeEnum.Monster)
-            {
-                // Get the player
-                var myPlayer = MonsterList.Where(a => a.Id == PlayerCurrent.Guid).FirstOrDefault();
-
-                // Do the turn....
-                TakeTurn(myPlayer);
-            }
+            // Do the turn....
+            TakeTurn(PlayerCurrent);
 
             RoundStateEnum = RoundEnum.NextTurn;
 
@@ -145,7 +127,7 @@ namespace Game.Engine
         /// Get the Next Player to have a turn
         /// </summary>
         /// <returns></returns>
-        public PlayerInfo GetNextPlayerTurn()
+        public PlayerInfoModel GetNextPlayerTurn()
         {
             // Recalculate Order
             OrderPlayerListByTurnOrder();
@@ -159,7 +141,7 @@ namespace Game.Engine
         /// <summary>
         /// Order the Players in Turn Sequence
         /// </summary>
-        public List<PlayerInfo> OrderPlayerListByTurnOrder()
+        public List<PlayerInfoModel> OrderPlayerListByTurnOrder()
         {
             // Order is based by... 
             // Order by Speed (Desending)
@@ -186,10 +168,10 @@ namespace Game.Engine
         /// <summary>
         /// Who is Playing this round?
         /// </summary>
-        private List<PlayerInfo> MakePlayerList()
+        private List<PlayerInfoModel> MakePlayerList()
         {
-            PlayerList = new List<PlayerInfo>();
-            PlayerInfo tempPlayer;
+            PlayerList = new List<PlayerInfoModel>();
+            PlayerInfoModel tempPlayer;
 
             var ListOrder = 0;
 
@@ -197,10 +179,11 @@ namespace Game.Engine
             {
                 if (data.Alive)
                 {
-                    tempPlayer = new PlayerInfo(data);
-
-                    // Remember the order
-                    tempPlayer.ListOrder = ListOrder;
+                    tempPlayer = new PlayerInfoModel(data)
+                    {
+                        // Remember the order
+                        ListOrder = ListOrder
+                    };
 
                     PlayerList.Add(tempPlayer);
 
@@ -213,10 +196,11 @@ namespace Game.Engine
                 if (data.Alive)
                 {
 
-                    tempPlayer = new PlayerInfo(data);
-
-                    // Remember the order
-                    tempPlayer.ListOrder = ListOrder;
+                    tempPlayer = new PlayerInfoModel(data)
+                    {
+                        // Remember the order
+                        ListOrder = ListOrder
+                    };
 
                     PlayerList.Add(tempPlayer);
 
@@ -231,7 +215,7 @@ namespace Game.Engine
         /// Get the Information about the Player
         /// </summary>
         /// <returns></returns>
-        public PlayerInfo GetNextPlayerInList()
+        public PlayerInfoModel GetNextPlayerInList()
         {
             // Walk the list from top to bottom
             // If Player is found, then see if next player exist, if so return that.
@@ -267,7 +251,7 @@ namespace Game.Engine
         /// Pickup Items Dropped
         /// </summary>
         /// <param name="character"></param>
-        public bool PickupItemsFromPool(CharacterModel character)
+        public bool PickupItemsFromPool(PlayerInfoModel character)
         {
             // Have the character, walk the items in the pool, and decide if any are better than current one.
 
@@ -289,7 +273,7 @@ namespace Game.Engine
         /// </summary>
         /// <param name="character"></param>
         /// <param name="setLocation"></param>
-        public bool GetItemFromPoolIfBetter(CharacterModel character, ItemLocationEnum setLocation)
+        public bool GetItemFromPoolIfBetter(PlayerInfoModel character, ItemLocationEnum setLocation)
         {
             var myList = ItemPool.Where(a => a.Location == setLocation)
                 .OrderByDescending(a => a.Value)

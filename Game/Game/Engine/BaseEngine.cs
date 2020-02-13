@@ -20,10 +20,10 @@ namespace Game.Engine
         public List<ItemModel> ItemPool = new List<ItemModel>();
 
         // List of Monsters
-        public List<MonsterModel> MonsterList = new List<MonsterModel>();
+        public List<PlayerInfoModel> MonsterList = new List<PlayerInfoModel>();
 
         // List of Characters
-        public List<CharacterModel> CharacterList = new List<CharacterModel>();
+        public List<PlayerInfoModel> CharacterList = new List<PlayerInfoModel>();
 
         // Current Player who is the attacker
         public PlayerInfoModel CurrentAttacker;
