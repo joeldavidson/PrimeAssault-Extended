@@ -38,7 +38,8 @@ namespace Game.Models
         /// Default ItemModel
         /// Establish the Default Image Path
         /// </summary>
-        public ItemModel() {
+        public ItemModel()
+        {
             ImageURI = ItemService.DefaultImageURI;
         }
 
@@ -77,7 +78,10 @@ namespace Game.Models
             return true;
         }
 
-        // Helper to combine the attributes into a single line, to make it easier to display the item as a string
+        /// <summary>
+        /// Helper to combine the attributes into a single line, to make it easier to display the item as a string
+        /// </summary>
+        /// <returns></returns>
         public string FormatOutput()
         {
             var myReturn = Name + " , " +
@@ -89,6 +93,23 @@ namespace Game.Models
                             "Range : " + Range;
 
             return myReturn.Trim();
+        }
+
+        /// <summary>
+        /// Updates the Item to be closer to what the Level would want
+        /// </summary>
+        /// <param name="level"></param>
+        public void ScaleLevel(int level)
+        {
+            if (DiceHelper.ForceRollsToNotRandom)
+            {
+                // Use the level as the value
+                Value = level;
+                return;
+            }
+
+            // Roll a dice of up to the Level
+            Value = DiceHelper.RollDice(1, level);
         }
     }
 }
