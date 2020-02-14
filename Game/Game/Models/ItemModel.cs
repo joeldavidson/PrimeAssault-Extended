@@ -99,17 +99,18 @@ namespace Game.Models
         /// Updates the Item to be closer to what the Level would want
         /// </summary>
         /// <param name="level"></param>
-        public void ScaleLevel(int level)
+        public int ScaleLevel(int level)
         {
             if (DiceHelper.ForceRollsToNotRandom)
             {
                 // Use the level as the value
                 Value = level;
-                return;
             }
 
             // Roll a dice of up to the Level
             Value = DiceHelper.RollDice(1, level);
+
+            return Value;
         }
     }
 }
