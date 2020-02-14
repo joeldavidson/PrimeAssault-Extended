@@ -188,7 +188,6 @@ namespace UnitTests.Engine
         public void TurnEngine_SelectMonsterToAttack_InValid_Null_List_Should_Fail()
         {
             // Arrange
-            var PlayerInfo = new PlayerInfoModel();
 
             // Remember the List
             var saveList = Engine.MonsterList;
@@ -295,6 +294,21 @@ namespace UnitTests.Engine
 
             // Assert
             Assert.AreEqual(HitStatusEnum.Hit, result);
+        }
+
+        [Test]
+        public void TurnEngine_TakeTurn_Default_Should_Pass()
+        {
+            // Arrange
+            var PlayerInfo = new PlayerInfoModel(new CharacterModel());
+
+            // Act
+            var result = Engine.TakeTurn(PlayerInfo);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, result);
         }
     }
 }
