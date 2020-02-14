@@ -152,6 +152,7 @@ namespace UnitTests.Models
             var data = new ItemModel();
 
             DiceHelper.EnableRandomValues();
+            DiceHelper.SetForcedRandomValue(1);
 
             // Act
             var result = data.ScaleLevel(1);
