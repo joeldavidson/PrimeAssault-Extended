@@ -37,20 +37,20 @@ namespace UnitTests.Engine
             Assert.IsNotNull(result);
         }
 
-        //[Test]
-        //public void BattleEngine_StartBattle_AutoModel_True_Should_Pass()
-        //{
-        //    // Arrange
+        [Test]
+        public void BattleEngine_StartBattle_AutoModel_True_Should_Pass()
+        {
+            // Arrange
 
-        //    // Act
-        //    var result = Engine.StartBattle(true);
+            // Act
+            var result = Engine.StartBattle(true);
 
-        //    // Reset
+            // Reset
 
-        //    // Assert
-        //    Assert.AreEqual(true,result);
-        //    Assert.AreEqual(true, Engine.BattleScore.AutoBattle);
-        //}
+            // Assert
+            Assert.AreEqual(true, result);
+            Assert.AreEqual(true, Engine.BattleScore.AutoBattle);
+        }
 
         [Test]
         public void BattleEngine_EndBattle_Default_Should_Pass()
