@@ -52,17 +52,17 @@ namespace UnitTests.Views.Game
             Assert.IsNotNull(result);
         }
 
-        [Test]
-        public void AutoBattlePage_AttackButton_Clicked_Default_Should_Pass()
-        {
-            // Arrange
-            // Act
-            page.AutobattleButton_Clicked(null, null);
+        //[Test]
+        //public void AutoBattlePage_AttackButton_Clicked_Default_Should_Pass()
+        //{
+        //    // Arrange
+        //    // Act
+        //    page.AutobattleButton_Clicked(null, null);
 
-            // Reset
+        //    // Reset
 
-            // Assert
-            Assert.IsTrue(true); // Got to here, so it happened...
-        }
+        //    // Assert
+        //    Assert.IsTrue(true); // Got to here, so it happened...
+        //}
     }
 }
