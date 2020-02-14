@@ -2,13 +2,15 @@
 
 namespace Game.Models
 {
+    /// <summary>
+    /// Base Player that Characters and Monsters derive from
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class BasePlayerModel<T> : BaseModel<T>
     {
         #region Attributes
-        #region GameEngineAttributes
-        // TurnOrder
-        public int Order;
 
+        #region GameEngineAttributes
         // Guid of the original data it links back to the ID, used in Game Engine
         public string Guid;
 
@@ -16,65 +18,74 @@ namespace Game.Models
         public bool Alive = true;
 
         // The type of player, character comes before monster
-        public PlayerTypeEnum PlayerType;
+        public PlayerTypeEnum PlayerType = PlayerTypeEnum.Unknown;
 
-        // Finally if all of the above are the same, sort based on who was loaded first into the list...
-        public int ListOrder;
+        // TurnOrder
+        public int Order = 0;
+
+        // Remember who was first into the list...
+        public int ListOrder = 0;
 
         #endregion GameEngineAttributes
 
         #region PlayerAttributes
 
         // Total speed, including level and items
-        public int Speed;
+        public int Speed = 0;
 
         // Level of character or monster
-        public int Level;
+        public int Level = 0;
 
         // The experience points the player has used in sorting ties...
-        public int ExperiencePoints;
+        public int ExperiencePoints =0;
 
         // Current Health
-        public int CurrentHealth;
+        public int CurrentHealth = 0;
 
         // Max Health
-        public int MaxHealth;
+        public int MaxHealth = 0;
 
         // Total Experience
         public int ExperienceTotal = 0;
 
         // The defense score, to be used for defending against attacks
-        public int Defense { get; set; }
+        public int Defense { get; set; } = 0;
 
         // The Attack score to be used when attacking
-        public int Attack { get; set; }
+        public int Attack { get; set; } = 0;
+
         #endregion PlayerAttributes
 
         #region Items
         // Item is a string referencing the database table
-        public string Head { get; set; }
+        public string Head { get; set; } = null;
 
         // Feet is a string referencing the database table
-        public string Feet { get; set; }
+        public string Feet { get; set; } = null;
 
         // Necklasss is a string referencing the database table
-        public string Necklass { get; set; }
+        public string Necklass { get; set; } = null;
 
         // PrimaryHand is a string referencing the database table
-        public string PrimaryHand { get; set; }
+        public string PrimaryHand { get; set; } = null;
 
         // Offhand is a string referencing the database table
-        public string OffHand { get; set; }
+        public string OffHand { get; set; } = null;
 
         // RightFinger is a string referencing the database table
-        public string RightFinger { get; set; }
+        public string RightFinger { get; set; } = null;
 
         // LeftFinger is a string referencing the database table
-        public string LeftFinger { get; set; }
+        public string LeftFinger { get; set; } = null;
         #endregion Items
         #endregion Attributes
 
         #region Methods
+
+        public BasePlayerModel()
+        {
+            Guid = Id;
+        }
 
         public int GetAttack() { return 0; }
         public int GetDefense() { return 0; }
