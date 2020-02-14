@@ -89,9 +89,10 @@ namespace Game.Engine
         {
             switch(data.PlayerType)
             {
-                case PlayerTypeEnum.Character:
-                    return SelectCharacterToAttack();
                 case PlayerTypeEnum.Monster:
+                    return SelectCharacterToAttack();
+
+                case PlayerTypeEnum.Character:
                     default:
                     return SelectMonsterToAttack();
             }
