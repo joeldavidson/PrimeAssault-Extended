@@ -285,14 +285,14 @@ namespace Game.Engine
             if (d20 == 1)
             {
                 // Force Miss
-                BattleMessagesModel.HitStatus = HitStatusEnum.CriticalMiss;
+                BattleMessagesModel.HitStatus = HitStatusEnum.Miss;
                 return BattleMessagesModel.HitStatus;
             }
 
             if (d20 == 20)
             {
                 // Force Hit
-                BattleMessagesModel.HitStatus = HitStatusEnum.CriticalHit;
+                BattleMessagesModel.HitStatus = HitStatusEnum.Hit;
                 return BattleMessagesModel.HitStatus;
             }
 

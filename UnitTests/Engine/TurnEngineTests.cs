@@ -5,6 +5,7 @@ using Game.Models;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Collections.Generic;
+using Game.Services;
 
 namespace UnitTests.Engine
 {
@@ -222,6 +223,78 @@ namespace UnitTests.Engine
 
             // Assert
             Assert.AreNotEqual(null, result);
+        }
+
+        [Test]
+        public void TurnEngine_RolltoHitTarget_Hit_Should_Pass()
+        {
+            // Arrange
+            var AttackScore = 10;
+            var DefenseScore = 0;
+
+            // Act
+            var result = Engine.RollToHitTarget(AttackScore, DefenseScore);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(HitStatusEnum.Hit, result);
+        }
+
+        [Test]
+        public void TurnEngine_RolltoHitTarget_Miss_Should_Pass()
+        {
+            // Arrange
+            var AttackScore = 1;
+            var DefenseScore = 100;
+
+            // Act
+            var result = Engine.RollToHitTarget(AttackScore, DefenseScore);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(HitStatusEnum.Miss, result);
+        }
+
+        [Test]
+        public void TurnEngine_RolltoHitTarget_Forced_1_Should_Miss()
+        {
+            // Arrange
+            var AttackScore = 1;
+            var DefenseScore = 100;
+
+            DiceHelper.EnableRandomValues();
+            DiceHelper.SetForcedRandomValue(1);
+
+            // Act
+            var result = Engine.RollToHitTarget(AttackScore, DefenseScore);
+
+            // Reset
+            DiceHelper.DisableRandomValues();
+
+            // Assert
+            Assert.AreEqual(HitStatusEnum.Miss, result);
+        }
+
+        [Test]
+        public void TurnEngine_RolltoHitTarget_Forced_20_Should_Hit()
+        {
+            // Arrange
+            var AttackScore = 1;
+            var DefenseScore = 100;
+
+            DiceHelper.EnableRandomValues();
+            DiceHelper.SetForcedRandomValue(20);
+
+            // Act
+            var result = Engine.RollToHitTarget(AttackScore, DefenseScore);
+
+            // Reset
+            DiceHelper.DisableRandomValues();
+
+            // Assert
+            Assert.AreEqual(HitStatusEnum.Hit, result);
         }
     }
 }
