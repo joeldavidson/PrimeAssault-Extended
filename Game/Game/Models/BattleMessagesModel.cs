@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using Game.Models;
-
-namespace Game.Models
+﻿namespace Game.Models
 {
     /// <summary>
     /// Manages the Message formatting for the UI to Display
@@ -12,7 +6,7 @@ namespace Game.Models
     public class BattleMessagesModel
     {
         // Is the player a character or a monster
-        public PlayerTypeEnum PlayerType;
+        public PlayerTypeEnum PlayerType = PlayerTypeEnum.Unknown;
 
         // The Status of the action
         public HitStatusEnum HitStatus = HitStatusEnum.Unknown;
@@ -42,11 +36,10 @@ namespace Game.Models
         public int CurrentHealth = 0;
 
         // Beginning of the Html Block for html formatting
-        const string htmlHead = @"<html><body bgcolor=""#E8D0B6""><p>";
+        public string htmlHead = @"<html><body bgcolor=""#E8D0B6""><p>";
         
         // Ending of the Html Block for Html formatting
-        const string htmlTail = @"</p></body></html>";
-
+        public string htmlTail = @"</p></body></html>";
 
         /// <summary>
         /// Return formatted string
