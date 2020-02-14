@@ -156,9 +156,10 @@ namespace Game.Models
 
                 case ItemLocationEnum.Feet:
                     return GetItem(Feet);
-            }
 
-            return null;
+                default:
+                    return null;
+            }
         }
         #endregion Methods
     }
