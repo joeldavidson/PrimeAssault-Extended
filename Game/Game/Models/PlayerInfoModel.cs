@@ -3,7 +3,15 @@ namespace Game.Models
 {
     public class PlayerInfoModel : BasePlayerModel<PlayerInfoModel>
     {
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        public PlayerInfoModel(){}
         
+        /// <summary>
+        /// Copy from one PlayerInfoModel into Another
+        /// </summary>
+        /// <param name="data"></param>
         public PlayerInfoModel(PlayerInfoModel data) 
         {
             PlayerType = data.PlayerType;
@@ -18,6 +26,10 @@ namespace Game.Models
             MaxHealth = data.GetHealthMax();
         }
 
+        /// <summary>
+        /// Create PlayerInfoModel from character
+        /// </summary>
+        /// <param name="data"></param>
         public PlayerInfoModel(CharacterModel data)
         {
             PlayerType = data.PlayerType;
@@ -32,6 +44,10 @@ namespace Game.Models
             MaxHealth = data.GetHealthMax();
         }
 
+        /// <summary>
+        /// Crate PlayerInfoModel from Monster
+        /// </summary>
+        /// <param name="data"></param>
         public PlayerInfoModel(MonsterModel data)
         {
             PlayerType = data.PlayerType;
