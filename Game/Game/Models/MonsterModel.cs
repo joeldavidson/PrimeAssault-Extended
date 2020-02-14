@@ -4,7 +4,7 @@
     {
         public MonsterModel()
         {
-            PlayerType = PlayerTypeEnum.Character;
+            PlayerType = PlayerTypeEnum.Monster;
             Guid = Id;
         }
     }
