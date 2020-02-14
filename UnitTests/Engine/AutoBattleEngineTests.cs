@@ -36,35 +36,19 @@ namespace UnitTests.Engine
             Assert.IsNotNull(result);
         }
 
-        //[Test]
-        //public async Task AutoBattleEngine_RunAutoBattle_Default_CharactersDie_Should_Pass()
-        //{
-        //    // Arrange
+        [Test]
+        public void AutoBattleEngine_RunAutoBattle_Default_Should_Pass()
+        {
+            // Arrange
 
-        //    // Act
-        //    Engine.FlagWhoDies = true;
-        //    var result = await Engine.RunAutoBattle();
+            // Act
+            var result = Engine.RunAutoBattle();
 
-        //    // Reset
+            // Reset
 
-        //    // Assert
-        //    Assert.AreEqual(true,result);
-        //}
-
-        //[Test]
-        //public async Task AutoBattleEngine_RunAutoBattle_Default_MonstersDie_Should_Pass()
-        //{
-        //    // Arrange
-
-        //    // Act
-        //    Engine.FlagWhoDies = false;
-        //    var result = await Engine.RunAutoBattle();
-
-        //    // Reset
-
-        //    // Assert
-        //    Assert.AreEqual(true, result);
-        //}
+            // Assert
+            Assert.IsNotNull(result);
+        }
 
         [Test]
         public void AutoBattleEngine_GetScoreObject_Default_Should_Pass()
