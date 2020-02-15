@@ -378,5 +378,41 @@ namespace UnitTests.Engine
             // Assert
             Assert.AreEqual(1, result);
         }
+
+        [Test]
+        public void TurnEngine_TargedDied_Character_Should_Pass()
+        {
+            // Arrange
+            var player = new CharacterModel();
+
+            var PlayerInfo = new PlayerInfoModel(player);
+            Engine.CharacterList.Add(PlayerInfo);
+
+            // Act
+            var result = Engine.TargedDied(PlayerInfo);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [Test]
+        public void TurnEngine_TargedDied_Monseter_Should_Pass()
+        {
+            // Arrange
+            var player = new MonsterModel();
+
+            var PlayerInfo = new PlayerInfoModel(player);
+            Engine.CharacterList.Add(PlayerInfo);
+
+            // Act
+            var result = Engine.TargedDied(PlayerInfo);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
     }
 }

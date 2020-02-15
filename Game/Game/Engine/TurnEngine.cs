@@ -222,7 +222,7 @@ namespace Game.Engine
         /// Returns the count of items dropped at death
         /// </summary>
         /// <param name="Target"></param>
-        private int TargedDied(PlayerInfoModel Target)
+        public bool TargedDied(PlayerInfoModel Target)
         {
             // Mark Status in output
             BattleMessagesModel.TurnMessageSpecial = " and causes death";
@@ -238,7 +238,9 @@ namespace Game.Engine
                     // Add the MonsterModel to the killed list
                     BattleScore.CharacterAtDeathList += Target.FormatOutput() + "\n";
 
-                    return DropItems(Target);
+                    DropItems(Target);
+
+                    return true;
 
                 case PlayerTypeEnum.Monster:
                 default:
@@ -250,7 +252,9 @@ namespace Game.Engine
                     // Add the MonsterModel to the killed list
                     BattleScore.MonstersKilledList += Target.FormatOutput() + "\n";
 
-                    return DropItems(Target);
+                    DropItems(Target);
+
+                    return true;
             }
         }
 
