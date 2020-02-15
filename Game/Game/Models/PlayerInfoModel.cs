@@ -20,6 +20,7 @@ namespace Game.Models
             ExperiencePoints = data.ExperienceTotal;
             Level = data.Level;
             Name = data.Name;
+            Description = data.Description;
             Speed = data.GetSpeed();
             ImageURI = data.ImageURI;
             CurrentHealth = data.GetHealthCurrent();
@@ -46,6 +47,7 @@ namespace Game.Models
             ExperiencePoints = data.ExperienceTotal;
             Level = data.Level;
             Name = data.Name;
+            Description = data.Description;
             Speed = data.GetSpeed();
             ImageURI = data.ImageURI;
             CurrentHealth = data.GetHealthCurrent();
@@ -72,6 +74,7 @@ namespace Game.Models
             ExperiencePoints = data.ExperienceTotal;
             Level = data.Level;
             Name = data.Name;
+            Description = data.Description;
             Speed = data.GetSpeed();
             ImageURI = data.ImageURI;
             CurrentHealth = data.GetHealthCurrent();
