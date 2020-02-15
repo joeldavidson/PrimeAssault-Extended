@@ -203,16 +203,28 @@ namespace Game.Engine
             BattleMessagesModel.CurrentHealth = Target.CurrentHealth;
             BattleMessagesModel.TurnMessageSpecial = BattleMessagesModel.GetCurrentHealthMessage();
 
-            // Check for alive
-            if (Target.Alive == false)
-            {
-                TargedDied(Target);
-            }
+            RemoveIfDead(Target);
 
             BattleMessagesModel.TurnMessage = Attacker.Name + BattleMessagesModel.AttackStatus + Target.Name + BattleMessagesModel.TurnMessageSpecial;
             Debug.WriteLine(BattleMessagesModel.TurnMessage);
 
             return true;
+        }
+
+        /// <summary>
+        /// If Dead process Targed Died
+        /// </summary>
+        /// <param name="Target"></param>
+        public bool RemoveIfDead(PlayerInfoModel Target)
+        {
+            // Check for alive
+            if (Target.Alive == false)
+            {
+                TargedDied(Target);
+                return true;
+            }
+            
+            return false;
         }
 
         /// <summary>

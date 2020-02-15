@@ -593,32 +593,56 @@ namespace UnitTests.Engine
             Assert.AreEqual(true, result);
         }
 
-
         [Test]
-        public void TurnEngine_TurnAsAttack_Monster_Attacks_Character_Hit_Death_Should_Pass()
+        public void TurnEngine_RemoveIfDead_Dead_True_Should_Return_False()
         {
             // Arrange
-            var Monster = new MonsterModel();
-            Monster.CurrentHealth = 1;
-            var MonsterPlayer = new PlayerInfoModel(Monster);
-            Engine.MonsterList.Add(MonsterPlayer);
+            var Monster = new MonsterModel
+            {
+                CurrentHealth = 1,
+                Alive = true,
+                Guid="me"
+            };
 
-            var Character = new CharacterModel();
-            var CharacterPlayer = new PlayerInfoModel(Character);
-            Engine.CharacterList.Add(CharacterPlayer);
+            var PlayerInfo = new PlayerInfoModel(Monster);
 
-            // Forece a Miss
-            DiceHelper.EnableRandomValues();
-            DiceHelper.SetForcedRandomValue(20);
+            Engine.MonsterList.Clear();
+            Engine.MonsterList.Add(PlayerInfo);
+            Engine.MakePlayerList();
 
             // Act
-            var result = Engine.TurnAsAttack(MonsterPlayer, CharacterPlayer);
+            var result = Engine.RemoveIfDead(PlayerInfo);
 
             // Reset
-            DiceHelper.DisableRandomValues();
 
             // Assert
-            Assert.AreEqual(true, result);
+            Assert.AreEqual(false, result);
+        }
+
+        [Test]
+        public void TurnEngine_RemoveIfDead_Dead_false_Should_Return_true()
+        {
+            // Arrange
+            var Monster = new MonsterModel
+            {
+                CurrentHealth = 1,
+                Alive = true,
+                Guid = "me"
+            };
+
+            var PlayerInfo = new PlayerInfoModel(Monster);
+
+            Engine.MonsterList.Clear();
+            Engine.MonsterList.Add(PlayerInfo);
+            Engine.MakePlayerList();
+
+            // Act
+            var result = Engine.RemoveIfDead(PlayerInfo);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(false, result);
         }
     }
 }
