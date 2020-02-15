@@ -53,10 +53,11 @@ namespace UnitTests.Engine
                 ExperiencePoints = 1000,
                 Name = "Z",
                 ListOrder = 1,
-                Id = "monster"
+                Guid = "me"
             };
 
             var MonsterPlayer = new PlayerInfoModel(Monster);
+            Engine.MonsterList.Clear();
             Engine.MonsterList.Add(MonsterPlayer);
 
             var Character = new CharacterModel
@@ -70,10 +71,14 @@ namespace UnitTests.Engine
             };
 
             var CharacterPlayer = new PlayerInfoModel(Character);
+            Engine.CharacterList.Clear(); 
             Engine.CharacterList.Add(CharacterPlayer);
 
+            // Make the List
+            Engine.PlayerList = Engine.MakePlayerList();
+
             // Sort the list by Current Health, so it has to be resorted.
-            Engine.CharacterList = Engine.CharacterList.OrderBy(m => m.CurrentHealth).ToList();
+            Engine.PlayerList = Engine.PlayerList.OrderBy(m => m.CurrentHealth).ToList();
 
             // Act
             var result = Engine.OrderPlayerListByTurnOrder();
@@ -81,7 +86,7 @@ namespace UnitTests.Engine
             // Reset
 
             // Assert
-            Assert.IsNotNull("monster", result[0].Id);
+            Assert.AreEqual("me", result[0].Guid);
         }
 
         [Test]
@@ -96,10 +101,11 @@ namespace UnitTests.Engine
                 ExperiencePoints = 1000,
                 Name = "Z",
                 ListOrder = 1,
-                Id = "monster"
+                Guid = "me"
             };
 
             var MonsterPlayer = new PlayerInfoModel(Monster);
+            Engine.MonsterList.Clear();
             Engine.MonsterList.Add(MonsterPlayer);
 
             var Character = new CharacterModel
@@ -113,10 +119,14 @@ namespace UnitTests.Engine
             };
 
             var CharacterPlayer = new PlayerInfoModel(Character);
+            Engine.CharacterList.Clear();
             Engine.CharacterList.Add(CharacterPlayer);
 
+            // Make the List
+            Engine.PlayerList = Engine.MakePlayerList();
+
             // Sort the list by Current Health, so it has to be resorted.
-            Engine.CharacterList = Engine.CharacterList.OrderBy(m => m.CurrentHealth).ToList();
+            Engine.PlayerList = Engine.PlayerList.OrderBy(m => m.CurrentHealth).ToList();
 
             // Act
             var result = Engine.OrderPlayerListByTurnOrder();
@@ -124,13 +134,14 @@ namespace UnitTests.Engine
             // Reset
 
             // Assert
-            Assert.IsNotNull("monster", result[0].Id);
+            Assert.AreEqual("me", result[0].Guid);
         }
 
         [Test]
         public void RoundEngine_OrderPlayerListByTurnOrder_Experience_Higher_Should_Pass()
         {
             // Arrange
+
             var Monster = new MonsterModel
             {
                 Speed = 20,
@@ -139,10 +150,12 @@ namespace UnitTests.Engine
                 ExperiencePoints = 1,
                 Name = "Z",
                 ListOrder = 1,
-                Id = "monster"
+                Guid = "me"
             };
 
             var MonsterPlayer = new PlayerInfoModel(Monster);
+
+            Engine.MonsterList.Clear();
             Engine.MonsterList.Add(MonsterPlayer);
 
             var Character = new CharacterModel
@@ -152,14 +165,18 @@ namespace UnitTests.Engine
                 CurrentHealth = 2,
                 ExperiencePoints = 1,
                 Name = "C",
-                ListOrder = 10
+                ListOrder = 10,
             };
 
             var CharacterPlayer = new PlayerInfoModel(Character);
+            Engine.CharacterList.Clear();
             Engine.CharacterList.Add(CharacterPlayer);
 
+            // Make the List
+            Engine.PlayerList = Engine.MakePlayerList();
+
             // Sort the list by Current Health, so it has to be resorted.
-            Engine.CharacterList = Engine.CharacterList.OrderBy(m => m.CurrentHealth).ToList();
+            Engine.PlayerList = Engine.PlayerList.OrderBy(m => m.CurrentHealth).ToList();
 
             // Act
             var result = Engine.OrderPlayerListByTurnOrder();
@@ -167,7 +184,7 @@ namespace UnitTests.Engine
             // Reset
 
             // Assert
-            Assert.IsNotNull("monster", result[0].Id);
+            Assert.AreEqual("me", result[0].Guid);
         }
 
         [Test]
@@ -182,10 +199,11 @@ namespace UnitTests.Engine
                 ExperiencePoints = 1,
                 Name = "A",
                 ListOrder = 1,
-                Id = "monster"
+                Guid = "me"
             };
 
             var MonsterPlayer = new PlayerInfoModel(Monster);
+            Engine.MonsterList.Clear();
             Engine.MonsterList.Add(MonsterPlayer);
 
             var Character = new CharacterModel
@@ -199,10 +217,14 @@ namespace UnitTests.Engine
             };
 
             var CharacterPlayer = new PlayerInfoModel(Character);
+            Engine.CharacterList.Clear();
             Engine.CharacterList.Add(CharacterPlayer);
 
+            // Make the List
+            Engine.PlayerList = Engine.MakePlayerList();
+
             // Sort the list by Current Health, so it has to be resorted.
-            Engine.CharacterList = Engine.CharacterList.OrderBy(m => m.CurrentHealth).ToList();
+            Engine.PlayerList = Engine.PlayerList.OrderBy(m => m.CurrentHealth).ToList();
 
             // Act
             var result = Engine.OrderPlayerListByTurnOrder();
@@ -210,12 +232,14 @@ namespace UnitTests.Engine
             // Reset
 
             // Assert
-            Assert.IsNotNull("monster", result[0].Id);
+            Assert.AreEqual("me", result[0].Guid);
         }
 
         [Test]
         public void RoundEngine_OrderPlayerListByTurnOrder_Name_A_Z_Should_Pass()
         {
+            Engine.MonsterList.Clear();
+
             // Both need to be character to fall through to the Name Test
             // Arrange
             var Character = new CharacterModel
@@ -226,9 +250,11 @@ namespace UnitTests.Engine
                 ExperiencePoints = 1,
                 Name = "Z",
                 ListOrder = 1,
-                Id = "Character"
+                Guid = "me"
             };
 
+            var CharacterPlayer = new PlayerInfoModel(Character);
+            Engine.CharacterList.Clear();
             Engine.CharacterList.Add(new PlayerInfoModel(Character));
 
             Character = new CharacterModel
@@ -237,14 +263,18 @@ namespace UnitTests.Engine
                 Level = 1,
                 CurrentHealth = 2,
                 ExperiencePoints = 1,
-                Name = "C",
+                Name = "ZZ",
                 ListOrder = 10
             };
 
+            CharacterPlayer = new PlayerInfoModel(Character);
             Engine.CharacterList.Add(new PlayerInfoModel(Character));
 
+            // Make the List
+            Engine.PlayerList = Engine.MakePlayerList();
+
             // Sort the list by Current Health, so it has to be resorted.
-            Engine.CharacterList = Engine.CharacterList.OrderBy(m => m.CurrentHealth).ToList();
+            Engine.PlayerList = Engine.PlayerList.OrderBy(m => m.CurrentHealth).ToList();
 
             // Act
             var result = Engine.OrderPlayerListByTurnOrder();
@@ -252,7 +282,7 @@ namespace UnitTests.Engine
             // Reset
 
             // Assert
-            Assert.IsNotNull("monster", result[0].Id);
+            Assert.AreEqual("me", result[0].Guid);
         }
     }
 }
