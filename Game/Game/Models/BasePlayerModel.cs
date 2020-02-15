@@ -38,7 +38,7 @@ namespace Game.Models
         public int Level = 0;
 
         // The experience points the player has used in sorting ties...
-        public int ExperiencePoints =0;
+        public int ExperiencePoints = 0;
 
         // Current Health
         public int CurrentHealth = 0;
@@ -90,11 +90,27 @@ namespace Game.Models
 
         public int GetAttack() { return 0; }
         public int GetDefense() { return 0; }
-        public int GetSpeed() { return 0; }
         public int GetHealthCurrent() { return CurrentHealth; }
         public int GetHealthMax() { return MaxHealth; }
         public int GetDamageRollValue() { return 10; }
 
+        /// <summary>
+        /// Rturn the Calculated Speed
+        /// </summary>
+        /// <returns></returns>
+        public int GetSpeed() {
+
+            // Base value
+            var myReturn = Speed;
+
+            // Get Bonus from Level
+            myReturn += LevelTableHelper.Instance.LevelDetailsList[Level].Speed;
+
+            // Get bonus from Items
+            myReturn += GetItemBonus(AttributeEnum.Speed);
+
+            return myReturn;
+        }
 
         // Take Damage
         // If the damage recived, is > health, then death occurs
