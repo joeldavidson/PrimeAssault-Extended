@@ -24,6 +24,14 @@ namespace Game.Models
             ImageURI = data.ImageURI;
             CurrentHealth = data.GetHealthCurrent();
             MaxHealth = data.GetHealthMax();
+
+            // Set the strings for the items
+            Head = data.Head;
+            Feet = data.Feet;
+            Necklass = data.Necklass;
+            RightFinger = data.RightFinger;
+            LeftFinger = data.LeftFinger;
+            Feet = data.Feet;
         }
 
         /// <summary>
@@ -42,6 +50,14 @@ namespace Game.Models
             ImageURI = data.ImageURI;
             CurrentHealth = data.GetHealthCurrent();
             MaxHealth = data.GetHealthMax();
+
+            // Set the strings for the items
+            Head = data.Head;
+            Feet = data.Feet;
+            Necklass = data.Necklass;
+            RightFinger = data.RightFinger;
+            LeftFinger = data.LeftFinger;
+            Feet = data.Feet;
         }
 
         /// <summary>
@@ -60,6 +76,14 @@ namespace Game.Models
             ImageURI = data.ImageURI;
             CurrentHealth = data.GetHealthCurrent();
             MaxHealth = data.GetHealthMax();
+
+            // Set the strings for the items
+            Head = data.Head;
+            Feet = data.Feet;
+            Necklass = data.Necklass;
+            RightFinger = data.RightFinger;
+            LeftFinger = data.LeftFinger;
+            Feet = data.Feet;
         }
     }
 }
