@@ -87,13 +87,13 @@ namespace Game.Engine
         /// <returns></returns>
         public PlayerInfoModel AttackChoice(PlayerInfoModel data)
         {
-            switch(data.PlayerType)
+            switch (data.PlayerType)
             {
                 case PlayerTypeEnum.Monster:
                     return SelectCharacterToAttack();
 
                 case PlayerTypeEnum.Character:
-                    default:
+                default:
                     return SelectMonsterToAttack();
             }
         }
@@ -218,34 +218,39 @@ namespace Game.Engine
         /// Target Died
         /// 
         /// Process for death...
+        /// 
+        /// Returns the count of items dropped at death
         /// </summary>
         /// <param name="Target"></param>
-        private void TargedDied(PlayerInfoModel Target)
+        private int TargedDied(PlayerInfoModel Target)
         {
             // Mark Status in output
             BattleMessagesModel.TurnMessageSpecial = " and causes death";
 
             // Remove target from list...
-            if (Target.PlayerType == PlayerTypeEnum.Character)
+
+            // Using a switch so in the future additional PlayerTypes can be added (Boss...)
+            switch (Target.PlayerType)
             {
-                CharacterList.Remove(Target);
+                case PlayerTypeEnum.Character:
+                    CharacterList.Remove(Target);
 
-                // Add the MonsterModel to the killed list
-                BattleScore.CharacterAtDeathList += Target.FormatOutput() + "\n";
+                    // Add the MonsterModel to the killed list
+                    BattleScore.CharacterAtDeathList += Target.FormatOutput() + "\n";
 
-                DropItems(Target);
-            }
-            else
-            {
-                MonsterList.Remove(Target);
+                    return DropItems(Target);
 
-                // Add one to the monsters killd count...
-                BattleScore.MonsterSlainNumber++;
+                case PlayerTypeEnum.Monster:
+                default:
+                    MonsterList.Remove(Target);
 
-                // Add the MonsterModel to the killed list
-                BattleScore.MonstersKilledList += Target.FormatOutput() + "\n";
+                    // Add one to the monsters killed count...
+                    BattleScore.MonsterSlainNumber++;
 
-                DropItems(Target);
+                    // Add the MonsterModel to the killed list
+                    BattleScore.MonstersKilledList += Target.FormatOutput() + "\n";
+
+                    return DropItems(Target);
             }
         }
 
@@ -253,7 +258,7 @@ namespace Game.Engine
         /// Drop Items
         /// </summary>
         /// <param name="Target"></param>
-        private void DropItems(PlayerInfoModel Target)
+        public int DropItems(PlayerInfoModel Target)
         {
             // Drop Items to ItemModel Pool
             var myItemList = Target.DropAllItems();
@@ -270,6 +275,8 @@ namespace Game.Engine
             }
 
             ItemPool.AddRange(myItemList);
+
+            return myItemList.Count();
         }
 
         /// <summary>
@@ -310,7 +317,7 @@ namespace Game.Engine
             BattleMessagesModel.HitStatus = HitStatusEnum.Hit;
             return BattleMessagesModel.HitStatus;
         }
-       
+
         /// <summary>
         /// Will drop between 1 and 4 items from the ItemModel set...
         /// </summary>
@@ -320,7 +327,14 @@ namespace Game.Engine
         {
             // You decide how to drop monster items, level, etc.
 
+            var NumberToDrop = DiceHelper.RollDice(1, round);
+
             var myList = new List<ItemModel>();
+
+            for (var i = 0; i < NumberToDrop; i++)
+            {
+                myList.Add(new ItemModel());
+            }
             return myList;
         }
     }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Collections.Generic;
 using Game.Services;
+using Game.ViewModels;
 
 namespace UnitTests.Engine
 {
@@ -309,6 +310,73 @@ namespace UnitTests.Engine
 
             // Assert
             Assert.AreEqual(true, result);
+        }
+
+        [Test]
+        public void TurnEngine_DropItems_No_Items_Should_Return_0()
+        {
+            // Arrange
+            var player = new CharacterModel();
+
+            var PlayerInfo = new PlayerInfoModel(player);
+
+            DiceHelper.EnableRandomValues();
+            DiceHelper.SetForcedRandomValue(0);
+
+            // Act
+            var result = Engine.DropItems(PlayerInfo);
+
+            // Reset
+            DiceHelper.DisableRandomValues();
+
+            // Assert
+            Assert.AreEqual(0, result);
+        }
+
+        [Test]
+        public void TurnEngine_DropItems_Character_Items_2_Should_Return_2()
+        {
+            // Arrange
+            var player = new CharacterModel
+            {
+                Head = ItemIndexViewModel.Instance.Dataset.FirstOrDefault().Id,
+                Feet = ItemIndexViewModel.Instance.Dataset.FirstOrDefault().Id,
+            };
+
+            var PlayerInfo = new PlayerInfoModel(player);
+
+            DiceHelper.EnableRandomValues();
+            DiceHelper.SetForcedRandomValue(0);
+
+            // Act
+            var result = Engine.DropItems(PlayerInfo);
+
+            // Reset
+            DiceHelper.DisableRandomValues();
+
+            // Assert
+            Assert.AreEqual(2, result);
+        }
+
+        [Test]
+        public void TurnEngine_DropItems_Monster_Items_0_Random_Drop_1_Should_Return_1()
+        {
+            // Arrange
+            var player = new CharacterModel();
+
+            var PlayerInfo = new PlayerInfoModel(player);
+
+            DiceHelper.EnableRandomValues();
+            DiceHelper.SetForcedRandomValue(1);
+
+            // Act
+            var result = Engine.DropItems(PlayerInfo);
+
+            // Reset
+            DiceHelper.DisableRandomValues();
+
+            // Assert
+            Assert.AreEqual(1, result);
         }
     }
 }
