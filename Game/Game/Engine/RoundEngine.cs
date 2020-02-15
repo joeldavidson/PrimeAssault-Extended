@@ -168,7 +168,7 @@ namespace Game.Engine
         /// <summary>
         /// Who is Playing this round?
         /// </summary>
-        private List<PlayerInfoModel> MakePlayerList()
+        public List<PlayerInfoModel> MakePlayerList()
         {
             // Start from a clean list of players
             PlayerList.Clear();
