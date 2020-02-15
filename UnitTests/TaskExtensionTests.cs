@@ -155,5 +155,11 @@ namespace UnitTests.Views.Game
         {
             throw new NotImplementedException();
         }
+
+        public bool GetNeedsInitializationAsync()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }
