@@ -414,5 +414,207 @@ namespace UnitTests.Engine
             // Assert
             Assert.AreEqual(true, result);
         }
+
+        [Test]
+        public void TurnEngine_TurnAsAttack_Character_Attacks_Null_Should_Fail()
+        {
+            // Arrange
+            var Character = new CharacterModel();
+            var CharacterPlayer = new PlayerInfoModel(Character);
+            Engine.CharacterList.Add(CharacterPlayer);
+
+            var Monster = new MonsterModel();
+            var MonsterPlayer = new PlayerInfoModel(Monster);
+            Engine.MonsterList.Add(MonsterPlayer);
+
+            // Act
+            var result = Engine.TurnAsAttack(CharacterPlayer, null);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(false, result);
+        }
+
+        [Test]
+        public void TurnEngine_TurnAsAttack_Null_Attacks_Character_Should_Fail()
+        {
+            // Arrange
+            var Character = new CharacterModel();
+            var CharacterPlayer = new PlayerInfoModel(Character);
+            Engine.CharacterList.Add(CharacterPlayer);
+
+            var Monster = new MonsterModel();
+            var MonsterPlayer = new PlayerInfoModel(Monster);
+            Engine.MonsterList.Add(MonsterPlayer);
+
+            // Act
+            var result = Engine.TurnAsAttack(null, CharacterPlayer);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(false, result);
+        }
+
+        [Test]
+        public void TurnEngine_TurnAsAttack_Character_Attacks_Monster_Miss_Should_Pass()
+        {
+            // Arrange
+            var Character = new CharacterModel();
+            var CharacterPlayer = new PlayerInfoModel(Character);
+            Engine.CharacterList.Add(CharacterPlayer);
+
+            var Monster = new MonsterModel();
+            var MonsterPlayer = new PlayerInfoModel(Monster);
+            Engine.MonsterList.Add(MonsterPlayer);
+
+            // Forece a Miss
+            DiceHelper.EnableRandomValues();
+            DiceHelper.SetForcedRandomValue(1);
+
+            // Act
+            var result = Engine.TurnAsAttack(CharacterPlayer, MonsterPlayer);
+
+            // Reset
+            DiceHelper.DisableRandomValues();
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [Test]
+        public void TurnEngine_TurnAsAttack_Character_Attacks_Monster_Hit_Should_Pass()
+        {
+            // Arrange
+            var Character = new CharacterModel();
+            var CharacterPlayer = new PlayerInfoModel(Character);
+            Engine.CharacterList.Add(CharacterPlayer);
+
+            var Monster = new MonsterModel();
+            var MonsterPlayer = new PlayerInfoModel(Monster);
+            Engine.MonsterList.Add(MonsterPlayer);
+
+            // Forece a Miss
+            DiceHelper.EnableRandomValues();
+            DiceHelper.SetForcedRandomValue(20);
+
+            // Act
+            var result = Engine.TurnAsAttack(CharacterPlayer, MonsterPlayer);
+
+            // Reset
+            DiceHelper.DisableRandomValues();
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+
+
+        [Test]
+        public void TurnEngine_TurnAsAttack_Character_Attacks_Monster_Hit_Death_Should_Pass()
+        {
+            // Arrange
+            var Character = new CharacterModel();
+            Character.CurrentHealth = 1;
+            var CharacterPlayer = new PlayerInfoModel(Character);
+            Engine.CharacterList.Add(CharacterPlayer);
+
+            var Monster = new MonsterModel();
+            var MonsterPlayer = new PlayerInfoModel(Monster);
+            Engine.MonsterList.Add(MonsterPlayer);
+
+            // Forece a Miss
+            DiceHelper.EnableRandomValues();
+            DiceHelper.SetForcedRandomValue(20);
+
+            // Act
+            var result = Engine.TurnAsAttack(CharacterPlayer, MonsterPlayer);
+
+            // Reset
+            DiceHelper.DisableRandomValues();
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [Test]
+        public void TurnEngine_TurnAsAttack_Monster_Attacks_Character_Miss_Should_Pass()
+        {
+            // Arrange
+            var Monster = new MonsterModel();
+            var MonsterPlayer = new PlayerInfoModel(Monster);
+            Engine.MonsterList.Add(MonsterPlayer);
+
+            var Character = new CharacterModel();
+            var CharacterPlayer = new PlayerInfoModel(Character);
+            Engine.CharacterList.Add(CharacterPlayer);
+
+            // Forece a Miss
+            DiceHelper.EnableRandomValues();
+            DiceHelper.SetForcedRandomValue(1);
+
+            // Act
+            var result = Engine.TurnAsAttack(MonsterPlayer, CharacterPlayer);
+
+            // Reset
+            DiceHelper.DisableRandomValues();
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [Test]
+        public void TurnEngine_TurnAsAttack_Monster_Attacks_Character_Hit_Should_Pass()
+        {
+            // Arrange
+            var Monster = new MonsterModel();
+            var MonsterPlayer = new PlayerInfoModel(Monster);
+            Engine.MonsterList.Add(MonsterPlayer);
+
+            var Character = new CharacterModel();
+            var CharacterPlayer = new PlayerInfoModel(Character);
+            Engine.CharacterList.Add(CharacterPlayer);
+
+            // Forece a Miss
+            DiceHelper.EnableRandomValues();
+            DiceHelper.SetForcedRandomValue(20);
+
+            // Act
+            var result = Engine.TurnAsAttack(MonsterPlayer, CharacterPlayer);
+
+            // Reset
+            DiceHelper.DisableRandomValues();
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+
+
+        [Test]
+        public void TurnEngine_TurnAsAttack_Monster_Attacks_Character_Hit_Death_Should_Pass()
+        {
+            // Arrange
+            var Monster = new MonsterModel();
+            Monster.CurrentHealth = 1;
+            var MonsterPlayer = new PlayerInfoModel(Monster);
+            Engine.MonsterList.Add(MonsterPlayer);
+
+            var Character = new CharacterModel();
+            var CharacterPlayer = new PlayerInfoModel(Character);
+            Engine.CharacterList.Add(CharacterPlayer);
+
+            // Forece a Miss
+            DiceHelper.EnableRandomValues();
+            DiceHelper.SetForcedRandomValue(20);
+
+            // Act
+            var result = Engine.TurnAsAttack(MonsterPlayer, CharacterPlayer);
+
+            // Reset
+            DiceHelper.DisableRandomValues();
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
     }
 }

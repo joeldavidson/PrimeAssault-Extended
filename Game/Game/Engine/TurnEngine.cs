@@ -70,9 +70,7 @@ namespace Game.Engine
             }
 
             // Do Attack
-            var AttackScore = Attacker.Level + Attacker.GetAttack();
-            var DefenseScore = Target.GetDefense() + Target.Level;
-            TurnAsAttack(Attacker, AttackScore, Target, DefenseScore);
+            TurnAsAttack(Attacker,Target);
 
             CurrentAttacker = new PlayerInfoModel(Attacker);
             CurrentDefender = new PlayerInfoModel(Target);
@@ -155,14 +153,8 @@ namespace Game.Engine
         /// <param name="Target"></param>
         /// <param name="DefenseScore"></param>
         /// <returns></returns>
-        public bool TurnAsAttack(PlayerInfoModel Attacker, int AttackScore, PlayerInfoModel Target, int DefenseScore)
+        public bool TurnAsAttack(PlayerInfoModel Attacker, PlayerInfoModel Target)
         {
-            BattleMessagesModel.TurnMessage = string.Empty;
-            BattleMessagesModel.TurnMessageSpecial = string.Empty;
-            BattleMessagesModel.AttackStatus = string.Empty;
-
-            BattleMessagesModel.PlayerType = PlayerTypeEnum.Monster;
-
             if (Attacker == null)
             {
                 return false;
@@ -172,6 +164,15 @@ namespace Game.Engine
             {
                 return false;
             }
+
+            BattleMessagesModel.TurnMessage = string.Empty;
+            BattleMessagesModel.TurnMessageSpecial = string.Empty;
+            BattleMessagesModel.AttackStatus = string.Empty;
+
+            BattleMessagesModel.PlayerType = PlayerTypeEnum.Monster;
+
+            var AttackScore = Attacker.Level + Attacker.GetAttack();
+            var DefenseScore = Target.GetDefense() + Target.Level;
 
             BattleScore.TurnCount++;
 
