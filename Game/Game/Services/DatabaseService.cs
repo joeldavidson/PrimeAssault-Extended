@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Game.Models;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Game.Services
 {
@@ -51,6 +52,25 @@ namespace Game.Services
             }
         }
 
+        // Set Needs Init to False, so toggles to true 
+        public bool NeedsInitialization = true;
+
+        /// <summary>
+        /// First time toggled, returns true.
+        /// </summary>
+        /// <returns></returns>
+        public bool GetNeedsInitializationAsync()
+        {
+            if (NeedsInitialization == true)
+            {
+                // Toggle State
+                NeedsInitialization = false;
+                return true;
+            }
+
+            return NeedsInitialization;
+        }
+
         /// <summary>
         /// Wipe Data List
         /// Drop the tables and create new ones
@@ -64,7 +84,7 @@ namespace Game.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error WipeData" + e.Message);
+                Debug.WriteLine("Error WipeData" + e.Message);
             }
 
             return await Task.FromResult(true);
@@ -77,8 +97,16 @@ namespace Game.Services
         /// <returns></returns>
         public async Task<bool> CreateAsync(T data)
         {
-            var result = await Database.InsertAsync(data);
-            return (result == 1);
+            try
+            {
+                var result = await Database.InsertAsync(data);
+                return (result == 1);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Create Failed " + e.Message);
+                return false;
+            }
         }
 
         /// <summary>
@@ -92,9 +120,15 @@ namespace Game.Services
 
             try
             {
-                data = await Database.Table<T>().Where((T arg) => ((BaseModel<T>)(object)arg).Id.Equals(id)).FirstOrDefaultAsync();
+                var dataList = await IndexAsync();
+
+                data = dataList.Where((T arg) => ((BaseModel<T>)(object)arg).Id.Equals(id)).FirstOrDefault();
+
+                //data = await Database.Table<T>().Where((T arg) => ((BaseModel<T>)(object)arg).Id.Equals(id)).FirstOrDefaultAsync();
             }
-            catch (Exception) {
+            catch (Exception e)
+            {
+                Debug.WriteLine("Read Failed " + e.Message);
                 data = default(T);
             }
 
@@ -114,7 +148,16 @@ namespace Game.Services
                 return false;
             }
 
-            var result = await Database.UpdateAsync(data);
+            int result = 0;
+            try
+            {
+                result = await Database.UpdateAsync(data);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Create Failed " + e.Message);
+                return (result == 0);
+            }
 
             return (result == 1);
         }
@@ -132,7 +175,16 @@ namespace Game.Services
                 return false;
             }
 
-            var result = await Database.DeleteAsync(data);
+            int result;
+            try
+            {
+                result = await Database.DeleteAsync(data);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Delete Failed " + e.Message);
+                return false;
+            }
 
             return (result == 1);
         }
@@ -143,7 +195,18 @@ namespace Game.Services
         /// <returns></returns>
         public async Task<List<T>> IndexAsync()
         {
-            return await Database.Table<T>().ToListAsync();
+            List<T> result;
+            try
+            {
+                result = await Database.Table<T>().ToListAsync();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Create Failed " + e.Message);
+                return null;
+            }
+
+            return result;
         }
     }
 }

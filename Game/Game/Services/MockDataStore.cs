@@ -13,6 +13,25 @@ namespace Game.Services
         /// </summary>
         public List<T> datalist = new List<T>();
 
+        // Set Needs Init to False, so toggles to true 
+        public bool NeedsInitialization = true;
+
+        /// <summary>
+        /// First time toggled, returns true.
+        /// </summary>
+        /// <returns></returns>
+        public bool GetNeedsInitializationAsync()
+        {
+            if (NeedsInitialization == true)
+            {
+                // Toggle State
+                NeedsInitialization = false;
+                return true;
+            }
+
+            return NeedsInitialization;
+        }
+
         /// <summary>
         /// Clear the Dataset
         /// </summary>

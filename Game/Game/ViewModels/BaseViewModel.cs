@@ -120,6 +120,11 @@ namespace Game.ViewModels
         /// <returns></returns>
         public async Task<bool> LoadDefaultDataAsync()
         {
+            if (DataStore.GetNeedsInitializationAsync())
+            {
+                Dataset.Clear();
+            }
+
             // If data exists, do not run
             if (Dataset.Count>0)
             {
@@ -322,8 +327,10 @@ namespace Game.ViewModels
                 return false;
             }
 
+            var BaseDataId = ((BaseModel<T>)(object)data).Id;
+
             // Check that the record exists, if it does not, then exit with false
-            var record = await ReadAsync(((BaseModel<T>)(object)data).Id);
+            var record = await ReadAsync(BaseDataId);
             if (record == null)
             {
                 return false;
@@ -349,8 +356,10 @@ namespace Game.ViewModels
                 return false;
             }
 
+            var BaseDataId = ((BaseModel<T>)(object)data).Id;
+
             // Check that the record exists, if it does not, then exit with false
-            var record = await ReadAsync(((BaseModel<T>)(object)data).Id);
+            var record = await ReadAsync(BaseDataId);
             if (record == null)
             {
                 return false;
@@ -380,12 +389,13 @@ namespace Game.ViewModels
                 return false;
             }
 
+            var BaseDataId = ((BaseModel<T>)(object)data).Id;
+
             // Check to see if the data exist
-            var oldData = await ReadAsync(((BaseModel<T>)(object)data).Id);
+            var oldData = await ReadAsync(BaseDataId);
             if (oldData == null)
             {
-                await CreateAsync(data);
-                return true;
+                return await CreateAsync(data);
             }
 
             // Compare it, if different update in the DB
