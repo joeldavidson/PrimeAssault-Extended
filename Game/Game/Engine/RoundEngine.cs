@@ -154,7 +154,7 @@ namespace Game.Engine
             // Work with the Class variable PlayerList
             PlayerList = MakePlayerList();
 
-            PlayerList = PlayerList.OrderByDescending(a => a.Speed)
+            PlayerList = PlayerList.OrderByDescending(a => a.GetSpeed())
                 .ThenByDescending(a => a.Level)
                 .ThenByDescending(a => a.ExperiencePoints)
                 .ThenByDescending(a => a.PlayerType)
