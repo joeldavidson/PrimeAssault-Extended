@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 
 using Game.Models;
+using Game.ViewModels;
+using System.Linq;
 
 namespace UnitTests.Models
 {
@@ -320,7 +322,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.AreEqual(null,result);
         }
 
         [Test]
@@ -335,7 +337,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.AreEqual(null, result);
         }
 
         [Test]
@@ -350,7 +352,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.AreEqual(null, result);
         }
 
         [Test]
@@ -365,7 +367,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.AreEqual(null, result);
         }
 
         [Test]
@@ -380,7 +382,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.AreEqual(null,result);
         }
 
         [Test]
@@ -395,7 +397,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.AreEqual(null,result);
         }
 
         [Test]
@@ -410,7 +412,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.AreEqual(null, result);
         }
 
         [Test]
@@ -425,7 +427,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.AreEqual(null, result);
         }
 
         [Test]
@@ -440,7 +442,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.IsNull(result);
+            Assert.AreEqual(null, result);
         }
 
         [Test]
@@ -459,7 +461,7 @@ namespace UnitTests.Models
         }
 
         [Test]
-        public void BasePlayerModel_AddItem_Default_Should_Pass()
+        public void BasePlayerModel_AddItem_Unknown_Should_Fail()
         {
             // Arrange
             var data = new BasePlayerModel<CharacterModel>();
@@ -470,7 +472,47 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.AreEqual(null, result);
+        }
+
+        [Test]
+        public void BasePlayerModel_AddItem_Default_Should_Pass()
+        {
+            // Arrange
+            var data = new BasePlayerModel<CharacterModel>();
+            var itemOld = ItemIndexViewModel.Instance.Dataset.FirstOrDefault();
+
+            // Act
+
+            // Add the second item, this will return the first item as the one replaced which is null
+            var result = data.AddItem(ItemLocationEnum.Head, itemOld.Id);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(null, result);
+        }
+
+        [Test]
+        public void BasePlayerModel_AddItem_Default_Replace_Should_Pass()
+        {
+            // Arrange
+            var data = new BasePlayerModel<CharacterModel>();
+            var itemOld = ItemIndexViewModel.Instance.Dataset.FirstOrDefault();
+            var itemNew = ItemIndexViewModel.Instance.Dataset.LastOrDefault();
+
+            // Add the first item
+            data.AddItem(ItemLocationEnum.Head, itemOld.Id);
+
+            // Act
+
+            // Add the second item, this will return the first item as the one replaced
+            var result = data.AddItem(ItemLocationEnum.Head, itemNew.Id);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(itemOld.Id, result.Id);
         }
     }
 }

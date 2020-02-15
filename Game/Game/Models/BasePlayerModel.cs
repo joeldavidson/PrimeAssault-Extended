@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Game.ViewModels;
+using System.Collections.Generic;
 
 namespace Game.Models
 {
@@ -57,7 +58,7 @@ namespace Game.Models
         #endregion PlayerAttributes
 
         #region Items
-        // Item is a string referencing the database table
+        // ItemModel is a string referencing the database table
         public string Head { get; set; } = null;
 
         // Feet is a string referencing the database table
@@ -126,12 +127,87 @@ namespace Game.Models
             return Alive;
         }
 
-        public List<ItemModel> DropAllItems() { return new List<ItemModel>(); }
         public string FormatOutput() { return ""; }
+
         public bool AddExperience(int newExperience) { return true; }
-        public ItemModel AddItem(ItemLocationEnum itemlocation, string itemID) { return new ItemModel(); }
+
         public int CalculateExperienceEarned(int damage) { return 0; }
-        public ItemModel GetItem(string itemString) { return new ItemModel(); }
+
+        #region Items
+        // Get the Item at a known string location (head, foot etc.)
+        public ItemModel GetItem(string itemString)
+        {
+            return ItemIndexViewModel.Instance.GetItem(itemString);
+        }
+
+        // Drop All Items
+        // Return a list of items for the pool of items
+        public List<ItemModel> DropAllItems()
+        {
+            var myReturn = new List<ItemModel>();
+
+            // Drop all Items
+            ItemModel myItem;
+
+            myItem = RemoveItem(ItemLocationEnum.Head);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+
+            myItem = RemoveItem(ItemLocationEnum.Necklass);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+
+            myItem = RemoveItem(ItemLocationEnum.PrimaryHand);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+
+            myItem = RemoveItem(ItemLocationEnum.OffHand);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+
+            myItem = RemoveItem(ItemLocationEnum.RightFinger);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+
+            myItem = RemoveItem(ItemLocationEnum.LeftFinger);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+
+            myItem = RemoveItem(ItemLocationEnum.Feet);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+
+            return myReturn;
+        }
+
+        // Remove ItemModel from a set location
+        // Does this by adding a new ItemModel of Null to the location
+        // This will return the previous ItemModel, and put null in its place
+        // Returns the ItemModel that was at the location
+        // Nulls out the location
+        public ItemModel RemoveItem(ItemLocationEnum itemlocation)
+        {
+            var myReturn = AddItem(itemlocation, null);
+
+            // Save Changes
+            return myReturn;
+        }
+
+        // Get the ItemModel at a known string location (head, foot etc.)
         public ItemModel GetItemByLocation(ItemLocationEnum itemLocation)
         {
             switch (itemLocation)
@@ -156,11 +232,141 @@ namespace Game.Models
 
                 case ItemLocationEnum.Feet:
                     return GetItem(Feet);
+            }
+
+            return null;
+        }
+
+        // Add ItemModel
+        // Looks up the ItemModel
+        // Puts the ItemModel ID as a string in the location slot
+        // If ItemModel is null, then puts null in the slot
+        // Returns the ItemModel that was in the location
+        public ItemModel AddItem(ItemLocationEnum itemlocation, string itemID)
+        {
+            ItemModel myReturn;
+
+            switch (itemlocation)
+            {
+                case ItemLocationEnum.Feet:
+                    myReturn = GetItem(Feet);
+                    Feet = itemID;
+                    break;
+
+                case ItemLocationEnum.Head:
+                    myReturn = GetItem(Head);
+                    Head = itemID;
+                    break;
+
+                case ItemLocationEnum.Necklass:
+                    myReturn = GetItem(Necklass);
+                    Necklass = itemID;
+                    break;
+
+                case ItemLocationEnum.PrimaryHand:
+                    myReturn = GetItem(PrimaryHand);
+                    PrimaryHand = itemID;
+                    break;
+
+                case ItemLocationEnum.OffHand:
+                    myReturn = GetItem(OffHand);
+                    OffHand = itemID;
+                    break;
+
+                case ItemLocationEnum.RightFinger:
+                    myReturn = GetItem(RightFinger);
+                    RightFinger = itemID;
+                    break;
+
+                case ItemLocationEnum.LeftFinger:
+                    myReturn = GetItem(LeftFinger);
+                    LeftFinger = itemID;
+                    break;
 
                 default:
-                    return null;
+                    myReturn = null;
+                    break;
             }
+
+            return myReturn;
         }
+
+        // Walk all the Items on the Character.
+        // Add together all Items that modify the Attribute Enum Passed in
+        // Return the sum
+        public int GetItemBonus(AttributeEnum attributeEnum)
+        {
+            var myReturn = 0;
+            ItemModel myItem;
+
+            myItem = GetItem(Head);
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeEnum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = ItemIndexViewModel.Instance.GetItem(Necklass);
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeEnum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = ItemIndexViewModel.Instance.GetItem(PrimaryHand);
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeEnum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = GetItem(OffHand);
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeEnum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = GetItem(RightFinger);
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeEnum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = GetItem(LeftFinger);
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeEnum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            myItem = GetItem(Feet);
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeEnum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
+            return myReturn;
+        }
+
+        #endregion Items
+
         #endregion Methods
     }
 }
