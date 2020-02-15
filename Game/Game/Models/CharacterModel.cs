@@ -7,6 +7,8 @@ namespace Game.Models
         {
             PlayerType = PlayerTypeEnum.Character;
             Guid = Id;
+            Name = "Elf";
+            Description = "Happy Elf";
         }
     }
 }
