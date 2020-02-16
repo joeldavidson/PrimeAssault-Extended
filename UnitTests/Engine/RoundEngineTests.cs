@@ -71,7 +71,7 @@ namespace UnitTests.Engine
             };
 
             var CharacterPlayer = new PlayerInfoModel(Character);
-            Engine.CharacterList.Clear(); 
+            Engine.CharacterList.Clear();
             Engine.CharacterList.Add(CharacterPlayer);
 
             // Make the List
@@ -325,7 +325,7 @@ namespace UnitTests.Engine
             Engine.PlayerList = Engine.MakePlayerList();
 
             // Act
-            
+
             var result = Engine.GetItemFromPoolIfBetter(CharacterPlayer, ItemLocationEnum.Feet);
 
             // Reset
@@ -355,8 +355,8 @@ namespace UnitTests.Engine
 
             var test = ItemIndexViewModel.Instance.GetCurrentDataSource();
 
-            var item1 = new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Location = ItemLocationEnum.Head};
-            var item2 = new ItemModel { Attribute = AttributeEnum.Attack, Value = 20, Location = ItemLocationEnum.Head};
+            var item1 = new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Location = ItemLocationEnum.Head };
+            var item2 = new ItemModel { Attribute = AttributeEnum.Attack, Value = 20, Location = ItemLocationEnum.Head };
 
             await ItemIndexViewModel.Instance.CreateAsync(item1);
             await ItemIndexViewModel.Instance.CreateAsync(item2);
@@ -375,7 +375,7 @@ namespace UnitTests.Engine
             Engine.PlayerList = Engine.MakePlayerList();
 
             // Act
-            var result = Engine.GetItemFromPoolIfBetter(CharacterPlayer,ItemLocationEnum.Head);
+            var result = Engine.GetItemFromPoolIfBetter(CharacterPlayer, ItemLocationEnum.Head);
 
             // Reset
 
@@ -585,7 +585,7 @@ namespace UnitTests.Engine
             Engine.CharacterList.Clear();
 
             //Engine.CharacterList.Add(new PlayerInfoModel(Character));
-            
+
             Engine.MonsterList.Add(new PlayerInfoModel(Character));
 
             // Make the List
@@ -692,6 +692,293 @@ namespace UnitTests.Engine
 
             // Assert
             Assert.AreEqual(RoundEnum.NextTurn, result);
+        }
+
+        [Test]
+        public void RoundEngine_GetNextPlayerInList_Mike_Should_Return_Doug()
+        {
+            Engine.MonsterList.Clear();
+
+            // Arrange
+            var CharacterPlayerMike = new PlayerInfoModel(
+                                        new CharacterModel
+                                        {
+                                            Speed = 200,
+                                            Level = 1,
+                                            CurrentHealth = 1,
+                                            ExperiencePoints = 1,
+                                            Name = "Mike",
+                                            ListOrder = 1,
+                                        });
+
+            var CharacterPlayerDoug = new PlayerInfoModel(
+                                        new CharacterModel
+                                        {
+                                            Speed = 20,
+                                            Level = 1,
+                                            CurrentHealth = 1,
+                                            ExperiencePoints = 1,
+                                            Name = "Doug",
+                                            ListOrder = 2,
+                                        });
+
+            var CharacterPlayerSue = new PlayerInfoModel(
+                                        new CharacterModel
+                                        {
+                                            Speed = 2,
+                                            Level = 1,
+                                            CurrentHealth = 1,
+                                            ExperiencePoints = 1,
+                                            Name = "Sue",
+                                            ListOrder = 3,
+                                        });
+
+            var MonsterPlayer = new PlayerInfoModel(
+                                    new MonsterModel
+                                    {
+                                        Speed = 1,
+                                        Level = 1,
+                                        CurrentHealth = 1,
+                                        ExperiencePoints = 1,
+                                        Name = "Monster",
+                                        ListOrder = 4,
+                                    });
+
+            var test = ItemIndexViewModel.Instance.GetCurrentDataSource();
+
+            Engine.CharacterList.Clear();
+
+            Engine.CharacterList.Add(CharacterPlayerMike);
+            Engine.CharacterList.Add(CharacterPlayerDoug);
+            Engine.CharacterList.Add(CharacterPlayerSue);
+
+            Engine.MonsterList.Clear();
+            Engine.MonsterList.Add(MonsterPlayer);
+
+            // Make the List
+            Engine.PlayerList = Engine.MakePlayerList();
+
+            // List is Mike, Doug, Monster, Sue
+            Engine.PlayerCurrent = CharacterPlayerMike;
+
+            // Act
+            var result = Engine.GetNextPlayerInList();
+
+            // Reset
+
+
+            // Assert
+            Assert.AreEqual("Doug",result.Name);
+        }
+
+        [Test]
+        public void RoundEngine_GetNextPlayerInList_Sue_Should_Return_Monster()
+        {
+            Engine.MonsterList.Clear();
+
+            // Arrange
+            var CharacterPlayerMike = new PlayerInfoModel(
+                                        new CharacterModel
+                                        {
+                                            Speed = 200,
+                                            Level = 1,
+                                            CurrentHealth = 1,
+                                            ExperiencePoints = 1,
+                                            Name = "Mike",
+                                            ListOrder = 1,
+                                        });
+
+            var CharacterPlayerDoug = new PlayerInfoModel(
+                                        new CharacterModel
+                                        {
+                                            Speed = 20,
+                                            Level = 1,
+                                            CurrentHealth = 1,
+                                            ExperiencePoints = 1,
+                                            Name = "Doug",
+                                            ListOrder = 2,
+                                        });
+
+            var CharacterPlayerSue = new PlayerInfoModel(
+                                        new CharacterModel
+                                        {
+                                            Speed = 2,
+                                            Level = 1,
+                                            CurrentHealth = 1,
+                                            ExperiencePoints = 1,
+                                            Name = "Sue",
+                                            ListOrder = 3,
+                                        });
+
+            var MonsterPlayer = new PlayerInfoModel(
+                                    new MonsterModel
+                                    {
+                                        Speed = 1,
+                                        Level = 1,
+                                        CurrentHealth = 1,
+                                        ExperiencePoints = 1,
+                                        Name = "Monster",
+                                        ListOrder = 4,
+                                    });
+
+            var test = ItemIndexViewModel.Instance.GetCurrentDataSource();
+
+            Engine.CharacterList.Clear();
+
+            Engine.CharacterList.Add(CharacterPlayerMike);
+            Engine.CharacterList.Add(CharacterPlayerDoug);
+            Engine.CharacterList.Add(CharacterPlayerSue);
+
+            Engine.MonsterList.Clear();
+            Engine.MonsterList.Add(MonsterPlayer);
+
+            // Make the List
+            Engine.PlayerList = Engine.MakePlayerList();
+
+            // List is Mike, Doug, Monster, Sue
+            Engine.PlayerCurrent = CharacterPlayerSue;
+
+            // Act
+            var result = Engine.GetNextPlayerInList();
+
+            // Reset
+
+
+            // Assert
+            Assert.AreEqual("Monster", result.Name);
+        }
+
+        [Test]
+        public void RoundEngine_GetNextPlayerInList_Monster_Should_Return_Mike()
+        {
+            Engine.MonsterList.Clear();
+
+            // Arrange
+            var CharacterPlayerMike = new PlayerInfoModel(
+                                        new CharacterModel
+                                        {
+                                            Speed = 200,
+                                            Level = 1,
+                                            CurrentHealth = 1,
+                                            ExperiencePoints = 1,
+                                            Name = "Mike",
+                                            ListOrder = 1,
+                                        });
+
+            var CharacterPlayerDoug = new PlayerInfoModel(
+                                        new CharacterModel
+                                        {
+                                            Speed = 20,
+                                            Level = 1,
+                                            CurrentHealth = 1,
+                                            ExperiencePoints = 1,
+                                            Name = "Doug",
+                                            ListOrder = 2,
+                                        });
+
+            var CharacterPlayerSue = new PlayerInfoModel(
+                                        new CharacterModel
+                                        {
+                                            Speed = 2,
+                                            Level = 1,
+                                            CurrentHealth = 1,
+                                            ExperiencePoints = 1,
+                                            Name = "Sue",
+                                            ListOrder = 3,
+                                        });
+
+            var MonsterPlayer = new PlayerInfoModel(
+                                    new MonsterModel
+                                    {
+                                        Speed = 1,
+                                        Level = 1,
+                                        CurrentHealth = 1,
+                                        ExperiencePoints = 1,
+                                        Name = "Monster",
+                                        ListOrder = 4,
+                                    });
+
+            var test = ItemIndexViewModel.Instance.GetCurrentDataSource();
+
+            Engine.CharacterList.Clear();
+
+            Engine.CharacterList.Add(CharacterPlayerMike);
+            Engine.CharacterList.Add(CharacterPlayerDoug);
+            Engine.CharacterList.Add(CharacterPlayerSue);
+
+            Engine.MonsterList.Clear();
+            Engine.MonsterList.Add(MonsterPlayer);
+
+            // Make the List
+            Engine.PlayerList = Engine.MakePlayerList();
+
+            // List is Mike, Doug, Monster, Sue
+            Engine.PlayerCurrent = MonsterPlayer;
+
+            // Act
+            var result = Engine.GetNextPlayerInList();
+
+            // Reset
+
+
+            // Assert
+            Assert.AreEqual("Mike", result.Name);
+        }
+        [Test]
+        public void RoundEngine_GetNextPlayerInList_EmptyList_Should_Return_Null()
+        {
+            // Arrange
+
+            var test = ItemIndexViewModel.Instance.GetCurrentDataSource();
+
+            var CharacterPlayerSue = new PlayerInfoModel(
+                                        new CharacterModel
+                                        {
+                                            Speed = 2,
+                                            Level = 1,
+                                            CurrentHealth = 1,
+                                            ExperiencePoints = 1,
+                                            Name = "Sue",
+                                            ListOrder = 3,
+                                        });
+
+            var MonsterPlayer = new PlayerInfoModel(
+                                    new MonsterModel
+                                    {
+                                        Speed = 1,
+                                        Level = 1,
+                                        CurrentHealth = 1,
+                                        ExperiencePoints = 1,
+                                        Name = "Monster",
+                                        ListOrder = 4,
+                                    });
+
+            Engine.CharacterList.Clear();
+
+            Engine.CharacterList.Add(CharacterPlayerSue);
+
+            Engine.MonsterList.Clear();
+            Engine.MonsterList.Add(MonsterPlayer);
+
+            // Make the List
+            Engine.PlayerList = Engine.MakePlayerList();
+            
+            // Clear the List to cause the error
+            Engine.PlayerList.Clear();
+
+            // Arrange
+
+            // List is Mike, Doug, Monster, Sue
+            Engine.PlayerCurrent = MonsterPlayer;
+
+            // Act
+            var result = Engine.GetNextPlayerInList();
+
+            // Reset
+
+
+            // Assert
+            Assert.AreEqual(null, result);
         }
     }
 }
