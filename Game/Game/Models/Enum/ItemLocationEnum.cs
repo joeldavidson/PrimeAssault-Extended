@@ -1,5 +1,10 @@
 ﻿namespace Game.Models
 {
+    /// <summary>
+    /// Valid Locations to put things
+    /// 
+    /// Notice how Finger has Right and Left
+    /// </summary>
     public enum ItemLocationEnum
     {
         // Not specified
