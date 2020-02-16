@@ -5,6 +5,9 @@ using Game.Models;
 
 namespace Game.Engine
 {
+    /// <summary>
+    /// Manages the Rounds
+    /// </summary>
     public class RoundEngine : TurnEngine
     {
         /// <summary>
