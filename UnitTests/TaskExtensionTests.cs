@@ -106,6 +106,13 @@ namespace UnitTests.Views.Game
             IDataStore<ItemModel> DataSource_SQL = new TestDatabaseService<ItemModel>(false);
             Assert.ThrowsAsync<NotImplementedException>(async () => await DataSource_SQL.IndexAsync());
         }
+
+        [Test]
+        public void TestDatabaseService_GetNeedsInitializationAsync_Should_Throw_Excpetion()
+        {
+            IDataStore<ItemModel> DataSource_SQL = new TestDatabaseService<ItemModel>(false);
+            Assert.ThrowsAsync<NotImplementedException>(async () => await DataSource_SQL.GetNeedsInitializationAsync());
+        }
     }
 
     public class TestDatabaseService<T> : IDataStore<T> where T : new()
@@ -156,7 +163,7 @@ namespace UnitTests.Views.Game
             throw new NotImplementedException();
         }
 
-        public bool GetNeedsInitializationAsync()
+        public async Task<bool> GetNeedsInitializationAsync()
         {
             throw new NotImplementedException();
         }

@@ -48,16 +48,16 @@ namespace Game.Services
         /// First time toggled, returns true.
         /// </summary>
         /// <returns></returns>
-        public bool GetNeedsInitializationAsync()
+        public async Task<bool> GetNeedsInitializationAsync()
         {
             if (NeedsInitialization == true)
             {
                 // Toggle State
                 NeedsInitialization = false;
-                return true;
+                return await Task.FromResult(true);
             }
 
-            return NeedsInitialization;
+            return await Task.FromResult(NeedsInitialization);
         }
 
         /// <summary>

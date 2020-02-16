@@ -54,7 +54,7 @@ namespace Game.Services
 
         // Lazy Connection
         static SQLiteAsyncConnection Database => lazyInitializer.Value;
-        
+
         // Track if Initialized or Not
         static bool initialized = false;
 
@@ -93,16 +93,16 @@ namespace Game.Services
         /// First time toggled, returns true.
         /// </summary>
         /// <returns></returns>
-        public bool GetNeedsInitializationAsync()
+        public async Task<bool> GetNeedsInitializationAsync()
         {
             if (NeedsInitialization == true)
             {
                 // Toggle State
                 NeedsInitialization = false;
-                return true;
+                return await Task.FromResult(true);
             }
 
-            return NeedsInitialization;
+            return await Task.FromResult(NeedsInitialization);
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace Game.Services
                 NeedsInitialization = true;
 
                 await Database.DropTableAsync<T>();
-                await Database.CreateTablesAsync(CreateFlags.None, typeof(T)); 
+                await Database.CreateTablesAsync(CreateFlags.None, typeof(T));
             }
             catch (Exception e)
             {
@@ -181,7 +181,7 @@ namespace Game.Services
         /// <returns></returns>
         public async Task<bool> UpdateAsync(T data)
         {
-            var myRead = await ReadAsync(((BaseModel<T>)(object)data).Id); 
+            var myRead = await ReadAsync(((BaseModel<T>)(object)data).Id);
             if (myRead == null)
             {
                 return false;
