@@ -222,30 +222,49 @@ namespace Game.Engine
             // If Player is found, then see if next player exist, if so return that.
             // If not, return first player (looped)
 
-            // No current player, so set the last one, so it rolls over to the first...
+            // If List is empty, return null
+            if (PlayerList.Count ==0)
+            {
+                return null;
+            }
+
+            // No current player, so set the first one
             if (PlayerCurrent == null)
             {
-                PlayerCurrent = PlayerList.LastOrDefault();
+                return PlayerList.FirstOrDefault();
             }
 
-            // Else go and pick the next player in the list...
-            for (var i = 0; i < PlayerList.Count(); i++)
+            // Find current player in the list
+            var index = PlayerList.FindIndex(m => m.Guid.Equals(PlayerCurrent.Guid));
+
+            // If at the end of the list, return the first element
+            if (index == PlayerList.Count()-1)
             {
-                if (PlayerList[i].Guid.Equals(PlayerCurrent.Guid))
-                {
-                    if (i < PlayerList.Count() - 1) // 0 based...
-                    {
-                        return PlayerList[i + 1];
-                    }
-                    else
-                    {
-                        // Return the first in the list...
-                        return PlayerList.FirstOrDefault();
-                    }
-                }
+                return PlayerList.FirstOrDefault();
             }
 
-            return null;
+            // Return the next element
+            return PlayerList[index + 1];
+
+            //// Else go and pick the next player in the list...
+            //for (var i = 0; i < PlayerCount; i++)
+            //{
+            //    // Look for current Player in the list
+            //    if (PlayerList[i].Guid.Equals(PlayerCurrent.Guid))
+            //    {
+            //        if (i < PlayerList.Count() - 1) // 0 based...
+            //        {
+            //            return PlayerList[i + 1];
+            //        }
+            //        else
+            //        {
+            //            // Return the first in the list...
+            //            return PlayerList.FirstOrDefault();
+            //        }
+            //    }
+            //}
+
+//            return null;
         }
 
         /// <summary>
