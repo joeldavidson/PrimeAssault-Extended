@@ -63,11 +63,6 @@ namespace Game.Engine
             // Start Battle in AutoBattle mode
             Engine.StartBattle(true);
 
-            // Fight
-
-            // Populate the Round
-            Engine.NewRound();
-
             // Fight Loop. Continue until Game is Over...
             do
             {
