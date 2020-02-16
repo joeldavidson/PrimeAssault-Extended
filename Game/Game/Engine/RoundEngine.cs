@@ -288,7 +288,7 @@ namespace Game.Engine
             {
                 // If no ItemModel in the slot then put on the first in the list
                 character.AddItem(setLocation, myList.FirstOrDefault().Id);
-                return false;
+                return true;
             }
 
             foreach (var PoolItem in myList)
