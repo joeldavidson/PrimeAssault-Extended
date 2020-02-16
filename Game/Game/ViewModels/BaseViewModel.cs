@@ -20,10 +20,10 @@ namespace Game.ViewModels
         #region Attributes
 
         // The Mock DataStore
-        private IDataStore<T> DataSource_Mock => new MockDataStore<T>();
+        private static IDataStore<T> DataSource_Mock => MockDataStore<T>.Instance;
 
         // The SQL DataStore
-        private IDataStore<T> DataSource_SQL => new DatabaseService<T>();
+        private static IDataStore<T> DataSource_SQL => DatabaseService<T>.Instance;
 
         // Which DataStore to use
         public IDataStore<T> DataStore;
@@ -125,7 +125,7 @@ namespace Game.ViewModels
                 Dataset.Clear();
 
                 // Load the Data from the DataStore
-                await ExecuteLoadDataCommand().ConfigureAwait(false);
+                await ExecuteLoadDataCommand();
             }
 
             // If data exists, do not run

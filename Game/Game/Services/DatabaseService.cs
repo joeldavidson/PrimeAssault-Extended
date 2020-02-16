@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Game.Models;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading;
 
 namespace Game.Services
 {
@@ -15,6 +16,33 @@ namespace Game.Services
     /// <typeparam name="T"></typeparam>
     public class DatabaseService<T> : IDataStore<T> where T : new()
     {
+        #region Singleton
+
+        // Make this a singleton so it only exist one time because holds all the data records in memory
+        private static volatile DatabaseService<T> instance;
+        private static readonly object syncRoot = new Object();
+
+        public static DatabaseService<T> Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new DatabaseService<T>();
+                        }
+                    }
+                }
+
+                return instance;
+            }
+        }
+
+        #endregion Singleton
+
         /// <summary>
         /// Set the class to load on demand
         /// Saves app boot time
@@ -24,8 +52,17 @@ namespace Game.Services
             return new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
         });
 
+        // Lazy Connection
         static SQLiteAsyncConnection Database => lazyInitializer.Value;
+        
+        // Track if Initialized or Not
         static bool initialized = false;
+
+        // Set Needs Init to False, so toggles to true 
+        public bool NeedsInitialization = true;
+
+        // Semaphore to track transactions
+        private readonly SemaphoreSlim semaphoreSlim = new SemaphoreSlim(initialCount: 1);
 
         /// <summary>
         /// Constructor
@@ -46,14 +83,11 @@ namespace Game.Services
             {
                 if (!Database.TableMappings.Any(m => m.MappedType.Name == typeof(T).Name))
                 {
-                    await Database.CreateTablesAsync(CreateFlags.None, typeof(T)).ConfigureAwait(false);
+                    await Database.CreateTablesAsync(CreateFlags.None, typeof(T));
                     initialized = true;
                 }
             }
         }
-
-        // Set Needs Init to False, so toggles to true 
-        public bool NeedsInitialization = true;
 
         /// <summary>
         /// First time toggled, returns true.
@@ -77,19 +111,24 @@ namespace Game.Services
         /// </summary>
         public async Task<bool> WipeDataListAsync()
         {
+            await semaphoreSlim.WaitAsync();
             try
             {
                 NeedsInitialization = true;
 
-                await Database.DropTableAsync<T>().ConfigureAwait(false);
-                await Database.CreateTablesAsync(CreateFlags.None, typeof(T)).ConfigureAwait(false); 
+                await Database.DropTableAsync<T>();
+                await Database.CreateTablesAsync(CreateFlags.None, typeof(T)); 
             }
             catch (Exception e)
             {
                 Debug.WriteLine("Error WipeData" + e.Message);
             }
+            finally
+            {
+                semaphoreSlim.Release();
+            }
 
-            return await Task.FromResult(true).ConfigureAwait(false);
+            return await Task.FromResult(true);
         }
 
         /// <summary>
@@ -101,7 +140,7 @@ namespace Game.Services
         {
             try
             {
-                var result = await Database.InsertAsync(data).ConfigureAwait(false);
+                var result = await Database.InsertAsync(data);
                 return (result == 1);
             }
             catch (Exception e)
@@ -122,11 +161,9 @@ namespace Game.Services
 
             try
             {
-                var dataList = await IndexAsync().ConfigureAwait(false);
+                var dataList = await IndexAsync();
 
                 data = dataList.Where((T arg) => ((BaseModel<T>)(object)arg).Id.Equals(id)).FirstOrDefault();
-
-                //data = await Database.Table<T>().Where((T arg) => ((BaseModel<T>)(object)arg).Id.Equals(id)).FirstOrDefaultAsync();
             }
             catch (Exception e)
             {
@@ -144,7 +181,7 @@ namespace Game.Services
         /// <returns></returns>
         public async Task<bool> UpdateAsync(T data)
         {
-            var myRead = await ReadAsync(((BaseModel<T>)(object)data).Id).ConfigureAwait(false); 
+            var myRead = await ReadAsync(((BaseModel<T>)(object)data).Id); 
             if (myRead == null)
             {
                 return false;
@@ -153,7 +190,7 @@ namespace Game.Services
             int result = 0;
             try
             {
-                result = await Database.UpdateAsync(data).ConfigureAwait(false);
+                result = await Database.UpdateAsync(data);
             }
             catch (Exception e)
             {
@@ -171,7 +208,7 @@ namespace Game.Services
         /// <returns></returns>
         public async Task<bool> DeleteAsync(string id)
         {
-            var data = await ReadAsync(id).ConfigureAwait(false);
+            var data = await ReadAsync(id);
             if (data == null)
             {
                 return false;
@@ -180,7 +217,7 @@ namespace Game.Services
             int result;
             try
             {
-                result = await Database.DeleteAsync(data).ConfigureAwait(false);
+                result = await Database.DeleteAsync(data);
             }
             catch (Exception e)
             {
@@ -200,7 +237,7 @@ namespace Game.Services
             List<T> result;
             try
             {
-                result = await Database.Table<T>().ToListAsync().ConfigureAwait(false);
+                result = await Database.Table<T>().ToListAsync();
             }
             catch (Exception e)
             {
