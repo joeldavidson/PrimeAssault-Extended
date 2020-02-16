@@ -3,6 +3,7 @@
 using Game.Models;
 using Game.ViewModels;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace UnitTests.Models
 {
@@ -524,6 +525,47 @@ namespace UnitTests.Models
 
             // Assert
             Assert.AreEqual(itemOld.Id, result.Id);
+        }
+
+
+        [Test]
+        public async Task BasePlayerModel_GetItemBonus_Default_Attack_Should_Pass()
+        {
+            // Arrange
+            var test = ItemIndexViewModel.Instance.GetCurrentDataSource();
+
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Id="head" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 20, Id = "necklass" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 300, Id = "PrimaryHand" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 4000, Id = "OffHand" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 50000, Id = "RightFinger" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 600000, Id = "LeftFinger" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 7000000, Id = "feet" });
+
+            
+            var itemOld = ItemIndexViewModel.Instance.Dataset.FirstOrDefault();
+            var itemNew = ItemIndexViewModel.Instance.Dataset.LastOrDefault();
+
+            var data = new BasePlayerModel<CharacterModel>();
+
+            // Add the first item
+            data.AddItem(ItemLocationEnum.Head, (await ItemIndexViewModel.Instance.ReadAsync("head")).Id);
+            data.AddItem(ItemLocationEnum.Necklass, (await ItemIndexViewModel.Instance.ReadAsync("necklass")).Id);
+            data.AddItem(ItemLocationEnum.PrimaryHand, (await ItemIndexViewModel.Instance.ReadAsync("PrimaryHand")).Id);
+            data.AddItem(ItemLocationEnum.OffHand, (await ItemIndexViewModel.Instance.ReadAsync("OffHand")).Id);
+            data.AddItem(ItemLocationEnum.RightFinger, (await ItemIndexViewModel.Instance.ReadAsync("RightFinger")).Id);
+            data.AddItem(ItemLocationEnum.LeftFinger, (await ItemIndexViewModel.Instance.ReadAsync("LeftFinger")).Id);
+            data.AddItem(ItemLocationEnum.Feet, (await ItemIndexViewModel.Instance.ReadAsync("feet")).Id);
+
+            // Act
+
+            // Add the second item, this will return the first item as the one replaced
+            var result = data.GetItemBonus(AttributeEnum.Attack);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(7654321, result);
         }
     }
 }

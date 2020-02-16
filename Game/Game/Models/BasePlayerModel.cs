@@ -324,7 +324,7 @@ namespace Game.Models
                 }
             }
 
-            myItem = ItemIndexViewModel.Instance.GetItem(Necklass);
+            myItem = GetItem(Necklass);
             if (myItem != null)
             {
                 if (myItem.Attribute == attributeEnum)
@@ -333,7 +333,7 @@ namespace Game.Models
                 }
             }
 
-            myItem = ItemIndexViewModel.Instance.GetItem(PrimaryHand);
+            myItem = GetItem(PrimaryHand);
             if (myItem != null)
             {
                 if (myItem.Attribute == attributeEnum)
