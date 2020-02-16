@@ -25,6 +25,11 @@
     /// </summary>
     public static class HitStatusEnumExtensions
     {
+        /// <summary>
+        /// Display a String for the Enums
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static string ToMessage(this HitStatusEnum value)
         {
             // Default String
