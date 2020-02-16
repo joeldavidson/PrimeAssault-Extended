@@ -79,15 +79,17 @@ namespace Game.Services
         {
             try
             {
+                NeedsInitialization = true;
+
                 await Database.DropTableAsync<T>().ConfigureAwait(false);
-                await Database.CreateTablesAsync(CreateFlags.None, typeof(T));
+                await Database.CreateTablesAsync(CreateFlags.None, typeof(T)).ConfigureAwait(false); 
             }
             catch (Exception e)
             {
                 Debug.WriteLine("Error WipeData" + e.Message);
             }
 
-            return await Task.FromResult(true);
+            return await Task.FromResult(true).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -99,7 +101,7 @@ namespace Game.Services
         {
             try
             {
-                var result = await Database.InsertAsync(data);
+                var result = await Database.InsertAsync(data).ConfigureAwait(false);
                 return (result == 1);
             }
             catch (Exception e)
@@ -120,7 +122,7 @@ namespace Game.Services
 
             try
             {
-                var dataList = await IndexAsync();
+                var dataList = await IndexAsync().ConfigureAwait(false);
 
                 data = dataList.Where((T arg) => ((BaseModel<T>)(object)arg).Id.Equals(id)).FirstOrDefault();
 
@@ -142,7 +144,7 @@ namespace Game.Services
         /// <returns></returns>
         public async Task<bool> UpdateAsync(T data)
         {
-            var myRead = await ReadAsync(((BaseModel<T>)(object)data).Id);
+            var myRead = await ReadAsync(((BaseModel<T>)(object)data).Id).ConfigureAwait(false); 
             if (myRead == null)
             {
                 return false;
@@ -151,7 +153,7 @@ namespace Game.Services
             int result = 0;
             try
             {
-                result = await Database.UpdateAsync(data);
+                result = await Database.UpdateAsync(data).ConfigureAwait(false);
             }
             catch (Exception e)
             {
@@ -169,7 +171,7 @@ namespace Game.Services
         /// <returns></returns>
         public async Task<bool> DeleteAsync(string id)
         {
-            var data = await ReadAsync(id);
+            var data = await ReadAsync(id).ConfigureAwait(false);
             if (data == null)
             {
                 return false;
@@ -178,7 +180,7 @@ namespace Game.Services
             int result;
             try
             {
-                result = await Database.DeleteAsync(data);
+                result = await Database.DeleteAsync(data).ConfigureAwait(false);
             }
             catch (Exception e)
             {
@@ -198,7 +200,7 @@ namespace Game.Services
             List<T> result;
             try
             {
-                result = await Database.Table<T>().ToListAsync();
+                result = await Database.Table<T>().ToListAsync().ConfigureAwait(false);
             }
             catch (Exception e)
             {

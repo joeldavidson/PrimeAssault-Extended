@@ -1,12 +1,14 @@
 ﻿using NUnit.Framework;
-using Game.ViewModels;
+
 using Xamarin.Forms.Mocks;
 using Xamarin.Forms;
-using Game.Services;
+
 using System.Threading.Tasks;
-using Game.Models;
 using System.Collections.Generic;
 using System.Linq;
+
+using Game.Models;
+using Game.ViewModels;
 
 namespace UnitTests.ViewModels
 {
@@ -33,8 +35,6 @@ namespace UnitTests.ViewModels
         public async Task ResetDataAsync()
         {
             await ViewModel.WipeDataListAsync();
-            ViewModel.Dataset.Clear();
-            ViewModel.ForceDataRefresh();
         }
 
         [Test]
@@ -101,7 +101,7 @@ namespace UnitTests.ViewModels
             await ViewModel.CreateAsync(new ItemModel { Name = "a" });
 
             // Act
-            var result = ViewModel.CheckIfItemExists(dataTest);
+            var result = ViewModel.CheckIfExists(dataTest);
 
             // Reset
             await ResetDataAsync();
@@ -124,7 +124,7 @@ namespace UnitTests.ViewModels
             await ViewModel.CreateAsync(new ItemModel { Name = "a" });
 
             // Act
-            var result = ViewModel.CheckIfItemExists(dataTest);
+            var result = ViewModel.CheckIfExists(dataTest);
 
             // Reset
             await ResetDataAsync();
@@ -169,8 +169,7 @@ namespace UnitTests.ViewModels
             // Reset
 
             // Need to clear the added item, and reload the dataset
-            ViewModel.Dataset.Clear();
-            ViewModel.ForceDataRefresh();
+            await ResetDataAsync();
 
             // Assert
             Assert.AreEqual(true, result);  // Delete returned pass
@@ -372,8 +371,7 @@ namespace UnitTests.ViewModels
             // Reset
 
             // Need to clear the added item, and reload the dataset
-            ViewModel.Dataset.Clear();
-            ViewModel.ForceDataRefresh();
+            await ResetDataAsync();
 
             // Assert
             Assert.AreEqual(true, result);  // Update returned Pass
@@ -462,7 +460,6 @@ namespace UnitTests.ViewModels
             var result = await ViewModel.SetDataSource(1);
 
             // Reset
-            await ViewModel.SetDataSource(0);
             await ResetDataAsync();
 
             // Assert
@@ -499,8 +496,7 @@ namespace UnitTests.ViewModels
             // Reset
 
             // Need to clear the added item, and reload the dataset
-            ViewModel.Dataset.Clear();
-            ViewModel.ForceDataRefresh();
+            await ResetDataAsync();
 
             // Assert
             Assert.AreEqual(true, result);  // Update returned Pass
@@ -525,8 +521,7 @@ namespace UnitTests.ViewModels
             // Reset
 
             // Need to clear the added item, and reload the dataset
-            ViewModel.Dataset.Clear();
-            ViewModel.ForceDataRefresh();
+            await ResetDataAsync();
 
             // Assert
             Assert.AreEqual(true, result);  // Update returned Pass
@@ -547,7 +542,7 @@ namespace UnitTests.ViewModels
         }
 
         [Test]
-        public void ItemIndexViewModel_Create_Sync_Valid_Update_Should_Pass()
+        public async Task ItemIndexViewModel_Create_Sync_Valid_Update_Should_Pass()
         {
             // Arrange
             var data = new ItemModel
@@ -561,8 +556,7 @@ namespace UnitTests.ViewModels
             // Reset
 
             // Need to clear the added item, and reload the dataset
-            ViewModel.Dataset.Clear();
-            ViewModel.ForceDataRefresh();
+            await ResetDataAsync();
 
             // Assert
             Assert.AreEqual(true, result);  // Update returned Pass

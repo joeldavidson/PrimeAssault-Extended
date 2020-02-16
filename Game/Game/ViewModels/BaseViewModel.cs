@@ -123,6 +123,9 @@ namespace Game.ViewModels
             if (DataStore.GetNeedsInitializationAsync())
             {
                 Dataset.Clear();
+
+                // Load the Data from the DataStore
+                await ExecuteLoadDataCommand().ConfigureAwait(false);
             }
 
             // If data exists, do not run
@@ -377,6 +380,29 @@ namespace Game.ViewModels
         }
 
         /// <summary>
+        /// Returns the item passed in
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public virtual T CheckIfExists(T data)
+        {
+            // This will walk the items and find if there is one that is the same.
+            // If so, it returns the item...
+
+            var myList = Dataset.Where(a => 
+                                        ((BaseModel<T>)(object)a).Name == ((BaseModel<T>)(object)data).Name)
+                                        .FirstOrDefault();
+
+            if (myList == null)
+            {
+                // it's not a match, return false;
+                return default(T);
+            }
+
+            return myList;
+        }
+
+        /// <summary>
         /// Having this at the ViewModel, because it has the DataStore
         /// That allows the feature to work for both SQL and the Mock datastores...
         /// </summary>
@@ -392,7 +418,7 @@ namespace Game.ViewModels
             var BaseDataId = ((BaseModel<T>)(object)data).Id;
 
             // Check to see if the data exist
-            var oldData = await ReadAsync(BaseDataId);
+            var oldData = CheckIfExists(data);
             if (oldData == null)
             {
                 return await CreateAsync(data);
