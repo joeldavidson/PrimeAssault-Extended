@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Game.Models;
@@ -12,7 +13,7 @@ namespace Game.Engine
     /// Runs the engine simulation with no user interaction
     /// 
     /// </summary>
-    public class AutoBattleEngine
+    public class AutoBattleEngine : BattleEngine
     {
         #region Algrorithm
         // Prepare for Battle
@@ -32,13 +33,13 @@ namespace Game.Engine
         #endregion Algrorithm
 
         // The Battle Engine
-        BattleEngine Engine = new BattleEngine();
+        // BattleEngine Engine = new BattleEngine();
 
         /// <summary>
         /// Return the Score Object
         /// </summary>
         /// <returns></returns>
-        public ScoreModel GetScoreObject() { return Engine.BattleScore; }
+        public ScoreModel GetScoreObject() { return BattleScore; }
 
         /// <summary>
         /// Run Auto Battle
@@ -56,12 +57,12 @@ namespace Game.Engine
 
             // Picks 6 Characters
             var data = new CharacterModel();
-            for (int i=0; i<6; i++) {
-                Engine.PopulateCharacterList(data);
+            for (int i=CharacterList.Count(); i<MaxNumberPartyCharacters; i++) {
+                PopulateCharacterList(data);
             }
 
             // Start Battle in AutoBattle mode
-            Engine.StartBattle(true);
+            StartBattle(true);
 
             // Fight Loop. Continue until Game is Over...
             do
@@ -70,11 +71,11 @@ namespace Game.Engine
 
                 // Do the turn...
                 // If the round is over start a new one...
-                RoundCondition = Engine.RoundNextTurn();
+                RoundCondition = RoundNextTurn();
 
                 if (RoundCondition == RoundEnum.NewRound)
                 {
-                    Engine.NewRound();
+                    NewRound();
                     Debug.WriteLine("New Round");
                 }
 
@@ -83,7 +84,7 @@ namespace Game.Engine
             Debug.WriteLine("Game Over");
 
             // Wrap up
-            Engine.EndBattle();
+            EndBattle();
 
             return true;
         }
