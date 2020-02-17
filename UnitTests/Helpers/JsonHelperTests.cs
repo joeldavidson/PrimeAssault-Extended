@@ -27,11 +27,236 @@ namespace UnitTests.Helpers
 'StringList':['a','b','c'],
 'BoolList':[true,false,true],
 'ObjectList': [{'string':'first', 'bool':true},{'string':'second', 'bool':true},{'string':'third', 'bool':true}],
+'ObjectListEmpty': [],
+'Object':{'string':'first', 'bool':true},
 'Long':1,
 'ULong':2,
 'List':[{'string':'first'},{'string':'second'},{'string':'third'}],
 'msg':'Ok','errorCode':0,'version':'1.1.1.1','data':{'ItemList':[{'Value':10,'Attribute':14,'Location':20,'Name':'Strong Shield','Guid':'3a138793-7411-7c60-6b03-aee9423d3684','Description':'Enough to hide behind','ImageURI':'http://www.clipartbest.com/cliparts/4T9/LaR/4T9LaReTE.png','Range':0,'Damage':0,'Count':-1,'IsConsumable':false,'Category':10},{'Value':10,'Attribute':14,'Location':20,'Name':'Bow','Guid':'2e0ac680-1913-0854-de5e-294bb0e4d23a','Description':'Fast shooting bow','ImageURI':'http://cliparts.co/cliparts/di4/oAB/di4oABdbT.png','Range':10,'Damage':6,'Count':-1,'IsConsumable':false,'Category':10},{'Value':10,'Attribute':12,'Location':30,'Name':'Blue Ring of Power','Guid':'c3f4cece-b1d8-bb02-38c0-32c7a4e87160','Description':'The one to control them all','ImageURI':'http://www.clker.com/cliparts/A/E/4/t/L/1/diamond-ring-teal-hi.png','Range':0,'Damage':0,'Count':-1,'IsConsumable':false,'Category':10},{'Value':10,'Attribute':10,'Location':10,'Name':'Bunny Hat','Guid':'0e9f41b4-4be2-adc3-d39d-1c70ae814913','Description':'Pink hat with fluffy ears','ImageURI':'http://www.clipartbest.com/cliparts/yik/e9k/yike9kMyT.png','Range':0,'Damage':0,'Count':-1,'IsConsumable':false,'Category':10}]}}
 ";
+        //[Test]
+        //public void JsonHelper_GetJsonObjectList_Valid_Should_Pass()
+        //{
+        //    // Arrange
+
+        //    JObject json = JObject.Parse(ExampleJson);
+
+        //    // Act
+        //    var result = JsonHelper.GetObjectList(json, "ObjectList");
+
+        //    // Reset
+
+        //    // Assert
+        //    Assert.AreEqual(3, result.Count());
+        //}
+
+        //[Test]
+        //public void JsonHelper_GetJsonObjectList_InValid_Field_Null_Should_Fail()
+        //{
+        //    // Arrange
+
+        //    JObject json = JObject.Parse(ExampleJson);
+
+        //    // Act
+        //    var result = JsonHelper.GetObjectList(json, null);
+
+        //    // Reset
+
+        //    // Assert
+        //    Assert.AreEqual(0, result.Count());
+        //}
+
+        //[Test]
+        //public void JsonHelper_GetJsonObjectList_InValid_Field_Bogus_Should_Fail()
+        //{
+        //    // Arrange
+
+        //    JObject json = JObject.Parse(ExampleJson);
+
+        //    // Act
+        //    var result = JsonHelper.GetObjectList(json, "bogus");
+
+        //    // Reset
+
+        //    // Assert
+        //    Assert.AreEqual(0, result.Count());
+        //}
+
+        //[Test]
+        //public void JsonHelper_GetJsonObjectList_InValid_Value_Empty_Should_Fail()
+        //{
+        //    // Arrange
+
+        //    JObject json = JObject.Parse(ExampleJson);
+
+        //    // Act
+        //    var result = JsonHelper.GetObjectList(json, "FieldNull");
+
+        //    // Reset
+
+        //    // Assert
+        //    Assert.AreEqual(0, result.Count());
+        //}
+
+        //[Test]
+        //public void JsonHelper_GetJsonObjectList_InValid_Json_Null_Should_Fail()
+        //{
+        //    // Arrange
+
+        //    JObject json = JObject.Parse(ExampleJson);
+
+        //    // Act
+        //    var result = JsonHelper.GetObjectList(null, "FieldNull");
+
+        //    // Reset
+
+        //    // Assert
+        //    Assert.AreEqual(0, result.Count());
+        //}
+
+        //[Test]
+        //public void JsonHelper_GetJsonObjectList_InValid_DateType_Should_Fail()
+        //{
+        //    // Arrange
+
+        //    JObject json = JObject.Parse(ExampleJson);
+
+        //    // Act
+        //    var result = JsonHelper.GetObjectList(json, "TimeSpan");
+
+        //    // Reset
+
+        //    // Assert
+        //    Assert.AreEqual(0, result.Count());
+        //}
+
+        //[Test]
+        //public void JsonHelper_GetJsonObjectList_InValid_Empty_List_Should_Fail()
+        //{
+        //    // Arrange
+
+        //    JObject json = JObject.Parse(ExampleJson);
+
+        //    // Act
+        //    var result = JsonHelper.GetObjectList(json, "ObjectListEmpty");
+
+        //    // Reset
+
+        //    // Assert
+        //    Assert.AreEqual(0, result.Count());
+        //}
+
+        [Test]
+        public void JsonHelper_GetJsonObjectList_Valid_Should_Pass()
+        {
+            // Arrange
+
+            JObject json = JObject.Parse(ExampleJson);
+
+            // Act
+            var result = JsonHelper.GetJsonObjectList(json, "ObjectList");
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(3, result.Count());
+        }
+
+        [Test]
+        public void JsonHelper_GetJsonObjectList_InValid_Field_Null_Should_Fail()
+        {
+            // Arrange
+
+            JObject json = JObject.Parse(ExampleJson);
+
+            // Act
+            var result = JsonHelper.GetJsonObjectList(json, null);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(0, result.Count());
+        }
+
+        [Test]
+        public void JsonHelper_GetJsonObjectList_InValid_Field_Bogus_Should_Fail()
+        {
+            // Arrange
+
+            JObject json = JObject.Parse(ExampleJson);
+
+            // Act
+            var result = JsonHelper.GetJsonObjectList(json, "bogus");
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(0, result.Count());
+        }
+
+        [Test]
+        public void JsonHelper_GetJsonObjectList_InValid_Value_Empty_Should_Fail()
+        {
+            // Arrange
+
+            JObject json = JObject.Parse(ExampleJson);
+
+            // Act
+            var result = JsonHelper.GetJsonObjectList(json, "FieldNull");
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(0, result.Count());
+        }
+
+        [Test]
+        public void JsonHelper_GetJsonObjectList_InValid_Json_Null_Should_Fail()
+        {
+            // Arrange
+
+            JObject json = JObject.Parse(ExampleJson);
+
+            // Act
+            var result = JsonHelper.GetJsonObjectList(null, "FieldNull");
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(0, result.Count());
+        }
+
+        [Test]
+        public void JsonHelper_GetJsonObjectList_InValid_DateType_Should_Fail()
+        {
+            // Arrange
+
+            JObject json = JObject.Parse(ExampleJson);
+
+            // Act
+            var result = JsonHelper.GetJsonObjectList(json, "TimeSpan");
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(0, result.Count());
+        }
+
+        [Test]
+        public void JsonHelper_GetJsonObjectList_InValid_Empty_List_Should_Fail()
+        {
+            // Arrange
+
+            JObject json = JObject.Parse(ExampleJson);
+
+            // Act
+            var result = JsonHelper.GetJsonObjectList(json, "ObjectListEmpty");
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(0, result.Count());
+        }
 
         [Test]
         public void JsonHelper_GetJsonStringList_Valid_Should_Pass()

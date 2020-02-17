@@ -378,7 +378,7 @@ namespace Game.Helpers
         /// <param name="json"></param>
         /// <param name="field"></param>
         /// <returns></returns>
-        public static List<JObject> GetJObjectList(JObject json, string field)
+        public static List<JObject> GetJsonObjectList(JObject json, string field)
         {
             if (string.IsNullOrEmpty(field))
             {
