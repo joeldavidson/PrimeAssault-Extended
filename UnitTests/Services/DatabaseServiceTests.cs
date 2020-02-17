@@ -40,21 +40,22 @@ namespace UnitTests.Services
             Assert.IsNotNull(result);
         }
 
-        //[Test]
-        //public void DatabaseService_Constructor_InValid_Should_Fail()
-        //{
-        //    // Arrange
+        [Test]
+        public void DatabaseService_Constructor_InValid_Should_Fail()
+        {
+            // Arrange
 
-        //    // Make a second instance
+            // Make a second instance
+            DatabaseService<ItemModel>.initialized = false;
 
-        //    // Act
-        //    DatabaseService<ItemModel> DataStore2 = new DatabaseService<ItemModel>();
+            // Act
+            DatabaseService<ItemModel> DataStore2 = new DatabaseService<ItemModel>();
 
-        //    // Reset
+            // Reset
 
-        //    // Assert
-        //    Assert.IsTrue(true);
-        //}
+            // Assert
+            Assert.IsTrue(true);
+        }
 
         [Test]
         public async Task DatabaseService_WipeDataListAsync_Default_Should_Pass()
