@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 
 using Game.Models;
-using Game.Services;
+using Game.Helpers;
 
 namespace UnitTests.Models
 {

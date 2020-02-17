@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
 
-using Game.Services;
+using Game.Helpers;
 
-namespace UnitTests.Services
+namespace UnitTests.Helpers
 {
     [TestFixture]
     public class RollDiceHelperTests

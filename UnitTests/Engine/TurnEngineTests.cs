@@ -1,11 +1,11 @@
 ﻿using NUnit.Framework;
 
-using Game.Engine;
-using Game.Models;
-using System.Threading.Tasks;
 using System.Linq;
 using System.Collections.Generic;
-using Game.Services;
+
+using Game.Engine;
+using Game.Models;
+using Game.Helpers;
 using Game.ViewModels;
 
 namespace UnitTests.Engine

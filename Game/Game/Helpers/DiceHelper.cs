@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Game.Services
+namespace Game.Helpers
 {
     public static class DiceHelper
     {
