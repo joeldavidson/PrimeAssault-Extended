@@ -138,6 +138,11 @@ namespace Game.Services
         /// <returns></returns>
         public async Task<bool> CreateAsync(T data)
         {
+            if (data == null)
+            {
+                return false;
+            }
+
             try
             {
                 var result = await Database.InsertAsync(data);
@@ -158,6 +163,11 @@ namespace Game.Services
         public async Task<T> ReadAsync(string id)
         {
             T data;
+
+            if (string.IsNullOrEmpty(id))
+            {
+                return default(T);
+            }
 
             try
             {
@@ -181,6 +191,11 @@ namespace Game.Services
         /// <returns></returns>
         public async Task<bool> UpdateAsync(T data)
         {
+            if (data == null)
+            {
+                return false;
+            }
+
             var myRead = await ReadAsync(((BaseModel<T>)(object)data).Id);
             if (myRead == null)
             {
@@ -208,6 +223,11 @@ namespace Game.Services
         /// <returns></returns>
         public async Task<bool> DeleteAsync(string id)
         {
+            if (string.IsNullOrEmpty(id))
+            {
+                return false;
+            }
+
             var data = await ReadAsync(id);
             if (data == null)
             {
