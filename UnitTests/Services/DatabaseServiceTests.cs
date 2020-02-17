@@ -15,6 +15,8 @@ namespace UnitTests.Services
         [SetUp]
         public void Setup()
         {
+            //DatabaseService<ItemModel>.TestMode = true;
+            DatabaseService<ItemModel>.TestMode = true;
             DataStore = DatabaseService<ItemModel>.Instance;
         }
 
@@ -31,6 +33,51 @@ namespace UnitTests.Services
 
             // Act
             var result = DataStore;
+
+            // Reset
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
+        public async Task DatabaseService_WipeDataListAsync_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var result = await DataStore.WipeDataListAsync();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true,result);
+        }
+
+        [Test]
+        public async Task DatabaseService_WipeDataListAsync_InValid_ForceException_Should_Fail()
+        {
+            // Arrange
+
+            DataStore.ForceExceptionOnNumber = 1;
+
+            // Act
+            var result = await DataStore.WipeDataListAsync();
+
+            // Reset
+            DataStore.ForceExceptionOnNumber = 0;
+
+            // Assert
+            Assert.AreEqual(false, result);
+        }
+
+        [Test]
+        public void DatabaseService_GetDataConnection_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var result = DatabaseService<ItemModel>.GetDataConnection();
 
             // Reset
 
@@ -122,6 +169,22 @@ namespace UnitTests.Services
         }
 
         [Test]
+        public async Task DatabaseService_CreateAsync_InValid_ForceException_Should_Fail()
+        {
+            // Arrange
+            DataStore.ForceExceptionOnNumber = 1;
+
+            // Act
+            var result = await DataStore.CreateAsync(new ItemModel());
+
+            // Reset
+            DataStore.ForceExceptionOnNumber = 0;
+
+            // Assert
+            Assert.AreEqual(false, result);
+        }
+
+        [Test]
         public async Task DatabaseService_Read_Valid_Should_Pass()
         {
             // Arrange
@@ -154,6 +217,24 @@ namespace UnitTests.Services
         }
 
         [Test]
+        public async Task DatabaseService_Read_InValid_ForceException_Should_Fail()
+        {
+            // Arrange
+            var item = new ItemModel();
+            await DataStore.CreateAsync(item);
+
+            DataStore.ForceExceptionOnNumber = 1;
+            // Act
+            var result = await DataStore.ReadAsync(item.Id);
+
+            // Reset
+            DataStore.ForceExceptionOnNumber = 0;
+
+            // Assert
+            Assert.AreEqual(null, result);
+        }
+
+        [Test]
         public async Task DatabaseService_Index_Valid_Should_Pass()
         {
             // Arrange
@@ -167,6 +248,24 @@ namespace UnitTests.Services
 
             // Assert
             Assert.AreEqual(1, result.Count());
+        }
+
+        [Test]
+        public async Task DatabaseService_Index_InValid_ForceException_Should_Fail()
+        {
+            // Arrange
+            var item = new ItemModel();
+            await DataStore.CreateAsync(item);
+
+            DataStore.ForceExceptionOnNumber = 1;
+            // Act
+            var result = await DataStore.IndexAsync();
+
+            // Reset
+            DataStore.ForceExceptionOnNumber = 0;
+
+            // Assert
+            Assert.AreEqual(null, result);
         }
 
         [Test]
@@ -242,6 +341,29 @@ namespace UnitTests.Services
             var result = await DataStore.DeleteAsync(null);
 
             // Reset
+
+            // Assert
+            Assert.AreEqual(false, result);
+        }
+
+        [Test]
+        public async Task DatabaseService_Delete_InValid_ForceException_Should_Fail()
+        {
+            // Arrange
+            var item1 = new ItemModel
+            {
+                Name = "a"
+            };
+
+            await DataStore.CreateAsync(item1);
+
+            DataStore.ForceExceptionOnNumber = 3; // Read, Delete
+
+            // Act
+            var result = await DataStore.DeleteAsync(item1.Id);
+
+            // Reset
+            DataStore.ForceExceptionOnNumber = 0;
 
             // Assert
             Assert.AreEqual(false, result);
@@ -329,6 +451,38 @@ namespace UnitTests.Services
             // Assert
             Assert.AreEqual(false, result);
             Assert.AreEqual("a", name.Name);
+        }
+
+        [Test]
+        public async Task DatabaseService_Update_ForceException_Should_Fail()
+        {
+             // Arrange
+            var item1 = new ItemModel
+            {
+                Name = "a"
+            };
+
+            var item2 = new ItemModel
+            {
+                Name = "b"
+            };
+
+            await DataStore.CreateAsync(item1);
+            await DataStore.CreateAsync(item2);
+
+            // Act
+            item2.Name = "c";
+
+            DataStore.ForceExceptionOnNumber = 3; // Read, then update
+
+            // Act
+            var result = await DataStore.UpdateAsync(item1);
+
+            // Reset
+            DataStore.ForceExceptionOnNumber = 0;
+
+            // Assert
+            Assert.AreEqual(false, result);
         }
     }
 }

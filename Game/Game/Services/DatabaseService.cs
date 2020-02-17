@@ -49,8 +49,21 @@ namespace Game.Services
         /// </summary>
         static readonly Lazy<SQLiteAsyncConnection> lazyInitializer = new Lazy<SQLiteAsyncConnection>(() =>
         {
-            return new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
+            return GetDataConnection();
         });
+
+        public static SQLiteAsyncConnection GetDataConnection()
+        {
+            if (TestMode)
+            {
+                return new SQLiteAsyncConnection(":memory:", Constants.Flags);
+            }
+
+            return new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
+        }
+
+        public static bool TestMode = false;
+        public int ForceExceptionOnNumber = -1;
 
         // Lazy Connection
         static SQLiteAsyncConnection Database => lazyInitializer.Value;
@@ -81,11 +94,14 @@ namespace Game.Services
         {
             if (!initialized)
             {
-                if (!Database.TableMappings.Any(m => m.MappedType.Name == typeof(T).Name))
+                // Check if the Data Table Already exists
+                if (Database.TableMappings.Any(m => m.MappedType.Name == typeof(T).Name))
                 {
-                    await Database.CreateTablesAsync(CreateFlags.None, typeof(T));
-                    initialized = true;
+                    return;
                 }
+
+                await Database.CreateTablesAsync(CreateFlags.None, typeof(T));
+                initialized = true;
             }
         }
 
@@ -114,6 +130,8 @@ namespace Game.Services
             await semaphoreSlim.WaitAsync();
             try
             {
+                GetForceExceptionCount();
+
                 NeedsInitialization = true;
 
                 await Database.DropTableAsync<T>();
@@ -122,6 +140,7 @@ namespace Game.Services
             catch (Exception e)
             {
                 Debug.WriteLine("Error WipeData" + e.Message);
+                return await Task.FromResult(false);
             }
             finally
             {
@@ -145,6 +164,8 @@ namespace Game.Services
 
             try
             {
+                GetForceExceptionCount();
+
                 var result = await Database.InsertAsync(data);
                 return (result == 1);
             }
@@ -171,6 +192,8 @@ namespace Game.Services
 
             try
             {
+                GetForceExceptionCount();
+
                 var dataList = await IndexAsync();
 
                 data = dataList.Where((T arg) => ((BaseModel<T>)(object)arg).Id.Equals(id)).FirstOrDefault();
@@ -205,12 +228,14 @@ namespace Game.Services
             int result = 0;
             try
             {
+                GetForceExceptionCount();
+
                 result = await Database.UpdateAsync(data);
             }
             catch (Exception e)
             {
                 Debug.WriteLine("Create Failed " + e.Message);
-                return (result == 0);
+                return await Task.FromResult(false);
             }
 
             return (result == 1);
@@ -237,6 +262,8 @@ namespace Game.Services
             int result;
             try
             {
+                GetForceExceptionCount();
+
                 result = await Database.DeleteAsync(data);
             }
             catch (Exception e)
@@ -257,6 +284,8 @@ namespace Game.Services
             List<T> result;
             try
             {
+                GetForceExceptionCount();
+
                 result = await Database.Table<T>().ToListAsync();
             }
             catch (Exception e)
@@ -266,6 +295,25 @@ namespace Game.Services
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// Keeps track of the Forced execption Count
+        /// </summary>
+        /// <returns></returns>
+        public int GetForceExceptionCount()
+        {
+            if (ForceExceptionOnNumber > 0)
+            {
+                if (ForceExceptionOnNumber == 1)
+                {
+                    throw new NotImplementedException();
+                }
+
+                ForceExceptionOnNumber--;
+            }
+
+            return ForceExceptionOnNumber;
         }
     }
 }
