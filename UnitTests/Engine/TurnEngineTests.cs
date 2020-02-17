@@ -232,10 +232,14 @@ namespace UnitTests.Engine
             var AttackScore = 10;
             var DefenseScore = 0;
 
+            DiceHelper.EnableRandomValues();
+            DiceHelper.SetForcedRandomValue(3); // Always roll a 3.
+            
             // Act
             var result = Engine.RollToHitTarget(AttackScore, DefenseScore);
 
             // Reset
+            DiceHelper.DisableRandomValues();
 
             // Assert
             Assert.AreEqual(HitStatusEnum.Hit, result);
