@@ -78,6 +78,11 @@ namespace Game.Services
         /// <returns>True for pass, else fail</returns>
         public async Task<bool> CreateAsync(T data)
         {
+            if (data == null)
+            {
+                return await Task.FromResult(false);
+            }
+
             datalist.Add(data);
 
             return await Task.FromResult(true);
@@ -92,6 +97,11 @@ namespace Game.Services
         public async Task<T> ReadAsync(string id)
         #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
+            if (string.IsNullOrEmpty(id))
+            {
+                return default(T);
+            }
+
             if (!datalist.Any())
             {
                 return default(T);
@@ -108,6 +118,11 @@ namespace Game.Services
         /// <returns>True for pass, else fail</returns>
         public async Task<bool> UpdateAsync(T data)
         {
+            if (data == null)
+            {
+                return await Task.FromResult(false);
+            }
+
             T oldData = await ReadAsync(((BaseModel<T>)(object)data).Id);
             if (oldData == null)
             {
@@ -128,6 +143,11 @@ namespace Game.Services
         /// <returns>True for pass, else fail</returns>
         public async Task<bool> DeleteAsync(string id)
         {
+            if (string.IsNullOrEmpty(id))
+            {
+                return await Task.FromResult(false);
+            }
+
             T oldData = await ReadAsync(id);
             if (oldData == null)
             {
