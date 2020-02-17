@@ -6,7 +6,7 @@ using Game.Helpers;
 using System;
 using System.Linq;
 
-namespace UnitTests.Services
+namespace UnitTests.Helpers
 {
     [TestFixture]
     public class ItemLocationEnumHelperTests
