@@ -88,10 +88,10 @@ namespace Game.Models
             Range = newData.Range;
             Damage = newData.Damage;
 
-            Guid = newData.Guid;
-            Count = newData.Count;
-            IsConsumable = newData.IsConsumable;
-            Category = newData.Category;
+            //Guid = newData.Guid;
+            //Count = newData.Count;
+            //IsConsumable = newData.IsConsumable;
+            //Category = newData.Category;
 
             return true;
         }
