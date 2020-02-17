@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
 
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 
-using Game.Models;
-using Game.Services;
-
-namespace Game.Services
+namespace Game.Helpers
 {
     /// <summary>
     /// Json Helper for parsing the Service returned datasets
@@ -48,126 +41,6 @@ namespace Game.Services
             {
                 Console.Out.WriteLine(ex.ToString());
                 return null;
-            }
-        }
-
-        /// <summary>
-        /// Takes a json object, and retrieves a string from it matching the field
-        /// </summary>
-        /// <param name="json"></param>
-        /// <param name="field"></param>
-        /// <returns></returns>
-        public static DateTime GetJsonDateTime(JObject json, string field)
-        {
-            if (string.IsNullOrEmpty(field))
-            {
-                return new DateTime();
-            }
-
-            // Get Field
-            try
-            {
-                var tempJsonObject = json[field].ToString();
-                if (string.IsNullOrEmpty(tempJsonObject))
-                {
-                    return new DateTime();
-                }
-
-                var myDateTime = DateTime.Parse(tempJsonObject);
-                return myDateTime;
-            }
-            catch (Exception ex)
-            {
-                Console.Out.WriteLine(ex.ToString());
-                return new DateTime();
-            }
-        }
-
-        /// <summary>
-        /// Takes a json object, and retrieves a string from it matching the field
-        /// </summary>
-        /// <param name="json"></param>
-        /// <param name="field"></param>
-        /// <returns></returns>
-        public static TimeSpan GetJsonTimeSpan(JObject json, string field)
-        {
-            if (string.IsNullOrEmpty(field))
-            {
-                return new TimeSpan();
-            }
-            try
-            {
-                var tempJsonObject = json[field].ToString();
-                if (string.IsNullOrEmpty(tempJsonObject))
-                {
-                    return new TimeSpan();
-                }
-
-
-                /*Could be in two different formats.  
-                    * Calls from the server have the full format for timespan
-                    * Local created objects, have the newtonsoft object of a single string
-                    * Need to determine which type and then parse correclty
-                */
-
-                // Look for Ticks in string to determine which path to follow
-                if (tempJsonObject.Contains("Ticks"))
-                {
-
-                    // Can't directly parse json to TimeSpan, it is a flaw in .net
-                    // Need to do it manualy
-                    // So get total seconds, and then convert that to the time span.
-
-                    // Time span looks like:
-
-                    /*
-                     *
-                            "Ticks": 0,
-                            "Days": 0,
-                            "Hours": 0,
-                            "Milliseconds": 0,
-                            "Minutes": 0,
-                            "Seconds": 0,
-                            "TotalDays": 0,
-                            "TotalHours": 0,
-                            "TotalMilliseconds": 0,
-                            "TotalMinutes": 0,
-                            "TotalSeconds": 0
-
-                     */
-
-                    // Split on the comma seperator
-                    // Then find the sub string with Ticks
-                    // Then split on the :
-                    // convert back half to string value of total seconds
-
-                    var myTicksString = string.Empty;
-                    var myTimeSpanSplit = tempJsonObject.Split(',');
-                    foreach (var item in myTimeSpanSplit)
-                    {
-                        if (item.Contains("Ticks"))
-                        {
-                            var myTempTotalSecondsSplit = item.Split(':');
-                            myTicksString = myTempTotalSecondsSplit[1].ToString();
-                            break;
-                        }
-                    }
-
-                    long myTicksLong = Convert.ToInt64(myTicksString);
-                    var myTimeSpan = TimeSpan.FromTicks(myTicksLong);
-                    return myTimeSpan;
-                }
-                else
-                {
-                    // It is just a string so convert that with a parse
-                    var myTimeSpanFromString = TimeSpan.Parse(tempJsonObject);
-                    return myTimeSpanFromString;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.Out.WriteLine(ex.ToString());
-                return new TimeSpan();
             }
         }
 
