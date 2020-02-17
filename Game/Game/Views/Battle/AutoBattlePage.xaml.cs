@@ -32,12 +32,6 @@ namespace Game.Views
 
 			BattleMessage = string.Format("Done {0} Rounds", Score.RoundCount);
 
-			// Error Occured
-			if (result == false)
-			{
-				BattleMessage = "Error Occured";
-			}
-
 			BattleMessageValue.Text = BattleMessage;
 		}
 	}
