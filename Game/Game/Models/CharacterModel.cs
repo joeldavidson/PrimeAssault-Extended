@@ -19,6 +19,7 @@ namespace Game.Models
             Guid = Id;
             Name = "Elf";
             Description = "Happy Elf";
+            Attack = 100;
         }
     }
 }

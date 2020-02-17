@@ -18,6 +18,7 @@
             Guid = Id;
             Name = "Troll";
             Description = "Angry Troll";
+            Attack = 100;
         }
     }
 }
