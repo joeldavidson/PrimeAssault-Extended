@@ -43,6 +43,8 @@ namespace Game.Engine
 
             var result = Attack(Attacker);
 
+            BattleScore.TurnCount++;
+
             return result;
         }
 
@@ -173,8 +175,6 @@ namespace Game.Engine
 
             var AttackScore = Attacker.Level + Attacker.GetAttack();
             var DefenseScore = Target.GetDefense() + Target.Level;
-
-            BattleScore.TurnCount++;
 
             // Choose who to attack
 
