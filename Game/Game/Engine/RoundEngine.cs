@@ -55,7 +55,7 @@ namespace Game.Engine
         /// <returns></returns>
         public int AddMonstersToRound()
         {
-            for (var i = 0; i < MaxNumberPartyPlayers; i++)
+            for (var i = 0; i < MaxNumberPartyMonsters; i++)
             {
                 var data = new MonsterModel();
                 // Help identify which Monster it is
