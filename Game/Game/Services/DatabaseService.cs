@@ -94,6 +94,8 @@ namespace Game.Services
         {
             if (!initialized)
             {
+                initialized = true;
+
                 // Check if the Data Table Already exists
                 if (Database.TableMappings.Any(m => m.MappedType.Name == typeof(T).Name))
                 {
@@ -101,7 +103,6 @@ namespace Game.Services
                 }
 
                 await Database.CreateTablesAsync(CreateFlags.None, typeof(T));
-                initialized = true;
             }
         }
 
