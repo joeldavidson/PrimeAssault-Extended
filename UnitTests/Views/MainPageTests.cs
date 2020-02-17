@@ -8,7 +8,7 @@ using Game.Models;
 using Xamarin.Forms.Mocks;
 using Xamarin.Forms;
 
-namespace UnitTests.Views.Game
+namespace UnitTests.Views
 {
     [TestFixture]
     public class MainPageTests

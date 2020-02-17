@@ -9,7 +9,7 @@ using Xamarin.Forms.Mocks;
 using Xamarin.Forms;
 using System.Linq;
 
-namespace UnitTests.Views.Game
+namespace UnitTests.Views
 {
     [TestFixture]
     public class MenuPageTests

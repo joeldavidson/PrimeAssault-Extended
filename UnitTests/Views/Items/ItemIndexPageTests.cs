@@ -9,7 +9,7 @@ using Xamarin.Forms.Mocks;
 using Game.ViewModels;
 using System.Threading.Tasks;
 
-namespace UnitTests.Views.Game
+namespace UnitTests.Views
 {
     [TestFixture]
     public class ItemIndexPageTests : ItemIndexPage

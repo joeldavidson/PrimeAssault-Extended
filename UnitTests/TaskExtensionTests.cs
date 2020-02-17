@@ -11,7 +11,7 @@ using System;
 using System.Collections.Generic;
 using SQLite;
 
-namespace UnitTests.Views.Game
+namespace UnitTests.Views
 {
     [TestFixture]
     public class TaskExtensionsTests

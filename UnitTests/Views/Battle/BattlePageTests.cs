@@ -11,7 +11,7 @@ using Game.Views;
 using Xamarin.Forms.Mocks;
 using Xamarin.Forms;
 
-namespace UnitTests.Views.Game
+namespace UnitTests.Views
 {
     [TestFixture]
     public class BattlePageTests

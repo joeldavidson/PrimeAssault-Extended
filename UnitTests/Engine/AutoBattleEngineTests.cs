@@ -3,6 +3,7 @@
 using Game.Engine;
 using Game.Models;
 using System.Threading.Tasks;
+using Game.Helpers;
 
 namespace UnitTests.Engine
 {
@@ -50,19 +51,23 @@ namespace UnitTests.Engine
             Assert.IsNotNull(result);
         }
 
-        //[Test]
-        //public void AutoBattleEngine_RunAutoBattle_Default_Should_Pass()
-        //{
-        //    //Arrange
+        [Test]
+        public void AutoBattleEngine_RunAutoBattle_Default_Should_Pass()
+        {
+            //Arrange
 
-        //    //Act
-        //    var result = Engine.RunAutoBattle();
+            DiceHelper.EnableRandomValues();
+            DiceHelper.SetForcedRandomValue(3);
 
-        //    //Reset
+            //Act
+            var result = Engine.RunAutoBattle();
 
-        //    //Assert
-        //    Assert.IsNotNull(result);
-        //}
+            //Reset
+            DiceHelper.DisableRandomValues();
+
+            //Assert
+            Assert.IsNotNull(result);
+        }
 
         [Test]
         public void AutoBattleEngine_RunAutoBattle_Monsters_1_Should_Pass()

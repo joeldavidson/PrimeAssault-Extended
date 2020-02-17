@@ -14,7 +14,7 @@ using Game.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Mocks;
 
-namespace UnitTests.Views.Game
+namespace UnitTests.Views
 {
     [TestFixture]
     public class ScoreUpdatePageTests : ScoreUpdatePage

@@ -4,8 +4,9 @@ using Game;
 using Game.Views;
 using Xamarin.Forms.Mocks;
 using Xamarin.Forms;
+using Game.Helpers;
 
-namespace UnitTests.Views.Game
+namespace UnitTests.Views
 {
     [TestFixture]
     public class AutoBattlePageTests
@@ -46,17 +47,22 @@ namespace UnitTests.Views.Game
             Assert.IsNotNull(result);
         }
 
-        //[Test]
-        //public void AutoBattlePage_AttackButton_Clicked_Default_Should_Pass()
-        //{
-        //    // Arrange
-        //    // Act
-        //    page.AutobattleButton_Clicked(null, null);
+        [Test]
+        public void AutoBattlePage_AttackButton_Clicked_Default_Should_Pass()
+        {
+            // Arrange
 
-        //    // Reset
+            DiceHelper.EnableRandomValues();
+            DiceHelper.SetForcedRandomValue(3);
+            
+            // Act
+            page.AutobattleButton_Clicked(null, null);
 
-        //    // Assert
-        //    Assert.IsTrue(true); // Got to here, so it happened...
-        //}
+            // Reset
+            DiceHelper.DisableRandomValues();
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
     }
 }

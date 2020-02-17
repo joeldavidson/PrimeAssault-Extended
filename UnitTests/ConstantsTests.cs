@@ -4,7 +4,7 @@ using Xamarin.Forms.Mocks;
 
 using Game;
 
-namespace UnitTests.Views.Game
+namespace UnitTests.Views
 {
     [TestFixture]
     public class ConstantsTests
