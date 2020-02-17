@@ -33,6 +33,18 @@ namespace Game.Models
         // The Value item modifies.  So a ring of Health +3, has a Value of 3
         public int Value { get; set; } = 0;
 
+        //// Guid, passed from the server
+        //public string Guid{ get; set; } = "";
+        
+        //// Count of how many
+        //public int Count { get; set; } = 1;
+        
+        //// Tracks if the item is a consumable or not
+        //public bool IsConsumable { get; set; } = false;
+        
+        //// The Category of the itme
+        //public int Category { get; set; } = 0;
+
         // Add Unique attributes for Item
 
         /// <summary>
@@ -75,6 +87,11 @@ namespace Game.Models
             ImageURI = newData.ImageURI;
             Range = newData.Range;
             Damage = newData.Damage;
+
+            Guid = newData.Guid;
+            Count = newData.Count;
+            IsConsumable = newData.IsConsumable;
+            Category = newData.Category;
 
             return true;
         }
