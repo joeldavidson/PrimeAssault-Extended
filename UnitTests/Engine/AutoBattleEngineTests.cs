@@ -50,19 +50,19 @@ namespace UnitTests.Engine
             Assert.IsNotNull(result);
         }
 
-        [Test]
-        public void AutoBattleEngine_RunAutoBattle_Default_Should_Pass()
-        {
-            //Arrange
+        //[Test]
+        //public void AutoBattleEngine_RunAutoBattle_Default_Should_Pass()
+        //{
+        //    //Arrange
 
-            //Act
-            var result = Engine.RunAutoBattle();
+        //    //Act
+        //    var result = Engine.RunAutoBattle();
 
-            //Reset
+        //    //Reset
 
-            //Assert
-            Assert.IsNotNull(result);
-        }
+        //    //Assert
+        //    Assert.IsNotNull(result);
+        //}
 
         [Test]
         public void AutoBattleEngine_RunAutoBattle_Monsters_1_Should_Pass()
