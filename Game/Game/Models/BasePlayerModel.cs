@@ -49,12 +49,31 @@ namespace PrimeAssault.Models
         // Total Experience
         public int ExperienceTotal = 0;
 
-        // The defense score, to be used for defending against attacks
+        // The defense score, to be used for defending against physical attacks
         public int Defense { get; set; } = 0;
 
         // The Attack score to be used when attacking
         public int Attack { get; set; } = 0;
 
+        // The score to be used for defending against ranged attacks
+        public int RangedDefense { get; set; } = 2;
+       
+        //Multiplier value of current base MaxHealth
+        public double HealthMult { get; set; } = 1.0;
+
+        //Multiplier value of current base Speed
+        public double SpeedMult { get; set; } = 1.0;
+
+        //Multiplier value of current base Defense
+        public double DefenseMult { get; set; } = 1.0;
+
+        //Multiplier value of current base RangedDefense
+        public double RangedDefenseMult { get; set; } = 1.0;
+
+        //Multiplier value of current base Attack
+        public double AttackMult { get; set; } = 1.0;
+
+        public string Ability { get; set; } = "None";
         #endregion PlayerAttributes
 
         #region Items
@@ -149,6 +168,7 @@ namespace PrimeAssault.Models
 
         public int CalculateExperienceEarned(int damage) { return 0; }
 
+       
         #region Items
         // Get the Item at a known string location (head, foot etc.)
         public ItemModel GetItem(string itemString)

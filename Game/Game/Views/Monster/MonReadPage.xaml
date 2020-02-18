@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PrimeAssault.Views.MonReadPage"
+             BackgroundImageSource="workshop.png">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="StatsLabel" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="End"/>
+                <Setter Property="TextColor" Value="Aqua"/>
+                <Setter Property="Grid.Row" Value="0"/>
+            </Style>
+
+            <Style x:Key="StatsNumLabel" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value='Center'/>
+                <Setter Property="TextColor" Value="AntiqueWhite"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="Grid.Row" Value="1"/>
+
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Update" Clicked="Update_Clicked" IconImageSource="icon_edit.png"/>
+        <ToolbarItem Text="Delete" Clicked="Delete_Clicked" IconImageSource="icon_delete.png"/>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        
+        <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+            
+            
+
+            <Label Text="{Binding Data.Name}" FontSize="Header" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="AntiqueWhite"></Label>
+
+            <StackLayout Orientation ="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Class: " FontSize="Small" TextColor="AntiqueWhite"></Label>
+                <Label Text="{Binding Data.jobClass}" FontSize="Small" TextColor="AntiqueWhite"></Label>
+                <Label Text="Health: " FontSize="Small" TextColor="AntiqueWhite"></Label>
+                <Label Text="{Binding Data.health}" FontSize="Small" TextColor="AntiqueWhite"></Label>
+                <Label Text="/" TextColor="AntiqueWhite"></Label>
+                <Label Text="{Binding Data.maxHealth}" FontSize="Small" TextColor="AntiqueWhite"></Label>
+            </StackLayout>
+
+
+            <Label Text="{Binding Data.Description}" FontSize="Body" HorizontalTextAlignment="Center" TextColor="AntiqueWhite"></Label>
+
+            <StackLayout Orientation ="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Ability: " FontSize="Small" TextColor="AntiqueWhite"></Label>
+                <Label Text="{Binding Data.ability}" FontSize="Small" TextColor="AntiqueWhite"></Label>
+            </StackLayout>
+            
+            <Image Source="{Binding Data.imageURI}"
+                   HeightRequest="250"
+                   WidthRequest="250"
+            ></Image>
+            
+            <Frame BackgroundColor="AliceBlue"  
+                   HasShadow="True"
+                   CornerRadius="0"
+                   Padding="10"
+                   HorizontalOptions="Center"
+                   IsVisible="True"  
+                   Margin="3"
+                   >
+                <Button Text="Move1"></Button>
+
+            </Frame>
+            <Frame BackgroundColor= "AliceBlue" 
+                   HorizontalOptions="Center"
+                   HasShadow="True"
+                   CornerRadius="0"
+                   Padding="10"
+                   IsVisible="True"  
+                   Margin="3"
+                   >
+                <Button Text="Move2"></Button>
+
+            </Frame>
+            <Grid>
+                <Label Style="{StaticResource StatsLabel}" Text="LVL" Grid.Column="0"/>
+                <Label Style="{StaticResource StatsLabel}" Text="ATK"  Grid.Column="1"/>
+                <Label Style="{StaticResource StatsLabel}" Text ="DEF" Grid.Column="2"/>
+                <Label Style="{StaticResource StatsLabel}" Text="RDF" Grid.Column="3"/>
+                <Label Style="{StaticResource StatsLabel}" Text="SPD" Grid.Column="4"/>
+               
+                <Label Style="{StaticResource StatsNumLabel}"  Text ="{Binding Data.level}" Grid.Column="0"/>
+                <Label Style="{StaticResource StatsNumLabel}"  Text ="{Binding Data.attack}" Grid.Column="1"/>
+                <Label Style="{StaticResource StatsNumLabel}" Text ="{Binding Data.defense}"  Grid.Column="2"/>
+                <Label Style="{StaticResource StatsNumLabel}" Text ="{Binding Data.rangedDefense}" Grid.Column="3"/>
+                <Label Style="{StaticResource StatsNumLabel}" Text ="{Binding Data.speed}" Grid.Column="4"/>
+            </Grid>
+            
+
+        </StackLayout>         
+            
+    </ContentPage.Content>
+</ContentPage>

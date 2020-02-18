@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PrimeAssault.Views.MonUpdatePage"
+             BackgroundImageSource="euphrates_lab.jpg">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="StatsLabel" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="End"/>
+                <Setter Property="TextColor" Value="OrangeRed"/>
+                <Setter Property="Grid.Row" Value="0"/>
+            </Style>
+
+            <Style x:Key="StatsEntry" TargetType="Entry">
+                <Setter Property="Placeholder" Value="1"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="Keyboard" Value="Numeric"/>
+                <Setter Property="Grid.Row" Value="1"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png" />
+        <ToolbarItem Text="Save" Clicked="Save_Clicked" IconImageSource="icon_save.png"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+
+        <StackLayout 
+            
+            Padding="40,20,40,20">
+            <Label TextColor="Aqua" HorizontalOptions="Center" FontSize="Header">MONSTER LAB</Label>
+            <Image Source="sewer_gator.png" HeightRequest="250" WidthRequest="250"></Image>
+
+            <Entry  Text ="{Binding Data.Name}" Placeholder="{Binding Data.Name}" FontSize="Small" />
+            <Editor Text="{Binding Data.Description}"  Placeholder="Monster Description" FontSize="Small" Margin="0" AutoSize="TextChanges" />
+            <Grid>
+
+                <Label Style="{StaticResource StatsLabel}" Text="LVL" Grid.Column="0"/>
+                <Label Style="{StaticResource StatsLabel}" Text="ATK" Grid.Column="1"/>
+                <Label Style="{StaticResource StatsLabel}" Text="DEF" Grid.Column="2"/>
+                <Label Style="{StaticResource StatsLabel}" Text="RDF" Grid.Column="3"/>
+                <Label Style="{StaticResource StatsLabel}" Text="SPD" Grid.Column="4"/>
+
+                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.level}"   Grid.Column="0"/>
+                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.attack}"  Grid.Column="1"/>
+                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.defense}"  Grid.Column="2"/>
+                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.rangedDefense}" Grid.Column="3"/>
+                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.speed}"  Grid.Column="4"/>
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

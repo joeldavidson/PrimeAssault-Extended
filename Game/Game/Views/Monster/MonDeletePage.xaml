@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PrimeAssault.Views.MonDeletePage"
+             BackgroundImageSource="euphrates_lab.jpg">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png"/>
+        <ToolbarItem Text="Delete" Clicked="Delete_Clicked" IconImageSource="icon_delete.png"/>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Spacing="20" Padding="40,20,40,20" Orientation="Vertical" HorizontalOptions="Center">
+
+        <Label TextColor="Aqua" HorizontalOptions="Center" FontSize="Header">DELETE Monster</Label>
+        <Image Source="{Binding Data.imageURI}" HeightRequest="200"></Image>
+        
+        <Label  Text="Name: " TextColor ="Aquamarine" FontSize="Medium" HorizontalTextAlignment="Center"/>
+        <Label HorizontalOptions="Center" Text="{Binding Data.Name}" TextColor="Aqua" FontSize="Medium" HorizontalTextAlignment="Center"/>
+        <Label HorizontalOptions="Center" Text="{Binding Data.Description}"  TextColor="Aqua" FontSize="Medium" HorizontalTextAlignment="Center"/>
+
+
+        <StackLayout 
+            HorizontalOptions="Center"
+            Padding="20">
+
+            <Label TextColor ="Magenta" Text = "Really delete this Monster?" FontSize="Medium" HorizontalTextAlignment="Center"></Label>
+            <Button
+                Text="Yes"
+                TextColor="Magenta"
+                Clicked="Delete_Clicked"
+                HorizontalOptions="Center"
+                FontSize="Large"
+                BorderWidth="1"
+                BorderColor="Magenta"
+                >
+            </Button>
+
+        </StackLayout>
+    </StackLayout>
+</ContentPage>  

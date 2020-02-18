@@ -64,5 +64,25 @@ namespace PrimeAssault.Services
 
             return datalist;
         }
+
+        public static List<MonsterModel> LoadData(MonsterModel temp)
+        {
+            var datalist = new List<MonsterModel>()
+            {
+                new MonsterModel {
+                    Name = "Evil Harvey",
+                    Description = "He's a lean mean killing machine!",
+                    ImageURI = "sewer_gator.png",
+                },
+
+                new MonsterModel {
+                    Name = "Goopy",
+                    Description = "Gloop glop he's bot.",
+                    ImageURI = "sewer_gator.png",
+                }
+            };
+
+            return datalist;
+        }
     }
 }

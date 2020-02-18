@@ -25,7 +25,7 @@ namespace PrimeAssault.Views
 		/// <param name="e"></param>
 		public async void MonstersButton_Clicked(object sender, EventArgs e)
 		{
-			//await DisplayAlert("SU", "Go RedHawks", "OK");
+			await Navigation.PushAsync(new MonIndexPage());
 		}
 
 		/// <summary>
