@@ -119,9 +119,8 @@ namespace UnitTests.Views
         {
             // Arrange
 
-            // Activate the Datastore
-            ScoreIndexViewModel.Instance.GetCurrentDataSource();
-            ItemIndexViewModel.Instance.GetCurrentDataSource();
+            // Add each model here to warm up and load it.
+            Game.Helpers.DataSetsHelper.WarmUp();
 
             ItemIndexViewModel ViewModel = ItemIndexViewModel.Instance;
 
@@ -142,9 +141,8 @@ namespace UnitTests.Views
         {
             // Arrange
 
-            // Activate the Datastore
-            ScoreIndexViewModel.Instance.GetCurrentDataSource();
-            ItemIndexViewModel.Instance.GetCurrentDataSource();
+            // Add each model here to warm up and load it.
+            Game.Helpers.DataSetsHelper.WarmUp();
 
             ItemIndexViewModel ViewModel = ItemIndexViewModel.Instance;
             ViewModel.Dataset.Clear();

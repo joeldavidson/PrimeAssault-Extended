@@ -22,9 +22,8 @@ namespace UnitTests.ViewModels
             // Initilize Xamarin Forms
             MockForms.Init();
 
-            // Activate the Datastore
-            ScoreIndexViewModel.Instance.GetCurrentDataSource();
-            ItemIndexViewModel.Instance.GetCurrentDataSource();
+            // Add each model here to warm up and load it.
+            Game.Helpers.DataSetsHelper.WarmUp();
 
             ViewModel = ItemIndexViewModel.Instance;
         }

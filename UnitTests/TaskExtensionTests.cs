@@ -27,7 +27,8 @@ namespace UnitTests.Views
            IDataStore<ItemModel> DataSource_SQL = new TestDatabaseService<ItemModel>(false);
 
             // Act
-            var result = ScoreIndexViewModel.Instance.GetCurrentDataSource();
+            // Add each model here to warm up and load it.
+            Game.Helpers.DataSetsHelper.WarmUp();
 
             // Reset
 
@@ -52,7 +53,8 @@ namespace UnitTests.Views
             IDataStore<ItemModel> DataSource_SQL = new TestDatabaseService<ItemModel>(true, myact);
 
             // Act
-            var result = ScoreIndexViewModel.Instance.GetCurrentDataSource();
+            // Add each model here to warm up and load it.
+            Game.Helpers.DataSetsHelper.WarmUp();
 
             // Reset
 

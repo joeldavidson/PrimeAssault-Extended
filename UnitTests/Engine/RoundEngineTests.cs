@@ -303,7 +303,8 @@ namespace UnitTests.Engine
                 Guid = "me"
             };
 
-            var test = ItemIndexViewModel.Instance.GetCurrentDataSource();
+            // Add each model here to warm up and load it.
+            Game.Helpers.DataSetsHelper.WarmUp();
 
             var item1 = new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Location = ItemLocationEnum.Feet };
             var item2 = new ItemModel { Attribute = AttributeEnum.Attack, Value = 20, Location = ItemLocationEnum.Feet };
@@ -353,7 +354,8 @@ namespace UnitTests.Engine
                 Guid = "me"
             };
 
-            var test = ItemIndexViewModel.Instance.GetCurrentDataSource();
+            // Add each model here to warm up and load it.
+            Game.Helpers.DataSetsHelper.WarmUp();
 
             var item1 = new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Location = ItemLocationEnum.Head };
             var item2 = new ItemModel { Attribute = AttributeEnum.Attack, Value = 20, Location = ItemLocationEnum.Head };
@@ -402,7 +404,8 @@ namespace UnitTests.Engine
                 Guid = "me"
             };
 
-            var test = ItemIndexViewModel.Instance.GetCurrentDataSource();
+            // Add each model here to warm up and load it.
+            Game.Helpers.DataSetsHelper.WarmUp();
 
             var item1 = new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Location = ItemLocationEnum.Head };
             var item2 = new ItemModel { Attribute = AttributeEnum.Attack, Value = 20, Location = ItemLocationEnum.Head };
@@ -451,7 +454,8 @@ namespace UnitTests.Engine
                 Guid = "me"
             };
 
-            var test = ItemIndexViewModel.Instance.GetCurrentDataSource();
+            // Add each model here to warm up and load it.
+            Game.Helpers.DataSetsHelper.WarmUp();
 
             var item1 = new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Location = ItemLocationEnum.Head };
             var item2 = new ItemModel { Attribute = AttributeEnum.Attack, Value = 20, Location = ItemLocationEnum.Head };
@@ -499,7 +503,8 @@ namespace UnitTests.Engine
                 Guid = "me"
             };
 
-            var test = ItemIndexViewModel.Instance.GetCurrentDataSource();
+            // Add each model here to warm up and load it.
+            Game.Helpers.DataSetsHelper.WarmUp();
 
             var CharacterPlayer = new PlayerInfoModel(Character);
             Engine.CharacterList.Clear();
@@ -535,7 +540,8 @@ namespace UnitTests.Engine
                 Guid = "me"
             };
 
-            var test = ItemIndexViewModel.Instance.GetCurrentDataSource();
+            // Add each model here to warm up and load it.
+            Game.Helpers.DataSetsHelper.WarmUp();
 
             var CharacterPlayer = new PlayerInfoModel(Character);
             Engine.CharacterList.Clear();
@@ -579,7 +585,8 @@ namespace UnitTests.Engine
                 ListOrder = 1,
             };
 
-            var test = ItemIndexViewModel.Instance.GetCurrentDataSource();
+            // Add each model here to warm up and load it.
+            Game.Helpers.DataSetsHelper.WarmUp();
 
             var CharacterPlayer = new PlayerInfoModel(Character);
             Engine.CharacterList.Clear();
@@ -626,7 +633,8 @@ namespace UnitTests.Engine
                 ListOrder = 1,
             };
 
-            var test = ItemIndexViewModel.Instance.GetCurrentDataSource();
+            // Add each model here to warm up and load it.
+            Game.Helpers.DataSetsHelper.WarmUp();
 
             var CharacterPlayer = new PlayerInfoModel(Character);
             Engine.CharacterList.Clear();
@@ -673,7 +681,8 @@ namespace UnitTests.Engine
                 ListOrder = 1,
             };
 
-            var test = ItemIndexViewModel.Instance.GetCurrentDataSource();
+            // Add each model here to warm up and load it.
+            Game.Helpers.DataSetsHelper.WarmUp();
 
             var CharacterPlayer = new PlayerInfoModel(Character);
             Engine.CharacterList.Clear();
@@ -744,7 +753,8 @@ namespace UnitTests.Engine
                                         ListOrder = 4,
                                     });
 
-            var test = ItemIndexViewModel.Instance.GetCurrentDataSource();
+            // Add each model here to warm up and load it.
+            Game.Helpers.DataSetsHelper.WarmUp();
 
             Engine.CharacterList.Clear();
 
@@ -821,7 +831,8 @@ namespace UnitTests.Engine
                                         ListOrder = 4,
                                     });
 
-            var test = ItemIndexViewModel.Instance.GetCurrentDataSource();
+            // Add each model here to warm up and load it.
+            Game.Helpers.DataSetsHelper.WarmUp();
 
             Engine.CharacterList.Clear();
 
@@ -898,7 +909,8 @@ namespace UnitTests.Engine
                                         ListOrder = 4,
                                     });
 
-            var test = ItemIndexViewModel.Instance.GetCurrentDataSource();
+            // Add each model here to warm up and load it.
+            Game.Helpers.DataSetsHelper.WarmUp();
 
             Engine.CharacterList.Clear();
 
@@ -929,7 +941,8 @@ namespace UnitTests.Engine
         {
             // Arrange
 
-            var test = ItemIndexViewModel.Instance.GetCurrentDataSource();
+            // Add each model here to warm up and load it.
+            Game.Helpers.DataSetsHelper.WarmUp();
 
             var CharacterPlayerSue = new PlayerInfoModel(
                                         new CharacterModel

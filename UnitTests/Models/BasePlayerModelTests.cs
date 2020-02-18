@@ -532,7 +532,8 @@ namespace UnitTests.Models
         public async Task BasePlayerModel_GetItemBonus_Default_Attack_Should_Pass()
         {
             // Arrange
-            var test = ItemIndexViewModel.Instance.GetCurrentDataSource();
+            // Add each model here to warm up and load it.
+            Game.Helpers.DataSetsHelper.WarmUp();
 
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Id="head" });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 20, Id = "necklass" });
