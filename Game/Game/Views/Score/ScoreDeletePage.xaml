@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Game.Views.ScoreDeletePage"
+             x:Class="PrimeAssault.Views.ScoreDeletePage"
              Title="{Binding Title}">
     
     <ContentPage.ToolbarItems>
@@ -30,11 +30,11 @@
 
                 <StackLayout Style="{StaticResource HorizontalStack}">
                     <Label 
-                        Text="Game Date:"
+                        Text="PrimeAssault Date:"
                         Style="{StaticResource LabelStyle}"/>
 
                     <Label 
-                        Text="{Binding Data.GameDate}"
+                        Text="{Binding Data.PrimeAssaultDate}"
                         Style="{StaticResource ValueStyle}"/>
                 </StackLayout>
 

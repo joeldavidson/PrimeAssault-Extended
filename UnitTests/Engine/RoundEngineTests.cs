@@ -1,12 +1,12 @@
 ﻿using NUnit.Framework;
 
-using Game.Engine;
-using Game.Models;
+using PrimeAssault.Engine;
+using PrimeAssault.Models;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Collections.Generic;
-using Game.Services;
-using Game.ViewModels;
+using PrimeAssault.Services;
+using PrimeAssault.ViewModels;
 
 namespace UnitTests.Engine
 {
@@ -304,7 +304,7 @@ namespace UnitTests.Engine
             };
 
             // Add each model here to warm up and load it.
-            Game.Helpers.DataSetsHelper.WarmUp();
+            PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
             var item1 = new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Location = ItemLocationEnum.Feet };
             var item2 = new ItemModel { Attribute = AttributeEnum.Attack, Value = 20, Location = ItemLocationEnum.Feet };
@@ -355,7 +355,7 @@ namespace UnitTests.Engine
             };
 
             // Add each model here to warm up and load it.
-            Game.Helpers.DataSetsHelper.WarmUp();
+            PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
             var item1 = new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Location = ItemLocationEnum.Head };
             var item2 = new ItemModel { Attribute = AttributeEnum.Attack, Value = 20, Location = ItemLocationEnum.Head };
@@ -405,7 +405,7 @@ namespace UnitTests.Engine
             };
 
             // Add each model here to warm up and load it.
-            Game.Helpers.DataSetsHelper.WarmUp();
+            PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
             var item1 = new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Location = ItemLocationEnum.Head };
             var item2 = new ItemModel { Attribute = AttributeEnum.Attack, Value = 20, Location = ItemLocationEnum.Head };
@@ -455,7 +455,7 @@ namespace UnitTests.Engine
             };
 
             // Add each model here to warm up and load it.
-            Game.Helpers.DataSetsHelper.WarmUp();
+            PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
             var item1 = new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Location = ItemLocationEnum.Head };
             var item2 = new ItemModel { Attribute = AttributeEnum.Attack, Value = 20, Location = ItemLocationEnum.Head };
@@ -504,7 +504,7 @@ namespace UnitTests.Engine
             };
 
             // Add each model here to warm up and load it.
-            Game.Helpers.DataSetsHelper.WarmUp();
+            PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
             var CharacterPlayer = new PlayerInfoModel(Character);
             Engine.CharacterList.Clear();
@@ -541,7 +541,7 @@ namespace UnitTests.Engine
             };
 
             // Add each model here to warm up and load it.
-            Game.Helpers.DataSetsHelper.WarmUp();
+            PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
             var CharacterPlayer = new PlayerInfoModel(Character);
             Engine.CharacterList.Clear();
@@ -560,7 +560,7 @@ namespace UnitTests.Engine
         }
 
         [Test]
-        public void RoundEngine_RoundNextTurn_No_Characters_Should_Return_GameOver()
+        public void RoundEngine_RoundNextTurn_No_Characters_Should_Return_PrimeAssaultOver()
         {
             Engine.MonsterList.Clear();
 
@@ -586,7 +586,7 @@ namespace UnitTests.Engine
             };
 
             // Add each model here to warm up and load it.
-            Game.Helpers.DataSetsHelper.WarmUp();
+            PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
             var CharacterPlayer = new PlayerInfoModel(Character);
             Engine.CharacterList.Clear();
@@ -604,7 +604,7 @@ namespace UnitTests.Engine
             // Reset
 
             // Assert
-            Assert.AreEqual(RoundEnum.GameOver, result);
+            Assert.AreEqual(RoundEnum.PrimeAssaultOver, result);
         }
 
         [Test]
@@ -634,7 +634,7 @@ namespace UnitTests.Engine
             };
 
             // Add each model here to warm up and load it.
-            Game.Helpers.DataSetsHelper.WarmUp();
+            PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
             var CharacterPlayer = new PlayerInfoModel(Character);
             Engine.CharacterList.Clear();
@@ -682,7 +682,7 @@ namespace UnitTests.Engine
             };
 
             // Add each model here to warm up and load it.
-            Game.Helpers.DataSetsHelper.WarmUp();
+            PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
             var CharacterPlayer = new PlayerInfoModel(Character);
             Engine.CharacterList.Clear();
@@ -754,7 +754,7 @@ namespace UnitTests.Engine
                                     });
 
             // Add each model here to warm up and load it.
-            Game.Helpers.DataSetsHelper.WarmUp();
+            PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
             Engine.CharacterList.Clear();
 
@@ -832,7 +832,7 @@ namespace UnitTests.Engine
                                     });
 
             // Add each model here to warm up and load it.
-            Game.Helpers.DataSetsHelper.WarmUp();
+            PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
             Engine.CharacterList.Clear();
 
@@ -910,7 +910,7 @@ namespace UnitTests.Engine
                                     });
 
             // Add each model here to warm up and load it.
-            Game.Helpers.DataSetsHelper.WarmUp();
+            PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
             Engine.CharacterList.Clear();
 
@@ -942,7 +942,7 @@ namespace UnitTests.Engine
             // Arrange
 
             // Add each model here to warm up and load it.
-            Game.Helpers.DataSetsHelper.WarmUp();
+            PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
             var CharacterPlayerSue = new PlayerInfoModel(
                                         new CharacterModel

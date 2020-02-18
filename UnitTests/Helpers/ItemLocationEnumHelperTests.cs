@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
 
-using Game.Services;
-using Game.Models;
-using Game.Helpers;
+using PrimeAssault.Services;
+using PrimeAssault.Models;
+using PrimeAssault.Helpers;
 using System;
 using System.Linq;
 

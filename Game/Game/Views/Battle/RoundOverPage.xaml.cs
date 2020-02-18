@@ -2,10 +2,10 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Game.Views
+namespace PrimeAssault.Views
 {
 	/// <summary>
-	/// The Main Game Page
+	/// The Main PrimeAssault Page
 	/// </summary>
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class RoundOverPage: ContentPage

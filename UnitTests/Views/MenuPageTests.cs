@@ -1,9 +1,9 @@
 ﻿using NUnit.Framework;
 using System.Threading.Tasks;
 
-using Game;
-using Game.Views;
-using Game.Models;
+using PrimeAssault;
+using PrimeAssault.Views;
+using PrimeAssault.Models;
 
 using Xamarin.Forms.Mocks;
 using Xamarin.Forms;
@@ -82,11 +82,11 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void MenuPage_ListViewMenu_Valid_Game_Should_Pass()
+        public void MenuPage_ListViewMenu_Valid_PrimeAssault_Should_Pass()
         {
             // Arrange
 
-            var data = new HomeMenuItemModel { Id = MenuItemEnum.Game, Title = "Game" };
+            var data = new HomeMenuItemModel { Id = MenuItemEnum.PrimeAssault, Title = "PrimeAssault" };
 
             var content = (StackLayout)page.Content;
             var listview = (ListView)content.Children.FirstOrDefault();

@@ -1,4 +1,4 @@
-﻿namespace Game.Models
+﻿namespace PrimeAssault.Models
 {
     /// <summary>
     /// The Types of Attributes

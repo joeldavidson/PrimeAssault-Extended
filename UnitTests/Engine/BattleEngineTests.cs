@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 
-using Game.Engine;
-using Game.Models;
+using PrimeAssault.Engine;
+using PrimeAssault.Models;
 using System.Threading.Tasks;
 using System.Linq;
 

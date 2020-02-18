@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace Game.Models
+namespace PrimeAssault.Models
 {
     /// <summary>
-    /// Item for the Game
+    /// Item for the PrimeAssault
     /// 
     /// The Items that a character can use, a Monster may drop, or may be randomly available.
     /// The items are stored in the DB, and during game time a random item is selected.
@@ -24,7 +24,7 @@ namespace Game.Models
         public int ScoreTotal { get; set; }
 
         // The Date the game played, and when the score was saved
-        public DateTime GameDate { get; set; }
+        public DateTime PrimeAssaultDate { get; set; }
 
         // Tracks if auto battle is true, or if user battle = false
         public bool AutoBattle { get; set; }
@@ -58,7 +58,7 @@ namespace Game.Models
         /// </summary>
         public ScoreModel()
         {
-            GameDate = DateTime.Now;    // Set to be now by default.
+            PrimeAssaultDate = DateTime.Now;    // Set to be now by default.
             AutoBattle = false;         //assume user battle
 
             TurnCount = 0;
@@ -95,7 +95,7 @@ namespace Game.Models
 
             BattleNumber = newData.BattleNumber;
             ScoreTotal = newData.ScoreTotal;
-            GameDate = newData.GameDate;
+            PrimeAssaultDate = newData.PrimeAssaultDate;
             AutoBattle = newData.AutoBattle;
             TurnCount = newData.TurnCount;
             RoundCount = newData.RoundCount;

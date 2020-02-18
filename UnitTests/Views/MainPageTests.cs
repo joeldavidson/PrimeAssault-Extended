@@ -1,9 +1,9 @@
 ﻿using NUnit.Framework;
 using System.Threading.Tasks;
 
-using Game;
-using Game.Views;
-using Game.Models;
+using PrimeAssault;
+using PrimeAssault.Views;
+using PrimeAssault.Models;
 
 using Xamarin.Forms.Mocks;
 using Xamarin.Forms;
@@ -78,12 +78,12 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public async Task MainPage_Navigate_Game_Should_Pass()
+        public async Task MainPage_Navigate_PrimeAssault_Should_Pass()
         {
             // Arrange
 
             // Act
-            await page.NavigateFromMenu((int)MenuItemEnum.Game);
+            await page.NavigateFromMenu((int)MenuItemEnum.PrimeAssault);
 
             // Reset
 
@@ -134,14 +134,14 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public async Task MainPage_Navigate_Game_Twice_Should_Skip()
+        public async Task MainPage_Navigate_PrimeAssault_Twice_Should_Skip()
         {
             // Arrange
 
-            await page.NavigateFromMenu((int)MenuItemEnum.Game);
+            await page.NavigateFromMenu((int)MenuItemEnum.PrimeAssault);
 
             // Act
-            await page.NavigateFromMenu((int)MenuItemEnum.Game);
+            await page.NavigateFromMenu((int)MenuItemEnum.PrimeAssault);
 
             // Reset
 
@@ -166,15 +166,15 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public async Task MainPage_Navigate_Device_Android_Game_Should_Pass()
+        public async Task MainPage_Navigate_Device_Android_PrimeAssault_Should_Pass()
         {
             // Arrange
             MockForms.Init(Device.Android);
 
-            await page.NavigateFromMenu((int)MenuItemEnum.Game);
+            await page.NavigateFromMenu((int)MenuItemEnum.PrimeAssault);
 
             // Act
-            await page.NavigateFromMenu((int)MenuItemEnum.Game);
+            await page.NavigateFromMenu((int)MenuItemEnum.PrimeAssault);
 
             // Reset
 

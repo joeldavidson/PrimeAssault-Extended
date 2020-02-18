@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Game.Models
+namespace PrimeAssault.Models
 {
     /// <summary>
     /// Hold the Details for each Level

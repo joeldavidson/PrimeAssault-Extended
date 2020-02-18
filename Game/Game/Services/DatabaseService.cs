@@ -2,12 +2,12 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Game.Models;
+using PrimeAssault.Models;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 
-namespace Game.Services
+namespace PrimeAssault.Services
 {
     /// <summary>
     /// Database Services

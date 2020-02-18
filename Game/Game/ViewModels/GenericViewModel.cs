@@ -1,6 +1,6 @@
-﻿using Game.Models;
+﻿using PrimeAssault.Models;
 
-namespace Game.ViewModels
+namespace PrimeAssault.ViewModels
 {
     public class GenericViewModel<T> : BaseViewModel<DefaultModel> where T: class
     {

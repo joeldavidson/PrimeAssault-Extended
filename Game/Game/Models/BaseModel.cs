@@ -1,5 +1,5 @@
 ﻿
-namespace Game.Models
+namespace PrimeAssault.Models
 {
     /// <summary>
     /// Base model for records that get saved

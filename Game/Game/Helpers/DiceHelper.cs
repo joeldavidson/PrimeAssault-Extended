@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Game.Helpers
+namespace PrimeAssault.Helpers
 {
     public static class DiceHelper
     {

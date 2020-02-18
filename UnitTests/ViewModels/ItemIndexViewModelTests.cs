@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 
-using Game.Models;
-using Game.ViewModels;
+using PrimeAssault.Models;
+using PrimeAssault.ViewModels;
 
 namespace UnitTests.ViewModels
 {
@@ -23,7 +23,7 @@ namespace UnitTests.ViewModels
             MockForms.Init();
 
             // Add each model here to warm up and load it.
-            Game.Helpers.DataSetsHelper.WarmUp();
+            PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
             ViewModel = ItemIndexViewModel.Instance;
         }
@@ -141,7 +141,7 @@ namespace UnitTests.ViewModels
             var first = ViewModel.Dataset.FirstOrDefault();
 
             // Make a Delete Page
-            var myPage = new Game.Views.ItemDeletePage(true);
+            var myPage = new PrimeAssault.Views.ItemDeletePage(true);
 
             // Act
             MessagingCenter.Send(myPage, "Delete", first);
@@ -216,7 +216,7 @@ namespace UnitTests.ViewModels
             var data = new ItemModel();
 
             // Make a Delete Page
-            var myPage = new Game.Views.ItemCreatePage(true);
+            var myPage = new PrimeAssault.Views.ItemCreatePage(true);
 
             var countBefore = ViewModel.Dataset.Count();
 
@@ -241,7 +241,7 @@ namespace UnitTests.ViewModels
             first.Name = "test";
 
             // Make a Delete Page
-            var myPage = new Game.Views.ItemUpdatePage(true);
+            var myPage = new PrimeAssault.Views.ItemUpdatePage(true);
 
             // Act
             MessagingCenter.Send(myPage, "Update", first);
@@ -263,7 +263,7 @@ namespace UnitTests.ViewModels
             var data = 3000; // Non existing value
 
             // Make the page Page
-            var myPage = new Game.Views.AboutPage(true);
+            var myPage = new PrimeAssault.Views.AboutPage(true);
 
             // Act
             MessagingCenter.Send(myPage, "SetDataSource", data);
@@ -283,7 +283,7 @@ namespace UnitTests.ViewModels
             // Arrange
 
             // Make the page Page
-            var myPage = new Game.Views.AboutPage(true);
+            var myPage = new PrimeAssault.Views.AboutPage(true);
 
             var data = new ItemModel();
             await ViewModel.CreateAsync(data);

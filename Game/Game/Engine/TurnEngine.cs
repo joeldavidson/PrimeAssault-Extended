@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Diagnostics;
 
-using Game.Models;
-using Game.Helpers;
+using PrimeAssault.Models;
+using PrimeAssault.Helpers;
 
-namespace Game.Engine
+namespace PrimeAssault.Engine
 {
     /* 
      * Need to decide who takes the next turn

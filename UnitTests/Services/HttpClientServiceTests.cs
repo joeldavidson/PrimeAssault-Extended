@@ -9,9 +9,9 @@ using NUnit.Framework;
 
 using Newtonsoft.Json.Linq;
 
-using Game.Models;
-using Game.Services;
-using Game.Helpers;
+using PrimeAssault.Models;
+using PrimeAssault.Services;
+using PrimeAssault.Helpers;
 
 
 namespace UnitTests.Services

@@ -1,7 +1,7 @@
-﻿namespace Game.Models
+﻿namespace PrimeAssault.Models
 {
     /// <summary>
-    /// The Monsters in the Game
+    /// The Monsters in the PrimeAssault
     /// 
     /// Derives from BasePlayer Model just like Character
     /// </summary>

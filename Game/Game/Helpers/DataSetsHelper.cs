@@ -1,6 +1,6 @@
-﻿using Game.ViewModels;
+﻿using PrimeAssault.ViewModels;
 
-namespace Game.Helpers
+namespace PrimeAssault.Helpers
 {
     static public class DataSetsHelper
     {

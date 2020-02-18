@@ -6,21 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Game;
-using Game.Views;
+using PrimeAssault;
+using PrimeAssault.Views;
 using Xamarin.Forms.Mocks;
 using Xamarin.Forms;
 
 namespace UnitTests.Views
 {
     [TestFixture]
-    public class GamePageTests
+    public class PrimeAssaultPageTests
     {
         App app;
-        GamePage page;
+        PrimeAssaultPage page;
 
         // Base Constructor
-        //public GamePageTests() : base(true) { }
+        //public PrimeAssaultPageTests() : base(true) { }
 
         [SetUp]
         public void Setup()
@@ -32,7 +32,7 @@ namespace UnitTests.Views
             app = new App();
             Application.Current = app;
 
-            page = new GamePage();
+            page = new PrimeAssaultPage();
         }
 
         [TearDown]
@@ -42,7 +42,7 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void GamePage_Constructor_Default_Should_Pass()
+        public void PrimeAssaultPage_Constructor_Default_Should_Pass()
         {
             // Arrange
 
@@ -56,7 +56,7 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void GamePage_DungeonButton_Clicked_Default_Should_Pass()
+        public void PrimeAssaultPage_DungeonButton_Clicked_Default_Should_Pass()
         {
             // Arrange
             // Act
@@ -69,7 +69,7 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void GamePage_VillageButton_Clicked_Default_Should_Pass()
+        public void PrimeAssaultPage_VillageButton_Clicked_Default_Should_Pass()
         {
             // Arrange
             // Act
@@ -82,7 +82,7 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void GamePage_AutobattleButton_Clicked_Default_Should_Pass()
+        public void PrimeAssaultPage_AutobattleButton_Clicked_Default_Should_Pass()
         {
             // Arrange
             // Act

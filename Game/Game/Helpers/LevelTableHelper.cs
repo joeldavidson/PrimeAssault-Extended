@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Game.Models
+namespace PrimeAssault.Models
 {
     /// <summary>
     /// Helper to manage the Level Table Data

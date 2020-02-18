@@ -6,8 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Game;
-using Game.Views;
+using PrimeAssault;
+using PrimeAssault.Views;
 using Xamarin.Forms.Mocks;
 using Xamarin.Forms;
 
@@ -53,11 +53,11 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void HomePage_GameButton_Clicked_Default_Should_Pass()
+        public void HomePage_PrimeAssaultButton_Clicked_Default_Should_Pass()
         {
             // Arrange
             // Act
-            page.GameButton_Clicked(null, null);
+            page.PrimeAssaultButton_Clicked(null, null);
 
             // Reset
 

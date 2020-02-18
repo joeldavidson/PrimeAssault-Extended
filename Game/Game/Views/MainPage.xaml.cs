@@ -1,10 +1,10 @@
-﻿using Game.Models;
+﻿using PrimeAssault.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace Game.Views
+namespace PrimeAssault.Views
 {
     /// <summary>
     /// Main Page
@@ -57,8 +57,8 @@ namespace Game.Views
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
 
-                    case (int)MenuItemEnum.Game:
-                        MenuPages.Add(id, new NavigationPage(new GamePage()));
+                    case (int)MenuItemEnum.PrimeAssault:
+                        MenuPages.Add(id, new NavigationPage(new PrimeAssaultPage()));
                         break;
                 }
             }

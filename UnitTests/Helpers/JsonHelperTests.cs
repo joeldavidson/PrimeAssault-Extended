@@ -4,9 +4,9 @@ using NUnit.Framework;
 using Newtonsoft;
 using Newtonsoft.Json.Linq;
 
-using Game.Helpers;
+using PrimeAssault.Helpers;
 using System.Linq;
-using Game.Models;
+using PrimeAssault.Models;
 
 namespace UnitTests.Helpers
 {

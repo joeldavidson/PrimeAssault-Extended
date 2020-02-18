@@ -6,8 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Game.Models;
-using Game.ViewModels;
+using PrimeAssault.Models;
+using PrimeAssault.ViewModels;
 
 namespace UnitTests.ViewModels
 {

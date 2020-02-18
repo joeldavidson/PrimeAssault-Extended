@@ -1,7 +1,7 @@
-﻿using Game.ViewModels;
+﻿using PrimeAssault.ViewModels;
 using System.Collections.Generic;
 
-namespace Game.Models
+namespace PrimeAssault.Models
 {
     /// <summary>
     /// Base Player that Characters and Monsters derive from
@@ -11,8 +11,8 @@ namespace Game.Models
     {
         #region Attributes
 
-        #region GameEngineAttributes
-        // Guid of the original data it links back to the ID, used in Game Engine
+        #region PrimeAssaultEngineAttributes
+        // Guid of the original data it links back to the ID, used in PrimeAssault Engine
         public string Guid;
 
         // alive status, !alive will be removed from the list
@@ -27,7 +27,7 @@ namespace Game.Models
         // Remember who was first into the list...
         public int ListOrder = 0;
 
-        #endregion GameEngineAttributes
+        #endregion PrimeAssaultEngineAttributes
 
         #region PlayerAttributes
 

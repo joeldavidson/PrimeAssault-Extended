@@ -2,18 +2,18 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Game.Views
+namespace PrimeAssault.Views
 {
 	/// <summary>
-	/// The Main Game Page
+	/// The Main PrimeAssault Page
 	/// </summary>
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class GamePage : ContentPage
+	public partial class PrimeAssaultPage : ContentPage
 	{
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public GamePage ()
+		public PrimeAssaultPage ()
 		{
 			InitializeComponent ();
 		}

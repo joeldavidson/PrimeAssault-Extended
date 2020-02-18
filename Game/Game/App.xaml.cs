@@ -1,7 +1,7 @@
 ﻿using Xamarin.Forms;
-using Game.Views;
+using PrimeAssault.Views;
 
-namespace Game
+namespace PrimeAssault
 {
     /// <summary>
     /// Main Application entry point

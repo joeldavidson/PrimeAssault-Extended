@@ -1,7 +1,7 @@
 ﻿using System;
 using SQLite;
 
-namespace Game.Models
+namespace PrimeAssault.Models
 {
     /// <summary>
     /// Default Model

@@ -1,4 +1,4 @@
-﻿namespace Game.Models
+﻿namespace PrimeAssault.Models
 {
     /// <summary>
     /// Home Menu Item Model

@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Name="BrowseItemsPage"
-             x:Class="Game.Views.ItemIndexPage"
+             x:Class="PrimeAssault.Views.ItemIndexPage"
              Title="{Binding Title}">
 
     <ContentPage.ToolbarItems>

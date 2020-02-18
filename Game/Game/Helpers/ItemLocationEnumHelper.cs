@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Game.Models;
+using PrimeAssault.Models;
 using System.Linq;
 
-namespace Game.Helpers
+namespace PrimeAssault.Helpers
 {
     /// <summary>
     /// Helper for Item Locations

@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace Game.UWP
+namespace PrimeAssault.UWP
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

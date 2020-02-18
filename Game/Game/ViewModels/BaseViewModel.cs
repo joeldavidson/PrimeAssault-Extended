@@ -1,5 +1,5 @@
-﻿using Game.Models;
-using Game.Services;
+﻿using PrimeAssault.Models;
+using PrimeAssault.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,7 +10,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace Game.ViewModels
+namespace PrimeAssault.ViewModels
 {
     /// <summary>
     /// Base View Model for Data

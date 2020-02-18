@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Game.Models;
+using PrimeAssault.Models;
 
-namespace Game.Engine
+namespace PrimeAssault.Engine
 {
     /// <summary>
     /// Holds the Data Structures for the Battle Engine

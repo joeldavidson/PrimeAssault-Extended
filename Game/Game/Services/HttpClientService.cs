@@ -8,10 +8,10 @@ using System.Net.Http.Headers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-using Game.Models;
-using Game.Helpers;
+using PrimeAssault.Models;
+using PrimeAssault.Helpers;
 
-namespace Game.Services
+namespace PrimeAssault.Services
 {
     /// <summary>
     /// Manage the Calls to the Service

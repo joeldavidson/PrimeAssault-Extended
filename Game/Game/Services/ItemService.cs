@@ -1,4 +1,4 @@
-﻿namespace Game.Services
+﻿namespace PrimeAssault.Services
 {
 
     /// <summary>

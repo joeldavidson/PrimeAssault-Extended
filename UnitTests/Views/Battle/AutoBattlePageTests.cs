@@ -1,10 +1,10 @@
 ﻿using NUnit.Framework;
 
-using Game;
-using Game.Views;
+using PrimeAssault;
+using PrimeAssault.Views;
 using Xamarin.Forms.Mocks;
 using Xamarin.Forms;
-using Game.Helpers;
+using PrimeAssault.Helpers;
 
 namespace UnitTests.Views
 {

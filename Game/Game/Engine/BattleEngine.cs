@@ -1,10 +1,10 @@
 ﻿
-using Game.Models;
+using PrimeAssault.Models;
 
-namespace Game.Engine
+namespace PrimeAssault.Engine
 {
     /// <summary>
-    /// Battle Engine for the Game
+    /// Battle Engine for the PrimeAssault
     /// </summary>
     public class BattleEngine : RoundEngine
     {

@@ -4,10 +4,10 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             xmlns:local_helpers="clr-namespace:Game.Helpers"
-             xmlns:local="using:Game.Models"
-             xmlns:local_enum="clr-namespace:Game.Models"
-             x:Class="Game.Views.ScoreUpdatePage"
+             xmlns:local_helpers="clr-namespace:PrimeAssault.Helpers"
+             xmlns:local="using:PrimeAssault.Models"
+             xmlns:local_enum="clr-namespace:PrimeAssault.Models"
+             x:Class="PrimeAssault.Views.ScoreUpdatePage"
              Title="{Binding Title}">
 
     <ContentPage.ToolbarItems>
@@ -53,11 +53,11 @@
 
                 <StackLayout Style="{StaticResource HorizontalStack}">
                     <Label 
-                    Text="Game Date:"
+                    Text="PrimeAssault Date:"
                     Style="{StaticResource LabelStyle}"/>
 
                     <Label 
-                    Text="{Binding Data.GameDate}"
+                    Text="{Binding Data.PrimeAssaultDate}"
                     Style="{StaticResource ValueStyle}"/>
                 </StackLayout>
 

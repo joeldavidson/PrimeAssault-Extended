@@ -1,4 +1,4 @@
-﻿namespace Game.Models
+﻿namespace PrimeAssault.Models
 {
     /// <summary>
     /// Global Variables for the Web Service Calls

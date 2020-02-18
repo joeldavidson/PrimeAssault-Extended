@@ -1,5 +1,5 @@
 ﻿
-namespace Game.Models
+namespace PrimeAssault.Models
 {
     // What data store will be used.  
     public enum DataStoreEnum

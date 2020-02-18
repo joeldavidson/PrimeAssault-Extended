@@ -1,9 +1,9 @@
-﻿using Game.Models;
+﻿using PrimeAssault.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
 
-namespace Game.Views
+namespace PrimeAssault.Views
 {
     /// <summary>
     /// Menu Page
@@ -28,7 +28,7 @@ namespace Game.Views
             // Establish the Menu List
             menuItems = new List<HomeMenuItemModel>
             {
-                new HomeMenuItemModel {Id = MenuItemEnum.Game, Title="Game" },
+                new HomeMenuItemModel {Id = MenuItemEnum.PrimeAssault, Title="PrimeAssault" },
                 new HomeMenuItemModel {Id = MenuItemEnum.About, Title="About" },
                 new HomeMenuItemModel {Id = MenuItemEnum.Village, Title="Village" },
                 new HomeMenuItemModel {Id = MenuItemEnum.Battle, Title="Battle" },

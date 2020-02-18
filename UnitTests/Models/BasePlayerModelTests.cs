@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 
-using Game.Models;
-using Game.ViewModels;
+using PrimeAssault.Models;
+using PrimeAssault.ViewModels;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -36,7 +36,7 @@ namespace UnitTests.Models
 
             // Assert
             Assert.IsNotNull(result.Id);
-            Assert.AreEqual(Game.Services.ItemService.DefaultImageURI, result.ImageURI);
+            Assert.AreEqual(PrimeAssault.Services.ItemService.DefaultImageURI, result.ImageURI);
             Assert.AreEqual(PlayerTypeEnum.Unknown, result.PlayerType);
             Assert.AreEqual(true, result.Alive);
             Assert.AreEqual(0, result.Order);
@@ -533,7 +533,7 @@ namespace UnitTests.Models
         {
             // Arrange
             // Add each model here to warm up and load it.
-            Game.Helpers.DataSetsHelper.WarmUp();
+            PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Id="head" });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 20, Id = "necklass" });

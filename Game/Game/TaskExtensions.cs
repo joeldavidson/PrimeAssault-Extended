@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Game
+namespace PrimeAssault
 {
     public static class TaskExtensions
     {

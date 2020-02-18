@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 
-namespace Game.Helpers
+namespace PrimeAssault.Helpers
 {
     /// <summary>
     /// Json Helper for parsing the Service returned datasets

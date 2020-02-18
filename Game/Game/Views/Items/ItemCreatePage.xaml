@@ -4,10 +4,10 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             xmlns:local="using:Game.Models"
-             xmlns:local_helpers="clr-namespace:Game.Helpers"
-             xmlns:local_enum="clr-namespace:Game.Models"
-             x:Class="Game.Views.ItemCreatePage"
+             xmlns:local="using:PrimeAssault.Models"
+             xmlns:local_helpers="clr-namespace:PrimeAssault.Helpers"
+             xmlns:local_enum="clr-namespace:PrimeAssault.Models"
+             x:Class="PrimeAssault.Views.ItemCreatePage"
              Title="{Binding Title}">
 
     <ContentPage.ToolbarItems>

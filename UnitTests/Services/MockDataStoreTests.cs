@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-using Game.Models;
-using Game.Services;
+using PrimeAssault.Models;
+using PrimeAssault.Services;
 
 namespace UnitTests.Services
 {

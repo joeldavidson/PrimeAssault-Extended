@@ -6,8 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Game;
-using Game.Views;
+using PrimeAssault;
+using PrimeAssault.Views;
 using Xamarin.Forms.Mocks;
 using Xamarin.Forms;
 
@@ -192,7 +192,7 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void GamePage_WipeDataList_Clicked_Default_Should_Pass()
+        public void PrimeAssaultPage_WipeDataList_Clicked_Default_Should_Pass()
         {
             // Arrange
             // Act

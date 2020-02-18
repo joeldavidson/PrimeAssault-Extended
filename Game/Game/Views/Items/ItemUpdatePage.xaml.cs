@@ -1,10 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 using Xamarin.Forms;
-using Game.ViewModels;
-using Game.Models;
+using PrimeAssault.ViewModels;
+using PrimeAssault.Models;
 
-namespace Game.Views
+namespace PrimeAssault.Views
 {
     /// <summary>
     /// Item Update Page

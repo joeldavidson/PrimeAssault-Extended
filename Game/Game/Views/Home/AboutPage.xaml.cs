@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using Xamarin.Forms;
 
-namespace Game.Views
+namespace PrimeAssault.Views
 {
     /// <summary>
     /// About Page

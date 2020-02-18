@@ -1,12 +1,12 @@
-﻿using Game.Models;
-using Game.Views;
+﻿using PrimeAssault.Models;
+using PrimeAssault.Views;
 using System;
 using Xamarin.Forms;
 using System.Linq;
 using System.Collections.Generic;
-using Game.Services;
+using PrimeAssault.Services;
 
-namespace Game.ViewModels
+namespace PrimeAssault.ViewModels
 {
     /// <summary>
     /// Index View Model

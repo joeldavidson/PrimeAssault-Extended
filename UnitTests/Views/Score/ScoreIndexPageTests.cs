@@ -1,12 +1,12 @@
 ﻿using NUnit.Framework;
 
-using Game;
-using Game.Views;
-using Game.Models;
+using PrimeAssault;
+using PrimeAssault.Views;
+using PrimeAssault.Models;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Mocks;
-using Game.ViewModels;
+using PrimeAssault.ViewModels;
 using System.Threading.Tasks;
 
 namespace UnitTests.Views
@@ -120,7 +120,7 @@ namespace UnitTests.Views
             // Arrange
 
             // Add each model here to warm up and load it.
-            Game.Helpers.DataSetsHelper.WarmUp();
+            PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
             ScoreIndexViewModel ViewModel = ScoreIndexViewModel.Instance;
 
@@ -142,7 +142,7 @@ namespace UnitTests.Views
             // Arrange
 
             // Add each model here to warm up and load it.
-            Game.Helpers.DataSetsHelper.WarmUp();
+            PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
             ScoreIndexViewModel ViewModel = ScoreIndexViewModel.Instance;
             ViewModel.Dataset.Clear();

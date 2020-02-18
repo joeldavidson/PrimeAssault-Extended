@@ -1,5 +1,5 @@
 ﻿
-namespace Game.Models
+namespace PrimeAssault.Models
 {
     /// <summary>
     /// The Conditions a round can have
@@ -15,7 +15,7 @@ namespace Game.Models
         // New Round, Monsters dead
         NewRound = 2, 
 
-        // Game Over, characters dead
-        GameOver = 3, 
+        // PrimeAssault Over, characters dead
+        PrimeAssaultOver = 3, 
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Game.Models
+﻿namespace PrimeAssault.Models
 {
     /// <summary>
     /// List of items to show in the Menu
@@ -17,8 +17,8 @@
         // Items - Remove
         Items = 4,
 
-        // Game
-        Game = 5,
+        // PrimeAssault
+        PrimeAssault = 5,
 
         // About
         About = 6

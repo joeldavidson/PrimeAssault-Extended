@@ -1,7 +1,7 @@
-﻿using Game.Models;
+﻿using PrimeAssault.Models;
 using System.Collections.Generic;
 
-namespace Game.Services
+namespace PrimeAssault.Services
 {
     public static class DefaultData
     {

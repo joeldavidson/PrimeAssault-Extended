@@ -2,10 +2,10 @@
 
 using Xamarin.Forms.Mocks;
 
-using Game;
-using Game.ViewModels;
-using Game.Services;
-using Game.Models;
+using PrimeAssault;
+using PrimeAssault.ViewModels;
+using PrimeAssault.Services;
+using PrimeAssault.Models;
 using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
@@ -28,7 +28,7 @@ namespace UnitTests.Views
 
             // Act
             // Add each model here to warm up and load it.
-            Game.Helpers.DataSetsHelper.WarmUp();
+            PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
             // Reset
 
@@ -54,7 +54,7 @@ namespace UnitTests.Views
 
             // Act
             // Add each model here to warm up and load it.
-            Game.Helpers.DataSetsHelper.WarmUp();
+            PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
             // Reset
 

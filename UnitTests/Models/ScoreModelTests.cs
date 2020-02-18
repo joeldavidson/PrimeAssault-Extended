@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-using Game.Models;
+using PrimeAssault.Models;
 
 namespace UnitTests.Models
 {
@@ -31,7 +31,7 @@ namespace UnitTests.Models
 
             dataNew.BattleNumber = 100;
             dataNew.ScoreTotal = 200;
-            dataNew.GameDate = System.DateTime.MinValue;
+            dataNew.PrimeAssaultDate = System.DateTime.MinValue;
             dataNew.AutoBattle = true;
             dataNew.TurnCount = 300;
             dataNew.RoundCount = 400;
@@ -64,7 +64,7 @@ namespace UnitTests.Models
             // Assert 
             Assert.IsNotNull(result.BattleNumber);
             Assert.IsNotNull(result.ScoreTotal);
-            Assert.IsNotNull(result.GameDate);
+            Assert.IsNotNull(result.PrimeAssaultDate);
             Assert.IsNotNull(result.AutoBattle);
             Assert.IsNotNull(result.TurnCount);
             Assert.IsNotNull(result.RoundCount);
@@ -85,7 +85,7 @@ namespace UnitTests.Models
             var result = new ScoreModel();
             result.BattleNumber = 100;
             result.ScoreTotal = 200;
-            result.GameDate = System.DateTime.MinValue;
+            result.PrimeAssaultDate = System.DateTime.MinValue;
             result.AutoBattle = true;
             result.TurnCount = 300;
             result.RoundCount = 400;
@@ -100,7 +100,7 @@ namespace UnitTests.Models
             // Assert 
             Assert.AreEqual(100,result.BattleNumber);
             Assert.AreEqual(200,result.ScoreTotal);
-            Assert.AreEqual(System.DateTime.MinValue,result.GameDate);
+            Assert.AreEqual(System.DateTime.MinValue,result.PrimeAssaultDate);
             Assert.AreEqual(true,result.AutoBattle);
             Assert.AreEqual(300,result.TurnCount);
             Assert.AreEqual(400,result.RoundCount);
@@ -120,7 +120,7 @@ namespace UnitTests.Models
             var dataNew = new ScoreModel();
             dataNew.BattleNumber = 100;
             dataNew.ScoreTotal = 200;
-            dataNew.GameDate = System.DateTime.MinValue;
+            dataNew.PrimeAssaultDate = System.DateTime.MinValue;
             dataNew.AutoBattle = true;
             dataNew.TurnCount = 300;
             dataNew.RoundCount = 400;
@@ -138,7 +138,7 @@ namespace UnitTests.Models
             // Assert 
             Assert.AreEqual(100, dataNew.BattleNumber);
             Assert.AreEqual(200, dataNew.ScoreTotal);
-            Assert.AreEqual(System.DateTime.MinValue, dataNew.GameDate);
+            Assert.AreEqual(System.DateTime.MinValue, dataNew.PrimeAssaultDate);
             Assert.AreEqual(true, dataNew.AutoBattle);
             Assert.AreEqual(300, dataNew.TurnCount);
             Assert.AreEqual(400, dataNew.RoundCount);

@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Game;
-using Game.Views;
-using Game.ViewModels;
-using Game.Models;
+using PrimeAssault;
+using PrimeAssault.Views;
+using PrimeAssault.ViewModels;
+using PrimeAssault.Models;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Mocks;

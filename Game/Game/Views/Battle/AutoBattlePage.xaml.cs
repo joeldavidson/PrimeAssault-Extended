@@ -2,10 +2,10 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Game.Views
+namespace PrimeAssault.Views
 {
 	/// <summary>
-	/// The Main Game Page
+	/// The Main PrimeAssault Page
 	/// </summary>
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AutoBattlePage : ContentPage
@@ -22,7 +22,7 @@ namespace Game.Views
 		{
 			// Call into Auto Battle from here to do the Battle...
 
-			var Engine = new Game.Engine.AutoBattleEngine();
+			var Engine = new PrimeAssault.Engine.AutoBattleEngine();
 
 			string BattleMessage = "";
 

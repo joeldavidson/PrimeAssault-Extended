@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-using Game.Helpers;
+using PrimeAssault.Helpers;
 
 namespace UnitTests.Helpers
 {

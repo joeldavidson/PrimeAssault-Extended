@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel;
 using Xamarin.Forms;
-using Game.ViewModels;
+using PrimeAssault.ViewModels;
 using System;
-using Game.Models;
+using PrimeAssault.Models;
 
-namespace Game.Views
+namespace PrimeAssault.Views
 {
     /// <summary>
     /// The Read Page

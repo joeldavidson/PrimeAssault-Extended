@@ -1,10 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 using Xamarin.Forms;
-using Game.Models;
-using Game.ViewModels;
+using PrimeAssault.Models;
+using PrimeAssault.ViewModels;
 
-namespace Game.Views
+namespace PrimeAssault.Views
 {
     /// <summary>
     /// Index Page

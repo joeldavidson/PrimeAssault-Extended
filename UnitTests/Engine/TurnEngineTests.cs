@@ -3,10 +3,10 @@
 using System.Linq;
 using System.Collections.Generic;
 
-using Game.Engine;
-using Game.Models;
-using Game.Helpers;
-using Game.ViewModels;
+using PrimeAssault.Engine;
+using PrimeAssault.Models;
+using PrimeAssault.Helpers;
+using PrimeAssault.ViewModels;
 
 namespace UnitTests.Engine
 {

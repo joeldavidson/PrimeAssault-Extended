@@ -13,7 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace Game.UWP
+namespace PrimeAssault.UWP
 {
     public sealed partial class MainPage
     {
@@ -21,7 +21,7 @@ namespace Game.UWP
         {
             this.InitializeComponent();
 
-            LoadApplication(new Game.App());
+            LoadApplication(new PrimeAssault.App());
         }
     }
 }

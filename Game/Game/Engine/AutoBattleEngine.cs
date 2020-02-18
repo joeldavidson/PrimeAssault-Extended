@@ -3,9 +3,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-using Game.Models;
+using PrimeAssault.Models;
 
-namespace Game.Engine
+namespace PrimeAssault.Engine
 {
     /// <summary>
     /// AutoBattle Engine
@@ -64,7 +64,7 @@ namespace Game.Engine
             // Start Battle in AutoBattle mode
             StartBattle(true);
 
-            // Fight Loop. Continue until Game is Over...
+            // Fight Loop. Continue until PrimeAssault is Over...
             do
             {
                 Debug.WriteLine("Next Turn");
@@ -79,9 +79,9 @@ namespace Game.Engine
                     Debug.WriteLine("New Round");
                 }
 
-            } while (RoundCondition != RoundEnum.GameOver);
+            } while (RoundCondition != RoundEnum.PrimeAssaultOver);
 
-            Debug.WriteLine("Game Over");
+            Debug.WriteLine("PrimeAssault Over");
 
             // Wrap up
             EndBattle();

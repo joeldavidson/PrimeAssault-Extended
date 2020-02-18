@@ -6,8 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Game;
-using Game.Views;
+using PrimeAssault;
+using PrimeAssault.Views;
 using Xamarin.Forms.Mocks;
 using Xamarin.Forms;
 

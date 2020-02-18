@@ -1,10 +1,10 @@
 ﻿using NUnit.Framework;
-using Game.ViewModels;
+using PrimeAssault.ViewModels;
 using Xamarin.Forms.Mocks;
 using Xamarin.Forms;
-using Game.Services;
+using PrimeAssault.Services;
 using System.Threading.Tasks;
-using Game.Models;
+using PrimeAssault.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,7 +21,7 @@ namespace UnitTests.ViewModels
             MockForms.Init();
 
             // Add each model here to warm up and load it.
-            Game.Helpers.DataSetsHelper.WarmUp();
+            PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
             ViewModel = ScoreIndexViewModel.Instance;
         }
@@ -141,7 +141,7 @@ namespace UnitTests.ViewModels
             var first = ViewModel.Dataset.FirstOrDefault();
 
             // Make a Delete Page
-            var myPage = new Game.Views.ScoreDeletePage(true);
+            var myPage = new PrimeAssault.Views.ScoreDeletePage(true);
 
             // Act
             MessagingCenter.Send(myPage, "Delete", first);
@@ -164,7 +164,7 @@ namespace UnitTests.ViewModels
             var data = new ScoreModel();
 
             // Make a Delete Page
-            var myPage = new Game.Views.ScoreCreatePage(true);
+            var myPage = new PrimeAssault.Views.ScoreCreatePage(true);
 
             var countBefore = ViewModel.Dataset.Count();
 
@@ -189,7 +189,7 @@ namespace UnitTests.ViewModels
             first.Name = "test";
 
             // Make a Delete Page
-            var myPage = new Game.Views.ScoreUpdatePage(true);
+            var myPage = new PrimeAssault.Views.ScoreUpdatePage(true);
 
             // Act
             MessagingCenter.Send(myPage, "Update", first);
@@ -211,7 +211,7 @@ namespace UnitTests.ViewModels
             var data = 3000; // Non existing value
 
             // Make the page Page
-            var myPage = new Game.Views.AboutPage(true);
+            var myPage = new PrimeAssault.Views.AboutPage(true);
 
             // Act
             MessagingCenter.Send(myPage, "SetDataSource", data);
@@ -231,7 +231,7 @@ namespace UnitTests.ViewModels
             // Arrange
 
             // Make the page Page
-            var myPage = new Game.Views.AboutPage(true);
+            var myPage = new PrimeAssault.Views.AboutPage(true);
 
             var data = new ScoreModel();
             await ViewModel.CreateAsync(data);

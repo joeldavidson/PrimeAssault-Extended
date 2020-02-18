@@ -1,4 +1,4 @@
-﻿namespace Game.Models
+﻿namespace PrimeAssault.Models
 {
     /// <summary>
     /// The player in the round, Monster or Character

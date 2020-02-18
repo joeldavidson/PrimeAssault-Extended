@@ -2,10 +2,10 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Game.Views
+namespace PrimeAssault.Views
 {
 	/// <summary>
-	/// The Main Game Page
+	/// The Main PrimeAssault Page
 	/// </summary>
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class HomePage : ContentPage
@@ -23,9 +23,9 @@ namespace Game.Views
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-        public async void GameButton_Clicked(object sender, EventArgs e)
+        public async void PrimeAssaultButton_Clicked(object sender, EventArgs e)
         {
-			await Navigation.PushAsync(new GamePage());
+			await Navigation.PushAsync(new PrimeAssaultPage());
 		}
     }
 }

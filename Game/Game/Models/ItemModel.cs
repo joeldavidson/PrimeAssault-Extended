@@ -1,10 +1,10 @@
-﻿using Game.Services;
-using Game.Helpers;
+﻿using PrimeAssault.Services;
+using PrimeAssault.Helpers;
 
-namespace Game.Models
+namespace PrimeAssault.Models
 {
     /// <summary>
-    /// Item for the Game
+    /// Item for the PrimeAssault
     /// 
     /// The Items that a character can use, a Monster may drop, or may be randomly available.
     /// The items are stored in the DB, and during game time a random item is selected.

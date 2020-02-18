@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-using Game.Models;
+using PrimeAssault.Models;
 
-namespace Game.Engine
+namespace PrimeAssault.Engine
 {
     /// <summary>
     /// Manages the Rounds
@@ -101,8 +101,8 @@ namespace Game.Engine
             // No characters, game is over...
             if (CharacterList.Count < 1)
             {
-                // Game Over
-                RoundStateEnum = RoundEnum.GameOver;
+                // PrimeAssault Over
+                RoundStateEnum = RoundEnum.PrimeAssaultOver;
                 return RoundStateEnum;
             }
 

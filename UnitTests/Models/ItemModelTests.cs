@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 
-using Game.Models;
-using Game.Helpers;
+using PrimeAssault.Models;
+using PrimeAssault.Helpers;
 
 namespace UnitTests.Models
 {

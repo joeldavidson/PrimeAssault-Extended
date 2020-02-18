@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-using Game.Models;
+using PrimeAssault.Models;
 
 
 namespace UnitTests.Models

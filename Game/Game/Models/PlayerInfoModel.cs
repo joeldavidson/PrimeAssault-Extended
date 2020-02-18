@@ -1,5 +1,5 @@
 ﻿
-namespace Game.Models
+namespace PrimeAssault.Models
 {
     /// <summary>
     /// Player for the game.

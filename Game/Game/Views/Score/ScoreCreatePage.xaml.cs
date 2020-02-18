@@ -1,10 +1,10 @@
-﻿using Game.Models;
-using Game.ViewModels;
+﻿using PrimeAssault.Models;
+using PrimeAssault.ViewModels;
 using System;
 using System.ComponentModel;
 using Xamarin.Forms;
 
-namespace Game.Views
+namespace PrimeAssault.Views
 {
     /// <summary>
     /// Create Item

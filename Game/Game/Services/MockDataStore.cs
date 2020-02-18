@@ -1,10 +1,10 @@
-﻿using Game.Models;
+﻿using PrimeAssault.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Game.Services
+namespace PrimeAssault.Services
 {
     public class MockDataStore<T> : IDataStore<T> where T: new()
     {

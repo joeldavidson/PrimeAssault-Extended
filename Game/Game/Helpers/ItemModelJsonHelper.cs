@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
-using Game.Models;
+using PrimeAssault.Models;
 
-namespace Game.Helpers
+namespace PrimeAssault.Helpers
 {
     /// <summary>
     /// Helps Parse the Json from the Server into Items

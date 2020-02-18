@@ -2,7 +2,7 @@
 
 using Xamarin.Forms.Mocks;
 
-using Game;
+using PrimeAssault;
 
 namespace UnitTests.Views
 {
