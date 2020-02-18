@@ -32,9 +32,6 @@ namespace Game.Models
 
         // The Value item modifies.  So a ring of Health +3, has a Value of 3
         public int Value { get; set; } = 0;
-
-        //// Guid, passed from the server
-        //public string Guid{ get; set; } = "";
         
         //// Count of how many
         //public int Count { get; set; } = 1;
