@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PrimeAssault.Views.CharDeletePage"
+             BackgroundImageSource="workshop.png">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png"/>
+        <ToolbarItem Text="Delete" Clicked="Delete_Clicked" IconImageSource="icon_delete.png"/>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Spacing="20" Padding="40,20,40,20" Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+
+        <Label TextColor="Aqua" HorizontalOptions="Center" FontSize="Medium">DELETE CHARACTER</Label>
+        <Image 
+            HeightRequest="250"
+            WidthRequest="250"
+            Source="{Binding Data.imageURI}"></Image>
+        
+        <Label  Text="Name: " TextColor ="Aquamarine" FontSize="Medium" />
+        <Label HorizontalOptions="Center" Text="{Binding Data.Name}" TextColor="Aqua" FontSize="Medium"/>
+        <Label Text="Job Class:" TextColor="Aquamarine" FontSize="Medium" />
+        <Label HorizontalOptions="Center" Text="{Binding Data.jobClass}"  TextColor="Aqua" FontSize="Medium"/>
+
+
+        <StackLayout 
+            HorizontalOptions="Center"
+            Padding="20">
+
+            <Label TextColor ="Magenta" Text = "Really delete this character?" FontSize="Medium"></Label>
+            <Button
+                Text="Yes"
+                TextColor="Magenta"
+                Clicked="Delete_Clicked"
+                HorizontalOptions="Center"
+                FontSize="Medium"
+                BorderWidth="1"
+                BorderColor="Magenta"
+                >
+            </Button>
+
+        </StackLayout>
+    </StackLayout>
+</ContentPage>  

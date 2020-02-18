@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PrimeAssault.Views.CharReadPage"
+             BackgroundImageSource="Workshop.png">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Update" Clicked="Update_Clicked" IconImageSource="icon_edit.png"/>
+        <ToolbarItem Text="Delete" Clicked="Delete_Clicked" IconImageSource="icon_delete.png"/>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        
+        <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+            
+            <Image Source="{Binding Data.imageURI}"
+                   HeightRequest="250"
+                   WidthRequest="250"
+            ></Image>
+
+            <Label Text="{Binding Data.Name}" FontSize="Header" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="AntiqueWhite"></Label>
+
+            <StackLayout Orientation ="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Class: " FontSize="Small" TextColor="AntiqueWhite"></Label>
+                <Label Text="{Binding Data.jobClass}" FontSize="Small" TextColor="AntiqueWhite"></Label>
+                <Label Text="Health: " FontSize="Small" TextColor="AntiqueWhite"></Label>
+                <Label Text="{Binding Data.health}" FontSize="Small" TextColor="AntiqueWhite"></Label>
+                <Label Text="/" TextColor="AntiqueWhite"></Label>
+                <Label Text="{Binding Data.maxHealth}" FontSize="Small" TextColor="AntiqueWhite"></Label>
+            </StackLayout>
+
+
+            <Label Text="{Binding Data.Description}" FontSize="Body" HorizontalTextAlignment="Center" TextColor="AntiqueWhite"></Label>
+
+            <StackLayout Orientation ="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Ability: " FontSize="Small" TextColor="AntiqueWhite"></Label>
+                <Label Text="{Binding Data.ability}" FontSize="Small" TextColor="AntiqueWhite"></Label>
+            </StackLayout>
+
+            <Frame BackgroundColor="AliceBlue"  
+                   HasShadow="True"
+                   CornerRadius="0"
+                   Padding="10"
+                   HorizontalOptions="Center"
+                   IsVisible="True"  
+                   Margin="3"
+                   >
+                <Button Text="Move1"></Button>
+
+            </Frame>
+            <Frame BackgroundColor= "AliceBlue" 
+                   HorizontalOptions="Center"
+                   HasShadow="True"
+                   CornerRadius="0"
+                   Padding="10"
+                   IsVisible="True"  
+                   Margin="3"
+                   >
+                <Button Text="Move2"></Button>
+
+            </Frame>
+            <Grid>
+
+                <Button x:Name="btn1"
+                        VerticalOptions="Center"
+                                            HorizontalOptions="Center"
+                                            HeightRequest="{Binding Width, Source={x:Reference btn1}}"
+                                            Text="ATK" TextColor="Aqua"
+                                            CornerRadius="40"
+                                            BorderColor="Aqua"
+                         Grid.Row="0" Grid.Column="0"
+                                                >
+                </Button>
+                <Button x:Name="btn2"
+                        VerticalOptions="Center"
+                                            HorizontalOptions="Center"
+                                            HeightRequest="{Binding Width, Source={x:Reference btn2}}"
+                                            Text="DEF" TextColor="Aqua"
+                                            CornerRadius="40"
+                                            BorderColor="Aqua"
+                         Grid.Row="0" Grid.Column="1"
+                                                ></Button>
+                <Button x:Name="btn3"
+                        VerticalOptions="Center"
+                                            HorizontalOptions="Center"
+                                            HeightRequest="{Binding Width, Source={x:Reference btn1}}"
+                                            Text="RNG" 
+                                            TextColor="Aqua"
+                                            CornerRadius="40"
+                                            BorderColor="Aqua"
+                         Grid.Row="0" Grid.Column="2"
+                                                ></Button>
+                <Button x:Name="btn4"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Center"
+                                            HeightRequest="{Binding Width, Source={x:Reference btn4}}"
+                                            Text="SPD" TextColor="Aqua"
+                                            CornerRadius="40"
+                                            BorderColor="Aqua"
+                         Grid.Row="0" Grid.Column="3"
+                        
+                                                ></Button>
+
+
+                <Label  Text ="{Binding Data.attack}" VerticalOptions="Center" HorizontalOptions="Center"  TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="0"/>
+                <Label  Text ="{Binding Data.defense}"  VerticalOptions="Center" HorizontalOptions="Center" TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="1"/>
+                <Label  Text ="{Binding Data.rangedDefense}" VerticalOptions="Center" HorizontalOptions="Center"  TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="2"/>
+                <Label  Text ="{Binding Data.speed}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="3"/>
+            </Grid>
+            
+
+        </StackLayout>         
+            
+    </ContentPage.Content>
+</ContentPage>

@@ -84,5 +84,23 @@ namespace PrimeAssault.Services
 
             return datalist;
         }
+
+        public static List<CharacterModel> LoadData(CharacterModel temp)
+        {
+            var datalist = new List<CharacterModel>()
+            {
+                new CharacterModel {
+                    Name = "Harvey",
+                    Description = "A warrior of the people!",
+                },
+
+                new CharacterModel {
+                    Name = "Harvey's Dad",
+                    Description = "Not as successful as his son.",
+                }
+            };
+
+            return datalist;
+        }
     }
 }
