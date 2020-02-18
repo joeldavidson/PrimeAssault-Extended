@@ -35,10 +35,10 @@ namespace Game.Services
                 }
                 return _httpClientInstance;
             }
-            set
-            {
-                _httpClientInstance = _httpClient;
-            }
+            //set
+            //{
+            //    _httpClientInstance = _httpClient;
+            //}
         }
 
         // this instance
@@ -55,14 +55,27 @@ namespace Game.Services
         }
 
         /// <summary>
-        /// Setup the Client
+        /// Set the client
+        /// 
+        /// Used by UT to swap out clients for testing
+        /// 
         /// </summary>
         /// <param name="httpClient"></param>
         /// <returns></returns>
         public HttpClient SetHttpClient(HttpClient httpClient)
         {
-            _httpClient = httpClient;
-            return _httpClient;
+            _httpClientInstance = httpClient;
+            return _httpClientInstance;
+        }
+
+        /// <summary>
+        /// Returns the current client
+        /// </summary>
+        /// <param name="httpClient"></param>
+        /// <returns></returns>
+        public HttpClient GetHttpClient()
+        {
+            return _httpClientInstance;
         }
 
         /// <summary>
@@ -72,6 +85,9 @@ namespace Game.Services
         /// <returns></returns>
         public async Task<string> JsonParseResult(HttpResponseMessage response)
         {
+            JObject json;
+            string data;
+
             if (response == null)
             {
                 return null;
@@ -82,11 +98,7 @@ namespace Game.Services
                 return null;
             }
 
-            var content = await response.Content.ReadAsStringAsync();
-
-            var responseJson = response.Content.ReadAsStringAsync().Result;
-
-            JObject json;
+            var responseJson = await response.Content.ReadAsStringAsync();
 
             // make sure the object is properly formated json
             try
@@ -95,17 +107,12 @@ namespace Game.Services
             }
             catch (Exception)
             {
-                // todo Add Sequence
-                // Jump to restart app sequence 
                 return null;
             }
 
             // Check for error code            
-            if (JsonHelper.GetJsonInteger(json, "error_code") == WebGlobalsModel.ErrorResultCode)
+            if (JsonHelper.GetJsonInteger(json, "errorCode") == WebGlobalsModel.ErrorResultCode)
             {
-                // todo Add Sequence
-                // Jump to Update App Sequence
-
                 var myError = new
                 {
                     ServerError = true,
@@ -123,21 +130,6 @@ namespace Game.Services
                 // invalid returned ID, so return fail
                 return null;
             }
-
-            // Split the Version string
-            var myVersionSplit = versionJsonString.Split('.');
-            if (string.IsNullOrEmpty(myVersionSplit[0]))
-            {
-                var MajorCode = myVersionSplit[0];
-                var MinorCode = myVersionSplit[1];
-                var MajorData = myVersionSplit[2];
-                var MinorData = myVersionSplit[3];
-
-                //Todo Validate on the Version String
-            }
-
-
-            string data;
 
             data = null;
             var tempJsonObject = json["data"].ToString();
@@ -229,19 +221,19 @@ namespace Game.Services
             try
             {
                 response = await _httpClient.GetAsync(RestUrl);
-                if (!response.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode)
                 {
-                    return null;
+                    var data = await JsonParseResult(response);
+                    return data;
                 }
+
+                return null;
             }
             catch (Exception ex)
             {
                 Console.Out.WriteLine(ex.ToString());
                 return null;
             }
-
-            var data = await JsonParseResult(response);
-            return data;
         }
     }
 }
