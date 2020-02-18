@@ -213,4 +213,34 @@
   <ItemGroup>
     <BundleResource Include="Resources\home_background.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\raygun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ringleader_class.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sewer_gator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\soldier_class.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\euphrates_lab.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\garage.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hunter_class.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\mechanic_class.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\mechanist_class.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\brawler_class.png" />
+  </ItemGroup>
 </Project>

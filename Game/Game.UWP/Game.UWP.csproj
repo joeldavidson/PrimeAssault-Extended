@@ -105,14 +105,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="battleboard.jpg" />
+    <Content Include="brawler_class.png" />
     <Content Include="cauldren.png" />
     <Content Include="d12.png" />
     <Content Include="dice_20.png" />
     <Content Include="door.png" />
     <Content Include="dungeon_door.png" />
+    <Content Include="euphrates_lab.jpg" />
     <Content Include="gameover.png" />
+    <Content Include="garage.jpg" />
     <Content Include="grey_door.png" />
     <Content Include="home_background.png" />
+    <Content Include="hunter_class.png" />
     <Content Include="icon_add.png" />
     <Content Include="icon_cancel.png" />
     <Content Include="icon_delete.png" />
@@ -122,6 +126,8 @@
     <Content Include="items.png" />
     <Content Include="knight.png" />
     <Content Include="icon_new.png" />
+    <Content Include="mechanic_class.png" />
+    <Content Include="mechanist_class.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
@@ -150,7 +156,11 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="raygun.png" />
+    <Content Include="ringleader_class.png" />
     <Content Include="score.png" />
+    <Content Include="sewer_gator.png" />
+    <Content Include="soldier_class.png" />
     <Content Include="splashscreen.jpg" />
     <Content Include="troll.png" />
     <Content Include="village.jpg" />
