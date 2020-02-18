@@ -1,6 +1,5 @@
 ﻿using Xamarin.Forms;
 using Game.Views;
-using Game.ViewModels;
 
 namespace Game
 {
@@ -17,8 +16,7 @@ namespace Game
             InitializeComponent();
 
             // Add each model here to warm up and load it.
-            ScoreIndexViewModel.Instance.GetCurrentDataSource();
-            ItemIndexViewModel.Instance.GetCurrentDataSource();
+            Helpers.DataSetsHelper.WarmUp();
 
             // Call the Main Page to open
             MainPage = new MainPage();
