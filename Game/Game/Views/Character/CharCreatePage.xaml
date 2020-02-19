@@ -40,6 +40,7 @@
             <Entry  Text ="{Binding Data.Name}"  Placeholder="Name" FontSize="Small" />
             <Picker x:Name="pick"
             Title="Class"
+            TextColor="DarkGray"
             TitleColor="Aqua">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
@@ -60,11 +61,11 @@
                 <Label HorizontalOptions="Center" VerticalOptions="End" TextColor ="Magenta" Text="RDF" Grid.Row="0" Grid.Column="3"/>
                 <Label HorizontalOptions="Center" VerticalOptions="End" TextColor ="Magenta" Text="SPD" Grid.Row="0" Grid.Column="4"/>
 
-                <Entry  Text ="{Binding Data.level}"  Placeholder="1" FontSize="Small" Keyboard="Numeric" Grid.Row="1" Grid.Column="0"/>
-                <Entry  Text ="{Binding Data.attack}"  Placeholder="10" FontSize="Small" Keyboard="Numeric" Grid.Row="1" Grid.Column="1"/>
-                <Entry  Text ="{Binding Data.defense}"  Placeholder="10" FontSize="Small" Keyboard="Numeric" Grid.Row="1" Grid.Column="2"/>
-                <Entry  Text ="{Binding Data.rangedDefense}"  Placeholder="10" FontSize="Small" Keyboard="Numeric" Grid.Row="1" Grid.Column="3"/>
-                <Entry  Text ="{Binding Data.speed}" Placeholder="10" FontSize="Small" Keyboard="Numeric" Grid.Row="1" Grid.Column="4"/>
+                <Entry  Text ="{Binding Data.Level}"  Placeholder="1" FontSize="Small" Keyboard="Numeric" Grid.Row="1" Grid.Column="0"/>
+                <Entry  Text ="{Binding Data.Attack}"  Placeholder="10" FontSize="Small" Keyboard="Numeric" Grid.Row="1" Grid.Column="1"/>
+                <Entry  Text ="{Binding Data.Defense}"  Placeholder="10" FontSize="Small" Keyboard="Numeric" Grid.Row="1" Grid.Column="2"/>
+                <Entry  Text ="{Binding Data.RangedDefense}"  Placeholder="10" FontSize="Small" Keyboard="Numeric" Grid.Row="1" Grid.Column="3"/>
+                <Entry  Text ="{Binding Data.Speed}" Placeholder="10" FontSize="Small" Keyboard="Numeric" Grid.Row="1" Grid.Column="4"/>
 
             </Grid>
         </StackLayout>
