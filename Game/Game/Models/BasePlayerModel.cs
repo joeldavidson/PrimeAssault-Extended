@@ -40,19 +40,17 @@ namespace PrimeAssault.Models
         #region PlayerAttributes
 
         // Total speed, including level and items
-        public int Speed = 0;
-
+        public int Speed { get; set; } = 0;
         // Level of character or monster
-        public int Level = 0;
-
+        public int Level { get; set; } = 1;
         // The experience points the player has used in sorting ties...
         public int ExperiencePoints = 0;
 
         // Current Health
-        public int CurrentHealth = 0;
+        public int CurrentHealth = 20;
 
         // Max Health
-        public int MaxHealth = 0;
+        public int MaxHealth = 20;
 
         // Total Experience
         public int ExperienceTotal = 0;
@@ -64,7 +62,7 @@ namespace PrimeAssault.Models
         public int Attack { get; set; } = 0;
 
         // The score to be used for defending against ranged attacks
-        public int RangedDefense { get; set; } = 2;
+        public int RangedDefense { get; set; } = 0;
        
         //Multiplier value of current base MaxHealth
         public double HealthMult { get; set; } = 1.0;
