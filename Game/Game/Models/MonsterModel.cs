@@ -13,6 +13,8 @@ namespace PrimeAssault.Models
         const int LVL_MULT = 2;
         const int LVL_EXP = 2;
         public string Ability { get; set; } = "None";
+
+
         public string Move1 { get; set; } = "";
 
         public string Move2 { get; set; } = "";
