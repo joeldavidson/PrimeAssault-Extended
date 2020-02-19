@@ -10,8 +10,8 @@
             <Label Text="Characters..."></Label>
 
             <StackLayout Style="{StaticResource HorizontalStack}">
-                <Image Source="knight.png" Style="{StaticResource ImageMediumStyle}"></Image>
-                <Image Source="knight.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Image Source="ringleader_class.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Image Source="ringleader_class.png" Style="{StaticResource ImageMediumStyle}"></Image>
             </StackLayout>
             
             <Label Text="Monsters..."></Label>

@@ -7,7 +7,7 @@
         <StackLayout Style="{StaticResource VerticalStack}">
             <Label Text="Battle Page..."></Label>
 
-            <Image Source="knight.png" Style="{StaticResource ImageMediumStyle}"></Image>
+            <Image Source="ringleader_class.png" Style="{StaticResource ImageMediumStyle}"></Image>
             <Image Source="Box2.png" Style="{StaticResource ImageMediumStyle}"></Image>
 
             <Button Clicked="AttackButton_Clicked" Text="Attack"></Button>

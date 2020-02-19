@@ -14,7 +14,7 @@
 
                 <StackLayout Style="{StaticResource HorizontalStack}" HorizontalOptions="Center">
                     <Image
-                         Source="knight.png"
+                         Source="ringleader_class.png"
                          Style="{StaticResource ImageLargeStyle}"/>
 
                     <Image
