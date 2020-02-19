@@ -86,9 +86,9 @@ namespace PrimeAssault.Models
         //Ability name of character
         public string Ability { get; set; } = "None";
 
-        public string Move1 { get; set; } = "Crackshot";
+        public string Move1 { get; set; } = "";
 
-        public string Move2 { get; set; } = "Iron Grip";
+        public string Move2 { get; set; } = "";
 
 
         #region moves
