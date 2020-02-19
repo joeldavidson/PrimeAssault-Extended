@@ -196,8 +196,5 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\neonStairs.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\scoreBackground.jpg" />
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
