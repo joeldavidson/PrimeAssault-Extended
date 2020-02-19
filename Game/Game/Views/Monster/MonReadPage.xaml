@@ -49,26 +49,16 @@
                 <Label Text="{Binding Data.Description}" FontSize="Small" HorizontalOptions="Center" TextColor="AntiqueWhite"></Label>
 
             </Frame>
-            <Grid>
-
-                <Label Style="{StaticResource StatsLabel}" Text="Class"  Grid.Row ="0" Grid.Column="0"/>
-                <Label Style="{StaticResource StatsLabel}" Text="{Binding Data.JobClass}"  Grid.Row ="1" Grid.Column="0"/>
-                <Label Style="{StaticResource StatsLabel}" Text="HP"  Grid.Row ="0" Grid.Column="1"/>
-                <StackLayout 
-                        Grid.Row="1"
-                        Grid.Column="1"
+            <Label Style="{StaticResource StatsLabel}" Text="HP"  Grid.Row ="0" Grid.Column="1"/>
+            
+            <StackLayout 
+                      
                         Orientation ="Horizontal" 
                         HorizontalOptions="Center">
-                    <Label Style="{StaticResource StatsLabel}" Text="{Binding Data.CurrentHealth}" ></Label>
-                    <Label Style="{StaticResource StatsLabel}" Text="/" ></Label>
-                    <Label Style="{StaticResource StatsLabel}" Text="{Binding Data.MaxHealth}" ></Label>
-                </StackLayout>
-
-            </Grid>
-
-
-
-
+                <Label Style="{StaticResource StatsLabel}" Text="{Binding Data.CurrentHealth}" ></Label>
+                <Label Style="{StaticResource StatsLabel}" Text="/" ></Label>
+                <Label Style="{StaticResource StatsLabel}" Text="{Binding Data.MaxHealth}" ></Label>
+            </StackLayout>
 
 
 

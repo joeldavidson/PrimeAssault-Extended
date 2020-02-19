@@ -12,7 +12,12 @@ namespace PrimeAssault.Models
         const int BASE_XP = 1;
         const int LVL_MULT = 2;
         const int LVL_EXP = 2;
+        public string Ability { get; set; } = "None";
 
+
+        public string Move1 { get; set; } = "";
+
+        public string Move2 { get; set; } = "";
         //Default monster image
         const string DEFAULT_URI = "sewer_gator.png";
 
@@ -52,6 +57,17 @@ namespace PrimeAssault.Models
         public MonsterModel() : base()
         {
             ImageURI = DEFAULT_URI;
+            Name = "";
+            Description = "";
+            Attack = 5;
+            Defense = 5;
+            CurrentHealth = 20;
+            MaxHealth = 20;
+            RangedDefense = 2;
+            Speed = 2;
+            ImageURI = "sewer_gator.png";
+            Move1 = "Crackshot";
+            Move2 = "Iron Grip";
         }
 
         //Levels up the Monster if they are ready
