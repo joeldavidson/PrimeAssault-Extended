@@ -121,25 +121,25 @@
                                     <!--End of Column 2-->
 
                                     <!--Column 3 inside Row 1-->
-                                    <Label Text="{Binding attack}"
+                                    <Label Text="{Binding Attack}"
                                                 TextColor="Aqua"
                                                     FontSize="Medium"
                                                     Grid.Column="2"
                                                     Grid.Row="0"
                                                VerticalOptions="Center"/>
-                                    <Label Text="{Binding defense}"
+                                    <Label Text="{Binding Defense}"
                                                 TextColor="Aqua"
                                                     FontSize="Medium"
                                                     Grid.Column="2"
                                                     Grid.Row="1"
                                                VerticalOptions="Center"/>
-                                    <Label Text="{Binding rangedDefense}"
+                                    <Label Text="{Binding RangedDefense}"
                                                 TextColor="Aqua"
                                                     FontSize="Medium"
                                                     Grid.Column="2"
                                                     Grid.Row="2"
                                                VerticalOptions="Center"/>
-                                    <Label Text="{Binding speed}"
+                                    <Label Text="{Binding Speed}"
                                                 TextColor="Aqua"
                                                     FontSize="Medium"
                                                     Grid.Column="2"
