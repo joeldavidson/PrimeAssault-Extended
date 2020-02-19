@@ -29,7 +29,7 @@
             <Color x:Key="PrimaryBackgroundColor">#146eb4</Color>//bright blue
             <Color x:Key="SecondaryBackgroundColor">#ff9900</Color>//orange
             <Color x:Key="TriciaryBackgroundColor">#7B1FA2</Color>//purple
-            <Color x:Key="LightBackgroundColor">#b71c1c</Color> //red
+            <Color x:Key="LightBackgroundColor">#ECEFF1</Color> //very light grey
 
             <Color x:Key="PrimaryTextColor">#f2f2f2</Color> //white 
             <Color x:Key="SecondaryTextColor">#f2f2f2</Color> //white
