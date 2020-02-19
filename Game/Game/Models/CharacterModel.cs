@@ -28,7 +28,8 @@ namespace PrimeAssault.Models
             ImageURI = "soldier_class.png";
             Moves[0] = MoveHolder.getMove("Crackshot");
             Moves[1] = MoveHolder.getMove("Iron Grip");
-            
+            Move1 = "Crackshot";
+            Move2 = "Iron Grip";
         }
     }
 }

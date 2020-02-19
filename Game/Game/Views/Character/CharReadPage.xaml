@@ -22,28 +22,52 @@
             ></Image>
 
             <Label Text="{Binding Data.Name}" FontSize="Header" FontAttributes="Bold" HorizontalOptions="Center" TextColor="AntiqueWhite"></Label>
+            <Frame
+                            BorderColor="White"
+                            BackgroundColor="#263238"
+                            Opacity="0.75">
+                <Label Text="{Binding Data.Description}" FontSize="Small" HorizontalOptions="Center" TextColor="AntiqueWhite"></Label>
+          
+              </Frame>
+                <Grid>
 
-            <StackLayout Orientation ="Horizontal" HorizontalOptions="Center">
-                <Label Text="Class: " FontSize="Small" TextColor="AntiqueWhite"></Label>
-                <Label Text="{Binding Data.JobClass}" FontSize="Small" TextColor="AntiqueWhite"></Label>
-            </StackLayout>
+                    <Label Style="{StaticResource StatsLabel}" Text="Class"  Grid.Row ="0" Grid.Column="0"/>
+                    <Label Style="{StaticResource StatsLabel}" Text="{Binding Data.JobClass}"  Grid.Row ="1" Grid.Column="0"/>
+                    <Label Style="{StaticResource StatsLabel}" Text="HP"  Grid.Row ="0" Grid.Column="1"/>
+                    <StackLayout 
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Orientation ="Horizontal" 
+                        HorizontalOptions="Center">
+                        <Label Style="{StaticResource StatsLabel}" Text="{Binding Data.CurrentHealth}" ></Label>
+                        <Label Style="{StaticResource StatsLabel}" Text="/" ></Label>
+                        <Label Style="{StaticResource StatsLabel}" Text="{Binding Data.MaxHealth}" ></Label>
+                    </StackLayout>
 
-            <StackLayout Orientation ="Horizontal" HorizontalOptions="Center">
-                <Label Text="Health: " FontSize="Small" TextColor="AntiqueWhite"></Label>
-                <Label Text="{Binding Data.CurrentHealth}" FontSize="Small" TextColor="AntiqueWhite"></Label>
-                <Label Text="/" TextColor="AntiqueWhite"></Label>
-                <Label Text="{Binding Data.MaxHealth}" FontSize="Small" TextColor="AntiqueWhite"></Label>
-            </StackLayout>
+                </Grid>
 
 
-            <Label Text="{Binding Data.Description}" FontSize="Body" HorizontalOptions="Center" TextColor="AntiqueWhite"></Label>
+
+            
+
+
 
             <StackLayout Orientation ="Horizontal" HorizontalOptions="CenterAndExpand">
                 <Label Text="Ability: " FontSize="Small" TextColor="AntiqueWhite"></Label>
                 <Label Text="{Binding Data.Ability}" FontSize="Small" TextColor="AntiqueWhite"></Label>
             </StackLayout>
 
-            <Frame BackgroundColor="AliceBlue"  
+            <Label
+                Text="Moveset:"
+                TextColor="AntiqueWhite"
+                FontSize="Medium"
+                HorizontalOptions="Center">
+            </Label>
+            <StackLayout
+    Orientation="Horizontal"
+    HorizontalOptions="Center">
+                
+                <Frame BackgroundColor="AliceBlue"  
                    HasShadow="True"
                    CornerRadius="0"
                    Padding="10"
@@ -51,14 +75,14 @@
                    IsVisible="True"  
                    Margin="3"
                    >
-                <Label
+                    <Label
                     Text="{Binding Data.Move1}"
                     TextColor="Black">
 
-                </Label>
+                    </Label>
 
-            </Frame>
-            <Frame BackgroundColor= "AliceBlue" 
+                </Frame>
+                <Frame BackgroundColor= "AliceBlue" 
                    HorizontalOptions="Center"
                    HasShadow="True"
                    CornerRadius="0"
@@ -66,13 +90,14 @@
                    IsVisible="True"  
                    Margin="3"
                    >
-                <Label
+                    <Label
                     Text="{Binding Data.Move2}"
                     TextColor="Black">
-                    
-                </Label>
-               
-            </Frame>
+
+                    </Label>
+
+                </Frame>
+            </StackLayout>
             <Grid>
                 <Button x:Name="btn0"
                         VerticalOptions="Center"
