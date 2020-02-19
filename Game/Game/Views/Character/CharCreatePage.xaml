@@ -40,7 +40,7 @@
             <Image Source="TempProfile.png"></Image>
 
             <Entry  Text ="{Binding Data.Name}"  Placeholder="Name" FontSize="Small" />
-            <Entry  Text ="{Binding Data.Description}"  Placeholder="Description" FontSize="Small" />
+            <Entry  Text ="{Binding Data.Description}"  Placeholder="Description" PlaceholderColor="DarkGray" TextColor="Black" FontSize="Small" />
             <Picker x:Name="pick"
             Title="Class"
             TextColor="DarkGray"

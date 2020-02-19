@@ -38,7 +38,7 @@
             <Image Source="sewer_gator.png" HeightRequest="250" WidthRequest="250"></Image>
 
             <Entry  Text ="{Binding Data.Name}" Placeholder="{Binding Data.Name}" FontSize="Small" />
-            <Editor Text="{Binding Data.Description}"  Placeholder="Monster Description" FontSize="Small" Margin="0" AutoSize="TextChanges" />
+            <Editor Text="{Binding Data.Description}"  Placeholder="Monster Description" TextColor ="Black" PlaceholderColor="DarkGray" FontSize="Small" Margin="0" AutoSize="TextChanges" />
             <Grid>
 
                 <Label Style="{StaticResource StatsLabel}" Text="LVL" Grid.Column="0"/>
