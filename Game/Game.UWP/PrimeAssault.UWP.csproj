@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="battleboard.jpg" />
+    <Content Include="Box2.png" />
     <Content Include="brawler_class.png" />
     <Content Include="cauldren.png" />
     <Content Include="d12.png" />
