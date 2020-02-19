@@ -47,10 +47,12 @@ namespace PrimeAssault.Models
         public int ExperiencePoints = 0;
 
         // Current Health
-        public int CurrentHealth = 20;
+        public int CurrentHealth { get; set; } = 20;
+
 
         // Max Health
-        public int MaxHealth = 20;
+        public int MaxHealth { get; set; } = 20;
+
 
         // Total Experience
         public int ExperienceTotal = 0;
