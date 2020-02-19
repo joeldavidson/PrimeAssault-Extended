@@ -34,6 +34,8 @@
         <StackLayout 
             
             Padding="40,20,40,20">
+
+            <Image Source="{Binding Data.ImageURI}" HeightRequest="150" WidthRequest="150" HorizontalOptions="Center"></Image>
             <Label TextColor="Aqua" HorizontalOptions="Center" FontSize="Header">ANDROID LAB</Label>
             <Image Source="TempProfile.png"></Image>
 
@@ -68,6 +70,8 @@
                 <Entry  Text ="{Binding Data.Speed}" Placeholder="10" FontSize="Small" Keyboard="Numeric" Grid.Row="1" Grid.Column="4"/>
 
             </Grid>
+
+            <Entry  Text ="{Binding Data.Description}"  Placeholder="Description" FontSize="Small" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
