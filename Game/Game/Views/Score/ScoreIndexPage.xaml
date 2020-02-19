@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              x:Name="BrowseItemsPage"
              x:Class="PrimeAssault.Views.ScoreIndexPage"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             BackgroundImageSource="ScoreIndex.jpg">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="AddScore_Clicked" IconImageSource="icon_add.png"/>
@@ -25,13 +26,13 @@
                     ItemSelected="OnItemSelected"
                     HasUnevenRows="true"
                     Margin="5,0,5,0"
-                    RowHeight="80"
+                    RowHeight="100"
                     >
-                
+
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid ColumnSpacing="1" RowSpacing="1">
+                            <Grid Margin="10" BackgroundColor="LightGoldenrodYellow" Opacity="0.50" ColumnSpacing="1" RowSpacing="1">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
@@ -41,23 +42,23 @@
 
                                 <Label Grid.Column="0" Grid.Row="0"
                                        Text="{Binding Name}" 
-                                       Style="{StaticResource ListStyle}"/>
+                                       TextColor="Firebrick"/>
 
                                 <Label Grid.Column="0" Grid.Row="1"
                                        Text="Rounds" 
-                                       Style="{StaticResource ListStyle}"/>
+                                       TextColor="SaddleBrown"/>
 
                                 <Label Grid.Column="1" Grid.Row="1"
                                        Text="{Binding RoundCount}" 
-                                       Style="{StaticResource ListStyle}"/>
+                                       TextColor="Brown"/>
 
                                 <Label Grid.Column="0" Grid.Row="2"
                                        Text="Score" 
-                                       Style="{StaticResource ListStyle}"/>
+                                       TextColor="SaddleBrown"/>
                                 
                                 <Label Grid.Column="1" Grid.Row="2"
                                        Text="{Binding ScoreTotal}" 
-                                       Style="{StaticResource ListStyle}"/>
+                                       TextColor="Brown"/>
 
                             </Grid>
                         </ViewCell>
