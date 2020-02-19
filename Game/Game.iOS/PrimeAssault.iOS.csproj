@@ -247,6 +247,6 @@
     <BundleResource Include="Resources\neonStairs.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Workshop.png" />
+    <BundleResource Include="Resources\scoreBackground.jpg" />
   </ItemGroup>
 </Project>

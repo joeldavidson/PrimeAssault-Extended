@@ -43,7 +43,7 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout Spacing="20" Padding="15,20,15,20">
+        <StackLayout HorizontalOptions="Center" Padding="15,20,15,20">
             <StackLayout 
             Orientation="Horizontal"
                 HorizontalOptions="Center">
