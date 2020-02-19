@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="PrimeAssault.Views.MonReadPage"
-             BackgroundImageSource="workshop.png">
+             BackgroundImageSource="Workshop.png">
 
     <ContentPage.Resources>
         <ResourceDictionary>
