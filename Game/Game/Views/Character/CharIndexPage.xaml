@@ -49,7 +49,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <!--Column 1 inside Row 1-->
-                                    <ImageButton Source="{Binding imageURI}"
+                                    <ImageButton Source="{Binding ImageURI}"
                                                          HorizontalOptions="FillAndExpand"
                                                          VerticalOptions="FillAndExpand"
                                                          Grid.Column="0"

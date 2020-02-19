@@ -16,7 +16,7 @@
         
         <StackLayout Orientation="Vertical" HorizontalOptions="Center">
             
-            <Image Source="{Binding Data.imageURI}"
+            <Image Source="{Binding Data.ImageURI}"
                    HeightRequest="250"
                    WidthRequest="250"
             ></Image>
@@ -62,7 +62,7 @@
                    IsVisible="True"  
                    Margin="3"
                    >
-                <Button Text=""></Button>
+                <Button Text="{Binding Moves[0].Name}"></Button>
 
             </Frame>
             <Grid>
