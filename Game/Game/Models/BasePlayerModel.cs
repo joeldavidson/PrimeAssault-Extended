@@ -21,8 +21,6 @@ namespace PrimeAssault.Models
         // Guid of the original data it links back to the ID, used in PrimeAssault Engine
         public string Guid;
 
-        public string imageURI { get; set; } = "soldier_class.png";
-
         // alive status, !alive will be removed from the list
         public bool Alive = true;
 
@@ -44,18 +42,16 @@ namespace PrimeAssault.Models
         // Level of character or monster
         public int Level { get; set; } = 1;
         // The experience points the player has used in sorting ties...
-        public int ExperiencePoints = 0;
+        public int ExperiencePoints { get; set; } = 0;
 
         // Current Health
         public int CurrentHealth { get; set; } = 20;
 
-
         // Max Health
         public int MaxHealth { get; set; } = 20;
 
-
         // Total Experience
-        public int ExperienceTotal = 0;
+        public int ExperienceTotal { get; set; }= 0;
 
         // The defense score, to be used for defending against physical attacks
         public int Defense { get; set; } = 0;
@@ -81,11 +77,20 @@ namespace PrimeAssault.Models
         //Multiplier value of current base Attack
         public double AttackMult { get; set; } = 1.0;
 
+        //Multiplier for calculating how much EXP is necessary for the next leve
+        public double NextLevelMult { get; set; } = 1.0;
+
+        //The class of the character in question
+        public string JobClass { get; set; } = "soldier";
+
         //Ability name of character
         public string Ability { get; set; } = "None";
 
+        #region moves
         //Array of moves for each character
         public MoveModel[] Moves = new MoveModel[NUM_MOVES];
+
+        #endregion moves
 
         #endregion PlayerAttributes
 
@@ -118,6 +123,7 @@ namespace PrimeAssault.Models
         public BasePlayerModel()
         {
             Guid = Id;
+            ImageURI = "soldier_class.png";
         }
 
         public int GetAttack() { return 0; }
@@ -181,7 +187,111 @@ namespace PrimeAssault.Models
 
         public int CalculateExperienceEarned(int damage) { return 0; }
 
-       
+        //Used to access first move in character
+        public MoveModel GetFirstMove(int index) { return Moves[0]; }
+        //Used to access second move in character
+        public MoveModel GetSecondtMove(int index) { return Moves[1]; }
+
+
+        //Resets all stat multipliers to their flat 1 values
+        void ResetMultipliers()
+        {
+            HealthMult = 1;
+            SpeedMult = 1;
+            DefenseMult = 1;
+            RangedDefenseMult = 1;
+            AttackMult = 1;
+        }
+
+        bool updateClass()//ugly awful class, not maintanable, needs work. So sorry to everyone, just trying to get class up on its feet. Hardcode galore.
+        {
+            if (JobClass == "soldier") //helper class with default values for each class
+            {
+                ResetMultipliers();
+                HealthMult += .2;
+                SpeedMult += -.1;
+                DefenseMult += .3;
+                RangedDefenseMult += -.3;
+                AttackMult += .2;
+                Description = "Soldiers have high health, and defense, and are more likely to get abilities that help with close-range combat.";
+                JobClass = "Soldier"; //only done for formatting purposes, very hacky
+                NextLevelMult = 1.0;
+                ImageURI = "soldier_class.png";
+                return true;
+            }
+            if (JobClass == "hunter")
+            {
+                ResetMultipliers();
+                HealthMult += -.3;
+                SpeedMult += .3;
+                DefenseMult += 0;
+                RangedDefenseMult += .15;
+                AttackMult += .15;
+                Description = "The hunter has high Attack, and Speed and its bonuses usually lend to killing sewer creatures from afar.";
+                JobClass = "Hunter";//only done for formatting purposes, very hacky
+                NextLevelMult = 1.0;
+                ImageURI = "hunter_class.png";
+                return true;
+            }
+            if (JobClass == "brawler")
+            {
+                ResetMultipliers();
+                HealthMult += .5;
+                SpeedMult += -.5;
+                DefenseMult += .15;
+                RangedDefenseMult += .15;
+                AttackMult += .05;
+                Description = "The brawler is a beef-cake with high overall survivability, but no amazing offensive power.";
+                JobClass = "Brawler";//only done for formatting purposes, very hacky
+                NextLevelMult = 1.1;
+                ImageURI = "brawler_class.png";
+                return true;
+            }
+            if (JobClass == "mechanic")
+            {
+                ResetMultipliers();
+                HealthMult += -.2;
+                SpeedMult += .4;
+                DefenseMult += -.2;
+                RangedDefenseMult += .2;
+                AttackMult += -.25;
+                Description = "Mechanic has low overall stats, but all mechanic abilities allow for healing of teammates.";
+                JobClass = "Mechanic";//only done for formatting purposes, very hacky
+                NextLevelMult = 1.2;
+                ImageURI = "mechanic_class.png";
+                return true;
+            }
+            if (JobClass == "mechanist")
+            {
+                ResetMultipliers();
+                HealthMult += 0;
+                SpeedMult += 0;
+                DefenseMult += .1;
+                RangedDefenseMult += .1;
+                AttackMult += .1;
+                Description = "The mechanist has high ranged defense and attack, and its bonuses are good for killing Euphrates mechs.";
+                JobClass = "Mechanist";//only done for formatting purposes, very hacky
+                NextLevelMult = 1.1;
+                ImageURI = "mechanist_class.png";
+                return true;
+            }
+            if (JobClass == "ringleader")
+            {
+                ResetMultipliers();
+                HealthMult += -.1;
+                SpeedMult += -.1;
+                DefenseMult += -.1;
+                RangedDefenseMult += -.1;
+                AttackMult += -.1;
+                Description = "A ringleader has low base stats, but compensates for this through its ability to channel 10 rings to great possible effect.";
+                JobClass = "Ringleader";
+                NextLevelMult = 1.3;
+                ImageURI = "ringleader_class.png";
+                return true;
+            }
+            return false;
+        }
+
         #region Items
         // Get the Item at a known string location (head, foot etc.)
         public ItemModel GetItem(string itemString)
