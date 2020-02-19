@@ -52,6 +52,9 @@ namespace PrimeAssault.Services
             return GetDataConnection();
         });
 
+        /// <summary>
+        /// Connection method for sql
+        /// </summary>
         public static SQLiteAsyncConnection GetDataConnection()
         {
             if (TestMode)
@@ -62,7 +65,13 @@ namespace PrimeAssault.Services
             return new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
         }
 
+        /// <summary>
+        /// Bool for testing
+        /// </summary>
         public static bool TestMode = false;
+        /// <summary>
+        /// Force exception on number set to default of -1
+        /// </summary>
         public int ForceExceptionOnNumber = -1;
 
         // Lazy Connection
