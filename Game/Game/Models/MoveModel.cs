@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PrimeAssault.Models
 {
-    class MoveModel : BaseModel<MoveModel>
+    public class MoveModel : BaseModel<MoveModel>
     {
         public int attack { get; set; } = 1;
 
@@ -14,9 +14,7 @@ namespace PrimeAssault.Models
         {
             Name = "Hard Knuckles";
             Description = "An extra powerful punch.";
+            ImageURI = "default_melee.png";
         }
-
-
-
     }
 }

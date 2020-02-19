@@ -74,6 +74,7 @@ namespace PrimeAssault.Models
         public double AttackMult { get; set; } = 1.0;
 
         public string Ability { get; set; } = "None";
+
         #endregion PlayerAttributes
 
         #region Items

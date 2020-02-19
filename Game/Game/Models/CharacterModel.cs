@@ -17,9 +17,10 @@ namespace PrimeAssault.Models
         {
             PlayerType = PlayerTypeEnum.Character;
             Guid = Id;
-            Name = "Elf";
-            Description = "Happy Elf";
+            Name = "Boomer";
+            Description = "Is bad to the bone!";
             Attack = 100;
+            ImageURI = "soldier_class.png";
         }
     }
 }

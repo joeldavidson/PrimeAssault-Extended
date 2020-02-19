@@ -12,5 +12,6 @@ namespace PrimeAssault.Models
         //Physical attack
         Iron_Grip = 1,
 
+
     }
 }
