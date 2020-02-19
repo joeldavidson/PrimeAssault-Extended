@@ -17,8 +17,11 @@ namespace PrimeAssault.ViewModels
 
         // Make this a singleton so it only exist one time because holds all the data records in memory
         private static volatile CharIndexViewModel instance;
+
+        //sync root object
         private static readonly object syncRoot = new Object();
 
+        //The instance of the index view
         public static CharIndexViewModel Instance
         {
             get
