@@ -80,8 +80,10 @@ namespace PrimeAssault.Models
 
         //Multiplier value of current base Attack
         public double AttackMult { get; set; } = 1.0;
+
         //Ability name of character
         public string Ability { get; set; } = "None";
+
         //Array of moves for each character
         public MoveModel[] Moves = new MoveModel[NUM_MOVES];
 

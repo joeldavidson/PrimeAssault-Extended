@@ -1,11 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using PrimeAssault.Models;
 
 namespace PrimeAssault.Services
 {
     public static class AbilityHolder
     {
+        public static class CharacterAbilityHolder
+        {
+            public static List<AbilityModel> AbilityList = new List<AbilityModel>()
+            {
+                 new AbilityModel
+                 {
+                    Name = "Crocodile Hunter",
+                    Description = "You know your way around them beasties! Crikey! +30% damage against sewer creatures..",
+                    EffectValue = .3,
+                    Faction = "player",
+                    CharacterAffected = "self",
 
+                 },
+                new AbilityModel
+                {
+                    Name = "X-Ray vision",
+                    Description = "Whether up close or far away, you can find the hidden chinks in Euphrates armor. +30% damage against all mechs.",
+                    EffectValue = .3,
+                    Faction = "player",
+                    
+                    
+
+                  
+                }
+            };
+
+            public static AbilityModel getMove(string name)
+            {
+                //Predicate for seeing if move exists
+                Predicate<AbilityModel> nameFinder = (AbilityModel p) => { return p.Name == name; };
+                if (AbilityList.Exists(nameFinder))
+                    return (AbilityList.Find(nameFinder));
+                return null;
+            }
+        }
     }
 }
