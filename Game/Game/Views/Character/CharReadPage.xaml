@@ -16,7 +16,7 @@
         
         <StackLayout Orientation="Vertical" HorizontalOptions="Center">
             
-            <Image Source="{Binding Data.imageURI}"
+            <Image Source="{Binding Data.ImageURI}"
                    HeightRequest="250"
                    WidthRequest="250"
             ></Image>
@@ -51,7 +51,11 @@
                    IsVisible="True"  
                    Margin="3"
                    >
-                <Button Text="{Binding Data.Moves[0]}"></Button>
+                <Label
+                    Text="{Binding Data.Move1}"
+                    TextColor="Black">
+
+                </Label>
 
             </Frame>
             <Frame BackgroundColor= "AliceBlue" 
@@ -62,8 +66,12 @@
                    IsVisible="True"  
                    Margin="3"
                    >
-                <Button Text="{Binding Data.Moves[1]}"></Button>
-
+                <Label
+                    Text="{Binding Data.Move2}"
+                    TextColor="Black">
+                    
+                </Label>
+               
             </Frame>
             <Grid>
                 <Button x:Name="btn0"
