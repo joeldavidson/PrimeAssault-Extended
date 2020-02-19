@@ -40,6 +40,7 @@
             <Image Source="TempProfile.png"></Image>
 
             <Entry  Text ="{Binding Data.Name}"  Placeholder="Name" FontSize="Small" />
+            <Entry  Text ="{Binding Data.Description}"  Placeholder="Description" FontSize="Small" />
             <Picker x:Name="pick"
             Title="Class"
             TextColor="DarkGray"
@@ -71,7 +72,6 @@
 
             </Grid>
 
-            <Entry  Text ="{Binding Data.Description}"  Placeholder="Description" FontSize="Small" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
