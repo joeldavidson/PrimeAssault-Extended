@@ -18,7 +18,7 @@ namespace PrimeAssault.Models
             PlayerType = PlayerTypeEnum.Character;
             Guid = Id;
             Name = "Boomer";
-            Description = "Is bad to the bone!";
+            Description = "The day just doesn't end!";
             Attack = 100;
             ImageURI = "soldier_class.png";
         }
