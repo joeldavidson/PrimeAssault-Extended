@@ -22,18 +22,18 @@
                 Dark
                 -->
 
-            <Color x:Key="PageBackgroundColor">#D9C6B0</Color>
-            <Color x:Key="ViewBackgroundColor">#BF895A</Color>
-            <Color x:Key="NavigationBarColor">#D9C6B0</Color>
+            <Color x:Key="PageBackgroundColor">#253444</Color> //dark blue
+            <Color x:Key="ViewBackgroundColor">#2F3D44</Color> //dark blue grey
+            <Color x:Key="NavigationBarColor">#212121</Color>//black
 
-            <Color x:Key="PrimaryBackgroundColor">#D9C6B0</Color>
-            <Color x:Key="SecondaryBackgroundColor">#BF895A</Color>
-            <Color x:Key="TriciaryBackgroundColor">#733612</Color>
-            <Color x:Key="LightBackgroundColor">Bisque</Color>
+            <Color x:Key="PrimaryBackgroundColor">#146eb4</Color>//bright blue
+            <Color x:Key="SecondaryBackgroundColor">#ff9900</Color>//orange
+            <Color x:Key="TriciaryBackgroundColor">#7B1FA2</Color>//purple
+            <Color x:Key="LightBackgroundColor">#b71c1c</Color> //red
 
-            <Color x:Key="PrimaryTextColor">#400D01</Color>
-            <Color x:Key="SecondaryTextColor">#8C3D20</Color>
-            <Color x:Key="TriciaryTextColor">#733612</Color>
+            <Color x:Key="PrimaryTextColor">#f2f2f2</Color> //white 
+            <Color x:Key="SecondaryTextColor">#f2f2f2</Color> //white
+            <Color x:Key="TriciaryTextColor">#f2f2f2</Color> //white
 
             <Color x:Key="TransparentColor">Transparent</Color>
 
