@@ -243,4 +243,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\brawler_class.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\neonStairs.jpg" />
+  </ItemGroup>
 </Project>
