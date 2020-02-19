@@ -31,75 +31,157 @@
         <ToolbarItem Text="Update" Clicked="Update_Clicked" IconImageSource="icon_edit.png"/>
         <ToolbarItem Text="Delete" Clicked="Delete_Clicked" IconImageSource="icon_delete.png"/>
     </ContentPage.ToolbarItems>
-    
+
     <ContentPage.Content>
-        
+
         <StackLayout Orientation="Vertical" HorizontalOptions="Center">
-            
-            
 
-            <Label Text="{Binding Data.Name}" FontSize="Header" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="AntiqueWhite"></Label>
-
-            <StackLayout Orientation ="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Label Text="Class: " FontSize="Small" TextColor="AntiqueWhite"></Label>
-                <Label Text="{Binding Data.jobClass}" FontSize="Small" TextColor="AntiqueWhite"></Label>
-                <Label Text="Health: " FontSize="Small" TextColor="AntiqueWhite"></Label>
-                <Label Text="{Binding Data.health}" FontSize="Small" TextColor="AntiqueWhite"></Label>
-                <Label Text="/" TextColor="AntiqueWhite"></Label>
-                <Label Text="{Binding Data.maxHealth}" FontSize="Small" TextColor="AntiqueWhite"></Label>
-            </StackLayout>
-
-
-            <Label Text="{Binding Data.Description}" FontSize="Body" HorizontalTextAlignment="Center" TextColor="AntiqueWhite"></Label>
-
-            <StackLayout Orientation ="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Label Text="Ability: " FontSize="Small" TextColor="AntiqueWhite"></Label>
-                <Label Text="{Binding Data.ability}" FontSize="Small" TextColor="AntiqueWhite"></Label>
-            </StackLayout>
-            
-            <Image Source="{Binding Data.imageURI}"
+            <Image Source="{Binding Data.ImageURI}"
                    HeightRequest="250"
                    WidthRequest="250"
             ></Image>
-            
-            <Frame BackgroundColor="AliceBlue"  
-                   HasShadow="True"
-                   CornerRadius="0"
-                   Padding="10"
-                   HorizontalOptions="Center"
-                   IsVisible="True"  
-                   Margin="3"
-                   >
-                <Button Text="Move1"></Button>
 
-            </Frame>
-            <Frame BackgroundColor= "AliceBlue" 
-                   HorizontalOptions="Center"
-                   HasShadow="True"
-                   CornerRadius="0"
-                   Padding="10"
-                   IsVisible="True"  
-                   Margin="3"
-                   >
-                <Button Text="Move2"></Button>
+            <Label Text="{Binding Data.Name}" FontSize="Header" FontAttributes="Bold" HorizontalOptions="Center" TextColor="AntiqueWhite"></Label>
+            <Frame
+                            BorderColor="White"
+                            BackgroundColor="#263238"
+                            Opacity="0.75">
+                <Label Text="{Binding Data.Description}" FontSize="Small" HorizontalOptions="Center" TextColor="AntiqueWhite"></Label>
 
             </Frame>
             <Grid>
-                <Label Style="{StaticResource StatsLabel}" Text="LVL" Grid.Column="0"/>
-                <Label Style="{StaticResource StatsLabel}" Text="ATK"  Grid.Column="1"/>
-                <Label Style="{StaticResource StatsLabel}" Text ="DEF" Grid.Column="2"/>
-                <Label Style="{StaticResource StatsLabel}" Text="RDF" Grid.Column="3"/>
-                <Label Style="{StaticResource StatsLabel}" Text="SPD" Grid.Column="4"/>
-               
-                <Label Style="{StaticResource StatsNumLabel}"  Text ="{Binding Data.level}" Grid.Column="0"/>
-                <Label Style="{StaticResource StatsNumLabel}"  Text ="{Binding Data.attack}" Grid.Column="1"/>
-                <Label Style="{StaticResource StatsNumLabel}" Text ="{Binding Data.defense}"  Grid.Column="2"/>
-                <Label Style="{StaticResource StatsNumLabel}" Text ="{Binding Data.rangedDefense}" Grid.Column="3"/>
-                <Label Style="{StaticResource StatsNumLabel}" Text ="{Binding Data.speed}" Grid.Column="4"/>
-            </Grid>
-            
 
-        </StackLayout>         
-            
+                <Label Style="{StaticResource StatsLabel}" Text="Class"  Grid.Row ="0" Grid.Column="0"/>
+                <Label Style="{StaticResource StatsLabel}" Text="{Binding Data.JobClass}"  Grid.Row ="1" Grid.Column="0"/>
+                <Label Style="{StaticResource StatsLabel}" Text="HP"  Grid.Row ="0" Grid.Column="1"/>
+                <StackLayout 
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Orientation ="Horizontal" 
+                        HorizontalOptions="Center">
+                    <Label Style="{StaticResource StatsLabel}" Text="{Binding Data.CurrentHealth}" ></Label>
+                    <Label Style="{StaticResource StatsLabel}" Text="/" ></Label>
+                    <Label Style="{StaticResource StatsLabel}" Text="{Binding Data.MaxHealth}" ></Label>
+                </StackLayout>
+
+            </Grid>
+
+
+
+
+
+
+
+            <StackLayout Orientation ="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Ability: " FontSize="Small" TextColor="AntiqueWhite"></Label>
+                <Label Text="{Binding Data.Ability}" FontSize="Small" TextColor="AntiqueWhite"></Label>
+            </StackLayout>
+
+            <Label
+                Text="Moveset:"
+                TextColor="AntiqueWhite"
+                FontSize="Medium"
+                HorizontalOptions="Center">
+            </Label>
+            <StackLayout
+    Orientation="Horizontal"
+    HorizontalOptions="Center">
+
+                <Frame BackgroundColor="AliceBlue"  
+                   HasShadow="True"
+                   CornerRadius="0"
+                   Padding="10"
+                   HorizontalOptions="Center"
+                   IsVisible="True"  
+                   Margin="3"
+                   >
+                    <Label
+                    Text="{Binding Data.Move1}"
+                    TextColor="Black">
+
+                    </Label>
+
+                </Frame>
+                <Frame BackgroundColor= "AliceBlue" 
+                   HorizontalOptions="Center"
+                   HasShadow="True"
+                   CornerRadius="0"
+                   Padding="10"
+                   IsVisible="True"  
+                   Margin="3"
+                   >
+                    <Label
+                    Text="{Binding Data.Move2}"
+                    TextColor="Black">
+
+                    </Label>
+
+                </Frame>
+            </StackLayout>
+            <Grid>
+                <Button x:Name="btn0"
+                        VerticalOptions="Center"
+                                            HorizontalOptions="Center"
+                                            HeightRequest="{Binding Width, Source={x:Reference btn1}}"
+                                            Text="LVL" TextColor="Aqua"
+                                            CornerRadius="40"
+                                            BorderColor="Aqua"
+                         BackgroundColor="#4D3f035f"
+                         Grid.Row="0" Grid.Column="0"
+                                                >
+                </Button>
+
+                <Button x:Name="btn1"
+                        VerticalOptions="Center"
+                                            HorizontalOptions="Center"
+                                            HeightRequest="{Binding Width, Source={x:Reference btn1}}"
+                                            Text="ATK" TextColor="Aqua"
+                                            CornerRadius="40"
+                                            BorderColor="Aqua"
+                         BackgroundColor="#4D3f035f"
+                         Grid.Row="0" Grid.Column="1"
+                                                >
+                </Button>
+                <Button x:Name="btn2"
+                        VerticalOptions="Center"
+                                            HorizontalOptions="Center"
+                                            HeightRequest="{Binding Width, Source={x:Reference btn2}}"
+                                            Text="DEF" TextColor="Aqua"
+                                            CornerRadius="40"
+                                            BorderColor="Aqua"
+                         BackgroundColor="#4D3f035f"
+                         Grid.Row="0" Grid.Column="2"
+                                                ></Button>
+                <Button x:Name="btn3"
+                        VerticalOptions="Center"
+                                            HorizontalOptions="Center"
+                                            HeightRequest="{Binding Width, Source={x:Reference btn1}}"
+                                            Text="RNG" 
+                                            TextColor="Aqua"
+                                            CornerRadius="40"
+                                            BorderColor="Aqua"
+                         BackgroundColor="#4D3f035f"
+                         Grid.Row="0" Grid.Column="3"
+                                                ></Button>
+                <Button x:Name="btn4"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Center"
+                                            HeightRequest="{Binding Width, Source={x:Reference btn4}}"
+                                            Text="SPD" TextColor="Aqua"
+                                            CornerRadius="40"
+                                            BorderColor="Aqua"
+                         BackgroundColor="#4D3f035f"
+                         Grid.Row="0" Grid.Column="4"
+                                                ></Button>
+
+                <Label  Text ="{Binding Data.Level}" VerticalOptions="Center" HorizontalOptions="Center"  TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="0"/>
+                <Label  Text ="{Binding Data.Attack}" VerticalOptions="Center" HorizontalOptions="Center"  TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="1"/>
+                <Label  Text ="{Binding Data.Defense}"  VerticalOptions="Center" HorizontalOptions="Center" TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="2"/>
+                <Label  Text ="{Binding Data.RangedDefense}" VerticalOptions="Center" HorizontalOptions="Center"  TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="3"/>
+                <Label  Text ="{Binding Data.Speed}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="4"/>
+            </Grid>
+
+        </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>
