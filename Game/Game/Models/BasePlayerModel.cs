@@ -1,6 +1,6 @@
 ﻿using PrimeAssault.ViewModels;
 using System.Collections.Generic;
-
+using PrimeAssault.Services;
 namespace PrimeAssault.Models
 {
     /// <summary>
@@ -9,9 +9,15 @@ namespace PrimeAssault.Models
     /// <typeparam name="T"></typeparam>
     public class BasePlayerModel<T> : BaseModel<T>
     {
+
+
         #region Attributes
 
         #region PrimeAssaultEngineAttributes
+
+        //Size of character's move set
+        const int NUM_MOVES = 2;
+
         // Guid of the original data it links back to the ID, used in PrimeAssault Engine
         public string Guid;
 
@@ -72,8 +78,10 @@ namespace PrimeAssault.Models
 
         //Multiplier value of current base Attack
         public double AttackMult { get; set; } = 1.0;
-
+        //Ability name of character
         public string Ability { get; set; } = "None";
+        //Array of moves for each character
+        public MoveModel[] Moves = new MoveModel[NUM_MOVES];
 
         #endregion PlayerAttributes
 

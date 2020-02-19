@@ -4,9 +4,9 @@ using PrimeAssault.Models;
 
 namespace PrimeAssault.Services
 {
-    public class MoveHolder
+    public static class MoveHolder
     {
-        public List<MoveModel> MoveList = new List<MoveModel>()
+        public static List<MoveModel> MoveList = new List<MoveModel>()
             {
                 new MoveModel {
                     Name = "Crackshot",
@@ -24,5 +24,14 @@ namespace PrimeAssault.Services
 
 
             };
+
+        public static MoveModel getMove(string name)
+        {
+            //Predicated for seeing if move exists
+            Predicate<MoveModel> nameFinder = (MoveModel p) => { return p.Name == name; };
+            if (MoveList.Exists(nameFinder))
+                return (MoveList.Find(nameFinder));
+            return null;
+        }
     }
 }
