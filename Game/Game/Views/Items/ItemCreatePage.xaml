@@ -54,7 +54,7 @@
                     HorizontalOptions="Center">
 
                     <Entry Text="{Binding Data.Name}" Placeholder="Item name" FontSize="Small" WidthRequest="300"/>
-                    <Editor Text="{Binding Data.Description}" TextColor="#212121" Placeholder ="Item description" FontSize="Small" Margin="0" AutoSize="TextChanges" WidthRequest="300"/>
+                    <Editor Text="{Binding Data.Description}" TextColor="#212121" Placeholder ="Item description" PlaceholderColor="#90A4AE" FontSize="Small" Margin="0" AutoSize="TextChanges" WidthRequest="300"/>
                     <Label HorizontalOptions ="Center" Text="Value" TextColor="AntiqueWhite" FontSize="Medium" />
                     <Frame
                             BorderColor="White"
@@ -100,8 +100,8 @@
                     <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.rangedDefenseMult}" Grid.Row="4" Grid.Column="3"/>
                     <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.speedMult}" Grid.Row="4" Grid.Column="4"/>
 
-                    <Label Style="{StaticResource Properties}" Text="Ranged?"  Grid.Row ="5" Grid.Column="0"/>
-                    <CheckBox IsChecked="true" Grid.Row ="5" Grid.Column="1"/>
+                    <Label Style="{StaticResource Properties}" Text="Range"  Grid.Row ="5" Grid.Column="0"/>
+                    <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.range}" Grid.Row="5" Grid.Column="1"/>
 
 
 
