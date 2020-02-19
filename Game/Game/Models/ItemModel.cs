@@ -33,8 +33,6 @@ namespace PrimeAssault.Models
         // The Value item modifies.  So a ring of Health +3, has a Value of 3
         public int Value { get; set; } = 0;
 
-        public string imageURI { get; set; } = "raygun.png";
-
         //// Count of how many
         //public int Count { get; set; } = 1;
 
