@@ -164,6 +164,7 @@
     <Content Include="ScoreCreate.jpg" />
     <Content Include="ScoreDelete.jpg" />
     <Content Include="ScoreIndex.jpg" />
+    <Content Include="ScoreRead.jpg" />
     <Content Include="ScoreUpdate.jpg" />
     <Content Include="sewer_gator.png" />
     <Content Include="soldier_class.png" />
