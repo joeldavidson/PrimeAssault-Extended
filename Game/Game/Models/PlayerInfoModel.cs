@@ -10,6 +10,9 @@ namespace PrimeAssault.Models
     /// </summary>
     public class PlayerInfoModel : BasePlayerModel<PlayerInfoModel>
     {
+        public string imageURI { get; set; } = "knight.png";
+
+
         /// <summary>
         /// Default Constructor
         /// </summary>
