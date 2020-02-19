@@ -1,4 +1,4 @@
-﻿
+﻿using PrimeAssault.Services;
 namespace PrimeAssault.Models
 {
     /// <summary>
@@ -21,6 +21,9 @@ namespace PrimeAssault.Models
             Description = "The day just doesn't end!";
             Attack = 100;
             ImageURI = "soldier_class.png";
+            Moves[0] = MoveHolder.getMove("Crackshot");
+            Moves[1] = MoveHolder.getMove("Crackshot");
+
         }
     }
 }
