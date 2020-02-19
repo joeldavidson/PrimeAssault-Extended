@@ -17,12 +17,12 @@
             <Label Text="Monsters..."></Label>
 
             <StackLayout Style="{StaticResource HorizontalStack}">
-                <Image Source="troll.png" Style="{StaticResource ImageMediumStyle}"></Image>
-                <Image Source="troll.png" Style="{StaticResource ImageMediumStyle}"></Image>
-                <Image Source="troll.png" Style="{StaticResource ImageMediumStyle}"></Image>
-                <Image Source="troll.png" Style="{StaticResource ImageMediumStyle}"></Image>
-                <Image Source="troll.png" Style="{StaticResource ImageMediumStyle}"></Image>
-                <Image Source="troll.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Image Source="Box2.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Image Source="Box2.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Image Source="Box2.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Image Source="Box2.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Image Source="Box2.png" Style="{StaticResource ImageMediumStyle}"></Image>
+                <Image Source="Box2.png" Style="{StaticResource ImageMediumStyle}"></Image>
             </StackLayout>
 
             <Button Clicked="BeginButton_Clicked" Text="Begin"></Button>

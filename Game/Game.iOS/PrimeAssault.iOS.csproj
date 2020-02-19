@@ -261,4 +261,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\ScoreRead.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Box2.png" />
+  </ItemGroup>
 </Project>

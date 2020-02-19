@@ -18,7 +18,7 @@
                          Style="{StaticResource ImageLargeStyle}"/>
 
                     <Image
-                         Source="troll.png"
+                         Source="Box2.png"
                          Style="{StaticResource ImageLargeStyle}"/>
                 
                 </StackLayout>
