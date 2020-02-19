@@ -61,8 +61,13 @@
                 Text="Moveset:"
                 TextColor="AntiqueWhite"
                 FontSize="Medium"
-                HorizontalOptions="Center"></Label>
-            <Frame BackgroundColor="AliceBlue"  
+                HorizontalOptions="Center">
+            </Label>
+            <StackLayout
+    Orientation="Horizontal"
+    HorizontalOptions="Center">
+                
+                <Frame BackgroundColor="AliceBlue"  
                    HasShadow="True"
                    CornerRadius="0"
                    Padding="10"
@@ -70,14 +75,14 @@
                    IsVisible="True"  
                    Margin="3"
                    >
-                <Label
+                    <Label
                     Text="{Binding Data.Move1}"
                     TextColor="Black">
 
-                </Label>
+                    </Label>
 
-            </Frame>
-            <Frame BackgroundColor= "AliceBlue" 
+                </Frame>
+                <Frame BackgroundColor= "AliceBlue" 
                    HorizontalOptions="Center"
                    HasShadow="True"
                    CornerRadius="0"
@@ -85,13 +90,14 @@
                    IsVisible="True"  
                    Margin="3"
                    >
-                <Label
+                    <Label
                     Text="{Binding Data.Move2}"
                     TextColor="Black">
-                    
-                </Label>
-               
-            </Frame>
+
+                    </Label>
+
+                </Frame>
+            </StackLayout>
             <Grid>
                 <Button x:Name="btn0"
                         VerticalOptions="Center"
