@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="PrimeAssault.Views.ScoreReadPage"
              Title="{Binding Title}"
-             BackgroundImageSource="scoreBackground.jpg">
+             BackgroundImageSource="ScoreRead.jpg">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Update" Clicked="Update_Clicked" IconImageSource="icon_edit.png"/>
@@ -17,9 +17,8 @@
             Spacing="20" Padding="15,20,15,20">
 
         <Frame
-                BorderColor="White"
-                BackgroundColor="Aqua"
-                Opacity="0.70"
+                BackgroundColor="#33f4a460"
+            Opacity=".80"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
                 >
@@ -36,6 +35,7 @@
 
                     <StackLayout Style="{StaticResource HorizontalStack}">
                         <Label 
+                            Opacity="2"
                    Text="Name : " 
                     Style="{StaticResource LabelStyle}"/>
                         <Label 
@@ -82,26 +82,17 @@
                     Style="{StaticResource ValueStyle}"/>
                     </StackLayout>
 
-                    <StackLayout Style="{StaticResource HorizontalStack}">
-                        <Label 
+                        <StackLayout Style="{StaticResource HorizontalStack}">
+                            <Label 
                     Text="Number of Turns:"  
                     Style="{StaticResource LabelStyle}"/>
 
-                        <Label 
+                            <Label 
                     Text="{Binding Data.TurnCount}"
                     Style="{StaticResource ValueStyle}"/>
-                    </StackLayout>
+                        </StackLayout>
 
-                    <StackLayout Style="{StaticResource HorizontalStack}">
-                        <Label 
-                    Text="Number of Monsters Slain:"
-                    Style="{StaticResource LabelStyle}"/>
-                        <Label 
-                    Text="{Binding Data.MonsterSlainNumber}"
-                    Style="{StaticResource ValueStyle}"/>
-                    </StackLayout>
-
-                    <StackLayout Style="{StaticResource HorizontalStack}">
+                        <StackLayout Style="{StaticResource HorizontalStack}">
                         <Label 
                     Text="Total Experience Gained:"
                     Style="{StaticResource LabelStyle}"/>
@@ -111,7 +102,16 @@
                     Style="{StaticResource ValueStyle}"/>
                     </StackLayout>
 
-                    <Label 
+                        <StackLayout Style="{StaticResource HorizontalStack}">
+                            <Label 
+                    Text="Number of Monsters Slain:"
+                    Style="{StaticResource LabelStyle}"/>
+                            <Label 
+                    Text="{Binding Data.MonsterSlainNumber}"
+                    Style="{StaticResource ValueStyle}"/>
+                        </StackLayout>
+
+                        <Label 
                 Text="Characters at Death:"
                 Style="{StaticResource LabelStyle}"/>
                     <Label 

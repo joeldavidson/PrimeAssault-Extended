@@ -258,4 +258,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\ScoreUpdate.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ScoreRead.jpg" />
+  </ItemGroup>
 </Project>

@@ -10,7 +10,7 @@ namespace PrimeAssault.Views
     [DesignTimeVisible(false)]
     public partial class MonReadPage : ContentPage
     {
-
+        // The view model, used for data binding
         MonsterViewModel viewModel;
 
         /// <summary>

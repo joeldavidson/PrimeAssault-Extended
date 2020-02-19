@@ -14,7 +14,7 @@ namespace PrimeAssault.Views
     {
         // View Model for Score
         public readonly GenericViewModel<ScoreModel> ViewModel;
-
+        //Constructor for unit testing
         public ScoreReadPage(bool UnitTest) { }
 
         /// <summary>

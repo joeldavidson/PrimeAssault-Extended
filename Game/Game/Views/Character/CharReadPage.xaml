@@ -25,11 +25,11 @@
 
             <StackLayout Orientation ="Horizontal" HorizontalOptions="CenterAndExpand">
                 <Label Text="Class: " FontSize="Small" TextColor="AntiqueWhite"></Label>
-                <Label Text="{Binding Data.jobClass}" FontSize="Small" TextColor="AntiqueWhite"></Label>
+                <Label Text="{Binding Data.JobClass}" FontSize="Small" TextColor="AntiqueWhite"></Label>
                 <Label Text="Health: " FontSize="Small" TextColor="AntiqueWhite"></Label>
-                <Label Text="{Binding Data.health}" FontSize="Small" TextColor="AntiqueWhite"></Label>
+                <Label Text="{Binding Data.CurrentHealth}" FontSize="Small" TextColor="AntiqueWhite"></Label>
                 <Label Text="/" TextColor="AntiqueWhite"></Label>
-                <Label Text="{Binding Data.maxHealth}" FontSize="Small" TextColor="AntiqueWhite"></Label>
+                <Label Text="{Binding Data.MaxHealth}" FontSize="Small" TextColor="AntiqueWhite"></Label>
             </StackLayout>
 
 
@@ -37,7 +37,7 @@
 
             <StackLayout Orientation ="Horizontal" HorizontalOptions="CenterAndExpand">
                 <Label Text="Ability: " FontSize="Small" TextColor="AntiqueWhite"></Label>
-                <Label Text="{Binding Data.ability}" FontSize="Small" TextColor="AntiqueWhite"></Label>
+                <Label Text="{Binding Data.Ability}" FontSize="Small" TextColor="AntiqueWhite"></Label>
             </StackLayout>
 
             <Frame BackgroundColor="AliceBlue"  
@@ -48,7 +48,7 @@
                    IsVisible="True"  
                    Margin="3"
                    >
-                <Button Text="Move1"></Button>
+                <Button Text="{Binding Data.Moves[0]}"></Button>
 
             </Frame>
             <Frame BackgroundColor= "AliceBlue" 
@@ -59,7 +59,7 @@
                    IsVisible="True"  
                    Margin="3"
                    >
-                <Button Text="Move2"></Button>
+                <Button Text="{Binding Data.Moves[1]}"></Button>
 
             </Frame>
             <Grid>
@@ -105,10 +105,10 @@
                                                 ></Button>
 
 
-                <Label  Text ="{Binding Data.attack}" VerticalOptions="Center" HorizontalOptions="Center"  TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="0"/>
-                <Label  Text ="{Binding Data.defense}"  VerticalOptions="Center" HorizontalOptions="Center" TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="1"/>
-                <Label  Text ="{Binding Data.rangedDefense}" VerticalOptions="Center" HorizontalOptions="Center"  TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="2"/>
-                <Label  Text ="{Binding Data.speed}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="3"/>
+                <Label  Text ="{Binding Data.Attack}" VerticalOptions="Center" HorizontalOptions="Center"  TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="0"/>
+                <Label  Text ="{Binding Data.Defense}"  VerticalOptions="Center" HorizontalOptions="Center" TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="1"/>
+                <Label  Text ="{Binding Data.RangedDefense}" VerticalOptions="Center" HorizontalOptions="Center"  TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="2"/>
+                <Label  Text ="{Binding Data.Speed}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="3"/>
             </Grid>
             
 

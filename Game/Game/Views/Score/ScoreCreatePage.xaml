@@ -8,7 +8,8 @@
              xmlns:local_helpers="clr-namespace:PrimeAssault.Helpers"
              xmlns:local_enum="clr-namespace:PrimeAssault.Models"
              x:Class="PrimeAssault.Views.ScoreCreatePage"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             BackgroundImageSource="ScoreCreate.jpg">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png"/>
@@ -44,10 +45,12 @@
                     <Label Grid.Row="0" Grid.Column="0"
                         Text="Name" 
                         Style="{StaticResource LabelStyle}"/>
-                    
+
                     <Entry Grid.Row="0" Grid.Column="1"
                         Text="{Binding Data.Name}" 
-                        Style="{StaticResource EntryStyle}"/>
+                        Style="{StaticResource EntryStyle}"
+                                 TextColor="DarkGreen"
+                           Opacity=".50"/>
 
                     <Label Grid.Row="1" Grid.Column="0"
                         Text="Score" 
@@ -55,7 +58,9 @@
                     
                     <Entry Grid.Row="1" Grid.Column="1"
                         Text="{Binding Data.ScoreTotal}" 
-                        Style="{StaticResource EntryStyle}"/>
+                        Style="{StaticResource EntryStyle}"
+                           TextColor="DarkGreen"
+                           Opacity=".50"/>
 
                     <Label Grid.Row="1" Grid.Column="0"
                         Text="Score" 
