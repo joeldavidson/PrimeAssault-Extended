@@ -8,7 +8,7 @@
             <Label Text="Battle Page..."></Label>
 
             <Image Source="knight.png" Style="{StaticResource ImageMediumStyle}"></Image>
-            <Image Source="troll.png" Style="{StaticResource ImageMediumStyle}"></Image>
+            <Image Source="Box2.png" Style="{StaticResource ImageMediumStyle}"></Image>
 
             <Button Clicked="AttackButton_Clicked" Text="Attack"></Button>
 
