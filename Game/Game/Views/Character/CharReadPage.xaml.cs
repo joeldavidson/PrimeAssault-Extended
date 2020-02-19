@@ -10,7 +10,7 @@ namespace PrimeAssault.Views
     [DesignTimeVisible(false)]
     public partial class CharReadPage : ContentPage
     {
-
+        // View Model for Item
         PlayerCharacterViewModel viewModel;
 
         /// <summary>
@@ -37,6 +37,11 @@ namespace PrimeAssault.Views
             await Navigation.PopAsync();
         }
 
+        /// <summary>
+        /// Calls for Delete
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         async void Delete_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new CharDeletePage(new PlayerCharacterViewModel(viewModel.Data))));
