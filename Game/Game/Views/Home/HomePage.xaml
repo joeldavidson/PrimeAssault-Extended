@@ -26,14 +26,14 @@
                 <StackLayout HorizontalOptions="Center" Padding="75,5,75,5"> 
                
                     <Label 
-                        Text="In a far away land there was a tribe of warrior elves."
+                        Text="Beff Jezos has taken over the world, with his megamonopolistic company, 'Euphrates'."
                         Style="{StaticResource CenterMessageStyle}"
                         FontSize="Micro"
                         LineBreakMode="WordWrap"
                         />
 
                     <Label 
-                        Text="The elves entered the woods to eraticate the monsters that threatened their villages."
+                        Text="It's time to fight back!"
                         Style="{StaticResource CenterMessageStyle}"
                         FontSize="Micro"
                         LineBreakMode="WordWrap"
