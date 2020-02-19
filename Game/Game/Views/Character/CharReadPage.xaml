@@ -51,7 +51,7 @@
                    IsVisible="True"  
                    Margin="3"
                    >
-                <Button Text="{Binding Data.Moves[0]}"></Button>
+                <Button Text=""></Button>
 
             </Frame>
             <Frame BackgroundColor= "AliceBlue" 
@@ -62,7 +62,7 @@
                    IsVisible="True"  
                    Margin="3"
                    >
-                <Button Text="{Binding Data.Moves[1]}"></Button>
+                <Button Text=""></Button>
 
             </Frame>
             <Grid>
