@@ -28,33 +28,20 @@ namespace PrimeAssault.Droid
 		{
 		}
 		
-		public partial class Attribute
-		{
-			
-			static Attribute()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Attribute()
-			{
-			}
-		}
-		
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7F010000
-			public const int colorAccent = 2130771968;
+			// aapt resource value: 0x7F050005
+			public const int colorAccent = 2131034117;
 			
-			// aapt resource value: 0x7F010001
-			public const int colorPrimary = 2130771969;
+			// aapt resource value: 0x7F050003
+			public const int colorPrimary = 2131034115;
 			
-			// aapt resource value: 0x7F010002
-			public const int colorPrimaryDark = 2130771970;
+			// aapt resource value: 0x7F050004
+			public const int colorPrimaryDark = 2131034116;
 			
-			// aapt resource value: 0x7F010003
-			public const int launcher_background = 2130771971;
+			// aapt resource value: 0x7F050002
+			public const int launcher_background = 2131034114;
 			
 			static Color()
 			{
@@ -69,71 +56,71 @@ namespace PrimeAssault.Droid
 		public partial class Drawable
 		{
 			
-			// aapt resource value: 0x7F020000
-			public const int battleboard = 2130837504;
+			// aapt resource value: 0x7F010002
+			public const int battleboard = 2130771970;
 			
-			// aapt resource value: 0x7F020001
-			public const int cauldren = 2130837505;
+			// aapt resource value: 0x7F010003
+			public const int cauldren = 2130771971;
 			
-			// aapt resource value: 0x7F020002
-			public const int d12 = 2130837506;
+			// aapt resource value: 0x7F010004
+			public const int d12 = 2130771972;
 			
-			// aapt resource value: 0x7F020003
-			public const int dice_20 = 2130837507;
+			// aapt resource value: 0x7F010005
+			public const int dice_20 = 2130771973;
 			
-			// aapt resource value: 0x7F020004
-			public const int door = 2130837508;
+			// aapt resource value: 0x7F010006
+			public const int door = 2130771974;
 			
-			// aapt resource value: 0x7F020005
-			public const int dungeon_door = 2130837509;
+			// aapt resource value: 0x7F010007
+			public const int dungeon_door = 2130771975;
 			
-			// aapt resource value: 0x7F020006
-			public const int grey_door = 2130837510;
+			// aapt resource value: 0x7F010008
+			public const int grey_door = 2130771976;
 			
-			// aapt resource value: 0x7F020007
-			public const int home_background = 2130837511;
+			// aapt resource value: 0x7F010009
+			public const int home_background = 2130771977;
 			
-			// aapt resource value: 0x7F020008
-			public const int icon_add = 2130837512;
+			// aapt resource value: 0x7F010010
+			public const int icon_add = 2130771984;
 			
-			// aapt resource value: 0x7F020009
-			public const int icon_cancel = 2130837513;
+			// aapt resource value: 0x7F010011
+			public const int icon_cancel = 2130771985;
 			
-			// aapt resource value: 0x7F02000A
-			public const int icon_delete = 2130837514;
+			// aapt resource value: 0x7F010012
+			public const int icon_delete = 2130771986;
 			
-			// aapt resource value: 0x7F02000B
-			public const int icon_edit = 2130837515;
+			// aapt resource value: 0x7F010013
+			public const int icon_edit = 2130771987;
 			
-			// aapt resource value: 0x7F02000C
-			public const int icon_new = 2130837516;
+			// aapt resource value: 0x7F010014
+			public const int icon_new = 2130771988;
 			
-			// aapt resource value: 0x7F02000D
-			public const int icon_save = 2130837517;
+			// aapt resource value: 0x7F010015
+			public const int icon_save = 2130771989;
 			
-			// aapt resource value: 0x7F02000E
-			public const int item = 2130837518;
+			// aapt resource value: 0x7F010016
+			public const int item = 2130771990;
 			
-			// aapt resource value: 0x7F02000F
-			public const int items = 2130837519;
+			// aapt resource value: 0x7F010017
+			public const int items = 2130771991;
 			
-			// aapt resource value: 0x7F020010
-			public const int knight = 2130837520;
+			// aapt resource value: 0x7F010018
+			public const int knight = 2130771992;
 			
-			// aapt resource value: 0x7F020011
-			public const int score = 2130837521;
+			// aapt resource value: 0x7F010019
+			public const int score = 2130771993;
 			
-			// aapt resource value: 0x7F020012
-			public const int splashscreen = 2130837522;
+			// aapt resource value: 0x7F010020
+			public const int splashscreen = 2130772000;
 			
-			// aapt resource value: 0x7F020013
-			public const int troll = 2130837523;
+			// aapt resource value: 0x7F010021
+			public const int troll = 2130772001;
 			
-			// aapt resource value: 0x7F020014
-			public const int village = 2130837524;
+			// aapt resource value: 0x7F010022
+			public const int village = 2130772002;
 			
-			// aapt resource value: 0x7F020015
-			public const int xamarin_logo = 2130837525;
+			// aapt resource value: 0x7F010023
+			public const int xamarin_logo = 2130772003;
 			
 			static Drawable()
 			{
@@ -148,11 +135,11 @@ namespace PrimeAssault.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7F030000
-			public const int sliding_tabs = 2130903040;
+			// aapt resource value: 0x7F020002
+			public const int sliding_tabs = 2130837506;
 			
-			// aapt resource value: 0x7F030001
-			public const int toolbar = 2130903041;
+			// aapt resource value: 0x7F020003
+			public const int toolbar = 2130837507;
 			
 			static Id()
 			{
@@ -167,11 +154,11 @@ namespace PrimeAssault.Droid
 		public partial class Layout
 		{
 			
-			// aapt resource value: 0x7F040000
-			public const int Tabbar = 2130968576;
+			// aapt resource value: 0x7F030002
+			public const int Tabbar = 2130903042;
 			
-			// aapt resource value: 0x7F040001
-			public const int Toolbar = 2130968577;
+			// aapt resource value: 0x7F030003
+			public const int Toolbar = 2130903043;
 			
 			static Layout()
 			{
@@ -186,14 +173,14 @@ namespace PrimeAssault.Droid
 		public partial class Mipmap
 		{
 			
-			// aapt resource value: 0x7F050000
-			public const int icon = 2131034112;
+			// aapt resource value: 0x7F040002
+			public const int icon = 2130968578;
 			
-			// aapt resource value: 0x7F050001
-			public const int icon_round = 2131034113;
+			// aapt resource value: 0x7F040003
+			public const int icon_round = 2130968579;
 			
-			// aapt resource value: 0x7F050002
-			public const int launcher_foreground = 2131034114;
+			// aapt resource value: 0x7F040004
+			public const int launcher_foreground = 2130968580;
 			
 			static Mipmap()
 			{
@@ -208,14 +195,14 @@ namespace PrimeAssault.Droid
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7F060000
-			public const int AppCompatDialogStyle = 2131099648;
-			
-			// aapt resource value: 0x7F060001
-			public const int MainTheme = 2131099649;
+			// aapt resource value: 0x7F060004
+			public const int AppCompatDialogStyle = 2131099652;
 			
 			// aapt resource value: 0x7F060002
-			public const int MainTheme_Base = 2131099650;
+			public const int MainTheme = 2131099650;
+			
+			// aapt resource value: 0x7F060003
+			public const int MainTheme_Base = 2131099651;
 			
 			static Style()
 			{
