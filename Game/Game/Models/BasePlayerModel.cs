@@ -21,6 +21,8 @@ namespace PrimeAssault.Models
         // Guid of the original data it links back to the ID, used in PrimeAssault Engine
         public string Guid;
 
+        public string imageURI { get; set; } = "soldier_class.png";
+
         // alive status, !alive will be removed from the list
         public bool Alive = true;
 
