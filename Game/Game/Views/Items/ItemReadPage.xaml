@@ -38,11 +38,7 @@
 
 
 
-            <Label Text="{Binding Data.Name}" FontSize="Header" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="AntiqueWhite"></Label>
-
-
-            <Label Text="{Binding Data.Description}" FontSize="Body" HorizontalTextAlignment="Center" TextColor="AntiqueWhite"></Label>
-
+            <Label Text="{Binding Data.Name}" HorizontalOptions="Center" FontSize="Header" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="AntiqueWhite"></Label>
             <Image Source="{Binding Data.ImageURI}"
                    HeightRequest="250"
                    WidthRequest="250"
@@ -50,12 +46,12 @@
             
             <StackLayout Orientation ="Horizontal" HorizontalOptions="CenterAndExpand">
                 <Label Text="Value: " FontSize="Small" TextColor="AntiqueWhite"></Label>
-                <Label Text="{Binding Data.Value}" FontSize="Small" TextColor="AntiqueWhite"></Label>
+                <Label Text="{Binding Data.Value}" FontSize="Small" HorizontalOptions="Center" TextColor="AntiqueWhite"></Label>
             </StackLayout>
             
             <StackLayout Orientation ="Horizontal" HorizontalOptions="CenterAndExpand">
                 <Label Text="Location: " FontSize="Small" TextColor="AntiqueWhite"></Label>
-                <Label Text="{Binding Data.location}" FontSize="Small" TextColor="AntiqueWhite"></Label>
+                <Label Text="{Binding Data.location}" FontSize="Small" HorizontalOptions="Center" TextColor="AntiqueWhite"></Label>
             </StackLayout>
 
             <Grid>
@@ -90,7 +86,12 @@
                 <Label Style="{StaticResource StatsNumLabel}" Text ="{Binding Data.rangedDefenseMult}" Grid.Column="3" Grid.Row="2"/>
                 <Label Style="{StaticResource StatsNumLabel}" Text ="{Binding Data.speedMult}" Grid.Column="4" Grid.Row="2"/>
             </Grid>
-            <Label Text="{Binding Data.Description}" FontSize="Body" HorizontalTextAlignment="Center" TextColor="AntiqueWhite"></Label>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="Range: " TextColor="AntiqueWhite" FontSize="Body" HorizontalTextAlignment="Center"></Label>
+                <Label Text="{Binding Data.Range}" FontSize="Body" HorizontalOptions="Center" TextColor="AntiqueWhite"></Label>
+            </StackLayout>
+            
+            <Label Text="{Binding Data.Description}" FontSize="Body" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="AntiqueWhite"></Label>
 
 
         </StackLayout>
