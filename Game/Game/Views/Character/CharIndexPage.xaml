@@ -63,13 +63,30 @@
                                             BackgroundColor="#4D3f035f"
                                                 BorderColor="Aqua"
                                                     ></Button>
-                                    <Button Text="{Binding maxHealth}" TextColor="Aqua"
-                                                    Grid.Column="0"
-                                                    Grid.Row="3"
-                                                CornerRadius="10"
-                                            BackgroundColor="#4D3f035f"
-                                                BorderColor="Aqua"
-                                                    ></Button>
+
+                                    <StackLayout 
+                                        Orientation="Horizontal"
+                                        HorizontalOptions="Center"
+                                         Grid.Column="0"
+                                         Grid.Row="3"
+                                        >
+                                      
+                                        <Label 
+                                            Text="LVL" 
+                                            FontSize="Small"
+                                            TextColor="Aqua"
+                                            ></Label>
+                                       
+                                        <Label
+                                            Text="{Binding Level}"
+                                            TextColor="Aqua"
+                                            FontSize="Small"
+                                            >
+                                        </Label>
+                                    </StackLayout>
+                                        
+                                    
+                                    
                                     <!--End of Column 1-->
 
                                     <!--Column 2 inside Row 1-->
