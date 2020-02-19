@@ -10,6 +10,7 @@ namespace PrimeAssault.Models
     /// </summary>
     public class PlayerInfoModel : BasePlayerModel<PlayerInfoModel>
     {
+
         /// <summary>
         /// Default Constructor
         /// </summary>
