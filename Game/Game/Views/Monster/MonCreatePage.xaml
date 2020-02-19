@@ -38,7 +38,12 @@
             <Image Source="sewer_gator.png" HeightRequest="250" WidthRequest="250"></Image>
 
             <Entry  Text ="{Binding Data.Name}"  Placeholder="Name" FontSize="Small" />
-            <Editor Text="{Binding Data.Description}"  Placeholder="Monster Description" FontSize="Small" Margin="0" AutoSize="TextChanges" />
+            <Editor Text="{Binding Data.Description}"  
+                    Placeholder="Monster Description" 
+                    FontSize="Small" 
+                    TextColor="Black"
+                    Margin="0" 
+                    AutoSize="TextChanges" />
             <Grid>
                 
                 <Label Style="{StaticResource StatsLabel}" Text="LVL" Grid.Column="0"/>
@@ -47,11 +52,11 @@
                 <Label Style="{StaticResource StatsLabel}" Text="RDF" Grid.Column="3"/>
                 <Label Style="{StaticResource StatsLabel}" Text="SPD" Grid.Column="4"/>
 
-                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.level}"    Grid.Column="0"/>
-                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.attack}"   Grid.Column="1"/>
-                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.defense}"  Grid.Column="2"/>
-                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.rangedDefense}"  Grid.Column="3"/>
-                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.speed}"  Grid.Column="4"/>
+                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Level}"    Grid.Column="0"/>
+                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Attack}"   Grid.Column="1"/>
+                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Defense}"  Grid.Column="2"/>
+                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.RangedDefense}"  Grid.Column="3"/>
+                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Speed}"  Grid.Column="4"/>
 
             </Grid>
         </StackLayout>
