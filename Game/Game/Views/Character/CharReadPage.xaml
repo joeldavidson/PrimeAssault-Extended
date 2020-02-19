@@ -51,7 +51,11 @@
                    IsVisible="True"  
                    Margin="3"
                    >
-                <Button Text=""></Button>
+                <Label
+                    Text="{Binding Data.Move1}"
+                    TextColor="Black">
+
+                </Label>
 
             </Frame>
             <Frame BackgroundColor= "AliceBlue" 
@@ -62,8 +66,12 @@
                    IsVisible="True"  
                    Margin="3"
                    >
-                <Button Text="{Binding Moves[0].Name}"></Button>
-
+                <Label
+                    Text="{Binding Data.Move2}"
+                    TextColor="Black">
+                    
+                </Label>
+               
             </Frame>
             <Grid>
                 <Button x:Name="btn0"
