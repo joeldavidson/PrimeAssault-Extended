@@ -18,16 +18,17 @@ namespace PrimeAssault.Services
                     Description = "Totally evil, totally bad.",
                     Range = 0,
                     Damage = 9,
-                    Value = 9,
+                    ImageURI = "raygun.png",
                     Location = ItemLocationEnum.PrimaryHand,
                     Attribute = AttributeEnum.Defense},
 
                 new ItemModel {
                     Name = "Monster Masher",
-                    Description = "Dastardly attack potential!",
+                    Description = "Its a graveyard smash!",
                     Range = 0,
                     Damage = 0,
                     Value = 9,
+                    ImageURI = "monster_masher.png",
                     Location = ItemLocationEnum.OffHand,
                     Attribute = AttributeEnum.Defense},
 
@@ -37,6 +38,7 @@ namespace PrimeAssault.Services
                     Range = 0,
                     Damage = 0,
                     Value = 9,
+                    ImageURI = "mechanical_macerator.png",
                     Location = ItemLocationEnum.Head,
                     Attribute = AttributeEnum.Speed},
             };
