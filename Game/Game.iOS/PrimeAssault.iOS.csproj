@@ -262,6 +262,9 @@
     <BundleResource Include="Resources\ScoreRead.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Box2.png" />
+    <BundleResource Include="Resources\monster_masher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\mechanical_macerator.png" />
   </ItemGroup>
 </Project>

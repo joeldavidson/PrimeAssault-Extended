@@ -81,7 +81,7 @@ namespace PrimeAssault.Models
         public double NextLevelMult { get; set; } = 1.0;
 
         //The class of the character in question
-        public string JobClass { get; set; } = "soldier";
+        public string JobClass { get; set; } = "Soldier";
 
         //Ability name of character
         public string Ability { get; set; } = "None";
@@ -210,7 +210,7 @@ namespace PrimeAssault.Models
 
         bool updateClass()//ugly awful class, not maintanable, needs work. So sorry to everyone, just trying to get class up on its feet. Hardcode galore.
         {
-            if (JobClass == "soldier") //helper class with default values for each class
+            if (JobClass == "Soldier") //helper class with default values for each class
             {
                 ResetMultipliers();
                 HealthMult += .2;
@@ -224,7 +224,7 @@ namespace PrimeAssault.Models
                 ImageURI = "soldier_class.png";
                 return true;
             }
-            if (JobClass == "hunter")
+            if (JobClass == "Hunter")
             {
                 ResetMultipliers();
                 HealthMult += -.3;
@@ -238,7 +238,7 @@ namespace PrimeAssault.Models
                 ImageURI = "hunter_class.png";
                 return true;
             }
-            if (JobClass == "brawler")
+            if (JobClass == "Brawler")
             {
                 ResetMultipliers();
                 HealthMult += .5;
@@ -252,7 +252,7 @@ namespace PrimeAssault.Models
                 ImageURI = "brawler_class.png";
                 return true;
             }
-            if (JobClass == "mechanic")
+            if (JobClass == "Mechanic")
             {
                 ResetMultipliers();
                 HealthMult += -.2;
@@ -266,7 +266,7 @@ namespace PrimeAssault.Models
                 ImageURI = "mechanic_class.png";
                 return true;
             }
-            if (JobClass == "mechanist")
+            if (JobClass == "Mechanist")
             {
                 ResetMultipliers();
                 HealthMult += 0;
@@ -280,7 +280,7 @@ namespace PrimeAssault.Models
                 ImageURI = "mechanist_class.png";
                 return true;
             }
-            if (JobClass == "ringleader")
+            if (JobClass == "Ringleader")
             {
                 ResetMultipliers();
                 HealthMult += -.1;

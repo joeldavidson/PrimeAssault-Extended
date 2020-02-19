@@ -127,8 +127,10 @@
     <Content Include="items.png" />
     <Content Include="knight.png" />
     <Content Include="icon_new.png" />
+    <Content Include="mechanical_macerator.png" />
     <Content Include="mechanic_class.png" />
     <Content Include="mechanist_class.png" />
+    <Content Include="monster_masher.png" />
     <Content Include="neonStairs.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />

@@ -30,9 +30,29 @@ namespace PrimeAssault.Models
         // Where the Item goes on the character.  Head, Foot etc.
         public ItemLocationEnum Location { get; set; } = ItemLocationEnum.Unknown;
 
-        // The Value item modifies.  So a ring of Health +3, has a Value of 3
+        // The int value of an item when being sold
         public int Value { get; set; } = 0;
-
+        //the string value
+        public string valueString { get; set; } = "0g";
+        public int attackValue { get; set; } = 0;
+        //what kind of defense bonus the item can add
+        public int defenseValue { get; set; } = 0;
+        //what kind of reanged defense bonus the item can add
+        public int rangedDefenseValue { get; set; } = 0;
+        //How much speed the item adds
+        public int speedValue { get; set; } = 0;
+        //How much health the item adds
+        public int healthValue { get; set; } = 0;
+        //What the attack multiplier for the item is
+        public double attackMult { get; set; } = 0;
+        //What the defense multiplier for the item has
+        public double defenseMult { get; set; } = 0;
+        //What the ranged defense multiplier for the item has
+        public double rangedDefenseMult { get; set; } = 0;
+        //What the speed multiplier for the item has
+        public double speedMult { get; set; } = 0;
+        //What the health multiplier for the item has
+        public double healthMult { get; set; } = 0;
         //// Count of how many
         //public int Count { get; set; } = 1;
 
@@ -66,33 +86,32 @@ namespace PrimeAssault.Models
         /// Update the Record
         /// </summary>
         /// <param name="newData">The new data</param>
-        public override bool Update(ItemModel newData)
+        override public bool Update(ItemModel data)
         {
-            if (newData == null)
-            {
-                return false;
-            }
+            Name = data.Name;
+            Description = data.Description;
+            Location = data.Location;
+            attackValue = data.attackValue;
+            defenseValue = data.defenseValue;
+            rangedDefenseValue = data.rangedDefenseValue;
+            speedValue = data.speedValue;
+            healthValue = data.healthValue;
 
-            // Update all the fields in the Data, except for the Id and guid
-            Name = newData.Name;
-            Description = newData.Description;
-            Value = newData.Value;
-            Attribute = newData.Attribute;
-            Location = newData.Location;
-            Name = newData.Name;
-            Description = newData.Description;
-            ImageURI = newData.ImageURI;
-            Range = newData.Range;
-            Damage = newData.Damage;
+            attackMult = data.attackMult;
+            defenseMult = data.defenseMult;
+            rangedDefenseMult = data.rangedDefenseMult;
+            speedMult = data.speedMult;
+            healthMult = data.healthMult;
 
-            //Guid = newData.Guid;
-            //Count = newData.Count;
-            //IsConsumable = newData.IsConsumable;
-            //Category = newData.Category;
-
+            Value = getValue();
+            valueString = Value + "g";
             return true;
         }
 
+        int getValue()
+        {
+            return attackValue + defenseValue + rangedDefenseValue + speedValue + healthValue;
+        }
         /// <summary>
         /// Helper to combine the attributes into a single line, to make it easier to display the item as a string
         /// </summary>
