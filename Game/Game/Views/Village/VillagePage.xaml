@@ -16,7 +16,7 @@
                 <StackLayout Style="{StaticResource CardImageTextBox}">
 
                     <ImageButton
-                                Source="knight.png"
+                                Source="ringleader_class.png"
                                 Style="{StaticResource ImageLargeStyle}"
                                 Clicked="CharactersButton_Clicked"/>
 
