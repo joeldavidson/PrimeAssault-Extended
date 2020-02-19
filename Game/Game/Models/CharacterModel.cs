@@ -17,9 +17,12 @@ namespace PrimeAssault.Models
         {
             PlayerType = PlayerTypeEnum.Character;
             Guid = Id;
-            Name = "Boomer";
-            Description = "The day just doesn't end!";
-            Attack = 100;
+            Name = "";
+            Description = "";
+            Attack = 5;
+            Defense = 5;
+            RangedDefense = 2;
+            Speed = 2;
             ImageURI = "soldier_class.png";
             Moves[0] = MoveHolder.getMove("Crackshot");
             Moves[1] = MoveHolder.getMove("Iron Grip");
