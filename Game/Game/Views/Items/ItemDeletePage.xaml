@@ -16,7 +16,7 @@
     <StackLayout Spacing="20" Padding="40,20,40,20" Orientation="Vertical" HorizontalOptions="CenterAndExpand">
 
         <Label TextColor="Aqua" HorizontalOptions="Center" FontSize="Header">DELETE Item</Label>
-        <Image Source="{Binding Data.imageURI}"></Image>
+        <Image Source="{Binding Data.ImageURI}"></Image>
 
         <Label  Text="Name: " TextColor ="Aquamarine" FontSize="Medium" HorizontalTextAlignment="Center"/>
         <Label HorizontalOptions="Center" Text="{Binding Data.Name}" TextColor="Aqua" FontSize="Medium" HorizontalTextAlignment="Center"/>

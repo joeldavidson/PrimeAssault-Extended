@@ -14,9 +14,8 @@ namespace PrimeAssault.Services
             var datalist = new List<ItemModel>()
             {
                 new ItemModel {
-                    Name = "Gold Sword",
-                    Description = "Sword made of Gold, really expensive looking",
-                    ImageURI = "http://www.clker.com/cliparts/e/L/A/m/I/c/sword-md.png",
+                    Name = "Evil Lazar",
+                    Description = "Totally evil, totally bad.",
                     Range = 0,
                     Damage = 9,
                     Value = 9,
@@ -24,9 +23,8 @@ namespace PrimeAssault.Services
                     Attribute = AttributeEnum.Defense},
 
                 new ItemModel {
-                    Name = "Strong Shield",
-                    Description = "Enough to hide behind",
-                    ImageURI = "http://www.clipartbest.com/cliparts/4T9/LaR/4T9LaReTE.png",
+                    Name = "Monster Masher",
+                    Description = "Dastardly attack potential!",
                     Range = 0,
                     Damage = 0,
                     Value = 9,
@@ -34,9 +32,8 @@ namespace PrimeAssault.Services
                     Attribute = AttributeEnum.Defense},
 
                 new ItemModel {
-                    Name = "Bunny Hat",
-                    Description = "Pink hat with fluffy ears",
-                    ImageURI = "http://www.clipartbest.com/cliparts/yik/e9k/yike9kMyT.png",
+                    Name = "Mech Macerator",
+                    Description = "Munch the metal!",
                     Range = 0,
                     Damage = 0,
                     Value = 9,

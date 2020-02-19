@@ -43,7 +43,7 @@
 
             <Label Text="{Binding Data.Description}" FontSize="Body" HorizontalTextAlignment="Center" TextColor="AntiqueWhite"></Label>
 
-            <Image Source="{Binding Data.imageURI}"
+            <Image Source="{Binding Data.ImageURI}"
                    HeightRequest="250"
                    WidthRequest="250"
             ></Image>
