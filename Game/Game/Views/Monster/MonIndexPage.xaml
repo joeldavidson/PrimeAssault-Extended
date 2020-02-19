@@ -7,7 +7,7 @@
                      x:Class="PrimeAssault.Views.MonIndexPage"
                      Title="{Binding Title}"
                      x:Name="BrowseMonsterPage"
-                     BackgroundImageSource="neonStairs.png">
+                     BackgroundImageSource="neonStairs.jpg">
 
     <ContentPage.ToolbarItems>
      
