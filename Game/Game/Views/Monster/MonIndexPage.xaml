@@ -16,16 +16,19 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout
+            Padding="10,10,10,10">
 
             <Label Text="Monster List Page" TextColor="DeepPink" FontSize="Header" BackgroundColor="Transparent"/>
 
-            <RelativeLayout>
+            <RelativeLayout
+                >
                 <ListView x:Name="MonListView" 
                             ItemsSource="{Binding Dataset}"
                             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                             RefreshCommand="{Binding LoadItemsCommand}"
                             CachingStrategy="RecycleElement"
+                          
                             ItemSelected="OnMonSelected"
                               BackgroundColor="Transparent">
                     <ListView.ItemTemplate>
@@ -60,14 +63,29 @@
                                                     Grid.Column="0"
                                                     Grid.Row="2"
                                                 CornerRadius="20"
+                                            BackgroundColor="#4D3f035f"
                                                 BorderColor="Aqua"
                                                     ></Button>
-                                    <Button Text="{Binding Level}" TextColor="Aqua"
-                                                    Grid.Column="0"
-                                                    Grid.Row="3"
-                                                CornerRadius="10"
-                                                BorderColor="Aqua"
-                                                    ></Button>
+                                    <StackLayout 
+                                        Orientation="Horizontal"
+                                        HorizontalOptions="Center"
+                                         Grid.Column="0"
+                                         Grid.Row="3"
+                                        >
+
+                                        <Label 
+                                            Text="LVL" 
+                                            FontSize="Small"
+                                            TextColor="Aqua"
+                                            ></Label>
+
+                                        <Label
+                                            Text="{Binding Level}"
+                                            TextColor="Aqua"
+                                            FontSize="Small"
+                                            >
+                                        </Label>
+                                    </StackLayout>
                                     <!--End of Column 1-->
 
                                     <!--Column 2 inside Row 1-->
@@ -78,6 +96,7 @@
                                             Text="ATK" TextColor="Aqua"
                                             Grid.Column="1"
                                             Grid.Row="0"
+                                            BackgroundColor="#4D3f035f"
                                             CornerRadius="40"
                                             BorderColor="Aqua"
                                                 ></Button>
@@ -88,6 +107,7 @@
                                             Text="DEF" TextColor="Aqua"
                                             Grid.Column="1"
                                             Grid.Row="1"
+                                            BackgroundColor="#4D3f035f"
                                             CornerRadius="40"
                                             BorderColor="Aqua"
                                                 ></Button>
@@ -97,6 +117,7 @@
                                             HeightRequest="{Binding Width, Source={x:Reference btn1}}"
                                             Text="RNG" 
                                             TextColor="Aqua"
+                                            BackgroundColor="#4D3f035f"
                                             Grid.Column="1"
                                             Grid.Row="2"
                                             CornerRadius="40"
@@ -107,6 +128,7 @@
                                             HorizontalOptions="Center"
                                             HeightRequest="{Binding Width, Source={x:Reference btn4}}"
                                             Text="SPD" TextColor="Aqua"
+                                            BackgroundColor="#4D3f035f"
                                             Grid.Column="1"
                                             Grid.Row="3"
                                             CornerRadius="40"
