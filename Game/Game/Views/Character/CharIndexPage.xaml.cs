@@ -84,5 +84,59 @@ namespace PrimeAssault.Views
 
             BindingContext = ViewModel;
         }
+
+        async void Attack_Clicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("Character Attack", "The Attack stat helps determine how much damage the unit will deal! The higher the better!", "Dismiss");
+        }
+
+        async void Defense_Clicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("Character Defense", "The Defense stat helps determine how much damage the unit will take! The higher the better!", "Dismiss");
+        }
+
+        async void RangedDefense_Clicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("Character Ranged Defense", "The Ranged Defense stat helps determine if the unit will get hit! The higher the better!", "Dismiss");
+        }
+
+        async void Speed_Clicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("Character Speed", "The Speed stat helps determine if the unit will get hit! The higher the better!", "Dismiss");
+        }
+
+        async void Head_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NavigationPage(new ItemIndexPage()));
+        }
+
+        async void Torso_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NavigationPage(new ItemIndexPage()));
+        }
+
+        async void RightHand_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NavigationPage(new ItemIndexPage()));
+        }
+
+        async void LeftHand_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NavigationPage(new ItemIndexPage()));
+        }
+        async void Boots_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NavigationPage(new ItemIndexPage()));
+        }
+
+        async void Ring1_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NavigationPage(new ItemIndexPage()));
+        }
+
+        async void Ring2_Clicked(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new NavigationPage(new ItemIndexPage()));
+        }
     }
 }

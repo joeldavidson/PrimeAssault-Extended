@@ -34,7 +34,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid Margin="10" BackgroundColor="#4D3f035f" HeightRequest="200">
+                                <Grid Margin="10" BackgroundColor="#4D3f035f">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="50" />
                                         <RowDefinition Height="50" />
@@ -96,9 +96,10 @@
                                             Text="ATK" TextColor="Aqua"
                                             Grid.Column="1"
                                             Grid.Row="0"
-                                            BackgroundColor="#4D3f035f"
                                             CornerRadius="40"
                                             BorderColor="Aqua"
+                                            BackgroundColor="Transparent"
+                                            Clicked="Attack_Clicked"
                                                 ></Button>
                                     <Button x:Name="btn2"
                                             VerticalOptions="Center"
@@ -107,9 +108,10 @@
                                             Text="DEF" TextColor="Aqua"
                                             Grid.Column="1"
                                             Grid.Row="1"
-                                            BackgroundColor="#4D3f035f"
                                             CornerRadius="40"
                                             BorderColor="Aqua"
+                                            BackgroundColor="Transparent"
+                                            Clicked="Defense_Clicked"
                                                 ></Button>
                                     <Button x:Name="btn3"
                                             VerticalOptions="Center"
@@ -117,22 +119,24 @@
                                             HeightRequest="{Binding Width, Source={x:Reference btn1}}"
                                             Text="RNG" 
                                             TextColor="Aqua"
-                                            BackgroundColor="#4D3f035f"
                                             Grid.Column="1"
                                             Grid.Row="2"
                                             CornerRadius="40"
                                             BorderColor="Aqua"
+                                            BackgroundColor="Transparent"
+                                            Clicked="RangedDefense_Clicked"
                                                 ></Button>
                                     <Button x:Name="btn4"
                                             VerticalOptions="Center"
                                             HorizontalOptions="Center"
                                             HeightRequest="{Binding Width, Source={x:Reference btn4}}"
                                             Text="SPD" TextColor="Aqua"
-                                            BackgroundColor="#4D3f035f"
                                             Grid.Column="1"
                                             Grid.Row="3"
                                             CornerRadius="40"
                                             BorderColor="Aqua"
+                                            BackgroundColor="Transparent"
+                                            Clicked="Speed_Clicked"
                                                 ></Button>
                                     <!--End of Column 2-->
 

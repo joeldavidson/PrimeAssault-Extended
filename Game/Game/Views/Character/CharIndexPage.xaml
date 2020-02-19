@@ -49,7 +49,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <!--Column 1 inside Row 1-->
-                                    <ImageButton Source="{Binding ImageURI}"
+                                    <ImageButton Source="{Binding imageURI}"
                                                          HorizontalOptions="FillAndExpand"
                                                          VerticalOptions="FillAndExpand"
                                                          Grid.Column="0"
@@ -60,33 +60,16 @@
                                                     Grid.Column="0"
                                                     Grid.Row="2"
                                                 CornerRadius="20"
-                                            BackgroundColor="#4D3f035f"
                                                 BorderColor="Aqua"
+                                            BackgroundColor="Transparent"
                                                     ></Button>
-
-                                    <StackLayout 
-                                        Orientation="Horizontal"
-                                        HorizontalOptions="Center"
-                                         Grid.Column="0"
-                                         Grid.Row="3"
-                                        >
-                                      
-                                        <Label 
-                                            Text="LVL" 
-                                            FontSize="Small"
-                                            TextColor="Aqua"
-                                            ></Label>
-                                       
-                                        <Label
-                                            Text="{Binding Level}"
-                                            TextColor="Aqua"
-                                            FontSize="Small"
-                                            >
-                                        </Label>
-                                    </StackLayout>
-                                        
-                                    
-                                    
+                                    <Button Text="{Binding maxHealth}" TextColor="Aqua"
+                                                    Grid.Column="0"
+                                                    Grid.Row="3"
+                                                CornerRadius="10"
+                                                BorderColor="Aqua"
+                                            BackgroundColor="Transparent"
+                                                    ></Button>
                                     <!--End of Column 1-->
 
                                     <!--Column 2 inside Row 1-->
@@ -98,8 +81,9 @@
                                             Grid.Column="1"
                                             Grid.Row="0"
                                             CornerRadius="40"
-                                            BackgroundColor="#4D3f035f"
                                             BorderColor="Aqua"
+                                            BackgroundColor="Transparent"
+                                            Clicked="Attack_Clicked"
                                                 ></Button>
                                     <Button x:Name="btn2"
                                             VerticalOptions="Center"
@@ -109,8 +93,9 @@
                                             Grid.Column="1"
                                             Grid.Row="1"
                                             CornerRadius="40"
-                                            BackgroundColor="#4D3f035f"
                                             BorderColor="Aqua"
+                                            BackgroundColor="Transparent"
+                                            Clicked="Defense_Clicked"
                                                 ></Button>
                                     <Button x:Name="btn3"
                                             VerticalOptions="Center"
@@ -121,8 +106,9 @@
                                             Grid.Column="1"
                                             Grid.Row="2"
                                             CornerRadius="40"
-                                            BackgroundColor="#4D3f035f"
                                             BorderColor="Aqua"
+                                            BackgroundColor="Transparent"
+                                            Clicked="RangedDefense_Clicked"
                                                 ></Button>
                                     <Button x:Name="btn4"
                                             VerticalOptions="Center"
@@ -131,32 +117,33 @@
                                             Text="SPD" TextColor="Aqua"
                                             Grid.Column="1"
                                             Grid.Row="3"
-                                            BackgroundColor="#4D3f035f"
                                             CornerRadius="40"
                                             BorderColor="Aqua"
+                                            BackgroundColor="Transparent"
+                                            Clicked="Speed_Clicked"
                                                 ></Button>
                                     <!--End of Column 2-->
 
                                     <!--Column 3 inside Row 1-->
-                                    <Label Text="{Binding Attack}"
+                                    <Label Text="{Binding attack}"
                                                 TextColor="Aqua"
                                                     FontSize="Medium"
                                                     Grid.Column="2"
                                                     Grid.Row="0"
                                                VerticalOptions="Center"/>
-                                    <Label Text="{Binding Defense}"
+                                    <Label Text="{Binding defense}"
                                                 TextColor="Aqua"
                                                     FontSize="Medium"
                                                     Grid.Column="2"
                                                     Grid.Row="1"
                                                VerticalOptions="Center"/>
-                                    <Label Text="{Binding RangedDefense}"
+                                    <Label Text="{Binding rangedDefense}"
                                                 TextColor="Aqua"
                                                     FontSize="Medium"
                                                     Grid.Column="2"
                                                     Grid.Row="2"
                                                VerticalOptions="Center"/>
-                                    <Label Text="{Binding Speed}"
+                                    <Label Text="{Binding speed}"
                                                 TextColor="Aqua"
                                                     FontSize="Medium"
                                                     Grid.Column="2"
@@ -174,6 +161,7 @@
                                                 BackgroundColor="##803f035f"
                                                 CornerRadius="10"
                                                 BorderColor="Aqua"
+                                            Clicked="Torso_Clicked"
                                                 ></Button>
                                     <!--End of Column 4-->
 
@@ -187,6 +175,7 @@
                                                 BackgroundColor="##803f035f"
                                                 CornerRadius="20"
                                                 BorderColor="Aqua"
+                                            Clicked="Head_Clicked"
                                                 ></Button>
                                     <Button Text="Boots" TextColor="Aqua"
                                                 HorizontalOptions="FillAndExpand"
@@ -197,6 +186,7 @@
                                                 BackgroundColor="##803f035f"
                                                 CornerRadius="20"
                                                 BorderColor="Aqua"
+                                            Clicked="Boots_Clicked"
                                                 ></Button>
                                     <!--End of Column 5-->
 
@@ -210,6 +200,7 @@
                                                 BackgroundColor="##803f035f"
                                                 CornerRadius="20"
                                                 BorderColor="Aqua"
+                                            Clicked="RightHand_Clicked"
                                                 ></Button>
                                     <Button Text="Ring 1" TextColor="Aqua"
                                                 HorizontalOptions="FillAndExpand"
@@ -220,6 +211,7 @@
                                                 BackgroundColor="##803f035f"
                                                 CornerRadius="40"
                                                 BorderColor="Aqua"
+                                            Clicked="Ring1_Clicked"
                                                 ></Button>
                                     <!--End of Column 6-->
 
@@ -233,6 +225,7 @@
                                                 BackgroundColor="##803f035f"
                                                 CornerRadius="20"
                                                 BorderColor="Aqua"
+                                            Clicked="LeftHand_Clicked"
                                                 ></Button>
                                     <Button Text="Ring 2" TextColor="Aqua"
                                                 HorizontalOptions="FillAndExpand"
@@ -243,6 +236,8 @@
                                                 BackgroundColor="##803f035f"
                                                 CornerRadius="40"
                                                 BorderColor="Aqua"
+                                            CommandParameter="{Binding id}"
+                                            Clicked="Ring2_Clicked"
                                                 ></Button>
                                     <!--End of Column 7-->
                                 </Grid>
