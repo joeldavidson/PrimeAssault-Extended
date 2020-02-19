@@ -4,10 +4,19 @@ using PrimeAssault.Models;
 
 namespace PrimeAssault.Services
 {
+    /// <summary>
+    /// Class for Ability holder
+    /// </summary>
     public static class AbilityHolder
     {
+        /// <summary>
+        /// Class for character ability holder
+        /// </summary>
         public static class CharacterAbilityHolder
         {
+            /// <summary>
+            /// List of abilities
+            /// </summary>
             public static List<AbilityModel> AbilityList = new List<AbilityModel>()
             {
                  new AbilityModel
@@ -25,13 +34,12 @@ namespace PrimeAssault.Services
                     Description = "Whether up close or far away, you can find the hidden chinks in Euphrates armor. +30% damage against all mechs.",
                     EffectValue = .3,
                     Faction = "player",
-                    
-                    
-
-                  
                 }
             };
 
+            /// <summary>
+            /// Ability model for getting move
+            /// </summary>
             public static AbilityModel getMove(string name)
             {
                 //Predicate for seeing if move exists
