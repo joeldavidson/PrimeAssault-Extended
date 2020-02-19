@@ -1,23 +1,23 @@
 ﻿using System;
 using System.ComponentModel;
 using Xamarin.Forms;
+
 using PrimeAssault.Models;
 using PrimeAssault.ViewModels;
 
 namespace PrimeAssault.Views
 {
+    // Learn more about making custom code visible in the Xamarin.Forms previewer
+    // by visiting https://aka.ms/xamarinforms-previewer
+
     /// <summary>
     /// Index Page
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0019:Use pattern matching", Justification = "<Pending>")]
     [DesignTimeVisible(false)]
     public partial class ItemIndexPage : ContentPage
     {
         // The view model, used for data binding
         readonly ItemIndexViewModel ViewModel = ItemIndexViewModel.Instance;
-
-        // Empty Constructor for UTs
-        public ItemIndexPage(bool UnitTest) { }
 
         /// <summary>
         /// Constructor for Index Page
@@ -36,16 +36,16 @@ namespace PrimeAssault.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        public async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            ItemModel data = args.SelectedItem as ItemModel;
-            if (data == null)
+            ItemModel item = args.SelectedItem as ItemModel;
+            if (item == null)
             {
                 return;
             }
 
             // Open the Read Page
-            await Navigation.PushAsync(new ItemReadPage(new GenericViewModel<ItemModel>(data)));
+            await Navigation.PushAsync(new ItemReadPage(new ItemViewModel(item)));
 
             // Manually deselect item.
             ItemsListView.SelectedItem = null;
@@ -56,9 +56,9 @@ namespace PrimeAssault.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public async void AddItem_Clicked(object sender, EventArgs e)
+        async void AddItem_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new ItemCreatePage(new GenericViewModel<ItemModel>())));
+            await Navigation.PushModalAsync(new NavigationPage(new ItemCreatePage(new ItemViewModel())));
         }
 
         /// <summary>

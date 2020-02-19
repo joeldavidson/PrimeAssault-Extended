@@ -1,11 +1,15 @@
 ﻿using System.ComponentModel;
 using Xamarin.Forms;
+
+using PrimeAssault.Models;
 using PrimeAssault.ViewModels;
 using System;
-using PrimeAssault.Models;
 
 namespace PrimeAssault.Views
 {
+    // Learn more about making custom code visible in the Xamarin.Forms previewer
+    // by visiting https://aka.ms/xamarinforms-previewer
+
     /// <summary>
     /// The Read Page
     /// </summary>
@@ -13,10 +17,7 @@ namespace PrimeAssault.Views
     public partial class ItemReadPage : ContentPage
     {
         // View Model for Item
-        public readonly GenericViewModel<ItemModel> ViewModel;
-
-        // Empty Constructor for UTs
-        public ItemReadPage(bool UnitTest) { }
+        ItemViewModel ViewModel;
 
         /// <summary>
         /// Constructor called with a view model
@@ -24,7 +25,7 @@ namespace PrimeAssault.Views
         /// The viewModel is the data that should be displayed
         /// </summary>
         /// <param name="viewModel"></param>
-        public ItemReadPage(GenericViewModel<ItemModel> data)
+        public ItemReadPage(ItemViewModel data)
         {
             InitializeComponent();
 
@@ -36,9 +37,9 @@ namespace PrimeAssault.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public async void Update_Clicked(object sender, EventArgs e)
+        async void Update_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new ItemUpdatePage(new GenericViewModel<ItemModel>(ViewModel.Data))));
+            await Navigation.PushModalAsync(new NavigationPage(new ItemUpdatePage(new ItemViewModel(ViewModel.Data))));
             await Navigation.PopAsync();
         }
 
@@ -47,9 +48,9 @@ namespace PrimeAssault.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public async void Delete_Clicked(object sender, EventArgs e)
+        async void Delete_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new ItemDeletePage(new GenericViewModel<ItemModel>(ViewModel.Data))));
+            await Navigation.PushModalAsync(new NavigationPage(new ItemDeletePage(new ItemViewModel(ViewModel.Data))));
             await Navigation.PopAsync();
         }
     }

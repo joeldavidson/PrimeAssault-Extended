@@ -5,94 +5,95 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="PrimeAssault.Views.ItemReadPage"
-             Title="{Binding Title}">
+             Title="Read"
+             BackgroundImageSource="garage.jpg">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="StatsLabel" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="End"/>
+                <Setter Property="TextColor" Value="Aqua"/>
+                <Setter Property="Grid.Row" Value="0"/>
+            </Style>
 
+            <Style x:Key="StatsNumLabel" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value='Center'/>
+                <Setter Property="TextColor" Value="AntiqueWhite"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="Grid.Row" Value="1"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Update" Clicked="Update_Clicked" IconImageSource="icon_edit.png"/>
         <ToolbarItem Text="Delete" Clicked="Delete_Clicked" IconImageSource="icon_delete.png"/>
     </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+
+        <StackLayout Orientation="Vertical" HorizontalOptions="Center">
 
 
-    <ScrollView>
-        <StackLayout Style="{StaticResource OuterBoxStack}"
-            Spacing="10">
 
-            <Label Text="Detail Page" Style="{StaticResource HeaderStyle}"/>
+            <Label Text="{Binding Data.Name}" FontSize="Header" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="AntiqueWhite"></Label>
 
-            <Image Source="{Binding Data.ImageURI}" Style="{StaticResource ImageLargeStyle}"/>
 
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label 
-                   Text="Name : " 
-                    Style="{StaticResource LabelStyle}"/>
-                <Label 
-                    Text="{Binding Data.Name}" 
-                    Style="{StaticResource ValueStyle}"/>
+            <Label Text="{Binding Data.Description}" FontSize="Body" HorizontalTextAlignment="Center" TextColor="AntiqueWhite"></Label>
+
+            <Image Source="{Binding Data.imageURI}"
+                   HeightRequest="250"
+                   WidthRequest="250"
+            ></Image>
+            
+            <StackLayout Orientation ="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Value: " FontSize="Small" TextColor="AntiqueWhite"></Label>
+                <Label Text="{Binding Data.Value}" FontSize="Small" TextColor="AntiqueWhite"></Label>
+            </StackLayout>
+            
+            <StackLayout Orientation ="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Location: " FontSize="Small" TextColor="AntiqueWhite"></Label>
+                <Label Text="{Binding Data.location}" FontSize="Small" TextColor="AntiqueWhite"></Label>
             </StackLayout>
 
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label 
-                    Text="Description : " 
-                    Style="{StaticResource LabelStyle}"/>
-                <Label 
-                    Text="{Binding Data.Description}" 
-                    Style="{StaticResource ValueStyle}"/>
-            </StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label 
-                    Text="Location : " 
-                    Style="{StaticResource LabelStyle}"/>
-                <Label 
-                    Text="{Binding Data.Location}" 
-                    Style="{StaticResource ValueStyle}"/>
-            </StackLayout>
+                <Label Style="{StaticResource StatsLabel}" Text="Health" Grid.Column="0" Grid.Row="0"/>
+                <Label Style="{StaticResource StatsLabel}" Text="ATK"  Grid.Column="1" Grid.Row="0"/>
+                <Label Style="{StaticResource StatsLabel}" Text ="DEF" Grid.Column="2" Grid.Row="0"/>
+                <Label Style="{StaticResource StatsLabel}" Text="RDF" Grid.Column="3" Grid.Row="0"/>
+                <Label Style="{StaticResource StatsLabel}" Text="SPD" Grid.Column="4" Grid.Row="0"/>
 
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label 
-                    Text="Attribute : " 
-                    Style="{StaticResource LabelStyle}"/>
-                <Label 
-                    Text="{Binding Data.Attribute}" 
-                    Style="{StaticResource ValueStyle}"/>
-            </StackLayout>
+                <Label Style="{StaticResource StatsNumLabel}"  Text ="{Binding Data.healthValue}" Grid.Column="0" Grid.Row="1"/>
+                <Label Style="{StaticResource StatsNumLabel}"  Text ="{Binding Data.attackValue}" Grid.Column="1" Grid.Row="1"/>
+                <Label Style="{StaticResource StatsNumLabel}" Text ="{Binding Data.defenseValue}" Grid.Column="2" Grid.Row="1"/>
+                <Label Style="{StaticResource StatsNumLabel}" Text ="{Binding Data.rangedDefenseValue}" Grid.Column="3" Grid.Row="1"/>
+                <Label Style="{StaticResource StatsNumLabel}" Text ="{Binding Data.speedValue}" Grid.Column="4" Grid.Row="1"/>
+                
+                <Label Style="{StaticResource StatsNumLabel}"  Text ="{Binding Data.healthMult}" Grid.Column="0" Grid.Row="2"/>
+                <Label Style="{StaticResource StatsNumLabel}"  Text ="{Binding Data.attackMult}" Grid.Column="1" Grid.Row="2"/>
+                <Label Style="{StaticResource StatsNumLabel}" Text ="{Binding Data.defenseMult}"  Grid.Column="2" Grid.Row="2"/>
+                <Label Style="{StaticResource StatsNumLabel}" Text ="{Binding Data.rangedDefenseMult}" Grid.Column="3" Grid.Row="2"/>
+                <Label Style="{StaticResource StatsNumLabel}" Text ="{Binding Data.speedMult}" Grid.Column="4" Grid.Row="2"/>
+            </Grid>
+            <Label Text="{Binding Data.Description}" FontSize="Body" HorizontalTextAlignment="Center" TextColor="AntiqueWhite"></Label>
 
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label 
-                    Text="Range : " 
-                    Style="{StaticResource LabelStyle}"/>
-                <Label 
-                    Text="{Binding Data.Range}" 
-                    Style="{StaticResource ValueStyle}"/>
-            </StackLayout>
-
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label 
-                    Text="Range : " 
-                    Style="{StaticResource LabelStyle}"/>
-                <Label 
-                    Text="{Binding Data.Range}" 
-                    Style="{StaticResource ValueStyle}"/>
-            </StackLayout>
-
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label 
-                    Text="Value : " 
-                    Style="{StaticResource LabelStyle}"/>
-                <Label 
-                    Text="{Binding Data.Value}" 
-                    Style="{StaticResource ValueStyle}"/>
-            </StackLayout>
-
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label 
-                    Text="Damage : " 
-                    Style="{StaticResource LabelStyle}"/>
-                <Label 
-                    Text="{Binding Data.Damage}" 
-                    Style="{StaticResource ValueStyle}"/>
-            </StackLayout>
 
         </StackLayout>
-    </ScrollView>
+
+    </ContentPage.Content>
 </ContentPage>

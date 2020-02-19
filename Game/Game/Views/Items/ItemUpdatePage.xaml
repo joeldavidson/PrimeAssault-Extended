@@ -4,159 +4,125 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             xmlns:local_helpers="clr-namespace:PrimeAssault.Helpers"
-             xmlns:local="using:PrimeAssault.Models"
-             xmlns:local_enum="clr-namespace:PrimeAssault.Models"
              x:Class="PrimeAssault.Views.ItemUpdatePage"
-             Title="{Binding Title}">
-
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png"/>
-        <ToolbarItem Text="Save" Clicked="Save_Clicked" IconImageSource="icon_save.png"/>
-    </ContentPage.ToolbarItems>
+             Title="Update"
+             BackgroundImageSource="garage.jpg">
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local_helpers:StringEnumConverter x:Key="StringEnum"/>
+
+            <Style x:Key="StatsLabel" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="End"/>
+                <Setter Property="TextColor" Value="Cyan"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="Small"/>
+            </Style>
+
+            <Style x:Key="Properties" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="End"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="TextColor" Value="Cyan"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="Small"/>
+            </Style>
+
+            <Style x:Key="StatsEntry" TargetType="Entry">
+                <Setter Property="Placeholder" Value="1"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="Keyboard" Value="Numeric"/>
+
+            </Style>
+
         </ResourceDictionary>
     </ContentPage.Resources>
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png" />
+        <ToolbarItem Text="Save" Clicked="Save_Clicked" IconImageSource="icon_save.png"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
+        <StackLayout Spacing="20" Padding="15,20,15,20">
+            <StackLayout 
+            Orientation="Horizontal"
+                HorizontalOptions="Center">
 
-        <ScrollView>
-            <StackLayout Style="{StaticResource OuterBoxStack}"
-                Spacing="10">
+                <Image Source="raygun.png" HeightRequest="150" WidthRequest="150"></Image>
+                <StackLayout
+                    Orientation="Vertical"
+                    HorizontalOptions="Center">
 
-                <Label Text="Update Page" Style="{StaticResource HeaderStyle}"/>
-
-                <Image Source="{Binding Data.ImageURI}" Style="{StaticResource ImageLargeStyle}" HorizontalOptions="CenterAndExpand"/>
-
-                <Grid
-                    RowSpacing="1"
-                    ColumnSpacing="2"
-                    VerticalOptions="Center">
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Label Grid.Row="0" Grid.Column="0"
-                        Text="Name" 
-                        Style="{StaticResource LabelStyle}"/>
-
-                    <Entry Grid.Row="0" Grid.Column="1"
-                        Text="{Binding Data.Name}" 
-                        Style="{StaticResource EntryStyle}"/>
-
-                    <Label Grid.Row="1" Grid.Column="0"
-                        Text="Description" 
-                        Style="{StaticResource LabelStyle}"/>
-
-                    <Entry Grid.Row="1" Grid.Column="1"
-                        Text="{Binding Data.Description}" 
-                        Style="{StaticResource EntryStyle}"/>
-
-                    <Label Grid.Row="2" Grid.Column="0"
-                        Text="Location" 
-                        Style="{StaticResource LabelStyle}"/>
-
-                    <Picker Grid.Row="2" Grid.Column="1"
-                        ItemsSource="{x:Static local_helpers:ItemLocationEnumHelper.GetListCharacter}" 
-                        SelectedItem="{Binding Data.Location, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
-                        x:Name="LocationPicker"/>
-
-                    <Label Grid.Row="3" Grid.Column="0"
-                        Text="Attribute" 
-                        Style="{StaticResource LabelStyle}"/>
-
-                    <Picker Grid.Row="3" Grid.Column="1"
-                        ItemsSource="{x:Static local_helpers:AttributeEnumHelper.GetListCharacter}" 
-                        SelectedItem="{Binding Data.Attribute, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
-                        x:Name="AttributePicker"/>
-
-                    <Label Grid.Row="4" Grid.Column="0"
-                        Text="Image" 
-                        Style="{StaticResource LabelStyle}"/>
-
-                    <StackLayout Grid.Row="4" Grid.Column="1" Style="{StaticResource HorizontalStack}" HorizontalOptions="FillAndExpand">
-
-                        <Image 
-                            Source="{Binding Data.ImageURI}"
-                            Style="{StaticResource ImageSmallStyle}"/>
-
-                        <Entry 
-                            Text="{Binding Data.ImageURI}" 
-                            Style="{StaticResource EntryStyle}"/>
-
-                    </StackLayout>
-                </Grid>
-
-                <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="FillAndExpand">
-
-                    <Label 
-                        Text="Range" 
-                        Style="{StaticResource LabelStyle}"/>
-
-                    <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
-
-                        <Label 
-                            Text="{Binding Data.Range}" 
-                            x:Name="RangeValue"
-                            Style="{StaticResource ValueStyle}"
-                            Padding="0,0,10,0"
-                            HorizontalOptions="End"
-                            HorizontalTextAlignment="End"/>
-
-                        <Stepper 
-                            Value="{Binding Data.Range, Mode=TwoWay}"
-                            ValueChanged="Range_OnStepperValueChanged"/>
-
-                    </StackLayout>
-
-                    <Label 
-                        Text="Value"
-                        Style="{StaticResource LabelStyle}"/>
-
-                    <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
-
-                        <Label 
-                            Text="{Binding Data.Value}" 
-                            x:Name="ValueValue"
-                            Style="{StaticResource ValueStyle}"
-                            Padding="0,0,10,0"
-                            HorizontalOptions="End"
-                            HorizontalTextAlignment="End"/>
-
-                        <Stepper 
-                            Value="{Binding Data.Value, Mode=TwoWay}"
-                            ValueChanged="Value_OnStepperValueChanged"/>
-
-                    </StackLayout>
-
-                    <Label 
-                        Text="Damage" 
-                        Style="{StaticResource LabelStyle}"/>
-
-                    <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
-
-                        <Label 
-                            Text="{Binding Data.Damage}" 
-                            x:Name="DamageValue"
-                            Style="{StaticResource ValueStyle}"
-                            Padding="0,0,10,0"
-                            HorizontalOptions="End"
-                            HorizontalTextAlignment="End"/>
-
-                        <Stepper 
-                            Value="{Binding Data.Damage, Mode=TwoWay}"
-                            ValueChanged="Damage_OnStepperValueChanged"/>
-
-                    </StackLayout>
+                    <Entry Text="{Binding Data.Name}" Placeholder="Item name" FontSize="Small" WidthRequest="300"/>
+                    <Editor Text="{Binding Data.Description}" Placeholder ="Item description" FontSize="Small" Margin="0" AutoSize="TextChanges" WidthRequest="300"/>
+                    <Label HorizontalOptions ="Center" Text="Value" TextColor="AntiqueWhite" FontSize="Medium" />
+                    <Frame
+                            BorderColor="White"
+                            BackgroundColor="#263238"
+                            Opacity="0.75">
+                        <StackLayout 
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center">
+                            <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Value}"/>
+                            </StackLayout>
+                    </Frame>
                 </StackLayout>
             </StackLayout>
-        </ScrollView>
+            <Frame
+                BorderColor="White"
+                BackgroundColor="#263238"
+                Opacity="0.70">
+                <Grid>
+
+                    <Label Style="{StaticResource StatsLabel}" Text="HP"  Grid.Row ="0" Grid.Column="0"/>
+                    <Label Style="{StaticResource StatsLabel}" Text="ATK"  Grid.Row ="0" Grid.Column="1"/>
+                    <Label Style="{StaticResource StatsLabel}" Text ="DEF"  Grid.Row ="0" Grid.Column="2"/>
+                    <Label Style="{StaticResource StatsLabel}" Text="RDF"  Grid.Row ="0" Grid.Column="3"/>
+                    <Label Style="{StaticResource StatsLabel}" Text="SPD" Grid.Row ="0" Grid.Column="4"/>
+
+                    <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.healthValue}"  Grid.Row="1"  Grid.Column="0"/>
+                    <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.attackValue}"  Grid.Row="1" Grid.Column="1"/>
+                    <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.defenseValue}" Grid.Row="1" Grid.Column="2"/>
+                    <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.rangedDefenseValue}" Grid.Row="1" Grid.Column="3"/>
+                    <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.speedValue}" Grid.Row="1" Grid.Column="4"/>
+
+                    <Label Style="{StaticResource StatsLabel}" Text="HP Mult"  Grid.Row ="3" Grid.Column="0"/>
+                    <Label Style="{StaticResource StatsLabel}" Text="ATK Mult"  Grid.Row ="3" Grid.Column="1"/>
+                    <Label Style="{StaticResource StatsLabel}" Text ="DEF Mult"  Grid.Row ="3" Grid.Column="2"/>
+                    <Label Style="{StaticResource StatsLabel}" Text="RDF Mult" Grid.Row ="3" Grid.Column="3"/>
+                    <Label Style="{StaticResource StatsLabel}" Text="SPD Mult" Grid.Row ="3" Grid.Column="4"/>
+
+                    <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.healthMult}" Grid.Row="4"   Grid.Column="0"/>
+                    <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.attackMult}"  Grid.Row="4" Grid.Column="1"/>
+                    <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.defenseMult}" Grid.Row="4" Grid.Column="2"/>
+                    <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.rangedDefenseMult}" Grid.Row="4" Grid.Column="3"/>
+                    <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.speedMult}" Grid.Row="4" Grid.Column="4"/>
+
+                    <Label Style="{StaticResource Properties}" Text="Ranged?"  Grid.Row ="5" Grid.Column="0"/>
+                    <CheckBox IsChecked="true" Grid.Row ="5" Grid.Column="1"/>
+
+
+
+                    <Label Style="{StaticResource Properties}" Text="Location"  Grid.Row ="5" Grid.Column="3"/>
+                    <Picker x:Name="pick"
+                            Grid.Row ="5"
+                            Grid.Column="4"
+                            SelectedItem="{Binding Data.location}"
+                            TitleColor="Aqua">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Head</x:String>
+                                <x:String>Torso</x:String>
+                                <x:String>Arms</x:String>
+                                <x:String>Hand</x:String>
+                                <x:String>Ring</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Grid>
+            </Frame>
+        </StackLayout>
     </ContentPage.Content>
+
+
 </ContentPage>

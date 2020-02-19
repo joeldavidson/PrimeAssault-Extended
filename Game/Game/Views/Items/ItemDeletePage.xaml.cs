@@ -1,11 +1,14 @@
 ﻿using System.ComponentModel;
 using Xamarin.Forms;
+
 using PrimeAssault.ViewModels;
 using System;
-using PrimeAssault.Models;
 
 namespace PrimeAssault.Views
 {
+    // Learn more about making custom code visible in the Xamarin.Forms previewer
+    // by visiting https://aka.ms/xamarinforms-previewer
+
     /// <summary>
     /// The Read Page
     /// </summary>
@@ -13,19 +16,14 @@ namespace PrimeAssault.Views
     public partial class ItemDeletePage : ContentPage
     {
         // View Model for Item
-        readonly GenericViewModel<ItemModel> viewModel;
-
-        // Empty Constructor for UTs
-        public ItemDeletePage(bool UnitTest) { }
+        ItemViewModel ViewModel;
 
         // Constructor for Delete takes a view model of what to delete
-        public ItemDeletePage(GenericViewModel<ItemModel> data)
+        public ItemDeletePage(ItemViewModel data)
         {
             InitializeComponent();
 
-            BindingContext = this.viewModel = data;
-
-            this.viewModel.Title = "Delete " + data.Title;
+            BindingContext = this.ViewModel = data;
         }
 
         /// <summary>
@@ -33,9 +31,9 @@ namespace PrimeAssault.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public async void Delete_Clicked(object sender, EventArgs e)
+        async void Delete_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "Delete", viewModel.Data);
+            MessagingCenter.Send(this, "Delete", ViewModel.Data);
             await Navigation.PopModalAsync();
         }
 
@@ -44,18 +42,13 @@ namespace PrimeAssault.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public async void Cancel_Clicked(object sender, EventArgs e)
+        async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
         }
 
-        /// <summary>
-        /// Trap the Back Button on the Phone
-        /// </summary>
-        /// <returns></returns>
         protected override bool OnBackButtonPressed()
         {
-            // Add your code here...
             return true;
         }
     }
