@@ -21,11 +21,14 @@
                    WidthRequest="250"
             ></Image>
 
-            <Label Text="{Binding Data.Name}" FontSize="Header" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="AntiqueWhite"></Label>
+            <Label Text="{Binding Data.Name}" FontSize="Header" FontAttributes="Bold" HorizontalOptions="Center" TextColor="AntiqueWhite"></Label>
 
-            <StackLayout Orientation ="Horizontal" HorizontalOptions="CenterAndExpand">
+            <StackLayout Orientation ="Horizontal" HorizontalOptions="Center">
                 <Label Text="Class: " FontSize="Small" TextColor="AntiqueWhite"></Label>
                 <Label Text="{Binding Data.JobClass}" FontSize="Small" TextColor="AntiqueWhite"></Label>
+            </StackLayout>
+
+            <StackLayout Orientation ="Horizontal" HorizontalOptions="Center">
                 <Label Text="Health: " FontSize="Small" TextColor="AntiqueWhite"></Label>
                 <Label Text="{Binding Data.CurrentHealth}" FontSize="Small" TextColor="AntiqueWhite"></Label>
                 <Label Text="/" TextColor="AntiqueWhite"></Label>
@@ -33,7 +36,7 @@
             </StackLayout>
 
 
-            <Label Text="{Binding Data.Description}" FontSize="Body" HorizontalTextAlignment="Center" TextColor="AntiqueWhite"></Label>
+            <Label Text="{Binding Data.Description}" FontSize="Body" HorizontalOptions="Center" TextColor="AntiqueWhite"></Label>
 
             <StackLayout Orientation ="Horizontal" HorizontalOptions="CenterAndExpand">
                 <Label Text="Ability: " FontSize="Small" TextColor="AntiqueWhite"></Label>
@@ -63,7 +66,18 @@
 
             </Frame>
             <Grid>
-
+                <Button x:Name="btn0"
+                        VerticalOptions="Center"
+                                            HorizontalOptions="Center"
+                                            HeightRequest="{Binding Width, Source={x:Reference btn1}}"
+                                            Text="LVL" TextColor="Aqua"
+                                            CornerRadius="40"
+                                            BorderColor="Aqua"
+                         BackgroundColor="#4D3f035f"
+                         Grid.Row="0" Grid.Column="0"
+                                                >
+                </Button>
+                
                 <Button x:Name="btn1"
                         VerticalOptions="Center"
                                             HorizontalOptions="Center"
@@ -71,7 +85,8 @@
                                             Text="ATK" TextColor="Aqua"
                                             CornerRadius="40"
                                             BorderColor="Aqua"
-                         Grid.Row="0" Grid.Column="0"
+                         BackgroundColor="#4D3f035f"
+                         Grid.Row="0" Grid.Column="1"
                                                 >
                 </Button>
                 <Button x:Name="btn2"
@@ -81,7 +96,8 @@
                                             Text="DEF" TextColor="Aqua"
                                             CornerRadius="40"
                                             BorderColor="Aqua"
-                         Grid.Row="0" Grid.Column="1"
+                         BackgroundColor="#4D3f035f"
+                         Grid.Row="0" Grid.Column="2"
                                                 ></Button>
                 <Button x:Name="btn3"
                         VerticalOptions="Center"
@@ -91,7 +107,8 @@
                                             TextColor="Aqua"
                                             CornerRadius="40"
                                             BorderColor="Aqua"
-                         Grid.Row="0" Grid.Column="2"
+                         BackgroundColor="#4D3f035f"
+                         Grid.Row="0" Grid.Column="3"
                                                 ></Button>
                 <Button x:Name="btn4"
                                             VerticalOptions="Center"
@@ -100,18 +117,17 @@
                                             Text="SPD" TextColor="Aqua"
                                             CornerRadius="40"
                                             BorderColor="Aqua"
-                         Grid.Row="0" Grid.Column="3"
-                        
+                         BackgroundColor="#4D3f035f"
+                         Grid.Row="0" Grid.Column="4"
                                                 ></Button>
 
-
-                <Label  Text ="{Binding Data.Attack}" VerticalOptions="Center" HorizontalOptions="Center"  TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="0"/>
-                <Label  Text ="{Binding Data.Defense}"  VerticalOptions="Center" HorizontalOptions="Center" TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="1"/>
-                <Label  Text ="{Binding Data.RangedDefense}" VerticalOptions="Center" HorizontalOptions="Center"  TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="2"/>
-                <Label  Text ="{Binding Data.Speed}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="3"/>
+                <Label  Text ="{Binding Data.Level}" VerticalOptions="Center" HorizontalOptions="Center"  TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="0"/>
+                <Label  Text ="{Binding Data.Attack}" VerticalOptions="Center" HorizontalOptions="Center"  TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="1"/>
+                <Label  Text ="{Binding Data.Defense}"  VerticalOptions="Center" HorizontalOptions="Center" TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="2"/>
+                <Label  Text ="{Binding Data.RangedDefense}" VerticalOptions="Center" HorizontalOptions="Center"  TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="3"/>
+                <Label  Text ="{Binding Data.Speed}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="4"/>
             </Grid>
             
-
         </StackLayout>         
             
     </ContentPage.Content>
