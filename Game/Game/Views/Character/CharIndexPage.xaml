@@ -60,12 +60,14 @@
                                                     Grid.Column="0"
                                                     Grid.Row="2"
                                                 CornerRadius="20"
+                                            BackgroundColor="#4D3f035f"
                                                 BorderColor="Aqua"
                                                     ></Button>
                                     <Button Text="{Binding maxHealth}" TextColor="Aqua"
                                                     Grid.Column="0"
                                                     Grid.Row="3"
                                                 CornerRadius="10"
+                                            BackgroundColor="#4D3f035f"
                                                 BorderColor="Aqua"
                                                     ></Button>
                                     <!--End of Column 1-->
@@ -79,6 +81,7 @@
                                             Grid.Column="1"
                                             Grid.Row="0"
                                             CornerRadius="40"
+                                            BackgroundColor="#4D3f035f"
                                             BorderColor="Aqua"
                                                 ></Button>
                                     <Button x:Name="btn2"
@@ -89,6 +92,7 @@
                                             Grid.Column="1"
                                             Grid.Row="1"
                                             CornerRadius="40"
+                                            BackgroundColor="#4D3f035f"
                                             BorderColor="Aqua"
                                                 ></Button>
                                     <Button x:Name="btn3"
@@ -100,6 +104,7 @@
                                             Grid.Column="1"
                                             Grid.Row="2"
                                             CornerRadius="40"
+                                            BackgroundColor="#4D3f035f"
                                             BorderColor="Aqua"
                                                 ></Button>
                                     <Button x:Name="btn4"
@@ -109,6 +114,7 @@
                                             Text="SPD" TextColor="Aqua"
                                             Grid.Column="1"
                                             Grid.Row="3"
+                                            BackgroundColor="#4D3f035f"
                                             CornerRadius="40"
                                             BorderColor="Aqua"
                                                 ></Button>
