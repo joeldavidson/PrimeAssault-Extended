@@ -246,4 +246,16 @@
   <ItemGroup>
     <BundleResource Include="Resources\neonStairs.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ScoreIndex.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ScoreCreate.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ScoreDelete.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ScoreUpdate.jpg" />
+  </ItemGroup>
 </Project>
