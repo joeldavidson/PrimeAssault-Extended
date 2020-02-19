@@ -54,7 +54,7 @@
                     HorizontalOptions="Center">
 
                     <Entry Text="{Binding Data.Name}" Placeholder="Item name" FontSize="Small" WidthRequest="300"/>
-                    <Editor Text="{Binding Data.Description}" Placeholder ="Item description" FontSize="Small" Margin="0" AutoSize="TextChanges" WidthRequest="300"/>
+                    <Editor Text="{Binding Data.Description}" TextColor="#212121" Placeholder ="Item description" FontSize="Small" Margin="0" AutoSize="TextChanges" WidthRequest="300"/>
                     <Label HorizontalOptions ="Center" Text="Value" TextColor="AntiqueWhite" FontSize="Medium" />
                     <Frame
                             BorderColor="White"
