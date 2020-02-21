@@ -98,8 +98,8 @@
                     <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.rangedDefenseMult}" Grid.Row="4" Grid.Column="3"/>
                     <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.speedMult}" Grid.Row="4" Grid.Column="4"/>
 
-                    <Label Style="{StaticResource Properties}" Text="Ranged?"  Grid.Row ="5" Grid.Column="0"/>
-                    <CheckBox IsChecked="true" Grid.Row ="5" Grid.Column="1"/>
+                    <Label Style="{StaticResource Properties}" Text="Range"  Grid.Row ="5" Grid.Column="0"/>
+                    <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.range}" Grid.Row="5" Grid.Column="1"/> 
 
 
 
