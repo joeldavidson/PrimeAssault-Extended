@@ -27,6 +27,7 @@
                             RefreshCommand="{Binding LoadItemsCommand}"
                             CachingStrategy="RecycleElement"
                             ItemSelected="OnCharSelected"
+                          HasUnevenRows="True"
                               BackgroundColor="Transparent">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -39,7 +40,7 @@
                                         <RowDefinition Height="50" />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="100" />
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="*" />
@@ -57,8 +58,8 @@
                                                          Grid.RowSpan="2">
                                     </ImageButton>
                                     <Button Text="{Binding Name}" TextColor="Aqua"
-                                                    Grid.Column="0"
-                                                    Grid.Row="2"
+                                                Grid.Column="0"
+                                                Grid.Row="2"
                                                 CornerRadius="20"
                                                 BorderColor="Aqua"
                                             BackgroundColor="Transparent"
