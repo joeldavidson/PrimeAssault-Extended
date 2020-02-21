@@ -35,8 +35,8 @@
             
             Padding="40,20,40,20">
             <Label TextColor="Orange" HorizontalOptions="Center" FontSize="Header">MONSTER LAB</Label>
-            <Image Source="sewer_gator.png" HeightRequest="250" WidthRequest="250"></Image>
-
+            <Image Source="{Binding Data.ImageURI}" HeightRequest="250" WidthRequest="250"></Image>
+            <Entry  Text ="{Binding Data.ImageURI}"  Placeholder="{Binding Data.ImageURI}" FontSize="Small" />
             <Entry  Text ="{Binding Data.Name}"  Placeholder="Name" FontSize="Small" />
             <Editor Text="{Binding Data.Description}"  
                     Placeholder="Monster Description" 
@@ -45,7 +45,7 @@
                     TextColor="Black"
                     Margin="0" 
                     AutoSize="TextChanges" />
-            <Grid>
+            <Grid VerticalOptions="Start">
                 
                 <Label Style="{StaticResource StatsLabel}" Text="LVL" Grid.Column="0"/>
                 <Label Style="{StaticResource StatsLabel}" Text="ATK"  Grid.Column="1"/>
