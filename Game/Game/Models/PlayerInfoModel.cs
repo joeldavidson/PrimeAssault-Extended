@@ -25,7 +25,7 @@ namespace PrimeAssault.Models
             PlayerType = data.PlayerType;
             Guid = data.Guid;
             Alive = data.Alive;
-            ExperiencePoints = data.ExperienceTotal;
+            ExperienceTotal = data.ExperienceTotal;
             Level = data.Level;
             Name = data.Name;
             Description = data.Description;
@@ -52,7 +52,7 @@ namespace PrimeAssault.Models
             PlayerType = data.PlayerType;
             Guid = data.Guid;
             Alive = data.Alive;
-            ExperiencePoints = data.ExperienceTotal;
+            ExperienceTotal = data.ExperienceTotal;
             Level = data.Level;
             Name = data.Name;
             Description = data.Description;
@@ -79,7 +79,7 @@ namespace PrimeAssault.Models
             PlayerType = data.PlayerType;
             Guid = data.Guid;
             Alive = data.Alive;
-            ExperiencePoints = data.ExperienceTotal;
+            ExperienceTotal = data.ExperienceTotal;
             Level = data.Level;
             Name = data.Name;
             Description = data.Description;
