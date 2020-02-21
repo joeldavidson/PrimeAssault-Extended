@@ -20,9 +20,6 @@ namespace PrimeAssault.Models
         public string Move2 { get; set; } = "";
         //Default monster image
         const string DEFAULT_URI = "sewer_gator.png";
-
-        //Variable for experience given
-        public uint experienceTotal { get; set; } = 1;
         
         //Item that is dropped by the monster
         ItemModel Drop = new ItemModel(); //should be retrieved at random?
