@@ -7,11 +7,11 @@ namespace PrimeAssault.Models
     public class AbilityModel : BaseModel<AbilityModel>
     {
         //What kind of character can have the ability
-        public string Faction { get; set; } = "player"; //alternative is "monster"
+        public string Faction { get; set; } = "human"; //alternative is "sewerMonster" or "euphratesMech"
         //Name of the ability
         public double EffectValue { get; set; } = 0.0;
         //public string who it affects (self/enemy)
-        public string CharacterAffected { get; set; } = "self";
+        public string CharacterAffected { get; set; } = "self"; 
 
 
         //stats to affect
