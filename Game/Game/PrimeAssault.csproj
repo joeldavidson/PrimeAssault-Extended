@@ -39,6 +39,21 @@
     <Compile Update="Views\Battle\AutoBattlePage.xaml.cs">
       <DependentUpon>AutoBattlePage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Monster\MonsterCreatePage.xaml.cs">
+      <DependentUpon>MonsterCreatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Monster\MonsterDeletePage.xaml.cs">
+      <DependentUpon>MonsterDeletePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Monster\MonsterIndexPage.xaml.cs">
+      <DependentUpon>MonsterIndexPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Monster\MonsterReadPage.xaml.cs">
+      <DependentUpon>MonsterReadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Monster\MonsterUpdatePage.xaml.cs">
+      <DependentUpon>MonsterUpdatePage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Village\VillagePage.xaml.cs">
       <DependentUpon>VillagePage.xaml</DependentUpon>
     </Compile>

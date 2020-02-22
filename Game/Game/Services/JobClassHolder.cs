@@ -6,6 +6,9 @@ namespace PrimeAssault.Services
 {
     public static class JobClassHolder
     {
+        /// <summary>
+        /// Single instance of job classes which should be listed for final version. Like a datastore but not.
+        /// </summary>
         public static List<jobClassModel> JobClassList = new List<jobClassModel>()
         {
             new jobClassModel
@@ -16,7 +19,7 @@ namespace PrimeAssault.Services
                 RangedDefenseMult = -.3,
                 AttackMult = .2,
                 Description = "Soldiers have high health, and defense, and are more likely to get abilities that help with close-range combat.",
-                ClassName = "Soldier", //only done for formatting purposes, very hacky
+                ClassName = "Soldier",
                 NextLevelMult = 1.0,
                 ImageURI = "soldier_class.png",
             },
@@ -27,7 +30,7 @@ namespace PrimeAssault.Services
                 DefenseMult = 0,
                 RangedDefenseMult = .15,
                 AttackMult = .15,
-                Description = "The hunter has high Attack, and Speed and its bonuses usually lend to killing sewer creatures from afar.",
+                Description = "The hunter has high Attack and Speed and its bonuses usually lend to killing sewer creatures from afar.",
                 ClassName = "Hunter",//only done for formatting purposes, very hacky
                 NextLevelMult = 1.0,
                 ImageURI = "hunter_class.png",
