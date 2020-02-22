@@ -103,12 +103,13 @@ namespace PrimeAssault.Models
             speedMult = data.speedMult;
             healthMult = data.healthMult;
 
-            Value = getValue();
+            Value = GetValue();
             valueString = Value + "g";
             return true;
         }
 
-        int getValue()
+        //Gets the cash value of an item. This is the amount the item will be sold for. 
+        int GetValue()
         {
             return attackValue + defenseValue + rangedDefenseValue + speedValue + healthValue;
         }
