@@ -40,7 +40,9 @@ namespace PrimeAssault.Services
             //Predicate for seeing if move exists
             Predicate<AbilityModel> nameFinder = (AbilityModel p) => { return p.Name == name; };
             if (AbilityList.Exists(nameFinder))
+            {
                 return (AbilityList.Find(nameFinder));
+            }
             return null;
         }
     }
