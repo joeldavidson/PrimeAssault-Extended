@@ -35,7 +35,7 @@ namespace PrimeAssault.Services
         /// <summary>
         /// Ability model for getting move
         /// </summary>
-        public static AbilityModel getMove(string name)
+        public static AbilityModel GetMove(string name)
         {
             //Predicate for seeing if move exists
             Predicate<AbilityModel> nameFinder = (AbilityModel p) => { return p.Name == name; };

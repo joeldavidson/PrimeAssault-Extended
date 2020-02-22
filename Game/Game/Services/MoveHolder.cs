@@ -25,7 +25,7 @@ namespace PrimeAssault.Services
 
             };
 
-        public static MoveModel getMove(string name)
+        public static MoveModel GetMove(string name)
         {
             //Predicated for seeing if move exists
             Predicate<MoveModel> nameFinder = (MoveModel p) => { return p.Name == name; };

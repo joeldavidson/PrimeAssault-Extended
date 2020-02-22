@@ -26,8 +26,8 @@ namespace PrimeAssault.Models
             RangedDefense = 2;
             Speed = 2;
             ImageURI = "soldier_class.png";
-            Moves[0] = MoveHolder.getMove("Crackshot");
-            Moves[1] = MoveHolder.getMove("Iron Grip");
+            Moves[0] = MoveHolder.GetMove("Crackshot");
+            Moves[1] = MoveHolder.GetMove("Iron Grip");
             Move1 = "Crackshot";
             Move2 = "Iron Grip";
         }
