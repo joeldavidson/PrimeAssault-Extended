@@ -12,12 +12,7 @@ namespace PrimeAssault.Models
         const int BASE_XP = 1;
         const int LVL_MULT = 2;
         const int LVL_EXP = 2;
-        public string Ability { get; set; } = "None";
 
-
-        public string Move1 { get; set; } = "";
-
-        public string Move2 { get; set; } = "";
         //Default monster image
         const string DEFAULT_URI = "sewer_gator.png";
         
@@ -85,22 +80,6 @@ namespace PrimeAssault.Models
             Attack += 2;
         }
 
-        //Monster update
-        void MonsterUpdate(MonsterModel data)
-        {
-            CurrentHealth = data.CurrentHealth;
-            MaxHealth = data.MaxHealth;
-            Speed = data.Speed;
-            RangedDefense = data.RangedDefense;
-            Defense = data.Defense;
-            Attack = data.Attack;
-            Description = data.Description;
-            Name = data.Name;
-            Level = data.Level;
-            if (Level > 20)
-                Level = 20;
-        }
-
         //provides multipliers for stats that are increased with every level
         void equalizeMultipliers()
         {
@@ -111,7 +90,7 @@ namespace PrimeAssault.Models
             AttackMult = 1;
         }
 
-        //experience given by the monster
+        //experience given by the monster (NEEDS TO BE REDONE TO FOLLOW GAME RULES)
         public int dropExp()
         {
             return (BASE_XP + (LVL_MULT * Level) ^ LVL_EXP);
