@@ -39,6 +39,21 @@
     <Compile Update="Views\Battle\AutoBattlePage.xaml.cs">
       <DependentUpon>AutoBattlePage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Character\CharacterCreatePage.xaml.cs">
+      <DependentUpon>CharacterCreatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Character\CharacterDeletePage.xaml.cs">
+      <DependentUpon>CharacterDeletePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Character\CharacterIndexPage.xaml.cs">
+      <DependentUpon>CharacterIndexPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Character\CharacterReadPage.xaml.cs">
+      <DependentUpon>CharacterReadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Character\CharacterUpdatePage.xaml.cs">
+      <DependentUpon>CharacterUpdatePage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Monster\MonsterCreatePage.xaml.cs">
       <DependentUpon>MonsterCreatePage.xaml</DependentUpon>
     </Compile>
