@@ -22,29 +22,6 @@ namespace PrimeAssault.Models
         //Type of monster the player is facing
         public string type { get; set; } = "sewer creature";
 
-        //Information available in the event of a monster being updated
-        public bool Update(MonsterModel data)
-        {
-            Name = data.Name;
-            Description = data.Description;
-            Level = data.Level;
-            CurrentHealth = data.CurrentHealth;
-            MaxHealth = data.MaxHealth;
-            Speed = data.Speed;
-            Attack = data.Attack;
-            RangedDefense = data.RangedDefense;
-            Defense = data.Defense;
-
-            HealthMult = data.HealthMult;
-            SpeedMult = data.SpeedMult;
-            DefenseMult = data.DefenseMult;
-            RangedDefenseMult = data.RangedDefense;
-            AttackMult = data.AttackMult;
-
-            Ability = null;
-            return true;
-        }
-
         //The monster (inherits from base)
         public MonsterModel() : base()
         {

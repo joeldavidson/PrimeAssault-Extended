@@ -13,7 +13,7 @@ namespace PrimeAssault.ViewModels
         public CharacterModel Data { get; set; }
 
         /// <summary>
-        /// Constructor takes an existing Monster and sets
+        /// Constructor takes an existing character and sets
         /// The Title for the page to match the text of data
         /// The Data to be the passed in data
         /// </summary>
