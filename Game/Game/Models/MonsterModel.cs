@@ -32,7 +32,7 @@ namespace PrimeAssault.Models
             Attack = data.Attack;
             RangedDefense = data.RangedDefense;
             Defense = data.Defense;
-            if (data.Level < 21 && data.Level > 0)
+            if (data.Level < 22 && data.Level > 0)
             {
                 Level = data.Level;
             }
@@ -74,25 +74,17 @@ namespace PrimeAssault.Models
             Move2 = "Iron Grip";
         }
 
-        //Levels up the Monster if they are ready
-        bool LevelUp() 
+        public bool SetLevel(int targetLevel)
         {
-            Level++;
-            
-            return true;
+            if (targetLevel > 0 && targetLevel <22)
+            {
+                Level = targetLevel;
+            }
+            return false;
         }
 
-        //Basic level up stat increases, temporary, will eventually change when classes are better hammered out
-        void increaseStats() 
-        {
-            CurrentHealth += 5;
-            Defense += 2;
-            RangedDefense += 2;
-            Speed += 2;
-            Attack += 2;
-        }
 
-        //provides multipliers for stats that are increased with every level
+        //helper function which resets multipliers so that changing abilities does not stack previous bonuses with current ones
         void equalizeMultipliers()
         {
             HealthMult = 1;
