@@ -24,6 +24,9 @@ namespace PrimeAssault.Models
         // Speed Bonus
         public int Speed;
 
+        //Ranged Defense Bonus
+        public int RangedDefense;
+
         /// <summary>
         /// Create a new level based on values passed in
         /// </summary>
@@ -32,11 +35,12 @@ namespace PrimeAssault.Models
         /// <param name="attack"></param>
         /// <param name="defense"></param>
         /// <param name="speed"></param>
-        public LevelDetailsModel(int level, int experience, int attack, int defense, int speed)
+        public LevelDetailsModel(int level, int experience, int attack, int defense, int rangedDefense, int speed)
         {
             Level = level;
             Experience = experience;
             Attack = attack;
+            RangedDefense = rangedDefense;
             Defense = defense;
             Speed = speed;
         }

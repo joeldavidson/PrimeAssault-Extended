@@ -78,7 +78,7 @@ namespace PrimeAssault.Models
         bool LevelUp() 
         {
             Level++;
-            increaseStats();
+            
             return true;
         }
 
