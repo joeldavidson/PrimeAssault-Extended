@@ -13,6 +13,8 @@ namespace PrimeAssault.Models
         public double DefenseMult { get; set; } = 0;
         public double RangedDefenseMult { get; set; } = 0;
         public double AttackMult { get; set; } = 0;
+
+        //Modifies the amount of experience needed for each level ip
         public double NextLevelMult { get; set; } = 1.0;
 
         //Name of each class eg "soldier" or "mechanic"

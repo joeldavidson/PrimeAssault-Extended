@@ -153,34 +153,7 @@ namespace PrimeAssault.Models
             return myReturn;
         }
         //Information available in the event of a monster being updated
-        public bool Update(BasePlayerModel<T> data)
-        {
-            Name = data.Name;
-            Description = data.Description;
-            CurrentHealth = data.CurrentHealth;
-            MaxHealth = data.MaxHealth;
-            Speed = data.Speed;
-            Attack = data.Attack;
-            RangedDefense = data.RangedDefense;
-            Defense = data.Defense;
-            if (data.Level < 21 && data.Level > 0)
-            {
-                Level = data.Level;
-            }
-            else
-            {
-                Level = 1;
-            }
 
-            HealthMult = data.HealthMult;
-            SpeedMult = data.SpeedMult;
-            DefenseMult = data.DefenseMult;
-            RangedDefenseMult = data.RangedDefense;
-            AttackMult = data.AttackMult;
-
-            Ability = data.Ability;
-            return true;
-        }
 
         // Take Damage
         // If the damage recived, is > health, then death occurs

@@ -18,12 +18,12 @@
         <Image 
             HeightRequest="250"
             WidthRequest="250"
-            Source="{Binding Data.imageURI}"></Image>
+            Source="{Binding Data.ImageURI}"></Image>
         
         <Label  Text="Name: " TextColor ="Aquamarine" FontSize="Medium" />
         <Label HorizontalOptions="Center" Text="{Binding Data.Name}" TextColor="Aqua" FontSize="Medium"/>
         <Label Text="Job Class:" TextColor="Aquamarine" FontSize="Medium" />
-        <Label HorizontalOptions="Center" Text="{Binding Data.jobClass}"  TextColor="Aqua" FontSize="Medium"/>
+        <Label HorizontalOptions="Center" Text="{Binding Data.JobClass}"  TextColor="Aqua" FontSize="Medium"/>
 
 
         <StackLayout 
