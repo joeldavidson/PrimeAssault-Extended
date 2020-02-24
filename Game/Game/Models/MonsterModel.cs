@@ -97,7 +97,7 @@ namespace PrimeAssault.Models
         //experience given by the monster (NEEDS TO BE REDONE TO FOLLOW GAME RULES)
         public int dropExp()
         {
-            return (BASE_XP + (LVL_MULT * Level) ^ LVL_EXP);
+            return (LevelTableHelper.Instance.LevelDetailsList[Level].Experience);
         }
 
     }
