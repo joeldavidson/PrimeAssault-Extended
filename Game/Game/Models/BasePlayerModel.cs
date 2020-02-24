@@ -129,17 +129,81 @@ namespace PrimeAssault.Models
             ImageURI = "soldier_class.png";
         }
 
-        public int GetAttack() { return 0; }
-        public int GetDefense() { return 0; }
+        /// <summary>
+        /// Rturn the Calculated Attack of a character
+        /// </summary>
+        /// <returns></returns>
+        public int GetAttack() {
+            var myReturn = Attack;
+
+            // Get Bonus from Level
+            myReturn += LevelTableHelper.Instance.LevelDetailsList[Level].Attack;
+
+            // Get bonus from Items
+            myReturn += GetItemBonus(AttributeEnum.Attack);
+
+            return myReturn;
+        }
+
+        /// <summary>
+        /// Return the Calculated ranged defense of a character
+        /// </summary>
+        /// <returns></returns>
+
+        public int GetRangedDefense() {
+            var myReturn = RangedDefense;
+
+            // Get Bonus from Level
+            myReturn += LevelTableHelper.Instance.LevelDetailsList[Level].RangedDefense;
+
+            // Get bonus from Items
+            myReturn += GetItemBonus(AttributeEnum.RangedDefense);
+
+            return myReturn;
+        }
+
+        /// <summary>
+        /// Return the Calculated Defense
+        /// </summary>
+        /// <returns></returns>
+        public int GetDefense()
+        {
+            var myReturn = Defense;
+
+            // Get Bonus from Level
+            myReturn += LevelTableHelper.Instance.LevelDetailsList[Level].Defense;
+
+            // Get bonus from Items
+            myReturn += GetItemBonus(AttributeEnum.Defense);
+
+            return myReturn;
+        }
+
         public int GetHealthCurrent() { return CurrentHealth; }
-        public int GetHealthMax() { return MaxHealth; }
-        public int GetDamageRollValue() { return 10; }
+
+        /// <summary>
+        /// Rturn the Calculated maxHealth of a character
+        /// </summary>
+        /// <returns></returns>
+        public int GetHealthMax() {
+
+            var myReturn = MaxHealth;
+
+            // Get Bonus from Level
+            myReturn += LevelTableHelper.Instance.LevelDetailsList[Level].Health;
+
+            // Get bonus from Items
+            myReturn += GetItemBonus(AttributeEnum.MaxHealth);
+
+            return myReturn;
+        }
 
         /// <summary>
         /// Rturn the Calculated Speed
         /// </summary>
         /// <returns></returns>
-        public int GetSpeed() {
+        public int GetSpeed()
+        {
 
             // Base value
             var myReturn = Speed;
@@ -152,6 +216,12 @@ namespace PrimeAssault.Models
 
             return myReturn;
         }
+
+
+        public int GetDamageRollValue() { return 10; }
+
+        
+
         //Information available in the event of a monster being updated
 
 
@@ -186,9 +256,12 @@ namespace PrimeAssault.Models
             return Alive;
         }
 
-        public string FormatOutput() { return ""; }
+        public string FormatOutput() { return "A level " + Level + " " + Name; }
 
-        public bool AddExperience(int newExperience) { return true; }
+        public bool AddExperience(int newExperience) {
+            ExperienceTotal += newExperience;
+            return true; 
+        }
 
         public int CalculateExperienceEarned(int damage) { return 0; }
 

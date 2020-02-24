@@ -15,6 +15,9 @@
         // The defense score, to be used for defending against attacks
         Defense = 12,
 
+        //The Ranged defense score, to be used for defending against ranged attacks
+        RangedDefense = 11,
+
         // The Attack score to be used when attacking
         Attack = 14,
 
