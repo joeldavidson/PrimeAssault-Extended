@@ -89,5 +89,19 @@ namespace PrimeAssault.Models
             ImageURI = Current.ImageURI;
             return true;
         }
+
+        public override bool LevelUp()
+        {
+            if (Level < LevelTableHelper.MaxLevel)
+            {
+                if (LevelTableHelper.Instance.LevelDetailsList[Level + 1].Experience <= ExperienceTotal)
+                {
+                    ++Level;
+                    return true;
+                }
+            }
+            return false;
+        }
+
     }
 }

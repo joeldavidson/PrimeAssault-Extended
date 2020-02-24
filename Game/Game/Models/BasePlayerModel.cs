@@ -41,7 +41,7 @@ namespace PrimeAssault.Models
         public int Speed { get; set; } = 0;
         // Level of character or monster
         public int Level { get; set; } = 1;
-        // The experience points the player has used in sorting ties...
+        // The experience points the player has used in sorting ties... ---ASK QUESTION: DON'T UNDERSTAND IMPORTANCE OF EXPERIENCE POINTS VS TOTAL EXPERIENCE
         public int ExperiencePoints { get; set; } = 0;
 
         // Current Health
@@ -260,7 +260,13 @@ namespace PrimeAssault.Models
 
         public bool AddExperience(int newExperience) {
             ExperienceTotal += newExperience;
+            LevelUp();
             return true; 
+        }
+
+        virtual public bool LevelUp()
+        {
+            return true;
         }
 
         public int CalculateExperienceEarned(int damage) { return 0; }
