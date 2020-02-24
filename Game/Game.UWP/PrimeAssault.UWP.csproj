@@ -113,6 +113,7 @@
     <Content Include="door.png" />
     <Content Include="dungeon_door.png" />
     <Content Include="euphrates_lab.jpg" />
+    <Content Include="euphrates_logo.png" />
     <Content Include="gameover.png" />
     <Content Include="garage.jpg" />
     <Content Include="grey_door.png" />

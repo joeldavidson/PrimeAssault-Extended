@@ -211,5 +211,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ScoreRead.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\euphrates_logo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

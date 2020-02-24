@@ -267,4 +267,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\mechanical_macerator.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\euphrates_logo.png" />
+  </ItemGroup>
 </Project>
