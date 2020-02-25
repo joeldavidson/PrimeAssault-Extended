@@ -9,7 +9,6 @@
 
             <Style x:Key="StatsLabel" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="VerticalOptions" Value="End"/>
                 <Setter Property="TextColor" Value="OrangeRed"/>
                 <Setter Property="Grid.Row" Value="0"/>
             </Style>
@@ -38,7 +37,7 @@
             <Image Source="sewer_gator.png" HeightRequest="250" WidthRequest="250"></Image>
 
             <Entry  Text ="{Binding Data.Name}" Placeholder="{Binding Data.Name}" FontSize="Small" />
-            <Editor Text="{Binding Data.Description}"  Placeholder="Monster Description" TextColor ="Black" PlaceholderColor="DarkGray" FontSize="Small" Margin="0" AutoSize="TextChanges" />
+            <Entry Text="{Binding Data.Description}"  Placeholder="Monster Description" TextColor ="Black" PlaceholderColor="DarkGray" FontSize="Small" />
             <Grid>
 
                 <Label Style="{StaticResource StatsLabel}" Text="LVL" Grid.Column="0"/>
