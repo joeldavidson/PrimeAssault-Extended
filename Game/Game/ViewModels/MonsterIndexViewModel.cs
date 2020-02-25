@@ -5,24 +5,23 @@ using Xamarin.Forms;
 using System.Linq;
 using System.Collections.Generic;
 using PrimeAssault.Services;
+
 namespace PrimeAssault.ViewModels
 {
+
     /// <summary>
     /// Index View Model
     /// Manages the list of data records
     /// </summary>
-    public class CharIndexViewModel : BaseViewModel<CharacterModel>
+    public class MonsterIndexViewModel : BaseViewModel<MonsterModel>
     {
         #region Singleton
 
         // Make this a singleton so it only exist one time because holds all the data records in memory
-        private static volatile CharIndexViewModel instance;
-
-        //sync root object
+        private static volatile MonsterIndexViewModel instance;
         private static readonly object syncRoot = new Object();
 
-        //The instance of the index view
-        public static CharIndexViewModel Instance
+        public static MonsterIndexViewModel Instance
         {
             get
             {
@@ -32,7 +31,7 @@ namespace PrimeAssault.ViewModels
                     {
                         if (instance == null)
                         {
-                            instance = new CharIndexViewModel();
+                            instance = new MonsterIndexViewModel();
                             instance.Initialize();
                         }
                     }
@@ -51,31 +50,31 @@ namespace PrimeAssault.ViewModels
         /// 
         /// The constructor subscribes message listeners for crudi operations
         /// </summary>
-        public CharIndexViewModel()
+        public MonsterIndexViewModel()
         {
-            Title = "Characters";
+            Title = "Monsters";
 
             #region Messages
 
             // Register the Create Message
-            MessagingCenter.Subscribe<CharCreatePage, CharacterModel>(this, "Create", async (obj, data) =>
+            MessagingCenter.Subscribe<MonCreatePage, MonsterModel>(this, "Create", async (obj, data) =>
             {
-                await CreateAsync(data as CharacterModel);
+                await CreateAsync(data as MonsterModel);
             });
 
             // Register the Update Message
-            MessagingCenter.Subscribe<CharUpdatePage, CharacterModel>(this, "Update", async (obj, data) =>
+            MessagingCenter.Subscribe<MonUpdatePage, MonsterModel>(this, "Update", async (obj, data) =>
             {
                 // Have the item update itself
                 data.Update(data);
 
-                await UpdateAsync(data as CharacterModel);
+                await UpdateAsync(data as MonsterModel);
             });
 
             // Register the Delete Message
-            MessagingCenter.Subscribe<CharDeletePage, CharacterModel>(this, "Delete", async (obj, data) =>
+            MessagingCenter.Subscribe<MonDeletePage, MonsterModel>(this, "Delete", async (obj, data) =>
             {
-                await DeleteAsync(data as CharacterModel);
+                await DeleteAsync(data as MonsterModel);
             });
 
             // Register the Set Data Source Message
@@ -102,26 +101,25 @@ namespace PrimeAssault.ViewModels
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public override CharacterModel CheckIfExists(CharacterModel data)
+        public override MonsterModel CheckIfExists(MonsterModel data)
         {
             // This will walk the items and find if there is one that is the same.
             // If so, it returns the item...
 
             var myList = Dataset.Where(a =>
-                                         a.Name == data.Name &&
-                                         a.Description == data.Description &&
-                                         a.Attack == data.Attack &&
-                                         a.AttackMult == data.AttackMult &&
-                                         a.Defense == data.Defense &&
-                                         a.DefenseMult == data.DefenseMult &&
-                                         a.RangedDefense == data.RangedDefense &&
-                                         a.RangedDefenseMult == data.RangedDefenseMult &&
-                                         a.Speed == data.Speed &&
-                                         a.SpeedMult == data.SpeedMult &&
-                                         a.Ability == data.Ability
-                                         )
-                                         .FirstOrDefault();
-
+                                        a.Name == data.Name &&
+                                        a.Description == data.Description &&
+                                        a.Attack == data.Attack &&
+                                        a.AttackMult == data.AttackMult &&
+                                        a.Defense == data.Defense &&
+                                        a.DefenseMult == data.DefenseMult &&
+                                        a.RangedDefense == data.RangedDefense&&
+                                        a.RangedDefenseMult == data.RangedDefenseMult &&
+                                        a.Speed == data.Speed &&
+                                        a.SpeedMult == data.SpeedMult &&
+                                        a.Ability == data.Ability
+                                        )
+                                        .FirstOrDefault();
 
             if (myList == null)
             {
@@ -136,9 +134,9 @@ namespace PrimeAssault.ViewModels
         /// Load the Default Data
         /// </summary>
         /// <returns></returns>
-        public override List<CharacterModel> GetDefaultData()
+        public override List<MonsterModel> GetDefaultData()
         {
-            return DefaultData.LoadData(new CharacterModel());
+            return DefaultData.LoadData(new MonsterModel());
         }
 
         #endregion DataOperations_CRUDi
@@ -150,7 +148,7 @@ namespace PrimeAssault.ViewModels
         /// </summary>
         /// <param name="dataset"></param>
         /// <returns></returns>
-        public override List<CharacterModel> SortDataset(List<CharacterModel> dataset)
+        public override List<MonsterModel> SortDataset(List<MonsterModel> dataset)
         {
             return dataset
                     .OrderBy(a => a.Name)
@@ -166,7 +164,7 @@ namespace PrimeAssault.ViewModels
         /// </summary>
         /// <param name="ItemID"></param>
         /// <returns></returns>
-        public CharacterModel GetItem(string id)
+        public MonsterModel GetMonster(string id)
         {
             if (string.IsNullOrEmpty(id))
             {
@@ -174,7 +172,7 @@ namespace PrimeAssault.ViewModels
             }
 
             // Item myData = DataStore.GetAsync_Item(ItemID).GetAwaiter().GetResult();
-            CharacterModel myData = Dataset.Where(a => a.Id.Equals(id)).FirstOrDefault();
+            MonsterModel myData = Dataset.Where(a => a.Id.Equals(id)).FirstOrDefault();
             if (myData == null)
             {
                 return null;

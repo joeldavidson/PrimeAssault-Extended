@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using PrimeAssault.Helpers;
 
 namespace PrimeAssault.Models
 {
@@ -61,9 +62,9 @@ namespace PrimeAssault.Models
         public MonsterModel() : base()
         {
             ImageURI = DEFAULT_URI;
-            Name = "";
-            Description = "A monster from the sewers.";
-            Attack = 5;
+            Name = RandomPlayerHelper.GetMonsterName();
+            Description = RandomPlayerHelper.GetMonsterDescription();
+            Attack = 7;
             Defense = 5;
             CurrentHealth = 20;
             MaxHealth = 20;

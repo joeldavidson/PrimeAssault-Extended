@@ -220,7 +220,7 @@ namespace PrimeAssault.Models
 
         public int GetDamageRollValue() { 
 
-            return 10; 
+            return GetAttack(); 
         }
 
         
