@@ -279,4 +279,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\BeffJezos.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\gear.png" />
+  </ItemGroup>
 </Project>

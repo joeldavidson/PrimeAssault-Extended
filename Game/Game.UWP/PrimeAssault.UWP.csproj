@@ -117,6 +117,7 @@
     <Content Include="euphrates_logo.png" />
     <Content Include="gameover.png" />
     <Content Include="garage.jpg" />
+    <Content Include="gear.png" />
     <Content Include="grey_door.png" />
     <Content Include="home_background.png" />
     <Content Include="hunter_class.png" />

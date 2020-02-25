@@ -30,6 +30,8 @@ namespace PrimeAssault.Views
 
             BindingContext = ViewModel;
 
+            
+
         }
         /// <summary>
         /// The row selected from the list
@@ -84,9 +86,29 @@ namespace PrimeAssault.Views
             }
 
             BindingContext = ViewModel;
+
         }
 
-        async void Attack_Clicked(object sender, EventArgs e)
+        public string GetItemURI(PlayerInfoModel character, ItemLocationEnum itemLocation)
+
+        {
+            string itemURI;
+            ItemModel myItem;
+
+            var CharacterItem = character.GetItemByLocation(itemLocation);
+            if (CharacterItem == null)
+            {
+                return null;
+            }
+
+            myItem = character.GetItemByLocation(itemLocation);
+            itemURI = myItem.ImageURI;
+
+            return itemURI;
+        }
+    
+
+async void Attack_Clicked(object sender, EventArgs e)
         {
             await DisplayAlert("Character Attack", "The Attack stat helps determine how much damage the unit will deal! The higher the better!", "Dismiss");
         }
