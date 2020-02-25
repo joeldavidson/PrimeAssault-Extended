@@ -166,6 +166,12 @@
                                     <!--End of Column 3-->
 
                                     <!--Column 4 inside Row 1-->
+                                    <Label 
+                                        Style="{StaticResource IndexLabel}"
+                                        Text="Necklace"
+                                           Grid.Column="4"
+                                           Grid.Row="1"
+                                           ></Label>
                                     <ImageButton x:Name="NecklaceItem"
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="FillAndExpand"
@@ -181,6 +187,14 @@
                                     <!--End of Column 4-->
 
                                     <!--Column 5 inside Row 1-->
+
+                                    <Label 
+                                        Style="{StaticResource IndexLabel}"
+                                        Text="Hand"
+                                           Grid.Column="5"
+                                           Grid.Row="0"
+                                           ></Label>
+                                    
                                     <ImageButton x:Name="Head"
                                                 Source="{Binding Data.Head, Source={Binding imageURI}}"
                                                 HorizontalOptions="FillAndExpand"
@@ -194,6 +208,12 @@
                                                 BorderColor="Aqua"
                                             Clicked="Head_Clicked"
                                                 ></ImageButton>
+                                    <Label 
+                                        Style="{StaticResource IndexLabel}"
+                                        Text="Feet"
+                                           Grid.Column="5"
+                                           Grid.Row="2"
+                                           ></Label>
                                     <ImageButton x:Name="FeetItem"
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="FillAndExpand"
@@ -209,7 +229,14 @@
                                     <!--End of Column 5-->
 
                                     <!--Column 6 inside Row 1-->
+                                    <Label 
+                                        Style="{StaticResource IndexLabel}"
+                                        Text="R Hand"
+                                           Grid.Column="6"
+                                           Grid.Row="0"
+                                           ></Label>
                                     <ImageButton x:Name="PrimaryHandItem"
+                                                 Source="raygun.png"                                       
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="FillAndExpand"
                                                 Grid.Column="6"
@@ -221,6 +248,13 @@
                                                 BorderColor="Aqua"
                                             Clicked="RightHand_Clicked"
                                                 ></ImageButton>
+
+                                    <Label 
+                                        Style="{StaticResource IndexLabel}"
+                                        Text="R Finger"
+                                           Grid.Column="6"
+                                           Grid.Row="2"
+                                           ></Label>
                                     <ImageButton  x:Name="RightFingerItem"
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="FillAndExpand"
@@ -236,6 +270,12 @@
                                     <!--End of Column 6-->
 
                                     <!--Column 7 inside Row 1-->
+                                    <Label 
+                                        Style="{StaticResource IndexLabel}"
+                                        Text="L Hand"
+                                           Grid.Column="7"
+                                           Grid.Row="0"
+                                           ></Label>
                                     <ImageButton x:Name="OffhandItem"
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="FillAndExpand"
@@ -248,6 +288,13 @@
                                                 BorderColor="Aqua"
                                             Clicked="LeftHand_Clicked"
                                                 ></ImageButton>
+
+                                    <Label 
+                                        Style="{StaticResource IndexLabel}"
+                                        Text="L Finger"
+                                           Grid.Column="7"
+                                           Grid.Row="2"
+                                           ></Label>
                                     <ImageButton x:Name="LeftFingerItem"
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="FillAndExpand"
