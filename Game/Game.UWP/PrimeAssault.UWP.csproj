@@ -104,7 +104,6 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="amazon-blimp.jpg" />
     <Content Include="battleboard.jpg" />
     <Content Include="BeffJezos.png" />
     <Content Include="Box2.png" />
@@ -118,6 +117,7 @@
     <Content Include="euphrates_logo.png" />
     <Content Include="gameover.png" />
     <Content Include="garage.jpg" />
+    <Content Include="gear.png" />
     <Content Include="grey_door.png" />
     <Content Include="home_background.png" />
     <Content Include="hunter_class.png" />
