@@ -1,4 +1,5 @@
 ﻿using PrimeAssault.Services;
+using PrimeAssault.Helpers;
 namespace PrimeAssault.Models
 {
     /// <summary>
@@ -22,8 +23,8 @@ namespace PrimeAssault.Models
         {
             PlayerType = PlayerTypeEnum.Character;
             Guid = Id;
-            Name = "Benny Madhouse";
-            Description = "";
+            Name = RandomPlayerHelper.GetCharacterName(); ;
+            Description = RandomPlayerHelper.GetCharacterDescription();
             Attack = 5;
             Defense = 5;
             CurrentHealth = 20;
