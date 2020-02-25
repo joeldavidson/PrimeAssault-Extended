@@ -168,14 +168,14 @@
                                     <!--End of Column 3-->
 
                                     <!--Column 4 inside Row 1-->
-                                    <Button Text="Torso" TextColor="Aqua"
+                                    <Button Text="Necklace" TextColor="Aqua"
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="FillAndExpand"
                                                 Grid.Column="4"
-                                                Grid.Row="0"
-                                                Grid.RowSpan="4" 
+                                                Grid.Row="1"
+                                                Grid.RowSpan="2" 
                                                 BackgroundColor="##803f035f"
-                                                CornerRadius="10"
+                                                CornerRadius="45"
                                                 BorderColor="Aqua"
                                                 ></Button>
                                     <!--End of Column 4-->
