@@ -45,8 +45,8 @@ namespace PrimeAssault.Views
                         MenuPages.Add(id, new NavigationPage(new ItemIndexPage()));
                         break;
 
-                    case (int)MenuItemEnum.Village:
-                        MenuPages.Add(id, new NavigationPage(new VillagePage()));
+                    case (int)MenuItemEnum.SafeHouse:
+                        MenuPages.Add(id, new NavigationPage(new SafeHousePage()));
                         break;
 
                     case (int)MenuItemEnum.Battle:

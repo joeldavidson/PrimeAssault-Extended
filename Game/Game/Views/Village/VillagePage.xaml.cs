@@ -8,12 +8,12 @@ namespace PrimeAssault.Views
 	/// The Main PrimeAssault Page
 	/// </summary>
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class VillagePage : ContentPage
+	public partial class SafeHousePage : ContentPage
 	{
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public VillagePage ()
+		public SafeHousePage ()
 		{
 			InitializeComponent ();
 		}
