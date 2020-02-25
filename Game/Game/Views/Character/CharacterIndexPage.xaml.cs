@@ -108,36 +108,36 @@ namespace PrimeAssault.Views
 
         async void Head_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NavigationPage(new ItemIndexPage()));
+            await Navigation.PushAsync(new ItemIndexPage());
         }
 
         async void Torso_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NavigationPage(new ItemIndexPage()));
+            await Navigation.PushAsync(new ItemIndexPage());
         }
 
         async void RightHand_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NavigationPage(new ItemIndexPage()));
+            await Navigation.PushAsync(new ItemIndexPage());
         }
 
         async void LeftHand_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NavigationPage(new ItemIndexPage()));
+            await Navigation.PushAsync(new ItemIndexPage());
         }
         async void Boots_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NavigationPage(new ItemIndexPage()));
+            await Navigation.PushAsync(new ItemIndexPage());
         }
 
         async void Ring1_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NavigationPage(new ItemIndexPage()));
+            await Navigation.PushAsync(new ItemIndexPage());
         }
 
         async void Ring2_Clicked(object sender, EventArgs args)
         {
-            await Navigation.PushAsync(new NavigationPage(new ItemIndexPage()));
+            await Navigation.PushAsync(new ItemIndexPage());
         }
     }
 }
