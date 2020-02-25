@@ -273,4 +273,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\SafeHouse.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Records.png" />
+  </ItemGroup>
 </Project>
