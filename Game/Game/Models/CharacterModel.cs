@@ -10,7 +10,7 @@ namespace PrimeAssault.Models
     {
 
         //The class of the character in question
-        public string JobClass { get; set; } = "Soldier";
+        public string JobClass { get; set; } = "soldier";
 
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace PrimeAssault.Models
         {
             PlayerType = PlayerTypeEnum.Character;
             Guid = Id;
-            Name = "";
+            Name = "Benny Madhouse";
             Description = "";
             Attack = 5;
             Defense = 5;
@@ -76,7 +76,7 @@ namespace PrimeAssault.Models
 
         public bool SetJobClass(string InClass)
         {
-            jobClassModel Current = JobClassHolder.getClass(InClass.ToLower());
+            jobClassModel Current = JobClassHolder.GetClass(InClass.ToLower());
             ResetMultipliers();
             HealthMult += Current.HealthMult;
             SpeedMult += Current.SpeedMult;

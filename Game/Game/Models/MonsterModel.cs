@@ -62,7 +62,7 @@ namespace PrimeAssault.Models
         {
             ImageURI = DEFAULT_URI;
             Name = "";
-            Description = "";
+            Description = "Evil Blob";
             Attack = 5;
             Defense = 5;
             CurrentHealth = 20;
