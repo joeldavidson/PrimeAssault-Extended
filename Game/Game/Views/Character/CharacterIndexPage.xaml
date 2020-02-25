@@ -170,10 +170,11 @@
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="FillAndExpand"
                                                 Grid.Column="4"
-                                                Grid.Row="0"
-                                                Grid.RowSpan="4" 
+                                                Grid.Row="1"
+                                                Grid.RowSpan="2" 
                                                 BackgroundColor="##803f035f"
-                                                CornerRadius="10"
+                                                CornerRadius="20"
+                                                BorderWidth="1"
                                                 BorderColor="Aqua"
                                             Clicked="Torso_Clicked"
                                                 ></ImageButton>
@@ -189,6 +190,7 @@
                                                 Grid.RowSpan="2" 
                                                 BackgroundColor="##803f035f"
                                                 CornerRadius="20"
+                                                BorderWidth="1"
                                                 BorderColor="Aqua"
                                             Clicked="Head_Clicked"
                                                 ></ImageButton>
@@ -200,6 +202,7 @@
                                                 Grid.RowSpan="2" 
                                                 BackgroundColor="##803f035f"
                                                 CornerRadius="20"
+                                                BorderWidth="1"
                                                 BorderColor="Aqua"
                                             Clicked="Boots_Clicked"
                                                 ></ImageButton>
@@ -214,6 +217,7 @@
                                                 Grid.RowSpan="2" 
                                                 BackgroundColor="##803f035f"
                                                 CornerRadius="20"
+                                                BorderWidth="1"
                                                 BorderColor="Aqua"
                                             Clicked="RightHand_Clicked"
                                                 ></ImageButton>
@@ -225,6 +229,7 @@
                                                 Grid.RowSpan="2" 
                                                 BackgroundColor="##803f035f"
                                                 CornerRadius="40"
+                                                BorderWidth="1"
                                                 BorderColor="Aqua"
                                             Clicked="Ring1_Clicked"
                                                 ></ImageButton>
@@ -239,6 +244,7 @@
                                                 Grid.RowSpan="2" 
                                                 BackgroundColor="##803f035f"
                                                 CornerRadius="20"
+                                                BorderWidth="1"
                                                 BorderColor="Aqua"
                                             Clicked="LeftHand_Clicked"
                                                 ></ImageButton>
@@ -250,6 +256,7 @@
                                                 Grid.RowSpan="2" 
                                                 BackgroundColor="##803f035f"
                                                 CornerRadius="40"
+                                                BorderWidth="1"
                                                 BorderColor="Aqua"
                                             CommandParameter="{Binding id}"
                                             Clicked="Ring2_Clicked"
