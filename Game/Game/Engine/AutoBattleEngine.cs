@@ -68,7 +68,7 @@ namespace PrimeAssault.Engine
 
                 // Do the turn...
                 // If the round is over start a new one...
-                RoundCondition = RoundNextTurn();
+                RoundCondition = RoundNextTurn(); //What guides decisionmaking for turn order and targeting and attack
 
                 if (RoundCondition == RoundEnum.NewRound)
                 {

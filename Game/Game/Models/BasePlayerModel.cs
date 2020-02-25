@@ -1,6 +1,9 @@
 ﻿using PrimeAssault.ViewModels;
 using System.Collections.Generic;
-using PrimeAssault.Services;
+using PrimeAssault.Helpers;
+using System;
+using System.Collections.Generic;
+
 namespace PrimeAssault.Models
 {
     /// <summary>
@@ -14,6 +17,8 @@ namespace PrimeAssault.Models
         #region Attributes
 
         #region PrimeAssaultEngineAttributes
+
+        public int GetDamageLevelBonus { get { return Convert.ToInt32(Math.Ceiling(Level * .25)); } }
 
         //Size of character's move set
         const int NUM_MOVES = 2;
@@ -127,6 +132,7 @@ namespace PrimeAssault.Models
         {
             Guid = Id;
             ImageURI = "soldier_class.png";
+            PlayerType = PlayerTypeEnum.Character;
         }
 
         /// <summary>
@@ -218,9 +224,21 @@ namespace PrimeAssault.Models
         }
 
 
-        public int GetDamageRollValue() { 
+        public int GetDamageRollValue() 
+        {
+            var myReturn = 0;
 
-            return GetAttack(); 
+            var myItem = ItemIndexViewModel.Instance.GetItem(PrimaryHand);
+            if (myItem != null)
+            {
+                // Dice of the weapon.  So sword of Damage 10 is d10
+                myReturn += DiceHelper.RollDice(1, myItem.Damage);
+            }
+
+            // Add in the Level as extra damage per game rules
+            myReturn += GetDamageLevelBonus;
+
+            return myReturn;
         }
 
         

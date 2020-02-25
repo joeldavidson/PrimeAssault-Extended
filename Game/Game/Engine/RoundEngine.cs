@@ -116,10 +116,10 @@ namespace PrimeAssault.Engine
 
             // Decide Who gets next turn
             // Remember who just went...
-            PlayerCurrent = GetNextPlayerTurn();
+            PlayerCurrent = GetNextPlayerTurn(); //Turn order
 
             // Do the turn....
-            TakeTurn(PlayerCurrent);
+            TakeTurn(PlayerCurrent); //Attack, targeting, damage
 
             RoundStateEnum = RoundEnum.NextTurn;
 

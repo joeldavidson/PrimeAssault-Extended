@@ -77,7 +77,10 @@ namespace PrimeAssault.Models
             Moves[0] = data.Moves[0];
             Moves[1] = data.Moves[1];
             Ability = data.Ability;
+
+            PlayerType = PlayerTypeEnum.Monster;
             return true;
+
         }
 
         public bool SetJobClass(string InClass)
