@@ -44,6 +44,7 @@
             <Picker x:Name="pick"
             Title="Class"
             TextColor="DarkGray"
+            SelectedItem="{Binding Data.JobClass}"
             TitleColor="Aqua">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
