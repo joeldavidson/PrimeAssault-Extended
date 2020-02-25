@@ -86,12 +86,13 @@ namespace PrimeAssault.Services
         };
 
         /// <summary>
-        /// Ability model for getting move
+        /// Ability model for getting a class
         /// </summary>
-        public static jobClassModel getClass(string ClassName)
+        public static jobClassModel GetClass(string ClassName)
         {
-            //Predicate for seeing if move exists
-            Predicate<jobClassModel> nameFinder = (jobClassModel p) => { return p.ClassName == ClassName; };
+            //Predicate for seeing if class exists
+            ClassName = ClassName.ToLower();
+            Predicate<jobClassModel> nameFinder = (jobClassModel p) => { return p.ClassName.ToLower() == ClassName; };
             if (JobClassList.Exists(nameFinder))
                 return (JobClassList.Find(nameFinder));
             return null;
