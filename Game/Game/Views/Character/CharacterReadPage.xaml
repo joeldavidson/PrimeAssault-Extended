@@ -169,7 +169,7 @@
                             BorderColor="White"
                             BackgroundColor="#263238"
                             Opacity="0.75">
-                <Label Text="{Binding Data.Description}" FontSize="Small" HorizontalOptions="Center" TextColor="AntiqueWhite"></Label>
+                <Label Text="{Binding Data.Description}" FontSize="Micro" HorizontalOptions="Center" TextColor="AntiqueWhite"></Label>
           
               </Frame>
                 <Grid>
