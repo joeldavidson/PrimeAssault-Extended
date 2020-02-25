@@ -4,26 +4,6 @@
              x:Class="PrimeAssault.Views.CharCreatePage"
               BackgroundImageSource="workshop.png">
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-
-            <Style x:Key="StatsLabel" TargetType="Label">
-                <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="VerticalOptions" Value="End"/>
-                <Setter Property="TextColor" Value="OrangeRed"/>
-                <Setter Property="Grid.Row" Value="0"/>
-            </Style>
-
-            <Style x:Key="StatsEntry" TargetType="Entry">
-                <Setter Property="Placeholder" Value="1"/>
-                <Setter Property="FontSize" Value="Small"/>
-                <Setter Property="Keyboard" Value="Numeric"/>
-                <Setter Property="Grid.Row" Value="1"/>
-            </Style>
-
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png" />
         <ToolbarItem Text="Save" Clicked="Save_Clicked" IconImageSource="icon_save.png"/>
@@ -40,36 +20,35 @@
             <Image Source="TempProfile.png"></Image>
 
             <Entry  Text ="{Binding Data.Name}"  Placeholder="Name" FontSize="Small" />
-            <Entry  Text ="{Binding Data.Description}"  Placeholder="Description" PlaceholderColor="DarkGray" TextColor="Black" FontSize="Small" />
             <Picker x:Name="pick"
+                    Style="{StaticResource ClassPicker}"
             Title="Class"
-            TextColor="DarkGray"
             SelectedItem="{Binding Data.JobClass}"
-            TitleColor="Aqua">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Soldier</x:String>
-                            <x:String>Hunter</x:String>
-                            <x:String>Brawler</x:String>
-                            <x:String>Mechanist</x:String>
-                            <x:String>Mechanic</x:String>
-                            <x:String>Ringleader</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
+            >
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Soldier</x:String>
+                        <x:String>Hunter</x:String>
+                        <x:String>Brawler</x:String>
+                        <x:String>Mechanist</x:String>
+                        <x:String>Mechanic</x:String>
+                        <x:String>Ringleader</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
             <Grid>
-                
-                <Label HorizontalOptions="Center" VerticalOptions="End" TextColor ="Magenta" Text="LVL" Grid.Row="0" Grid.Column="0"/>
-                <Label HorizontalOptions="Center" VerticalOptions="End" TextColor ="Magenta" Text="ATK" Grid.Row="0" Grid.Column="1"/>
-                <Label HorizontalOptions="Center" VerticalOptions="End" TextColor ="Magenta" Text="DEF" Grid.Row="0" Grid.Column="2"/>
-                <Label HorizontalOptions="Center" VerticalOptions="End" TextColor ="Magenta" Text="RDF" Grid.Row="0" Grid.Column="3"/>
-                <Label HorizontalOptions="Center" VerticalOptions="End" TextColor ="Magenta" Text="SPD" Grid.Row="0" Grid.Column="4"/>
 
-                <Entry  Text ="{Binding Data.Level}"  Placeholder="1" FontSize="Small" Keyboard="Numeric" Grid.Row="1" Grid.Column="0"/>
-                <Entry  Text ="{Binding Data.Attack}"  Placeholder="10" FontSize="Small" Keyboard="Numeric" Grid.Row="1" Grid.Column="1"/>
-                <Entry  Text ="{Binding Data.Defense}"  Placeholder="10" FontSize="Small" Keyboard="Numeric" Grid.Row="1" Grid.Column="2"/>
-                <Entry  Text ="{Binding Data.RangedDefense}"  Placeholder="10" FontSize="Small" Keyboard="Numeric" Grid.Row="1" Grid.Column="3"/>
-                <Entry  Text ="{Binding Data.Speed}" Placeholder="10" FontSize="Small" Keyboard="Numeric" Grid.Row="1" Grid.Column="4"/>
+                <Label Style="{StaticResource StatsLabel}" Text="LVL" Grid.Column="0"/>
+                <Label Style="{StaticResource StatsLabel}" Text="ATK"  Grid.Column="1"/>
+                <Label Style="{StaticResource StatsLabel}" Text="DEF" Grid.Column="2"/>
+                <Label Style="{StaticResource StatsLabel}" Text="RDF" Grid.Column="3"/>
+                <Label Style="{StaticResource StatsLabel}" Text="SPD" Grid.Column="4"/>
+
+                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Level}"  Grid.Column="0"/>
+                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Attack}"  Grid.Column="1"/>
+                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Defense}"  Grid.Column="2"/>
+                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.RangedDefense}"  Grid.Column="3"/>
+                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Speed}" Grid.Column="4"/>
 
             </Grid>
 
