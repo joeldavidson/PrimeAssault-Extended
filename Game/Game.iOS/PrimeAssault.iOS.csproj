@@ -270,4 +270,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\euphrates_logo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\SafeHouse.png" />
+  </ItemGroup>
 </Project>

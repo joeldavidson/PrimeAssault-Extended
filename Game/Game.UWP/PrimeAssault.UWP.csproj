@@ -163,6 +163,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="raygun.png" />
     <Content Include="ringleader_class.png" />
+    <Content Include="SafeHouse.png" />
     <Content Include="score.png" />
     <Content Include="scoreBackground.jpg" />
     <Content Include="ScoreCreate.jpg" />
