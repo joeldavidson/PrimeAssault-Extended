@@ -42,9 +42,10 @@ namespace PrimeAssault.Models
             Update(data);
         }
 
-
         override public bool Update(CharacterModel data)
         {
+
+            PlayerType = data.PlayerType;
             Name = data.Name;
             Description = data.Description;
             CurrentHealth = data.CurrentHealth;
@@ -53,6 +54,7 @@ namespace PrimeAssault.Models
             Attack = data.Attack;
             RangedDefense = data.RangedDefense;
             Defense = data.Defense;
+
             if (data.Level < 21 && data.Level > 0)
             {
                 Level = data.Level;
@@ -78,9 +80,7 @@ namespace PrimeAssault.Models
             Moves[1] = data.Moves[1];
             Ability = data.Ability;
 
-            PlayerType = PlayerTypeEnum.Monster;
             return true;
-
         }
 
         public bool SetJobClass(string InClass)

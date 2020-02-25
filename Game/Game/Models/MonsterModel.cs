@@ -25,6 +25,7 @@ namespace PrimeAssault.Models
 
         override public bool Update(MonsterModel data)
         {
+            PlayerType = data.PlayerType;
             Name = data.Name;
             Description = data.Description;
             CurrentHealth = data.CurrentHealth;
@@ -55,12 +56,14 @@ namespace PrimeAssault.Models
             Moves[0] = data.Moves[0];
             Moves[1] = data.Moves[1];
             Ability = data.Ability;
+
             return true;
         }
 
         //The monster (inherits from base)
         public MonsterModel() : base()
         {
+            PlayerType = PlayerTypeEnum.Monster;
             ImageURI = DEFAULT_URI;
             Name = RandomPlayerHelper.GetMonsterName();
             Description = RandomPlayerHelper.GetMonsterDescription();
@@ -73,6 +76,7 @@ namespace PrimeAssault.Models
             ImageURI = "sewer_gator.png";
             Move1 = "Crackshot";
             Move2 = "Iron Grip";
+           
         }
 
         public bool SetLevel(int targetLevel)
