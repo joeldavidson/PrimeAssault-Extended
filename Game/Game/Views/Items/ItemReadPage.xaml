@@ -51,7 +51,7 @@
             
             <StackLayout Orientation ="Horizontal" HorizontalOptions="CenterAndExpand">
                 <Label Text="Location: " FontSize="Small" TextColor="AntiqueWhite"></Label>
-                <Label Text="{Binding Data.location}" FontSize="Small" HorizontalOptions="Center" TextColor="AntiqueWhite"></Label>
+                <Label Text="{Binding Data.Location}" FontSize="Small" HorizontalOptions="Center" TextColor="AntiqueWhite"></Label>
             </StackLayout>
 
             <Grid>
@@ -79,12 +79,14 @@
                 <Label Style="{StaticResource StatsNumLabel}" Text ="{Binding Data.defenseValue}" Grid.Column="2" Grid.Row="1"/>
                 <Label Style="{StaticResource StatsNumLabel}" Text ="{Binding Data.rangedDefenseValue}" Grid.Column="3" Grid.Row="1"/>
                 <Label Style="{StaticResource StatsNumLabel}" Text ="{Binding Data.speedValue}" Grid.Column="4" Grid.Row="1"/>
-                
-                <Label Style="{StaticResource StatsNumLabel}"  Text ="{Binding Data.healthMult}" Grid.Column="0" Grid.Row="2"/>
-                <Label Style="{StaticResource StatsNumLabel}"  Text ="{Binding Data.attackMult}" Grid.Column="1" Grid.Row="2"/>
-                <Label Style="{StaticResource StatsNumLabel}" Text ="{Binding Data.defenseMult}"  Grid.Column="2" Grid.Row="2"/>
-                <Label Style="{StaticResource StatsNumLabel}" Text ="{Binding Data.rangedDefenseMult}" Grid.Column="3" Grid.Row="2"/>
-                <Label Style="{StaticResource StatsNumLabel}" Text ="{Binding Data.speedMult}" Grid.Column="4" Grid.Row="2"/>
+               
+                <Label Style="{StaticResource StatsLabel}" Text="Multipliers:" FontSize="Medium" Grid.Column="2" Grid.Row="2"/>
+
+                <Label Style="{StaticResource StatsNumLabel}"  Text ="{Binding Data.healthMult}" Grid.Column="0" Grid.Row="3"/>
+                <Label Style="{StaticResource StatsNumLabel}"  Text ="{Binding Data.attackMult}" Grid.Column="1" Grid.Row="3"/>
+                <Label Style="{StaticResource StatsNumLabel}" Text ="{Binding Data.defenseMult}"  Grid.Column="2" Grid.Row="3"/>
+                <Label Style="{StaticResource StatsNumLabel}" Text ="{Binding Data.rangedDefenseMult}" Grid.Column="3" Grid.Row="3"/>
+                <Label Style="{StaticResource StatsNumLabel}" Text ="{Binding Data.speedMult}" Grid.Column="4" Grid.Row="3"/>
             </Grid>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Label Text="Range: " TextColor="AntiqueWhite" FontSize="Body" HorizontalTextAlignment="Center"></Label>
