@@ -276,4 +276,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\Records.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\BeffJezos.png" />
+  </ItemGroup>
 </Project>
