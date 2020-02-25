@@ -19,6 +19,44 @@ namespace PrimeAssault.Helpers
             return DiceHelper.RollDice(level, 10);
         }
 
+        /// <summary>
+        /// Get A Random Difficulty
+        /// </summary>
+        /// <returns></returns>
+        public static string GetMonsterUniqueItem()
+        {
+            var result = ItemIndexViewModel.Instance.Dataset.ElementAt(DiceHelper.RollDice(1, ItemIndexViewModel.Instance.Dataset.Count()) - 1).Id;
+
+            return result;
+        }
+
+        /// <summary>
+        /// Get Random Image
+        /// </summary>
+        /// <returns></returns>
+        public static string GetMonsterImage()
+        {
+
+            List<String> FirstNameList = new List<String> { "troll1.png", "troll2.png", "troll3.png", "troll4.png", "troll5.png", "troll6.png" };
+
+            var result = FirstNameList.ElementAt(DiceHelper.RollDice(1, FirstNameList.Count()) - 1);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Get Random Image
+        /// </summary>
+        /// <returns></returns>
+        public static string GetCharacterImage()
+        {
+
+            List<String> FirstNameList = new List<String> { "elf1.png", "elf2.png", "elf3.png", "elf4.png", "elf5.png", "elf6.png", "elf7.png" };
+
+            var result = FirstNameList.ElementAt(DiceHelper.RollDice(1, FirstNameList.Count()) - 1);
+
+            return result;
+        }
 
         /// <summary>
         /// Get Name
@@ -29,7 +67,7 @@ namespace PrimeAssault.Helpers
         public static string GetMonsterName()
         {
 
-            List<String> FirstNameList = new List<String> { "Arg", "Deg", "Ase", "Xes", "Zez", "Klk", "Oi", "Oni", "Tanu"};
+            List<String> FirstNameList = new List<String> { "Arg", "Deg", "Ase", "Xes", "Zez", "Klk", "Oi", "Oni", "Tanu" };
 
             var result = FirstNameList.ElementAt(DiceHelper.RollDice(1, FirstNameList.Count()) - 1);
 
@@ -44,7 +82,7 @@ namespace PrimeAssault.Helpers
         /// <returns></returns>
         public static string GetMonsterDescription()
         {
-            List<String> StringList = new List<String> { "eats Elf", "the Elf hater", "Elf destoryer", "Elf Hunter", "Elf Killer", "Can't we all get along?"};
+            List<String> StringList = new List<String> { "eats Elf", "the Elf hater", "Elf destoryer", "Elf Hunter", "Elf Killer", "Can't we all get along?" };
 
             var result = StringList.ElementAt(DiceHelper.RollDice(1, StringList.Count()) - 1);
 
@@ -60,9 +98,9 @@ namespace PrimeAssault.Helpers
         public static string GetCharacterName()
         {
 
-            List<String> FirstNameList = new List<String>{"Mike", "Doug", "Jea", "Sue", "Tim", "Daren", "Dani", "Mami", "Mari", "Ryu", "Hucky", "Peanut", "Sumi", "Apple", "Ami", "Honami", "Sonomi", "Pat", "Sakue", "Isamu"};
+            List<String> FirstNameList = new List<String> { "Mike", "Doug", "Jea", "Sue", "Tim", "Daren", "Dani", "Mami", "Mari", "Ryu", "Hucky", "Peanut", "Sumi", "Apple", "Ami", "Honami", "Sonomi", "Pat", "Sakue", "Isamu" };
 
-            var result = FirstNameList.ElementAt(DiceHelper.RollDice(1, FirstNameList.Count())-1);
+            var result = FirstNameList.ElementAt(DiceHelper.RollDice(1, FirstNameList.Count()) - 1);
 
             return result;
         }
@@ -112,11 +150,51 @@ namespace PrimeAssault.Helpers
         public static string GetItem(ItemLocationEnum location)
         {
             var ItemList = ItemIndexViewModel.Instance.GetLocationItems(location);
-            
+
             // Add Noe to the list
-            ItemList.Add(new ItemModel { Id = null, Name="None" });
+            ItemList.Add(new ItemModel { Id = null, Name = "None" });
 
             var result = ItemList.ElementAt(DiceHelper.RollDice(1, ItemList.Count()) - 1).Id;
+            return result;
+        }
+
+        public static CharacterModel GetRandomCharacter(int MaxLevel)
+        {
+            var rnd = DiceHelper.RollDice(1, CharacterIndexViewModel.Instance.Dataset.Count);
+
+            var result = new CharacterModel(CharacterIndexViewModel.Instance.Dataset.ElementAt(rnd - 1))
+            {
+                Level = DiceHelper.RollDice(1, MaxLevel),
+
+                // Randomize Name
+                Name = RandomPlayerHelper.GetCharacterName(),
+                Description = RandomPlayerHelper.GetCharacterDescription(),
+
+                // Randomize the Attributes
+                Attack = RandomPlayerHelper.GetAbilityValue(),
+                Speed = RandomPlayerHelper.GetAbilityValue(),
+                Defense = RandomPlayerHelper.GetAbilityValue(),
+
+                // Randomize an Item for Location
+                Head = RandomPlayerHelper.GetItem(ItemLocationEnum.Head),
+                Necklass = RandomPlayerHelper.GetItem(ItemLocationEnum.Necklass),
+                PrimaryHand = RandomPlayerHelper.GetItem(ItemLocationEnum.PrimaryHand),
+                OffHand = RandomPlayerHelper.GetItem(ItemLocationEnum.OffHand),
+                RightFinger = RandomPlayerHelper.GetItem(ItemLocationEnum.Finger),
+                LeftFinger = RandomPlayerHelper.GetItem(ItemLocationEnum.Finger),
+                Feet = RandomPlayerHelper.GetItem(ItemLocationEnum.Feet),
+
+                ImageURI = RandomPlayerHelper.GetCharacterImage()
+            };
+
+            result.MaxHealth = DiceHelper.RollDice(MaxLevel, 10);
+
+            // Level up to the new level
+            result.LevelUpToValue(result.Level);
+
+            // Enter Battle at full health
+            result.CurrentHealth = MaxLevel;    
+
             return result;
         }
     }

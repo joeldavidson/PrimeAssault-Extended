@@ -17,7 +17,7 @@ namespace PrimeAssault.Views
     public partial class CharIndexPage : ContentPage
     {
         // The view model, used for data binding
-        readonly CharIndexViewModel ViewModel = CharIndexViewModel.Instance;
+        readonly CharacterIndexViewModel ViewModel = CharacterIndexViewModel.Instance;
 
         /// <summary>
         /// Constructor for Index Page
