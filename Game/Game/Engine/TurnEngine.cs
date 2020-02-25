@@ -4,6 +4,7 @@ using System.Diagnostics;
 
 using PrimeAssault.Models;
 using PrimeAssault.Helpers;
+using PrimeAssault.ViewModels;
 
 namespace PrimeAssault.Engine
 {
@@ -167,43 +168,44 @@ namespace PrimeAssault.Engine
                 return false;
             }
 
+            // Set Messages to empty
             BattleMessagesModel.TurnMessage = string.Empty;
             BattleMessagesModel.TurnMessageSpecial = string.Empty;
             BattleMessagesModel.AttackStatus = string.Empty;
 
+            // Remember Current Player
             BattleMessagesModel.PlayerType = PlayerTypeEnum.Monster;
-
-            var AttackScore = Attacker.Level + Attacker.GetAttack();
-            var DefenseScore = Target.GetDefense() + Target.Level;
 
             // Choose who to attack
 
             BattleMessagesModel.TargetName = Target.Name;
             BattleMessagesModel.AttackerName = Attacker.Name;
 
+            // Set Attack and Defense
+            var AttackScore = Attacker.Level + Attacker.GetAttack();
+            var DefenseScore = Target.GetDefense() + Target.Level;
+
             BattleMessagesModel.HitStatus = RollToHitTarget(AttackScore, DefenseScore);
 
-            Debug.WriteLine(BattleMessagesModel.GetTurnMessage());
-
-            // It's a Miss
-            if (BattleMessagesModel.HitStatus == HitStatusEnum.Miss)
+            switch (BattleMessagesModel.HitStatus)
             {
-                return true;
+                case HitStatusEnum.Miss:
+                    // It's a Miss
+
+                    break;
+
+                case HitStatusEnum.Hit:
+                    // It's a Hit
+                    //Calculate Damage
+                    BattleMessagesModel.DamageAmount = Attacker.GetDamageRollValue();
+
+                    Target.TakeDamage(BattleMessagesModel.DamageAmount);
+                    BattleMessagesModel.CurrentHealth = Target.CurrentHealth;
+                    BattleMessagesModel.TurnMessageSpecial = BattleMessagesModel.GetCurrentHealthMessage();
+
+                    RemoveIfDead(Target);
+                    break;
             }
-
-            // It's a Hit
-            if (BattleMessagesModel.HitStatus == HitStatusEnum.Hit)
-            {
-                //Calculate Damage
-                BattleMessagesModel.DamageAmount = Attacker.GetDamageRollValue();
-
-                Target.TakeDamage(BattleMessagesModel.DamageAmount);
-            }
-
-            BattleMessagesModel.CurrentHealth = Target.CurrentHealth;
-            BattleMessagesModel.TurnMessageSpecial = BattleMessagesModel.GetCurrentHealthMessage();
-
-            RemoveIfDead(Target);
 
             BattleMessagesModel.TurnMessage = Attacker.Name + BattleMessagesModel.AttackStatus + Target.Name + BattleMessagesModel.TurnMessageSpecial;
             Debug.WriteLine(BattleMessagesModel.TurnMessage);
@@ -238,7 +240,7 @@ namespace PrimeAssault.Engine
         public bool TargedDied(PlayerInfoModel Target)
         {
             // Mark Status in output
-            BattleMessagesModel.TurnMessageSpecial = " and causes death";
+            BattleMessagesModel.TurnMessageSpecial = " and causes death. ";
 
             // Remove target from list...
 
@@ -277,6 +279,8 @@ namespace PrimeAssault.Engine
         /// <param name="Target"></param>
         public int DropItems(PlayerInfoModel Target)
         {
+            var DroppedMessage = " Items Dropped : ";
+
             // Drop Items to ItemModel Pool
             var myItemList = Target.DropAllItems();
 
@@ -288,10 +292,17 @@ namespace PrimeAssault.Engine
             foreach (var ItemModel in myItemList)
             {
                 BattleScore.ItemsDroppedList += ItemModel.FormatOutput() + "\n";
-                BattleMessagesModel.TurnMessageSpecial += " ItemModel " + ItemModel.Name + " dropped";
+                DroppedMessage += ItemModel.Name + " , ";
             }
 
             ItemPool.AddRange(myItemList);
+
+            if (myItemList.Count == 0)
+            {
+                DroppedMessage = " Nothing dropped. ";
+            }
+
+            BattleMessagesModel.TurnMessageSpecial += DroppedMessage;
 
             return myItemList.Count();
         }
@@ -308,6 +319,8 @@ namespace PrimeAssault.Engine
 
             if (d20 == 1)
             {
+                BattleMessagesModel.AttackStatus = " rolls 1 to completly miss ";
+
                 // Force Miss
                 BattleMessagesModel.HitStatus = HitStatusEnum.Miss;
                 return BattleMessagesModel.HitStatus;
@@ -315,6 +328,8 @@ namespace PrimeAssault.Engine
 
             if (d20 == 20)
             {
+                BattleMessagesModel.AttackStatus = " rolls 20 for lucky hit ";
+
                 // Force Hit
                 BattleMessagesModel.HitStatus = HitStatusEnum.Hit;
                 return BattleMessagesModel.HitStatus;
@@ -323,12 +338,15 @@ namespace PrimeAssault.Engine
             var ToHitScore = d20 + AttackScore;
             if (ToHitScore < DefenseScore)
             {
-                BattleMessagesModel.AttackStatus = " misses ";
+                BattleMessagesModel.AttackStatus = " rolls " + d20 + " and misses ";
+                
                 // Miss
                 BattleMessagesModel.HitStatus = HitStatusEnum.Miss;
                 BattleMessagesModel.DamageAmount = 0;
                 return BattleMessagesModel.HitStatus;
             }
+
+            BattleMessagesModel.AttackStatus = " rolls " + d20 + " and hits ";
 
             // Hit
             BattleMessagesModel.HitStatus = HitStatusEnum.Hit;
@@ -344,15 +362,20 @@ namespace PrimeAssault.Engine
         {
             // You decide how to drop monster items, level, etc.
 
-            var NumberToDrop = DiceHelper.RollDice(1, round);
+            // The Number drop can be Up to the Round Count, but may be less.  
+            // Negative results in nothing dropped
+            var NumberToDrop = (DiceHelper.RollDice(1, round+1)-1);
 
-            var myList = new List<ItemModel>();
+            var result = new List<ItemModel>();
 
             for (var i = 0; i < NumberToDrop; i++)
             {
-                myList.Add(new ItemModel());
+                // Get a random Unique Item
+                var data = ItemIndexViewModel.Instance.GetItem(RandomPlayerHelper.GetMonsterUniqueItem());
+                result.Add(data);
             }
-            return myList;
+
+            return result;
         }
     }
 }

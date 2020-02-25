@@ -1,6 +1,9 @@
 ﻿using PrimeAssault.ViewModels;
 using System.Collections.Generic;
-using PrimeAssault.Services;
+using PrimeAssault.Helpers;
+using System;
+using System.Collections.Generic;
+
 namespace PrimeAssault.Models
 {
     /// <summary>
@@ -14,6 +17,8 @@ namespace PrimeAssault.Models
         #region Attributes
 
         #region PrimeAssaultEngineAttributes
+
+        public int GetDamageLevelBonus { get { return Convert.ToInt32(Math.Ceiling(Level * .25)); } }
 
         //Size of character's move set
         const int NUM_MOVES = 2;
@@ -39,8 +44,10 @@ namespace PrimeAssault.Models
 
         // Total speed, including level and items
         public int Speed { get; set; } = 0;
+
         // Level of character or monster
         public int Level { get; set; } = 1;
+
         // The experience points the player has used in sorting ties... ---ASK QUESTION: DON'T UNDERSTAND IMPORTANCE OF EXPERIENCE POINTS VS TOTAL EXPERIENCE
         public int ExperiencePoints { get; set; } = 0;
 
@@ -118,6 +125,7 @@ namespace PrimeAssault.Models
 
         // LeftFinger is a string referencing the database table
         public string LeftFinger { get; set; } = null;
+
         #endregion Items
         #endregion Attributes
 
@@ -218,9 +226,21 @@ namespace PrimeAssault.Models
         }
 
 
-        public int GetDamageRollValue() { 
+        public int GetDamageRollValue() 
+        {
+            var myReturn = 0;
 
-            return 10; 
+            var myItem = ItemIndexViewModel.Instance.GetItem(PrimaryHand);
+            if (myItem != null)
+            {
+                // Dice of the weapon.  So sword of Damage 10 is d10
+                myReturn += DiceHelper.RollDice(1, myItem.Damage);
+            }
+
+            // Add in the Level as extra damage per game rules
+            myReturn += GetDamageLevelBonus;
+
+            return myReturn;
         }
 
         

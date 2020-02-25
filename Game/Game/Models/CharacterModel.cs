@@ -37,9 +37,15 @@ namespace PrimeAssault.Models
             Move1 = "Crackshot";
             Move2 = "Iron Grip";
         }
+        public CharacterModel(CharacterModel data)
+        {
+            Update(data);
+        }
 
         override public bool Update(CharacterModel data)
         {
+
+            PlayerType = data.PlayerType;
             Name = data.Name;
             Description = data.Description;
             CurrentHealth = data.CurrentHealth;
@@ -48,6 +54,7 @@ namespace PrimeAssault.Models
             Attack = data.Attack;
             RangedDefense = data.RangedDefense;
             Defense = data.Defense;
+
             if (data.Level < 21 && data.Level > 0)
             {
                 Level = data.Level;
@@ -72,6 +79,7 @@ namespace PrimeAssault.Models
             Moves[0] = data.Moves[0];
             Moves[1] = data.Moves[1];
             Ability = data.Ability;
+
             return true;
         }
 
@@ -103,6 +111,31 @@ namespace PrimeAssault.Models
             }
             return false;
         }
+        public int LevelUpToValue(int Value)
+        {
+            // Adjust the experience to the min for that level.
+            // That will trigger level up to happen
 
+            if (Value < 0)
+            {
+                // Skip, and return old level
+                return Level;
+            }
+
+            if (Value <= Level)
+            {
+                // Skip, and return old level
+                return Level;
+            }
+
+            if (Value > LevelTableHelper.MaxLevel)
+            {
+                Value = LevelTableHelper.MaxLevel;
+            }
+
+            AddExperience(LevelTableHelper.Instance.LevelDetailsList[Value].Experience + 1);
+
+            return Level;
+        }
     }
 }

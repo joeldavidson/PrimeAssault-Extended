@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using PrimeAssault.Helpers;
 
 namespace PrimeAssault.Models
 {
@@ -24,6 +25,7 @@ namespace PrimeAssault.Models
 
         override public bool Update(MonsterModel data)
         {
+            PlayerType = data.PlayerType;
             Name = data.Name;
             Description = data.Description;
             CurrentHealth = data.CurrentHealth;
@@ -54,16 +56,18 @@ namespace PrimeAssault.Models
             Moves[0] = data.Moves[0];
             Moves[1] = data.Moves[1];
             Ability = data.Ability;
+
             return true;
         }
 
         //The monster (inherits from base)
         public MonsterModel() : base()
         {
+            PlayerType = PlayerTypeEnum.Monster;
             ImageURI = DEFAULT_URI;
-            Name = "";
-            Description = "A monster from the sewers.";
-            Attack = 5;
+            Name = RandomPlayerHelper.GetMonsterName();
+            Description = RandomPlayerHelper.GetMonsterDescription();
+            Attack = 7;
             Defense = 5;
             CurrentHealth = 20;
             MaxHealth = 20;
@@ -72,6 +76,7 @@ namespace PrimeAssault.Models
             ImageURI = "sewer_gator.png";
             Move1 = "Crackshot";
             Move2 = "Iron Grip";
+           
         }
 
         public bool SetLevel(int targetLevel)

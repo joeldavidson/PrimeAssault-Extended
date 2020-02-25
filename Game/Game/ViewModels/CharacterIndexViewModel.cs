@@ -11,18 +11,18 @@ namespace PrimeAssault.ViewModels
     /// Index View Model
     /// Manages the list of data records
     /// </summary>
-    public class CharIndexViewModel : BaseViewModel<CharacterModel>
+    public class CharacterIndexViewModel : BaseViewModel<CharacterModel>
     {
         #region Singleton
 
         // Make this a singleton so it only exist one time because holds all the data records in memory
-        private static volatile CharIndexViewModel instance;
+        private static volatile CharacterIndexViewModel instance;
 
         //sync root object
         private static readonly object syncRoot = new Object();
 
         //The instance of the index view
-        public static CharIndexViewModel Instance
+        public static CharacterIndexViewModel Instance
         {
             get
             {
@@ -32,7 +32,7 @@ namespace PrimeAssault.ViewModels
                     {
                         if (instance == null)
                         {
-                            instance = new CharIndexViewModel();
+                            instance = new CharacterIndexViewModel();
                             instance.Initialize();
                         }
                     }
@@ -51,7 +51,7 @@ namespace PrimeAssault.ViewModels
         /// 
         /// The constructor subscribes message listeners for crudi operations
         /// </summary>
-        public CharIndexViewModel()
+        public CharacterIndexViewModel()
         {
             Title = "Characters";
 
@@ -60,6 +60,7 @@ namespace PrimeAssault.ViewModels
             // Register the Create Message
             MessagingCenter.Subscribe<CharCreatePage, CharacterModel>(this, "Create", async (obj, data) =>
             {
+                data.Update(data);
                 await CreateAsync(data as CharacterModel);
             });
 

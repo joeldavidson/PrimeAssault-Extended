@@ -73,6 +73,10 @@ namespace PrimeAssault.Services
                     Name = "Evil Harvey",
                     Description = "He's a lean mean killing machine!",
                     ImageURI = "sewer_gator.png",
+                    Attack = 200,
+                    Defense = 200,
+                    Speed = 200,
+                    RangedDefense = 200
                 },
 
                 new MonsterModel {

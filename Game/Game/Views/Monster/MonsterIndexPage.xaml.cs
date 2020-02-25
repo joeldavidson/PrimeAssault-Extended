@@ -17,7 +17,7 @@ namespace PrimeAssault.Views
     public partial class MonIndexPage : ContentPage
     {
         // The view model, used for data binding
-        readonly MonIndexViewModel ViewModel = MonIndexViewModel.Instance;
+        readonly MonsterIndexViewModel ViewModel = MonsterIndexViewModel.Instance;
         /// <summary>
         /// Constructor for Index Page
         /// 

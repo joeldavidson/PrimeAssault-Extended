@@ -13,15 +13,15 @@ namespace PrimeAssault.ViewModels
     /// Index View Model
     /// Manages the list of data records
     /// </summary>
-    public class MonIndexViewModel : BaseViewModel<MonsterModel>
+    public class MonsterIndexViewModel : BaseViewModel<MonsterModel>
     {
         #region Singleton
 
         // Make this a singleton so it only exist one time because holds all the data records in memory
-        private static volatile MonIndexViewModel instance;
+        private static volatile MonsterIndexViewModel instance;
         private static readonly object syncRoot = new Object();
 
-        public static MonIndexViewModel Instance
+        public static MonsterIndexViewModel Instance
         {
             get
             {
@@ -31,7 +31,7 @@ namespace PrimeAssault.ViewModels
                     {
                         if (instance == null)
                         {
-                            instance = new MonIndexViewModel();
+                            instance = new MonsterIndexViewModel();
                             instance.Initialize();
                         }
                     }
@@ -50,7 +50,7 @@ namespace PrimeAssault.ViewModels
         /// 
         /// The constructor subscribes message listeners for crudi operations
         /// </summary>
-        public MonIndexViewModel()
+        public MonsterIndexViewModel()
         {
             Title = "Monsters";
 
