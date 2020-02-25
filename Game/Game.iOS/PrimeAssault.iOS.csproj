@@ -279,4 +279,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\BeffJezos.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\amazon-blimp.jpg" />
+  </ItemGroup>
 </Project>

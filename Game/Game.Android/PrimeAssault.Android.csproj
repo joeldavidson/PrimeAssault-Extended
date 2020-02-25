@@ -223,5 +223,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\BeffJezos.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\amazon-blimp.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
