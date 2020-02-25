@@ -60,6 +60,7 @@ namespace PrimeAssault.ViewModels
             // Register the Create Message
             MessagingCenter.Subscribe<CharCreatePage, CharacterModel>(this, "Create", async (obj, data) =>
             {
+                data.Update(data);
                 await CreateAsync(data as CharacterModel);
             });
 
