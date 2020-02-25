@@ -29,6 +29,7 @@ namespace PrimeAssault.Views
             InitializeComponent();
 
             BindingContext = ViewModel;
+
         }
         /// <summary>
         /// The row selected from the list

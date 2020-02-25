@@ -6,7 +6,7 @@
                      mc:Ignorable="d"
                      x:Class="PrimeAssault.Views.CharIndexPage"
                      Title="{Binding Title}"
-                     x:Name="BrowseCharacterPage"
+                     x:Name="Root"
                      BackgroundImageSource="neonStairs.jpg">
 
     <ContentPage.ToolbarItems>
@@ -166,7 +166,7 @@
                                     <!--End of Column 3-->
 
                                     <!--Column 4 inside Row 1-->
-                                    <Button Text="Torso" TextColor="Aqua"
+                                    <ImageButton x:Name="NecklaceItem"
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="FillAndExpand"
                                                 Grid.Column="4"
@@ -176,11 +176,12 @@
                                                 CornerRadius="10"
                                                 BorderColor="Aqua"
                                             Clicked="Torso_Clicked"
-                                                ></Button>
+                                                ></ImageButton>
                                     <!--End of Column 4-->
 
                                     <!--Column 5 inside Row 1-->
-                                    <Button Text="Head" TextColor="Aqua"
+                                    <ImageButton x:Name="Head"
+                                                Source="{Binding Data.Head, Source={Binding imageURI}}"
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="FillAndExpand"
                                                 Grid.Column="5"
@@ -190,8 +191,8 @@
                                                 CornerRadius="20"
                                                 BorderColor="Aqua"
                                             Clicked="Head_Clicked"
-                                                ></Button>
-                                    <Button Text="Boots" TextColor="Aqua"
+                                                ></ImageButton>
+                                    <ImageButton x:Name="FeetItem"
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="FillAndExpand"
                                                 Grid.Column="5"
@@ -201,11 +202,11 @@
                                                 CornerRadius="20"
                                                 BorderColor="Aqua"
                                             Clicked="Boots_Clicked"
-                                                ></Button>
+                                                ></ImageButton>
                                     <!--End of Column 5-->
 
                                     <!--Column 6 inside Row 1-->
-                                    <Button Text="R-Hand" TextColor="Aqua"
+                                    <ImageButton x:Name="PrimaryHandItem"
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="FillAndExpand"
                                                 Grid.Column="6"
@@ -215,8 +216,8 @@
                                                 CornerRadius="20"
                                                 BorderColor="Aqua"
                                             Clicked="RightHand_Clicked"
-                                                ></Button>
-                                    <Button Text="Ring 1" TextColor="Aqua"
+                                                ></ImageButton>
+                                    <ImageButton  x:Name="RightFingerItem"
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="FillAndExpand"
                                                 Grid.Column="6"
@@ -226,11 +227,11 @@
                                                 CornerRadius="40"
                                                 BorderColor="Aqua"
                                             Clicked="Ring1_Clicked"
-                                                ></Button>
+                                                ></ImageButton>
                                     <!--End of Column 6-->
 
                                     <!--Column 7 inside Row 1-->
-                                    <Button Text="L-Hand" TextColor="Aqua"
+                                    <ImageButton x:Name="OffhandItem"
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="FillAndExpand"
                                                 Grid.Column="7"
@@ -240,8 +241,8 @@
                                                 CornerRadius="20"
                                                 BorderColor="Aqua"
                                             Clicked="LeftHand_Clicked"
-                                                ></Button>
-                                    <Button Text="Ring 2" TextColor="Aqua"
+                                                ></ImageButton>
+                                    <ImageButton x:Name="LeftFingerItem"
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="FillAndExpand"
                                                 Grid.Column="7"
@@ -252,7 +253,7 @@
                                                 BorderColor="Aqua"
                                             CommandParameter="{Binding id}"
                                             Clicked="Ring2_Clicked"
-                                                ></Button>
+                                                ></ImageButton>
                                     <!--End of Column 7-->
                                 </Grid>
                             </ViewCell>

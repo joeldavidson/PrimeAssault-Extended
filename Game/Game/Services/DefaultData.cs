@@ -1,4 +1,5 @@
 ﻿using PrimeAssault.Models;
+using PrimeAssault.ViewModels;
 using System.Collections.Generic;
 
 namespace PrimeAssault.Services
@@ -86,11 +87,26 @@ namespace PrimeAssault.Services
 
         public static List<CharacterModel> LoadData(CharacterModel temp)
         {
+            var HeadString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Head);
+            var NecklassString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Necklass);
+            var PrimaryHandString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.PrimaryHand);
+            var OffHandString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.OffHand);
+            var FeetString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Feet);
+            var RightFingerString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Finger);
+            var LeftFingerString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Finger);
             var datalist = new List<CharacterModel>()
+
             {
                 new CharacterModel {
                     Name = "Harvey",
                     Description = "A warrior of the people!",
+                    Head = HeadString,
+                    Necklass = NecklassString,
+                    PrimaryHand = PrimaryHandString,
+                    OffHand = OffHandString,
+                    Feet = FeetString,
+                    RightFinger = RightFingerString,
+                    LeftFinger = LeftFingerString,
                 },
 
                 new CharacterModel {

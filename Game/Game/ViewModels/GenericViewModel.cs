@@ -7,8 +7,18 @@ namespace PrimeAssault.ViewModels
         /// <summary>
         /// The Item Model
         /// </summary>
-        public T Data { get; set; }
+        T bindingData { get; set; }
 
+        public T Data
+        {
+            get { return bindingData; }
+            set
+            {
+                var data = bindingData;
+                SetProperty(ref data, value);
+                bindingData = data;
+            }
+        }
         /// <summary>
         /// Constructor takes an existing item and sets
         /// The Title for the page to match the text of data

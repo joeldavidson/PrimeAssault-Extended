@@ -175,6 +175,44 @@ namespace PrimeAssault.ViewModels
 
             return myData;
         }
+
+
+        /// <summary>
+        /// Get the ID of the Default Item for the Location
+        /// The Default item is the first Item in the List
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
+        public string GetDefaultItemId(ItemLocationEnum location)
+        {
+            var data = GetDefaultItem(location);
+            if (data == null)
+            {
+                return null;
+            }
+
+            return data.Id;
+        }
+
+        /// <summary>
+        /// Get the First item of the location from the list
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
+        public ItemModel GetDefaultItem(ItemLocationEnum location)
+        {
+            var dataList = GetLocationItems(location);
+            if (dataList.Count() == 0)
+            {
+                return null;
+            }
+
+            var data = dataList.FirstOrDefault();
+
+            return data;
+        }
+
+
         public List<ItemModel> GetLocationItems(ItemLocationEnum location)
         {
             List<ItemModel> data = null;
