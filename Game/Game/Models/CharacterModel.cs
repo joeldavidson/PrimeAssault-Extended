@@ -11,7 +11,7 @@ namespace PrimeAssault.Models
     {
 
         //The class of the character in question
-        public string JobClass { get; set; } = "soldier";
+        public string JobClass { get; set; } = "Soldier";
 
 
         /// <summary>
