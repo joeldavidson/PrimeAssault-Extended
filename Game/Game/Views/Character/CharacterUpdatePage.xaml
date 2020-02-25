@@ -39,17 +39,17 @@
                 </Picker>
             <Grid>
 
-                <Label HorizontalOptions="Center" VerticalOptions="End" TextColor ="Magenta" Text="LVL" Grid.Row="0" Grid.Column="0"/>
-                <Label HorizontalOptions="Center" VerticalOptions="End" TextColor ="Magenta" Text="ATK" Grid.Row="0" Grid.Column="1"/>
-                <Label HorizontalOptions="Center" VerticalOptions="End" TextColor ="Magenta" Text="DEF" Grid.Row="0" Grid.Column="2"/>
-                <Label HorizontalOptions="Center" VerticalOptions="End" TextColor ="Magenta" Text="RDF" Grid.Row="0" Grid.Column="3"/>
-                <Label HorizontalOptions="Center" VerticalOptions="End" TextColor ="Magenta" Text="SPD" Grid.Row="0" Grid.Column="4"/>
+                <Label Style="{StaticResource StatsLabel}" Text="LVL" Grid.Column="0"/>
+                <Label Style="{StaticResource StatsLabel}" Text="ATK"  Grid.Column="1"/>
+                <Label Style="{StaticResource StatsLabel}" Text="DEF" Grid.Column="2"/>
+                <Label Style="{StaticResource StatsLabel}" Text="RDF" Grid.Column="3"/>
+                <Label Style="{StaticResource StatsLabel}" Text="SPD" Grid.Column="4"/>
 
-                <Entry  Text ="{Binding Data.Level}"  Placeholder="1" FontSize="Small" Keyboard="Numeric" Grid.Row="1" Grid.Column="0"/>
-                <Entry  Text ="{Binding Data.Attack}"  Placeholder="10" FontSize="Small" Keyboard="Numeric" Grid.Row="1" Grid.Column="1"/>
-                <Entry  Text ="{Binding Data.Defense}"  Placeholder="10" FontSize="Small" Keyboard="Numeric" Grid.Row="1" Grid.Column="2"/>
-                <Entry  Text ="{Binding Data.RangedDefense}"  Placeholder="10" FontSize="Small" Keyboard="Numeric" Grid.Row="1" Grid.Column="3"/>
-                <Entry  Text ="{Binding Data.Speed}" Placeholder="10" FontSize="Small" Keyboard="Numeric" Grid.Row="1" Grid.Column="4"/>
+                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Level}"  Grid.Column="0"/>
+                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Attack}"  Grid.Column="1"/>
+                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Defense}"  Grid.Column="2"/>
+                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.RangedDefense}"  Grid.Column="3"/>
+                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Speed}" Grid.Column="4"/>
 
             </Grid>
 
