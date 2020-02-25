@@ -52,6 +52,17 @@
 
             <!-- Label -->
 
+            
+            <Style TargetType="Label"
+                 x:Key="IndexLabel">
+                <Setter Property="FontSize" Value="Micro"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="TextColor" Value="Aqua"/>
+
+
+            </Style>
+
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
                 <Setter Property="FontAttributes" Value="None" />
