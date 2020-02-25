@@ -59,6 +59,7 @@ namespace PrimeAssault.Engine
             var data = new CharacterModel();
             for (int i=CharacterList.Count(); i<MaxNumberPartyCharacters; i++) {
                 PopulateCharacterList(data);
+                data = new CharacterModel();
             }
 
             // Start Battle in AutoBattle mode

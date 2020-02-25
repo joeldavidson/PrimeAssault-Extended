@@ -21,7 +21,22 @@
 
             <Entry  Text ="{Binding Data.Name}"  Placeholder="Name" FontSize="Small" />
             <Entry  Text ="{Binding Data.Description}"  Placeholder="Description" FontSize="Small" />
-            <Entry  Text ="{Binding Data.JobClass}" FontSize="Small"/>
+            <Picker x:Name="pick"
+            Title="Class"
+            TextColor="DarkGray"
+            SelectedItem="{Binding Data.JobClass}"
+            TitleColor="Aqua">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Soldier</x:String>
+                        <x:String>Hunter</x:String>
+                        <x:String>Brawler</x:String>
+                        <x:String>Mechanist</x:String>
+                        <x:String>Mechanic</x:String>
+                        <x:String>Ringleader</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
             <Grid>
 
                 <Label HorizontalOptions="Center" VerticalOptions="End" TextColor ="Magenta" Text="LVL" Grid.Row="0" Grid.Column="0"/>
