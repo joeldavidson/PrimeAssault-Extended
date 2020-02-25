@@ -10,13 +10,15 @@ namespace PrimeAssault.Models
     public class MoveModel : BaseModel<MoveModel>
     {
         //The size of the dice to be rolled by this attack which will be added to the normal attack stat
-        public int attack { get; set; } = 1;
+        public int Attack { get; set; } = 1;
 
         //Can be melee or ranged, melee attacks can only be used with a melee weapon in hand and ranged attacks can only be used with a ranged weapon
-        public string type { get; set; } = "melee";
+        public string Type { get; set; } = "melee";
 
         //determines who the attack targets, friend of foe (to facilitate healing)
-        public string target { get; set; } = "foe";
+        public string Target { get; set; } = "foe";
+
+        public int Uses { get; set; } = 5;
 
         //constructs with default value for a move
         public MoveModel()

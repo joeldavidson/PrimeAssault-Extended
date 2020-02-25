@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using PrimeAssault.Helpers;
-
+using PrimeAssault.Services;
 namespace PrimeAssault.Models
 {
     //Enemie
@@ -76,6 +76,8 @@ namespace PrimeAssault.Models
             ImageURI = "sewer_gator.png";
             Move1 = "Crackshot";
             Move2 = "Iron Grip";
+            Moves[0] = MoveHolder.GetMove("Crackshot");
+            Moves[1] = MoveHolder.GetMove("Iron Grip");
            
         }
 

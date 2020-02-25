@@ -20,6 +20,9 @@
         // The status of the Attack
         public string AttackStatus = string.Empty;
 
+        //whether a move was used
+        public string MoveStatus = string.Empty;
+
         // Turn Message
         public string TurnMessage = string.Empty;
         

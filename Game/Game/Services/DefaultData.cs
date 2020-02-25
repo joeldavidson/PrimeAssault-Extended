@@ -110,8 +110,8 @@ namespace PrimeAssault.Services
                     OffHand = OffHandString,
                     Feet = FeetString,
                     RightFinger = RightFingerString,
-                    LeftFinger = LeftFingerString,
-                },
+                    LeftFinger = LeftFingerString
+        },
 
                 new CharacterModel {
                     Name = "Harvey's Dad",
