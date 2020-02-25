@@ -218,7 +218,10 @@ namespace PrimeAssault.Models
         }
 
 
-        public int GetDamageRollValue() { return 10; }
+        public int GetDamageRollValue() { 
+
+            return 10; 
+        }
 
         
 

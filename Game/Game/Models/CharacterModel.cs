@@ -22,7 +22,7 @@ namespace PrimeAssault.Models
         {
             PlayerType = PlayerTypeEnum.Character;
             Guid = Id;
-            Name = "";
+            Name = "Benny Madhouse";
             Description = "";
             Attack = 5;
             Defense = 5;
