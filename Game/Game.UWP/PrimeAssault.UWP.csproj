@@ -162,6 +162,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="raygun.png" />
+    <Content Include="Records.png" />
     <Content Include="ringleader_class.png" />
     <Content Include="SafeHouse.png" />
     <Content Include="score.png" />

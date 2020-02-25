@@ -243,7 +243,12 @@
                 <Setter Property="BackgroundColor" Value="{StaticResource LightBackgroundColor}" />
             </Style>
 
-
+            <Style TargetType="Picker" x:Key="ClassPicker">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="TitleColor" Value="Cyan" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="BackgroundColor" Value="{StaticResource LightBackgroundColor}" />
+            </Style>
 
             <Style x:Key="Properties" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="End"/>

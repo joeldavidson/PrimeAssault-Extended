@@ -43,7 +43,7 @@
                 <StackLayout Style="{StaticResource CardImageTextBox}">
 
                     <ImageButton
-                                Source="raygun.png"
+                                Source="raygun.png"                              
                                 Style="{StaticResource ImageLargeStyle}"
                                 Clicked="ItemsButton_Clicked"/>
 
@@ -56,12 +56,12 @@
                 <StackLayout Style="{StaticResource CardImageTextBox}">
 
                     <ImageButton
-                                Source="score.png"
+                                Source="Records.png"
                                 Style="{StaticResource ImageLargeStyle}"
                                 Clicked="ScoresButton_Clicked"/>
 
                     <Label 
-                                Text="Scores"
+                                Text="Records"
                                 Style="{StaticResource CenterMessageStyle}"/>
 
                 </StackLayout>
