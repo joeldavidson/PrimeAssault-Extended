@@ -29,13 +29,13 @@ namespace PrimeAssault.Views
 		}
 
 		/// <summary>
-		/// Jump to the Village
+		/// Jump to the SafeHouse
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		public async void VillageButton_Clicked(object sender, EventArgs e)
+		public async void SafeHouseButton_Clicked(object sender, EventArgs e)
 		{
-			await Navigation.PushAsync(new VillagePage());
+			await Navigation.PushAsync(new SafeHousePage());
 		}
 
 		/// <summary>

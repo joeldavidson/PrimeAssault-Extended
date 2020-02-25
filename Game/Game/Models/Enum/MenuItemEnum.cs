@@ -8,8 +8,8 @@
         // Battle Page
         Battle = 1,
 
-        // Village
-        Village = 2,
+        // SafeHouse
+        SafeHouse = 2,
 
         // Score - Remove
         Score = 3,
