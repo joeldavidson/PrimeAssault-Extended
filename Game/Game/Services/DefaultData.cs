@@ -95,7 +95,7 @@ namespace PrimeAssault.Services
                 new MonsterModel {
                     Name = "Evil Harvey",
                     Description = "He's a lean mean killing machine!",
-                    ImageURI = "sewer_gator.png",
+                    ImageURI = "evilHarvey.png",
                     Attack = 200,
                     Defense = 200,
                     Speed = 200,
@@ -104,8 +104,20 @@ namespace PrimeAssault.Services
 
                 new MonsterModel {
                     Name = "Goopy",
-                    Description = "Gloop glop he's bot.",
+                    Description = "\"I don't think we're alone down here...\"",
                     ImageURI = "sewer_gator.png",
+                },
+
+                new MonsterModel {
+                    Name = "Warehouse Guard",
+                    Description = "One of the last organic creatures still on payroll",
+                    ImageURI = "SilverRobot.png",
+                },
+
+                new MonsterModel {
+                    Name = "Prime Security",
+                    Description = "Originally designed to cut down on shipping costs...",
+                    ImageURI = "shieldRobot.png",
                 }
             };
 
@@ -134,7 +146,9 @@ namespace PrimeAssault.Services
                     Feet = FeetString,
                     RightFinger = RightFingerString,
                     LeftFinger = LeftFingerString,
-                },
+                    ImageURI = "mechanist_class.png",
+                    JobClass = "Mechanist"
+        },
 
                 new CharacterModel {
                     Name = "Harvey's Dad",

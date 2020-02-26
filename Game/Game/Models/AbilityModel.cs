@@ -6,39 +6,23 @@ namespace PrimeAssault.Models
 {
     public class AbilityModel : BaseModel<AbilityModel>
     {
-        //What kind of character can have the ability
-        public string Faction { get; set; } = "human"; //alternative is "sewerMonster" or "euphratesMech"
+        public string Faction { get; set; } = "player"; //alternative is "sewerMonster" or "euphratesMech"
         //Name of the ability
         public double EffectValue { get; set; } = 0.0;
-        //public string who it affects (self/enemy)
-        public string CharacterAffected { get; set; } = "self"; 
+        //when this effect should activate
+        public string TriggeredOn { get; set; } = "attack";
 
+        //First effect should be used for The 
+        public AbilityEffectEnum FirstEffect { get; set; } = AbilityEffectEnum.Nothing;
 
-        //stats to affect
+        public AbilityEffectEnum SecondEffect { get; set; } = AbilityEffectEnum.Nothing;
 
-        //Ability augments MaxHealth
-        public bool AffectMaxHealth { get; set; } = false;
-        //Ability augments Speed
-        public bool AffectSpeed { get; set; } = false;
-        //Ability augments Defense
-        public bool AffectDefense { get; set; } = false;
-        //Ability augments RangedDefense
-        public bool AffectRangedDefense { get; set; } = false;
-        //Ability augments DropRate
-        public bool AffectDropRate { get; set; } = false;
-        //Ability augments AffectHealing
-        public bool AffectHealing { get; set; } = false;
-        //Ability augments HealthRegen
-        public bool AffectHealthRegen { get; set; } = false;
-        //specific to only sewer creatures
-        public bool SewerCreatureSpecific { get; set; } = false;
-        //specific to only mechs
-        public bool MechSpecific { get; set; } = false;
+        public AbilityEffectEnum ThirdEffect {get; set;} = AbilityEffectEnum.Nothing;
 
         public AbilityModel()
         {
             Name = "None";
-            Description = "none";
+            Description = "None";
         }
     }
 }

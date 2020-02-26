@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using PrimeAssault.Helpers;
 using System;
-using System.Collections.Generic;
+using PrimeAssault.Services;
 
 namespace PrimeAssault.Models
 {
@@ -88,7 +88,7 @@ namespace PrimeAssault.Models
         public double NextLevelMult { get; set; } = 1.0;
 
         //Ability name of character
-        public string Ability { get; set; } = "None";
+        public AbilityModel Ability { get; set; } = new AbilityModel();
 
         #region moves
         //First move that a character can use in combat
@@ -135,6 +135,10 @@ namespace PrimeAssault.Models
         {
             Guid = Id;
             ImageURI = "soldier_class.png";
+            Move1 = "Crackshot";
+            Move2 = "Iron Grip";
+            Moves[0] = new MoveModel(MoveHolder.GetMove("Crackshot"));
+            Moves[1] = new MoveModel(MoveHolder.GetMove("Iron Grip"));
         }
 
         /// <summary>
@@ -157,7 +161,6 @@ namespace PrimeAssault.Models
         /// Return the Calculated ranged defense of a character
         /// </summary>
         /// <returns></returns>
-
         public int GetRangedDefense() {
             var myReturn = RangedDefense;
 

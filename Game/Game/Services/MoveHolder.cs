@@ -11,15 +11,17 @@ namespace PrimeAssault.Services
                 new MoveModel {
                     Name = "Crackshot",
                     Description = "Years of plinking in state-of-the-art simulations have given you formidable ranged ability.",
-                    attack = 5,
-                    type = "ranged"
+                    Attack = 5,
+                    Type = "ranged",
+                    Uses = 4
                     },
                 new MoveModel
                 {
                     Name = "Iron Grip",
                     Description = "You have trained your hands from birth and now they squeeze things... fiercely.",
-                    attack = 5,
-                    type = "melee"
+                    Attack = 5,
+                    Type = "melee",
+                    Uses = 4
                 }
 
 

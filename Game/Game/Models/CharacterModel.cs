@@ -32,11 +32,9 @@ namespace PrimeAssault.Models
             RangedDefense = 2;
             Speed = 2;
             ImageURI = "soldier_class.png";
-            Moves[0] = MoveHolder.GetMove("Crackshot");
-            Moves[1] = MoveHolder.GetMove("Iron Grip");
-            Move1 = "Crackshot";
-            Move2 = "Iron Grip";
+            Ability = AbilityHolder.GetAbility("crocodile hunter");
         }
+
         public CharacterModel(CharacterModel data)
         {
             Update(data);
@@ -96,6 +94,7 @@ namespace PrimeAssault.Models
             JobClass = InClass; //only done for formatting purposes, very hacky
             NextLevelMult = Current.NextLevelMult;
             ImageURI = Current.ImageURI;
+
             return true;
         }
 

@@ -21,8 +21,11 @@ namespace PrimeAssault.Engine
     /// 
     /// A turn is when a Character takes an action or a Monster takes an action
     /// </summary>
+   
     public class TurnEngine : BaseEngine
     {
+        //variable which determines likelihood that an AI will use a move on any given turn.
+        public static int PROBABILITY_OF_MOVE = 3; 
         #region Algrorithm
         // Attack or Move
         // Roll To Hit
@@ -72,8 +75,9 @@ namespace PrimeAssault.Engine
                 return false;
             }
 
+
             // Do Attack
-            TurnAsAttack(Attacker,Target);
+            TurnAsAttack(Attacker, Target);
 
             CurrentAttacker = new PlayerInfoModel(Attacker);
             CurrentDefender = new PlayerInfoModel(Target);
@@ -172,6 +176,7 @@ namespace PrimeAssault.Engine
             BattleMessagesModel.TurnMessage = string.Empty;
             BattleMessagesModel.TurnMessageSpecial = string.Empty;
             BattleMessagesModel.AttackStatus = string.Empty;
+            BattleMessagesModel.MoveStatus = string.Empty;
 
             // Remember Current Player
             BattleMessagesModel.PlayerType = PlayerTypeEnum.Monster;
@@ -181,8 +186,29 @@ namespace PrimeAssault.Engine
             BattleMessagesModel.TargetName = Target.Name;
             BattleMessagesModel.AttackerName = Attacker.Name;
 
+            //checks for if move can potentially be used...
+            MoveModel moveUsed = null;
+            if (Attacker.Moves[0].Uses != 0 || Attacker.Moves[1].Uses != 0) //Assumes attackers always have two moves
+            {
+                //uses move...
+                moveUsed = UseMove(Attacker);
+            }
+
             // Set Attack and Defense
             var AttackScore = Attacker.Level + Attacker.GetAttack();
+
+            //if a move was used, add the attack of the move to the normal attack score
+            if (moveUsed != null)
+            {
+                BattleMessagesModel.MoveStatus = (" with " + moveUsed.Name);
+                AttackScore += moveUsed.Attack;
+            }
+            //need to check for any active abilities...
+            if (Attacker.Ability.TriggeredOn == "attack")
+            {
+                ProcessAbility();
+            }
+
             var DefenseScore = Target.GetDefense() + Target.Level;
 
             BattleMessagesModel.HitStatus = RollToHitTarget(AttackScore, DefenseScore);
@@ -207,10 +233,119 @@ namespace PrimeAssault.Engine
                     break;
             }
 
-            BattleMessagesModel.TurnMessage = Attacker.Name + BattleMessagesModel.AttackStatus + Target.Name + BattleMessagesModel.TurnMessageSpecial;
+            BattleMessagesModel.TurnMessage = Attacker.Name + BattleMessagesModel.AttackStatus + Target.Name + BattleMessagesModel.MoveStatus + BattleMessagesModel.TurnMessageSpecial;
             Debug.WriteLine(BattleMessagesModel.TurnMessage);
 
             return true;
+        }
+
+        /// <summary>
+        /// Function which determines if a move should be used, and then what move should be used. It also keeps track of uses of each move. Overall needs reworking. First attempt was not tenable or easy to understand. Too many ifs.
+        /// </summary>
+        /// <param name="Attacker"></param>
+        /// <param name="AttackScore"></param>
+        /// <param name="Target"></param>
+        /// <param name="DefenseScore"></param>
+        /// <returns></returns>
+        public MoveModel UseMove(PlayerInfoModel Attacker)
+        {
+            //If a character has a move that can be used, there is a PROBABILITY_OF_MOVE*10% chance they will use it
+            int decision = DiceHelper.RollDice(1, 10);
+            if (decision >= PROBABILITY_OF_MOVE)
+            {
+                return null;
+            }
+            MoveModel RetMove = null;
+            //Test to see if attack must be ranged and do subsequent checks to determine if any valid moves exist
+            if (Attacker.GetItemByLocation(ItemLocationEnum.PrimaryHand) != null && Attacker.GetItemByLocation(ItemLocationEnum.PrimaryHand).Range != 0)
+            {
+                //If both moves are viable moves
+                if (Attacker.Moves[0].Type == "ranged" && Attacker.Moves[1].Type == "ranged")
+                {
+                    //returns a random Move from index 0 or 1 based on the random dice roll, but also checks to see if randomly selected move has no uses left
+                    RetMove = Attacker.Moves[decision % 2];
+                    if (RetMove.Uses == 0)
+                    {
+                        Attacker.Moves[(decision + 1 % 2)].Uses--;
+                        RetMove = Attacker.Moves[(decision + 1) % 2];
+                    }
+                    Attacker.Moves[decision % 2].Uses--;
+                }
+                //if only move 0 is a valid move
+                else if (Attacker.Moves[0].Type == "ranged" && Attacker.Moves[1].Type == "melee")
+                {
+                    RetMove = Attacker.Moves[0];
+                    if (RetMove.Uses != 0)
+                    {
+                        Attacker.Moves[0].Uses--;
+                    }
+                    else
+                    {
+                        RetMove = null;
+                    }
+                }
+                //if only move 1 is a valid move
+                else if (Attacker.Moves[0].Type == "melee" && Attacker.Moves[1].Type == "ranged")
+                {
+                    RetMove = Attacker.Moves[1];
+                    if (RetMove.Uses != 0)
+                    {
+                        Attacker.Moves[1].Uses--;
+                    }
+                    else
+                    {
+                        RetMove = null;
+                    }
+                }
+            }
+
+            //if the weapon in hand is melee or unarmed and subsequent checks to see if any valid move exists
+            else
+            {
+                if (Attacker.Moves[0].Type == "melee" && Attacker.Moves[1].Type == "melee")
+                {
+                    //returns a random Move from index 0 or 1 based on the random dice roll, but also checks to see if randomly selected move has no uses left
+                    RetMove = Attacker.Moves[decision % 2];
+                    if (RetMove.Uses == 0)
+                    {
+                        Attacker.Moves[(decision + 1 % 2)].Uses--;
+                        RetMove = Attacker.Moves[(decision + 1) % 2];
+                    }
+                    Attacker.Moves[decision % 2].Uses--;
+                }
+                //if only move 0 is a valid move
+                else if (Attacker.Moves[0].Type == "melee" && Attacker.Moves[1].Type == "ranged")
+                {
+                    RetMove = Attacker.Moves[0];
+                    if (RetMove.Uses != 0)
+                    {
+                        Attacker.Moves[0].Uses--;
+                    }
+                    else
+                    {
+                        RetMove = null;
+                    }
+                }
+                //if only move 1 is a valid move
+                else if (Attacker.Moves[0].Type == "ranged" && Attacker.Moves[1].Type == "melee")
+                {
+                    RetMove = Attacker.Moves[1];
+                    if (RetMove.Uses != 0)
+                    {
+                        Attacker.Moves[1].Uses--;
+                    }
+                    else
+                    {
+                        RetMove = null;
+                    }
+                }
+            }
+            return RetMove;
+        }
+    
+        public void ProcessAbility()
+        {
+
         }
 
         /// <summary>
