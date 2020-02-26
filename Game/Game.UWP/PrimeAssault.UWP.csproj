@@ -116,6 +116,7 @@
     <Content Include="dungeon_door.png" />
     <Content Include="euphrates_lab.jpg" />
     <Content Include="euphrates_logo.png" />
+    <Content Include="evilHarvey.png" />
     <Content Include="gameover.png" />
     <Content Include="garage.jpg" />
     <Content Include="gear.png" />
@@ -176,6 +177,8 @@
     <Content Include="ScoreRead.jpg" />
     <Content Include="ScoreUpdate.jpg" />
     <Content Include="sewer_gator.png" />
+    <Content Include="shieldRobot.png" />
+    <Content Include="SilverRobot.png" />
     <Content Include="soldier_class.png" />
     <Content Include="splashscreen.jpg" />
     <Content Include="troll.png" />

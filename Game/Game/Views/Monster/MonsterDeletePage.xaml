@@ -16,11 +16,20 @@
 
         <Label TextColor="Aqua" HorizontalOptions="Center" FontSize="Header">DELETE Monster</Label>
         <Image Source="{Binding Data.ImageURI}" HeightRequest="200"></Image>
-        
-        <Label  Text="Name: " TextColor ="Aquamarine" FontSize="Medium" HorizontalTextAlignment="Center"/>
-        <Label HorizontalOptions="Center" Text="{Binding Data.Name}" TextColor="Aqua" FontSize="Medium" HorizontalTextAlignment="Center"/>
-        <Label HorizontalOptions="Center" Text="{Binding Data.Description}"  TextColor="Aqua" FontSize="Medium" HorizontalTextAlignment="Center"/>
 
+        <Grid HorizontalOptions="CenterAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0"  Text="Name: " TextColor ="Aquamarine" FontSize="Medium" HorizontalTextAlignment="Center"/>
+            <Label Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" Text="{Binding Data.Name}" TextColor="Aqua" FontSize="Medium" HorizontalTextAlignment="Center"/>
+        </Grid>
+        <Label HorizontalOptions="Center" Text="{Binding Data.Description}"  TextColor="Aqua" FontSize="Medium" HorizontalTextAlignment="Center"/>
 
         <StackLayout 
             HorizontalOptions="Center"
@@ -34,7 +43,8 @@
                 HorizontalOptions="Center"
                 FontSize="Large"
                 BorderWidth="1"
-                BorderColor="Magenta"
+                BorderColor="Aqua"
+                BackgroundColor="Transparent"
                 >
             </Button>
 
