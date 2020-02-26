@@ -36,6 +36,8 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
+
+
             <Grid>
 
                 <Label Style="{StaticResource StatsLabel}" Text="LVL" Grid.Column="0"/>
@@ -44,11 +46,27 @@
                 <Label Style="{StaticResource StatsLabel}" Text="RDF" Grid.Column="3"/>
                 <Label Style="{StaticResource StatsLabel}" Text="SPD" Grid.Column="4"/>
 
-                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Level}"  Grid.Column="0"/>
+                <Picker         
+                       Grid.Row="1" Grid.Column="0"
+                                SelectedItem="{Binding SelectedItemProperty}" 
+                                SelectedIndexChanged="Level_Changed"
+                                TextColor="Black"
+                                x:Name="LevelPicker"/>
+
                 <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Attack}"  Grid.Column="1"/>
                 <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Defense}"  Grid.Column="2"/>
                 <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.RangedDefense}"  Grid.Column="3"/>
                 <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Speed}" Grid.Column="4"/>
+
+
+                <Label Style="{StaticResource StatsLabel}" Text="Max HP" Grid.Row="2" Grid.Column="0"/>
+
+                <Label 
+                                x:Name="MaxHealthValue"
+                    Grid.Row="2"
+                    Grid.Column='1'
+                                Text="{Binding Data.MaxHealth, StringFormat= '{0:G} hp'}" 
+                                Style="{StaticResource HealthStyle}"/>
 
             </Grid>
 

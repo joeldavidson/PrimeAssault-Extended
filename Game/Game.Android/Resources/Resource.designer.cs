@@ -5765,7 +5765,7 @@ namespace Game.Droid
 			public const int euphrates_logo = 2131165291;
 			
 			// aapt resource value: 0x7F07006C
-			public const int evilharvey = 2131165292;
+			public const int evilHarvey = 2131165292;
 			
 			// aapt resource value: 0x7F07006D
 			public const int gameover = 2131165293;
@@ -5909,10 +5909,10 @@ namespace Game.Droid
 			public const int sewer_gator = 2131165339;
 			
 			// aapt resource value: 0x7F07009C
-			public const int shieldrobot = 2131165340;
+			public const int shieldRobot = 2131165340;
 			
 			// aapt resource value: 0x7F07009D
-			public const int silverrobot = 2131165341;
+			public const int SilverRobot = 2131165341;
 			
 			// aapt resource value: 0x7F07009E
 			public const int soldier_class = 2131165342;
