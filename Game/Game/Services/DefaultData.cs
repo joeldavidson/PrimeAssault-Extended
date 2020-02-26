@@ -133,12 +133,15 @@ namespace PrimeAssault.Services
                     OffHand = OffHandString,
                     Feet = FeetString,
                     RightFinger = RightFingerString,
-                    LeftFinger = LeftFingerString
+                    LeftFinger = LeftFingerString,
+                    ImageURI = "mechanist_class.png",
+                    JobClass = "Mechanist"
         },
 
                 new CharacterModel {
                     Name = "Harvey's Dad",
                     Description = "Not as successful as his son.",
+
                 }
             };
 
