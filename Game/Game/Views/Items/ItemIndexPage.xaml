@@ -31,7 +31,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid Margin="10" BackgroundColor="#4D3f035f" HeightRequest="200">
+                                <Grid Margin="5" BackgroundColor="#4D3f035f" HeightRequest="200">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
@@ -57,33 +57,37 @@
                                                          Grid.RowSpan="2">
                                     </Image>
                                     <Button Text="{Binding Name}" TextColor="Aqua"
+                                            BackgroundColor="Transparent"
                                                     Grid.Column="0"
                                                     Grid.Row="2"
                                                 CornerRadius="20"
                                                 BorderColor="Aqua"
+                                            VerticalOptions="FillAndExpand"
                                                     ></Button>
 
-                                    <Label Text= "Equip Location:" TextColor="Aqua"
+                                    <Label Text= "{Binding Location}" TextColor="Aqua"
                                            Grid.Column="0"
                                            Grid.Row="3"
                                            VerticalOptions="StartAndExpand"
                                            HorizontalOptions="Center"
                                            ></Label>
-                                    
-                                    <Label Text= "{Binding location}" TextColor="Aqua"
-                                           Grid.Column="0"
-                                           Grid.Row="3"
-                                           VerticalOptions="CenterAndExpand"
-                                           HorizontalOptions="Center"
-                                           ></Label>
 
-                                    <Label Text= "{Binding valueString}" TextColor="Aqua"
+                                    <Grid Margin="5" Grid.Row="3" Grid.Column="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text= "Value: " TextColor="Aqua"
                                            Grid.Column="0"
-                                           Grid.Row="3"
+                                           VerticalOptions="EndAndExpand"
+                                           HorizontalOptions="Center"
+                                         ></Label>
+                                            <Label Text= "{Binding Value}" TextColor="Aqua"
+                                           Grid.Column="1"
                                            VerticalOptions="EndAndExpand"
                                            HorizontalOptions="Center"
                                            ></Label>
-
+                                    </Grid>
                                     <!--End of Column 1-->
 
                                     <!--Column 2 inside Row 1-->

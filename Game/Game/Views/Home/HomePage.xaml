@@ -33,15 +33,16 @@
                         />
 
                     <Label 
-                        Text="It's time to fight back!"
+                        Text="It's time to"
                         Style="{StaticResource CenterMessageStyle}"
-                        FontSize="Micro"
+                        FontSize="Medium"
                         LineBreakMode="WordWrap"
                         />
                 </StackLayout>
 
                 <Button
-                    Text="Enter"
+                    Text="fight back!"
+                    FontSize="Large"
                     Clicked="PrimeAssaultButton_Clicked"/>
 
             </StackLayout>

@@ -468,6 +468,53 @@ namespace PrimeAssault.Models
             return myReturn;
         }
 
+        public string GetItemURI(ItemLocationEnum itemLocation)
+        {
+
+            ItemModel myItem;
+            string itemURI;
+
+            switch (itemLocation)
+            {
+                case ItemLocationEnum.Head:
+                    myItem = GetItem(Head);
+                    itemURI = myItem.ImageURI;
+                    return itemURI;
+
+                case ItemLocationEnum.Necklass:
+                    myItem = GetItem(Necklass);
+                    itemURI = myItem.ImageURI;
+                    return itemURI;
+                   
+                case ItemLocationEnum.PrimaryHand:
+                    myItem = GetItem(PrimaryHand);
+                    itemURI = myItem.ImageURI;
+                    return itemURI;
+
+                case ItemLocationEnum.OffHand:
+                    myItem = GetItem(OffHand);
+                    itemURI = myItem.ImageURI;
+                    return itemURI;
+
+                case ItemLocationEnum.RightFinger:
+                    myItem = GetItem(RightFinger);
+                    itemURI = myItem.ImageURI;
+                    return itemURI;
+
+                case ItemLocationEnum.LeftFinger:
+                    myItem = GetItem(LeftFinger);
+                    itemURI = myItem.ImageURI;
+                    return itemURI;
+
+                case ItemLocationEnum.Feet:
+                    myItem = GetItem(Feet);
+                    itemURI = myItem.ImageURI;
+                    return itemURI;
+            }
+
+            return null;
+        }
+
         // Walk all the Items on the Character.
         // Add together all Items that modify the Attribute Enum Passed in
         // Return the sum
