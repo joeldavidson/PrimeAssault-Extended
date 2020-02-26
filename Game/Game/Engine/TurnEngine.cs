@@ -21,8 +21,11 @@ namespace PrimeAssault.Engine
     /// 
     /// A turn is when a Character takes an action or a Monster takes an action
     /// </summary>
+   
     public class TurnEngine : BaseEngine
     {
+        //variable which determines likelihood that an AI will use a move on any given turn.
+        public static int PROBABILITY_OF_MOVE = 3; 
         #region Algrorithm
         // Attack or Move
         // Roll To Hit
@@ -173,6 +176,7 @@ namespace PrimeAssault.Engine
             BattleMessagesModel.TurnMessage = string.Empty;
             BattleMessagesModel.TurnMessageSpecial = string.Empty;
             BattleMessagesModel.AttackStatus = string.Empty;
+            BattleMessagesModel.MoveStatus = string.Empty;
 
             // Remember Current Player
             BattleMessagesModel.PlayerType = PlayerTypeEnum.Monster;
@@ -195,7 +199,7 @@ namespace PrimeAssault.Engine
             //if a move was used, add the attack of the move to the normal attack score
             if (moveUsed != null)
             {
-                BattleMessagesModel.MoveStatus = ("With " + moveUsed.Name);
+                BattleMessagesModel.MoveStatus = (" with " + moveUsed.Name);
                 AttackScore += moveUsed.Attack;
             }
             var DefenseScore = Target.GetDefense() + Target.Level;
@@ -238,18 +242,18 @@ namespace PrimeAssault.Engine
         /// <returns></returns>
         public MoveModel UseMove(PlayerInfoModel Attacker)
         {
-            //If a character has a move that can be used, there is a 50% chance they will use it
+            //If a character has a move that can be used, there is a PROBABILITY_OF_MOVE*10% chance they will use it
             int decision = DiceHelper.RollDice(1, 10);
-            if (decision < 5)
+            if (decision >= PROBABILITY_OF_MOVE)
             {
                 return null;
             }
             MoveModel RetMove = null;
             //Test to see if attack must be ranged and do subsequent checks to determine if any valid moves exist
-            if (Attacker.GetItemByLocation(ItemLocationEnum.PrimaryHand).Range != 0)
+            if (Attacker.GetItemByLocation(ItemLocationEnum.PrimaryHand) != null && Attacker.GetItemByLocation(ItemLocationEnum.PrimaryHand).Range != 0)
             {
                 //If both moves are viable moves
-                if (Attacker.Moves[0].Type == "range" && Attacker.Moves[1].Type == "range")
+                if (Attacker.Moves[0].Type == "ranged" && Attacker.Moves[1].Type == "ranged")
                 {
                     //returns a random Move from index 0 or 1 based on the random dice roll, but also checks to see if randomly selected move has no uses left
                     RetMove = Attacker.Moves[decision % 2];
@@ -261,7 +265,7 @@ namespace PrimeAssault.Engine
                     Attacker.Moves[decision % 2].Uses--;
                 }
                 //if only move 0 is a valid move
-                else if (Attacker.Moves[0].Type == "range" && Attacker.Moves[1].Type == "melee")
+                else if (Attacker.Moves[0].Type == "ranged" && Attacker.Moves[1].Type == "melee")
                 {
                     RetMove = Attacker.Moves[0];
                     if (RetMove.Uses != 0)
@@ -274,7 +278,7 @@ namespace PrimeAssault.Engine
                     }
                 }
                 //if only move 1 is a valid move
-                else if (Attacker.Moves[0].Type == "melee" && Attacker.Moves[1].Type == "range")
+                else if (Attacker.Moves[0].Type == "melee" && Attacker.Moves[1].Type == "ranged")
                 {
                     RetMove = Attacker.Moves[1];
                     if (RetMove.Uses != 0)
@@ -288,7 +292,7 @@ namespace PrimeAssault.Engine
                 }
             }
 
-            //if the weapon in hand is melee and subsequent checks to see if any valid move exists
+            //if the weapon in hand is melee or unarmed and subsequent checks to see if any valid move exists
             else
             {
                 if (Attacker.Moves[0].Type == "melee" && Attacker.Moves[1].Type == "melee")
@@ -303,7 +307,7 @@ namespace PrimeAssault.Engine
                     Attacker.Moves[decision % 2].Uses--;
                 }
                 //if only move 0 is a valid move
-                else if (Attacker.Moves[0].Type == "melee" && Attacker.Moves[1].Type == "range")
+                else if (Attacker.Moves[0].Type == "melee" && Attacker.Moves[1].Type == "ranged")
                 {
                     RetMove = Attacker.Moves[0];
                     if (RetMove.Uses != 0)
@@ -316,7 +320,7 @@ namespace PrimeAssault.Engine
                     }
                 }
                 //if only move 1 is a valid move
-                else if (Attacker.Moves[0].Type == "range" && Attacker.Moves[1].Type == "melee")
+                else if (Attacker.Moves[0].Type == "ranged" && Attacker.Moves[1].Type == "melee")
                 {
                     RetMove = Attacker.Moves[1];
                     if (RetMove.Uses != 0)

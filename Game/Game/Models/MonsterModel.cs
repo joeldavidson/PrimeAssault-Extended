@@ -74,10 +74,7 @@ namespace PrimeAssault.Models
             RangedDefense = 2;
             Speed = 2;
             ImageURI = "sewer_gator.png";
-            Move1 = "Crackshot";
-            Move2 = "Iron Grip";
-            Moves[0] = MoveHolder.GetMove("Crackshot");
-            Moves[1] = MoveHolder.GetMove("Iron Grip");
+            
            
         }
 
