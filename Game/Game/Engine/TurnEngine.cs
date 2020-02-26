@@ -246,7 +246,7 @@ namespace PrimeAssault.Engine
             }
             MoveModel RetMove = null;
             //Test to see if attack must be ranged and do subsequent checks to determine if any valid moves exist
-            if (Attacker.GetItemByLocation(ItemLocationEnum.PrimaryHand).Range != 0)
+            if (Attacker.GetItemByLocation(ItemLocationEnum.PrimaryHand) != null && Attacker.GetItemByLocation(ItemLocationEnum.PrimaryHand).Range != 0)
             {
                 //If both moves are viable moves
                 if (Attacker.Moves[0].Type == "range" && Attacker.Moves[1].Type == "range")
@@ -288,7 +288,7 @@ namespace PrimeAssault.Engine
                 }
             }
 
-            //if the weapon in hand is melee and subsequent checks to see if any valid move exists
+            //if the weapon in hand is melee or unarmed and subsequent checks to see if any valid move exists
             else
             {
                 if (Attacker.Moves[0].Type == "melee" && Attacker.Moves[1].Type == "melee")
