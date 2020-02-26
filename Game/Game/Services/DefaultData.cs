@@ -141,7 +141,6 @@ namespace PrimeAssault.Services
                 new CharacterModel {
                     Name = "Harvey's Dad",
                     Description = "Not as successful as his son.",
-
                 }
             };
 

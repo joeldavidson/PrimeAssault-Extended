@@ -19,12 +19,21 @@
             HeightRequest="250"
             WidthRequest="250"
             Source="{Binding Data.ImageURI}"></Image>
-        
-        <Label  Text="Name: " TextColor ="Aquamarine" FontSize="Medium" />
-        <Label HorizontalOptions="Center" Text="{Binding Data.Name}" TextColor="Aqua" FontSize="Medium"/>
-        <Label Text="Job Class:" TextColor="Aquamarine" FontSize="Medium" />
-        <Label HorizontalOptions="Center" Text="{Binding Data.JobClass}"  TextColor="Aqua" FontSize="Medium"/>
-
+        <Grid HorizontalOptions="CenterAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0"  Text="Name: " TextColor ="Aquamarine" FontSize="Medium" />
+        <Label Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" Text="{Binding Data.Name}" TextColor="Aqua" FontSize="Medium"/>
+            <Label Grid.Row="1" Grid.Column="0" Text="Job Class:" TextColor="Aquamarine" FontSize="Medium" />
+            <Label Grid.Row="1" Grid.Column="2"  Text="{Binding Data.JobClass}"  TextColor="Aqua" FontSize="Medium"/>
+        </Grid>
 
         <StackLayout 
             HorizontalOptions="Center"
@@ -38,7 +47,8 @@
                 HorizontalOptions="Center"
                 FontSize="Medium"
                 BorderWidth="1"
-                BorderColor="Magenta"
+                BorderColor="Aqua"
+                BackgroundColor="Transparent"
                 >
             </Button>
 
