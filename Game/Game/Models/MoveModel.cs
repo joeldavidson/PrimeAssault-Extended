@@ -27,5 +27,16 @@ namespace PrimeAssault.Models
             Description = "An extra powerful punch.";
             ImageURI = "default_melee.png";
         }
+
+        public MoveModel(MoveModel data)
+        {
+            Name =data.Name;
+            Description = data.Description;
+            ImageURI = data.ImageURI;
+            Attack = data.Attack;
+            Type = data.Type;
+            Target = data.Target;
+            Uses = data.Uses;
+        }
     }
 }

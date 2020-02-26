@@ -137,8 +137,8 @@ namespace PrimeAssault.Models
             ImageURI = "soldier_class.png";
             Move1 = "Crackshot";
             Move2 = "Iron Grip";
-            Moves[0] = MoveHolder.GetMove("Crackshot");
-            Moves[1] = MoveHolder.GetMove("Iron Grip");
+            Moves[0] = new MoveModel(MoveHolder.GetMove("Crackshot"));
+            Moves[1] = new MoveModel(MoveHolder.GetMove("Iron Grip"));
         }
 
         /// <summary>
