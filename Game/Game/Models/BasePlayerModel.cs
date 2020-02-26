@@ -88,7 +88,7 @@ namespace PrimeAssault.Models
         public double NextLevelMult { get; set; } = 1.0;
 
         //Ability name of character
-        public string Ability { get; set; } = "None";
+        public AbilityModel Ability { get; set; } = new AbilityModel();
 
         #region moves
         //First move that a character can use in combat

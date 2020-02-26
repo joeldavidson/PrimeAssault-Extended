@@ -32,6 +32,7 @@ namespace PrimeAssault.Models
             RangedDefense = 2;
             Speed = 2;
             ImageURI = "soldier_class.png";
+            Ability = AbilityHolder.GetAbility("crocodile hunter");
         }
 
         public CharacterModel(CharacterModel data)
@@ -93,6 +94,7 @@ namespace PrimeAssault.Models
             JobClass = InClass; //only done for formatting purposes, very hacky
             NextLevelMult = Current.NextLevelMult;
             ImageURI = Current.ImageURI;
+
             return true;
         }
 

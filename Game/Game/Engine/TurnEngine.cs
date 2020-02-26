@@ -186,10 +186,11 @@ namespace PrimeAssault.Engine
             BattleMessagesModel.TargetName = Target.Name;
             BattleMessagesModel.AttackerName = Attacker.Name;
 
-
+            //checks for if move can potentially be used...
             MoveModel moveUsed = null;
             if (Attacker.Moves[0].Uses != 0 || Attacker.Moves[1].Uses != 0) //Assumes attackers always have two moves
             {
+                //uses move...
                 moveUsed = UseMove(Attacker);
             }
 
@@ -202,6 +203,12 @@ namespace PrimeAssault.Engine
                 BattleMessagesModel.MoveStatus = (" with " + moveUsed.Name);
                 AttackScore += moveUsed.Attack;
             }
+            //need to check for any active abilities...
+            if (Attacker.Ability.TriggeredOn == "attack")
+            {
+                ProcessAbility();
+            }
+
             var DefenseScore = Target.GetDefense() + Target.Level;
 
             BattleMessagesModel.HitStatus = RollToHitTarget(AttackScore, DefenseScore);
@@ -336,7 +343,10 @@ namespace PrimeAssault.Engine
             return RetMove;
         }
     
+        public void ProcessAbility()
+        {
 
+        }
 
         /// <summary>
         /// If Dead process Targed Died
