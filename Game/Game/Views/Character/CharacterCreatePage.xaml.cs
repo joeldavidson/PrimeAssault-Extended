@@ -106,6 +106,7 @@ namespace PrimeAssault.Views
         /// <param name="e"></param>
         async void Save_Clicked(object sender, EventArgs e)
         {
+            ViewModel.Data.CurrentHealth = ViewModel.Data.MaxHealth;
             MessagingCenter.Send(this, "Create", ViewModel.Data);
             await Navigation.PopModalAsync();
         }
