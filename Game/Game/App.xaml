@@ -122,7 +122,16 @@
                 <Setter Property="Grid.Row" Value="0"/>
             </Style>
             
-            
+            <Style x:Key="HealthStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="End"/>
+                <Setter Property="TextColor" Value="Green"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="Grid.Row" Value="0"/>
+            </Style>
+
+
             <!-- Image -->
             <Style TargetType="Image"
                 x:Key="ImageLargeStyle">
