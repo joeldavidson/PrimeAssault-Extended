@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Diagnostics;
 
+using PrimeAssault.Services;
 using PrimeAssault.Models;
 using PrimeAssault.Helpers;
 using PrimeAssault.ViewModels;
@@ -24,8 +25,9 @@ namespace PrimeAssault.Engine
    
     public class TurnEngine : BaseEngine
     {
-        //variable which determines likelihood that an AI will use a move on any given turn.
+        //variable which determines likelihood that an "AI" will use a move on any given turn.
         public static int PROBABILITY_OF_MOVE = 3; 
+
         #region Algrorithm
         // Attack or Move
         // Roll To Hit
@@ -122,6 +124,8 @@ namespace PrimeAssault.Engine
             // Select first in the list
             var Defender = CharacterList
                 .Where(m => m.Alive)
+                .OrderBy(m => m.GetHealthCurrent())
+                .OrderBy(m => m.GetAttack())
                 .OrderBy(m => m.ListOrder).FirstOrDefault();
 
             return Defender;
@@ -194,7 +198,19 @@ namespace PrimeAssault.Engine
                 moveUsed = UseMove(Attacker);
             }
 
-            // Set Attack and Defense
+            //need to check for any active attack/defense abilities...
+            if (Attacker.Ability.TriggeredOn == AbilityTriggerEnum.Attack)
+            {
+                Attacker.ProcessAbility();
+            }
+            else if (Attacker.Ability.TriggeredOn  == AbilityTriggerEnum.Advantage)
+            {
+                if (Attacker.Ability.IsAdvantaged(Target.MonsterType))
+                {
+                    Attacker.ProcessAbility();
+                }
+            }
+            // Set Attack
             var AttackScore = Attacker.Level + Attacker.GetAttack();
 
             //if a move was used, add the attack of the move to the normal attack score
@@ -203,12 +219,13 @@ namespace PrimeAssault.Engine
                 BattleMessagesModel.MoveStatus = (" with " + moveUsed.Name);
                 AttackScore += moveUsed.Attack;
             }
-            //need to check for any active abilities...
-            if (Attacker.Ability.TriggeredOn == "attack")
-            {
-                ProcessAbility();
-            }
 
+            //need to check for any active attack/defense abilities...
+            if (Target.Ability.TriggeredOn == AbilityTriggerEnum.Defense)
+            {
+                Target.ProcessAbility();
+            }
+            //Set defense
             var DefenseScore = Target.GetDefense() + Target.Level;
 
             BattleMessagesModel.HitStatus = RollToHitTarget(AttackScore, DefenseScore);
@@ -225,7 +242,7 @@ namespace PrimeAssault.Engine
                     //Calculate Damage
                     BattleMessagesModel.DamageAmount = Attacker.GetDamageRollValue();
 
-                    Target.TakeDamage(BattleMessagesModel.DamageAmount);
+                    Target.AugmentHealth(BattleMessagesModel.DamageAmount);
                     BattleMessagesModel.CurrentHealth = Target.CurrentHealth;
                     BattleMessagesModel.TurnMessageSpecial = BattleMessagesModel.GetCurrentHealthMessage();
 
@@ -233,6 +250,8 @@ namespace PrimeAssault.Engine
                     break;
             }
 
+            Attacker.DeactivateAbility();
+            Target.DeactivateAbility();
             BattleMessagesModel.TurnMessage = Attacker.Name + BattleMessagesModel.AttackStatus + Target.Name + BattleMessagesModel.MoveStatus + BattleMessagesModel.TurnMessageSpecial;
             Debug.WriteLine(BattleMessagesModel.TurnMessage);
 
@@ -341,11 +360,6 @@ namespace PrimeAssault.Engine
                 }
             }
             return RetMove;
-        }
-    
-        public void ProcessAbility()
-        {
-
         }
 
         /// <summary>

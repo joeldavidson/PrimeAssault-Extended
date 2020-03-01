@@ -16,8 +16,6 @@ public enum AbilityEffectEnum
     AffectRangedDefense = 4,
     //Ability augments attack
     AffectAttack = 10,
-    //Ability augments DropRate
-    AffectDropRate = 5,
     //Ability augments AffectHealing
     AffectHealing = 6,
     //Ability augments HealthRegen

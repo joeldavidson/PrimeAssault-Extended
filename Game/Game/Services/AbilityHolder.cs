@@ -18,9 +18,9 @@ namespace PrimeAssault.Services
             {
                 Name = "Crocodile Hunter",
                 Description = "You know your way around them beasties! Crikey! +30% damage against sewer creatures..",
-                EffectValue = .3,
+                FirstEffectValue = .3,
                 Faction = "player",
-                TriggeredOn = "attack",
+                TriggeredOn = AbilityTriggerEnum.Advantage,
                 FirstEffect = AbilityEffectEnum.AffectAttack,
                 SecondEffect = AbilityEffectEnum.SewerCreatureSpecific
 
@@ -29,9 +29,9 @@ namespace PrimeAssault.Services
             {
                 Name = "X-Ray vision",
                 Description = "Whether up close or far away, you can find the hidden chinks in Euphrates armor. +30% damage against all mechs.",
-                EffectValue = .3,
+                FirstEffectValue = .3,
                 Faction = "player",
-                TriggeredOn = "self",
+                TriggeredOn = AbilityTriggerEnum.Advantage,
                 FirstEffect = AbilityEffectEnum.AffectAttack,
                 SecondEffect = AbilityEffectEnum.SewerCreatureSpecific
             }

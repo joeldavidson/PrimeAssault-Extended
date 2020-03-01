@@ -19,9 +19,7 @@ namespace PrimeAssault.Models
         
         //Item that is dropped by the monster
         ItemModel Drop = new ItemModel(); //should be retrieved at random?
-        
-        //Type of monster the player is facing
-        public string type { get; set; } = "sewer creature";
+
 
         override public bool Update(MonsterModel data)
         {
@@ -34,6 +32,7 @@ namespace PrimeAssault.Models
             Attack = data.Attack;
             RangedDefense = data.RangedDefense;
             Defense = data.Defense;
+
             if (data.Level < 22 && data.Level > 0)
             {
                 Level = data.Level;
@@ -42,6 +41,8 @@ namespace PrimeAssault.Models
             {
                 Level = 1;
             }
+
+            MonsterType = data.MonsterType;
 
             HealthMult = data.HealthMult;
             SpeedMult = data.SpeedMult;
