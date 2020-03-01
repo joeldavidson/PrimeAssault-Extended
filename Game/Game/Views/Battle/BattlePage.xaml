@@ -42,7 +42,17 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
+            
+            <!--Center Buttons BEGIN-->
+            <Button 
+                Text="ATTACK!"
+                Clicked="AttackButton_Clicked"
+                Grid.Row="10"
+                Grid.RowSpan="2"
+                Grid.Column="5"
+                Grid.ColumnSpan="2"/>
+            <!--Center Buttons END-->
+            
             <!--Top Monster Move Options BEGIN-->
             <BoxView
                 BackgroundColor="Gray"
@@ -226,7 +236,8 @@
                 Margin="5">
                 <Label 
                     Text="Move 1" TextColor="Aqua"
-                    FontSize="Body">
+                    FontSize="Body"
+                    HorizontalOptions="Fill">
                 </Label>
             </Frame>
 
@@ -382,7 +393,8 @@
                 BackgroundColor="Transparent"
                 Grid.Row="11" Grid.Column="11"
                 Grid.RowSpan="3"
-                Grid.ColumnSpan="1">
+                Grid.ColumnSpan="1"
+                Margin="5">
                 <Label      
                     Text="RDF" TextColor="Aqua"
                     FontSize="Body">
@@ -453,7 +465,6 @@
                 Grid.ColumnSpan="2">
             </ImageButton>
 
-
             <ImageButton Source="Box2.png"
                 RotationY="180"
                 HorizontalOptions="End"
@@ -510,7 +521,6 @@
                 Grid.RowSpan="3"
                 Grid.ColumnSpan="2">
             </ImageButton>
-
 
             <ImageButton Source="soldier_class.png"
                 HorizontalOptions="End"
