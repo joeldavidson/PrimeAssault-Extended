@@ -4,25 +4,556 @@
              x:Class="PrimeAssault.Views.BattlePage">
 
     <ContentPage.Content>
-        <StackLayout Style="{StaticResource VerticalStack}">
-            <Label Text="Battle Page..."></Label>
 
-            <Image Source="ringleader_class.png" Style="{StaticResource ImageMediumStyle}"></Image>
-            <Image Source="Box2.png" Style="{StaticResource ImageMediumStyle}"></Image>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-            <Button Clicked="AttackButton_Clicked" Text="Attack"></Button>
+            <!--Top Monster Move Options BEGIN-->
+            <BoxView
+                BackgroundColor="Gray"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Fill"
+                Grid.Row="0"
+                Grid.Column="2"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="8"/>
 
-            <Button Clicked="NewRoundButton_Clicked" Text="New Round"></Button>
-
-            <Button Clicked="RoundOverButton_Clicked" Text="Round Over"></Button>
+            <Button 
+                x:Name="btn0"
+                WidthRequest="{Binding Height, Source={x:Reference btn0}}"
+                VerticalOptions="Fill"
+                HorizontalOptions="CenterAndExpand"
+                Text="2" TextColor="Aqua"
+                BorderColor="Aqua"
+                CornerRadius="45"
+                Margin="5"
+                BackgroundColor="Transparent"
+                Grid.Row="0" Grid.Column="2"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2">
+            </Button>
+                
+            <Button
+                x:Name="btn1"
+                WidthRequest="{Binding Height, Source={x:Reference btn1}}"
+                VerticalOptions="Fill"
+                HorizontalOptions="CenterAndExpand"
+                Text="4" TextColor="Aqua"
+                BorderColor="Aqua"
+                CornerRadius="45"
+                Margin="5"
+                BackgroundColor="Transparent"
+                Grid.Row="0" Grid.Column="4"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2">
+            </Button>
             
-            <Button Clicked="BattleOverButton_Clicked" Text="Battle Over"></Button>
+            <Button
+                x:Name="btn2"
+                WidthRequest="{Binding Height, Source={x:Reference btn2}}"
+                VerticalOptions="Fill"
+                HorizontalOptions="CenterAndExpand"
+                Text="6" TextColor="Aqua"
+                BorderColor="Aqua"
+                CornerRadius="45"
+                Margin="5"
+                BackgroundColor="Transparent"
+                Grid.Row="0" Grid.Column="6"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2">
+            </Button>
+
+            <Button
+                x:Name="btn3"
+                WidthRequest="{Binding Height, Source={x:Reference btn3}}"
+                VerticalOptions="Fill"
+                HorizontalOptions="CenterAndExpand"                 
+                Text="8" TextColor="Aqua"
+                BorderColor="Aqua"
+                Margin="5"
+                BackgroundColor="Transparent"
+                Grid.Row="0" Grid.Column="8"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2">
+            </Button>
+            <!--Top Monster Move Options END-->
+
+            <!--Bottom Character Move Options BEGIN-->
+            <BoxView
+                BackgroundColor="Gray"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Fill"
+                Grid.Row="19"
+                Grid.Column="2"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="8"/>
+
+            <Button 
+                x:Name="btn4"
+                WidthRequest="{Binding Height, Source={x:Reference btn4}}"
+                VerticalOptions="Fill"
+                HorizontalOptions="CenterAndExpand"           
+                Text="Norm Attack" TextColor="Aqua"
+                BorderColor="Aqua"
+                CornerRadius="45"
+                Margin="5"
+                BackgroundColor="Transparent"
+                Grid.Row="19" Grid.Column="2"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2">
+            </Button>
+
+            <Button
+                x:Name="btn5"
+                WidthRequest="{Binding Height, Source={x:Reference btn5}}"
+                VerticalOptions="Fill"
+                HorizontalOptions="CenterAndExpand"      
+                Text="Move 1" TextColor="Aqua"
+                BorderColor="Aqua"
+                CornerRadius="45"
+                Margin="5"
+                BackgroundColor="Transparent"
+                Grid.Row="19" Grid.Column="4"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2">
+            </Button>
+
+            <Button
+                x:Name="btn6"
+                WidthRequest="{Binding Height, Source={x:Reference btn6}}"
+                VerticalOptions="Fill"
+                HorizontalOptions="CenterAndExpand"  
+                Text="Move 2" TextColor="Aqua"
+                BorderColor="Aqua"
+                CornerRadius="45"
+                Margin="5"
+                BackgroundColor="Transparent"
+                Grid.Row="19" Grid.Column="6"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2">
+            </Button>
+
+            <Button
+                x:Name="btn7"
+                WidthRequest="{Binding Height, Source={x:Reference btn7}}"
+                VerticalOptions="Fill"
+                HorizontalOptions="CenterAndExpand"                  
+                Text="Deselect" TextColor="Aqua"
+                BorderColor="Aqua"
+                Margin="5"
+                BackgroundColor="Transparent"
+                Grid.Row="19" Grid.Column="8"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2">
+            </Button>
+            <!--Bottom Character Move Options END-->
+
             
-            <Button Clicked="ExitButton_Clicked" Text="Exit"></Button>
+            <!--Left Hand Character Stats BEGIN-->
+            <BoxView
+                BackgroundColor="Gray"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Fill"
+                Grid.Row="5"
+                Grid.Column="0"
+                Grid.RowSpan="12"
+                Grid.ColumnSpan="1"/>
 
-            <Button Clicked="QuitButton_Clicked" Text="Quit"></Button>
+            <Frame 
+                x:Name="lbl0"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                WidthRequest="{Binding Height, Source={x:Reference lbl0}}"
+                BorderColor="Aqua"
+                CornerRadius="45"     
+                BackgroundColor="Transparent"
+                Grid.Row="5" Grid.Column="0"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="1"
+                Margin="5">
+                <Label 
+                    Text="Norm Attack" TextColor="Aqua"
+                    FontSize="Body">
+                </Label>
+            </Frame>
 
-        </StackLayout>
-        
+            <Frame 
+                x:Name="lbl1"
+                WidthRequest="{Binding Height, Source={x:Reference lbl1}}"
+                BorderColor="Aqua"
+                CornerRadius="45"                    
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                BackgroundColor="Transparent"
+                Grid.Row="7" Grid.Column="0"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="1"
+                Margin="5">
+                <Label 
+                    Text="Move 1" TextColor="Aqua"
+                    FontSize="Body">
+                </Label>
+            </Frame>
+
+            <Frame 
+                x:Name="lbl2"
+                WidthRequest="{Binding Height, Source={x:Reference lbl2}}"
+                BorderColor="Aqua"
+                CornerRadius="45"                
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                BackgroundColor="Transparent"
+                Grid.Row="9" Grid.Column="0"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="1"
+                Margin="5">
+                <Label 
+                    Text="Move 2" TextColor="Aqua"
+                    FontSize="Body">
+                </Label>
+            </Frame>
+
+            <Frame 
+                x:Name="lbl3"
+                WidthRequest="{Binding Height, Source={x:Reference lbl3}}"
+                BorderColor="Aqua"
+                CornerRadius="45"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                BackgroundColor="Transparent"
+                Grid.Row="11" Grid.Column="0"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="1"                
+                Margin="5">
+                <Label      
+                    Text="DEF" TextColor="Aqua"
+                    FontSize="Body">
+                </Label>
+            </Frame>
+
+            <Frame 
+                x:Name="lbl4"
+                WidthRequest="{Binding Height, Source={x:Reference lbl3}}"
+                BorderColor="Aqua"
+                CornerRadius="45"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                BackgroundColor="Transparent"
+                Grid.Row="13" Grid.Column="0"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="1"                
+                Margin="5">
+                <Label      
+                    Text="DEF" TextColor="Aqua"
+                    FontSize="Body">
+                </Label>
+            </Frame>
+
+            <Label
+                Text="Char" 
+                TextColor="Aqua"
+                FontSize="Body"
+                FontAttributes="Bold"
+                VerticalOptions="Center"
+                Grid.Row="15" Grid.Column="0"
+                Grid.RowSpan="2"
+                Grid.ColumnSpan="1"
+                Margin="5">
+            </Label>
+            <Label
+                Text="Name" 
+                TextColor="Aqua"
+                FontSize="Body"
+                FontAttributes="Bold"
+                VerticalOptions="End"
+                Grid.Row="15" Grid.Column="0"
+                Grid.RowSpan="2"
+                Grid.ColumnSpan="1"
+                Margin="5">
+            </Label>
+            <!--Left Hand Character Stats END -->
+            
+            <!--Right Hand Monster Stats BEGIN-->
+            <BoxView
+                BackgroundColor="Gray"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Fill"
+                Grid.Row="5"
+                Grid.Column="11"
+                Grid.RowSpan="12"
+                Grid.ColumnSpan="1"/>
+
+            <Frame 
+                x:Name="lbl5"
+                WidthRequest="{Binding Height, Source={x:Reference lbl5}}"
+                BorderColor="Aqua"
+                CornerRadius="45"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"         
+                BackgroundColor="Transparent"
+                Grid.Row="5" Grid.Column="11"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="1"
+                Margin="5">
+                <Label 
+                    Text="HP" TextColor="Aqua"
+                    FontSize="Body">
+                </Label>
+            </Frame>
+
+            <Frame 
+                x:Name="lbl6"
+                WidthRequest="{Binding Height, Source={x:Reference lbl6}}"
+                BorderColor="Aqua"
+                CornerRadius="45"                    
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                BackgroundColor="Transparent"
+                Grid.Row="7" Grid.Column="11"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="1"
+                Margin="5">
+                <Label 
+                    Text="ATK" TextColor="Aqua"
+                    FontSize="Body">
+                </Label>
+            </Frame>
+
+            <Frame 
+                x:Name="lbl7"
+                WidthRequest="{Binding Height, Source={x:Reference lbl7}}"
+                BorderColor="Aqua"
+                CornerRadius="45"                
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                BackgroundColor="Transparent"
+                Grid.Row="9" Grid.Column="11"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="1"
+                Margin="5">
+                <Label 
+                    Text="DEF" TextColor="Aqua"
+                    FontSize="Body">
+                </Label>
+            </Frame>
+
+            <Frame 
+                x:Name="lbl8"
+                WidthRequest="{Binding Height, Source={x:Reference lbl8}}"
+                BorderColor="Aqua"          
+                CornerRadius="45"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                BackgroundColor="Transparent"
+                Grid.Row="11" Grid.Column="11"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="1">
+                <Label      
+                    Text="RDF" TextColor="Aqua"
+                    FontSize="Body">
+                </Label>
+            </Frame>
+
+            <Frame 
+                x:Name="lbl9"
+                WidthRequest="{Binding Height, Source={x:Reference lbl9}}"
+                BorderColor="Aqua"       
+                CornerRadius="45"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                BackgroundColor="Transparent"
+                Grid.Row="13" Grid.Column="11"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="1"
+                Margin="5">
+                <Label      
+                    Text="SPD" TextColor="Aqua"
+                    FontSize="Body">
+                </Label>
+            </Frame>
+
+            <Label
+                Text="Monster" 
+                TextColor="Aqua"
+                FontSize="Body"
+                FontAttributes="Bold"
+                VerticalOptions="Center"
+                Grid.Row="15" Grid.Column="11"
+                Grid.RowSpan="2"
+                Grid.ColumnSpan="1"
+                Margin="5">
+            </Label>
+            
+            <Label
+                Text="Name" 
+                TextColor="Aqua"
+                FontSize="Body"
+                FontAttributes="Bold"
+                VerticalOptions="End"
+                Grid.Row="15" Grid.Column="11"
+                Grid.RowSpan="2"
+                Grid.ColumnSpan="1"
+                Margin="5">
+            </Label>
+            <!--Right Hand Monster Stats END-->
+            
+            <!--Top Monster Images BEGIN-->
+            <ImageButton Source="Box2.png"
+                RotationY="180"
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="FillAndExpand"
+                Grid.Column="2"
+                Grid.Row="4"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2">
+            </ImageButton>
+
+            <ImageButton Source="Box2.png"
+                RotationY="180"
+                HorizontalOptions="EndAndExpand"
+                VerticalOptions="FillAndExpand"
+                Grid.Column="3"
+                Grid.Row="5"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2">
+            </ImageButton>
+
+
+            <ImageButton Source="Box2.png"
+                RotationY="180"
+                HorizontalOptions="End"
+                VerticalOptions="FillAndExpand"
+                Grid.Column="4"
+                Grid.Row="6"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2">
+            </ImageButton>
+
+            <ImageButton Source="Box2.png"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                Grid.Column="8"
+                Grid.Row="4"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2">
+            </ImageButton>
+            
+            <ImageButton Source="Box2.png"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                Grid.Column="7"
+                Grid.Row="5"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2">
+            </ImageButton>
+
+            <ImageButton Source="Box2.png"
+                HorizontalOptions="Start"
+                VerticalOptions="FillAndExpand"
+                Grid.Column="6"
+                Grid.Row="6"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2">
+            </ImageButton>
+            <!--Top Monster Images END-->
+            
+            <!--Bottom Character Images BEGIN-->
+            <ImageButton Source="soldier_class.png"
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="FillAndExpand"
+                Grid.Column="2"
+                Grid.Row="15"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2">
+            </ImageButton>
+
+            <ImageButton Source="soldier_class.png"
+                HorizontalOptions="EndAndExpand"
+                VerticalOptions="FillAndExpand"
+                Grid.Column="3"
+                Grid.Row="14"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2">
+            </ImageButton>
+
+
+            <ImageButton Source="soldier_class.png"
+                HorizontalOptions="End"
+                VerticalOptions="FillAndExpand"
+                Grid.Column="4"
+                Grid.Row="13"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2">
+            </ImageButton>
+
+            <ImageButton Source="soldier_class.png"
+                RotationY="180"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                Grid.Column="8"
+                Grid.Row="15"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2">
+            </ImageButton>
+
+            <ImageButton Source="soldier_class.png"
+                RotationY="180"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                Grid.Column="7"
+                Grid.Row="14"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2">
+            </ImageButton>
+
+            <ImageButton Source="soldier_class.png"
+                RotationY="180"
+                HorizontalOptions="Start"
+                VerticalOptions="FillAndExpand"
+                Grid.Column="6"
+                Grid.Row="13"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2">
+            </ImageButton>
+            <!--Bottom Character Images END-->
+            
+        </Grid>
+
+
     </ContentPage.Content>
 </ContentPage>
