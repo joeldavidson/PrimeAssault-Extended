@@ -22,18 +22,18 @@
                 Dark
                 -->
 
-            <Color x:Key="PageBackgroundColor">#253444</Color> //dark blue
-            <Color x:Key="ViewBackgroundColor">#2F3D44</Color> //dark blue grey
-            <Color x:Key="NavigationBarColor">#212121</Color>//black
+            <Color x:Key="PageBackgroundColor">#253444</Color> <!--dark blue-->
+            <Color x:Key="ViewBackgroundColor">#2F3D44</Color> <!--//dark blue grey-->
+            <Color x:Key="NavigationBarColor">#212121</Color><!--//black-->
 
-            <Color x:Key="PrimaryBackgroundColor">#146eb4</Color>//bright blue
-            <Color x:Key="SecondaryBackgroundColor">#ff9900</Color>//orange
-            <Color x:Key="TriciaryBackgroundColor">#7B1FA2</Color>//purple
-            <Color x:Key="LightBackgroundColor">#ECEFF1</Color> //very light grey
+            <Color x:Key="PrimaryBackgroundColor">#146eb4</Color><!--//bright blue-->
+            <Color x:Key="SecondaryBackgroundColor">#ff9900</Color><!--//orange-->
+            <Color x:Key="TriciaryBackgroundColor">#7B1FA2</Color><!--//purple-->
+            <Color x:Key="LightBackgroundColor">#ECEFF1</Color> <!--//very light grey-->
 
-            <Color x:Key="PrimaryTextColor">#f2f2f2</Color> //white 
-            <Color x:Key="SecondaryTextColor">#f2f2f2</Color> //white
-            <Color x:Key="TriciaryTextColor">#f2f2f2</Color> //white
+            <Color x:Key="PrimaryTextColor">#f2f2f2</Color><!-- //white -->
+            <Color x:Key="SecondaryTextColor">#f2f2f2</Color> <!--//white-->
+            <Color x:Key="TriciaryTextColor">#f2f2f2</Color> <!--//white-->
 
             <Color x:Key="TransparentColor">Transparent</Color>
 
@@ -101,6 +101,14 @@
             </Style>
 
             <Style TargetType="Label"
+                x:Key="ValueStyleMicro"
+                BasedOn="{StaticResource ValueStyle}">
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+            
+            <Style TargetType="Label"
                 x:Key="MessageStyle"
                 BasedOn="{StaticResource HeaderStyle}">
                 <Setter Property="TextColor" Value="{StaticResource TriciaryTextColor}" />
@@ -155,6 +163,28 @@
                 <Setter Property="HeightRequest" Value="30" />
             </Style>
 
+
+            <Style TargetType="Image"
+                x:Key="ImageBattleSmallStyle"
+                BasedOn="{StaticResource ImageLargeStyle}">
+                <Setter Property="WidthRequest" Value="50" />
+                <Setter Property="HeightRequest" Value="50" />
+            </Style>
+
+            <Style TargetType="Image"
+                x:Key="ImageBattleMediumStyle"
+                BasedOn="{StaticResource ImageLargeStyle}">
+                <Setter Property="WidthRequest" Value="75" />
+                <Setter Property="HeightRequest" Value="75" />
+            </Style>
+
+            <Style TargetType="Image"
+                x:Key="ImageBattleLargeStyle"
+                BasedOn="{StaticResource ImageLargeStyle}">
+                <Setter Property="WidthRequest" Value="80" />
+                <Setter Property="HeightRequest" Value="80" />
+            </Style>
+
             <!-- ImageButton -->
             <Style TargetType="ImageButton">
                 <Setter Property="WidthRequest" Value="150" />
@@ -200,6 +230,22 @@
                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
                 <Setter Property="HeightRequest" Value="200" />
                 <Setter Property="WidthRequest" Value="200" />
+            </Style>
+
+            <Style TargetType="StackLayout"
+                x:Key="ItemImageBox"
+                BasedOn="{StaticResource CardImageTextBox}">
+                <Setter Property="HeightRequest" Value="100" />
+                <Setter Property="WidthRequest" Value="80" />
+            </Style>
+
+            <Style TargetType="StackLayout"
+                x:Key="PlayerInfoBox"
+                BasedOn="{StaticResource CardImageTextBox}">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="HeightRequest" Value="150" />
+                <Setter Property="WidthRequest" Value="100" />
+                <Setter Property="Spacing" Value="1" />
             </Style>
 
             <!-- Frame -->
