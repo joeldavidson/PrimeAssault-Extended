@@ -55,9 +55,9 @@
             <Button 
                 Text="ATTACK!"
                 Clicked="AttackButton_Clicked"
-                Grid.Row="10"
+                Grid.Row="17"
                 Grid.RowSpan="2"
-                Grid.Column="5"
+                Grid.Column="10"
                 Grid.ColumnSpan="2"/>
 
             <Label 
@@ -65,8 +65,8 @@
                 LineBreakMode="WordWrap" 
                 MaxLines="11" 
                 HorizontalOptions="FillAndExpand"
-                Grid.Row="3"
-                Grid.RowSpan="2"
+                Grid.Row="9"
+                Grid.RowSpan="6"
                 Grid.Column="1"
                 Grid.ColumnSpan="9"/>
             <!--Center Buttons END-->
