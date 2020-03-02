@@ -96,5 +96,27 @@ namespace PrimeAssault.Models
             LeftFinger = data.LeftFinger;
             Feet = data.Feet;
         }
+        /*
+        public override string FormatOutput()
+        {
+            var myReturn = string.Empty;
+            myReturn += Name;
+            myReturn += " , " + Description;
+            myReturn += " , Level : " + Level.ToString();
+
+            if (PlayerType == PlayerTypeEnum.Character)
+            {
+                myReturn += " , Total Experience : " + ExperienceTotal;
+                myReturn += " , Damage : " + GetDamageTotalString;
+                myReturn += " , Attack :" + GetAttackTotal;
+                myReturn += " , Defense :" + GetDefenseTotal;
+                myReturn += " , Speed :" + GetSpeedTotal;
+            }
+
+            myReturn += " , Items : " + ItemSlotsFormatOutput();
+
+            return myReturn;
+        }
+        */
     }
 }
