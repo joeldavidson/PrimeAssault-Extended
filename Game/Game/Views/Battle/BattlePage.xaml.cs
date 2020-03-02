@@ -91,7 +91,7 @@ namespace PrimeAssault.Views
 				EngineViewModel.Engine.EndBattle();
 
 				// Let the Player Know it is over
-				bool answer = await DisplayAlert("Game Over", "Enjoy", "Yes", "Cance");
+				bool answer = await DisplayAlert("Game Over", "Enjoy", "Yes", "Cancel");
 
 				// Clear the players from the center of the board
 
