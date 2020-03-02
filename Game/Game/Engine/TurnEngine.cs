@@ -164,7 +164,7 @@ namespace PrimeAssault.Engine
         /// <param name="Target"></param>
         /// <param name="DefenseScore"></param>
         /// <returns></returns>
-        public bool TurnAsAttack(PlayerInfoModel Attacker, PlayerInfoModel Target)
+        public bool TurnAsAttack(PlayerInfoModel Attacker, PlayerInfoModel Target) //Kind of monolothic, consider decomposing
         {
             if (Attacker == null)
             {
@@ -225,8 +225,25 @@ namespace PrimeAssault.Engine
             {
                 Target.ProcessAbility();
             }
+
+            bool Melee = false;
+
+            //need to check what damage type it is to see what defense stat is used (ranged or melee)
+            if (Target.GetItemByLocation(ItemLocationEnum.PrimaryHand) == null || Target.GetItemByLocation(ItemLocationEnum.PrimaryHand).Range != 0)
+            {
+                Melee = true;
+            }
+
             //Set defense
-            var DefenseScore = Target.GetDefense() + Target.Level;
+            int DefenseScore;
+            if (Melee)
+            {
+                DefenseScore = Target.GetDefense() + Target.Level;
+            }
+            else
+            {
+                DefenseScore = Target.GetRangedDefense() + Target.Level;
+            }
 
             BattleMessagesModel.HitStatus = RollToHitTarget(AttackScore, DefenseScore);
 
@@ -371,7 +388,7 @@ namespace PrimeAssault.Engine
             // Check for alive
             if (Target.Alive == false)
             {
-                TargedDied(Target);
+                TargetDied(Target);
                 return true;
             }
             
@@ -386,7 +403,7 @@ namespace PrimeAssault.Engine
         /// Returns the count of items dropped at death
         /// </summary>
         /// <param name="Target"></param>
-        public bool TargedDied(PlayerInfoModel Target)
+        public bool TargetDied(PlayerInfoModel Target)
         {
             // Mark Status in output
             BattleMessagesModel.TurnMessageSpecial = " and causes death. ";
