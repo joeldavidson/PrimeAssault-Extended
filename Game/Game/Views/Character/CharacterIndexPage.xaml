@@ -20,74 +20,74 @@
 
             <Label Text="Character List Page" TextColor="DeepPink" FontSize="Header" BackgroundColor="Transparent"/>
 
-            <RelativeLayout>
-                <ListView x:Name="CharListView" 
+            <ListView x:Name="CharListView" 
                             ItemsSource="{Binding Dataset}"
                             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                             RefreshCommand="{Binding LoadItemsCommand}"
                             CachingStrategy="RecycleElement"
                             ItemSelected="OnCharSelected"
                           HasUnevenRows="True"
-                              BackgroundColor="Transparent">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid Margin="10" BackgroundColor="#4D3f035f">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="50" />
-                                        <RowDefinition Height="50" />
-                                        <RowDefinition Height="50" />
-                                        <RowDefinition Height="50" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="100" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
+                              BackgroundColor="Transparent"
+                          >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Margin="10" BackgroundColor="#4D3f035f">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="50" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
 
-                                    <!--Column 1 inside Row 1-->
-                                    <ImageButton Source="{Binding ImageURI}"
+                                <!--Column 1 inside Row 1-->
+                                <ImageButton Source="{Binding ImageURI}"
                                                          HorizontalOptions="FillAndExpand"
                                                          VerticalOptions="FillAndExpand"
                                                          Grid.Column="0"
                                                          Grid.Row="0"
                                                          Grid.RowSpan="2">
-                                    </ImageButton>
-                                    <Button Text="{Binding Name}" TextColor="Aqua"
+                                </ImageButton>
+                                <Button Text="{Binding Name}" TextColor="Aqua"
                                                 Grid.Column="0"
                                                 Grid.Row="2"
                                                 CornerRadius="20"
                                                 BorderColor="Aqua"
                                             BackgroundColor="Transparent"
                                                     ></Button>
-                                    <StackLayout 
+                                <StackLayout 
                                         Orientation="Horizontal"
                                         HorizontalOptions="Center"
                                          Grid.Column="0"
                                          Grid.Row="3"
                                         >
 
-                                        <Label 
+                                    <Label 
                                             Text="LVL" 
                                             FontSize="Small"
                                             TextColor="Aqua"
                                             ></Label>
 
-                                        <Label
+                                    <Label
                                             Text="{Binding Level}"
                                             TextColor="Aqua"
                                             FontSize="Small"
                                             >
-                                        </Label>
-                                    </StackLayout>
-                                    <!--End of Column 1-->
+                                    </Label>
+                                </StackLayout>
+                                <!--End of Column 1-->
 
-                                    <!--Column 2 inside Row 1-->
-                                    <Button x:Name="btn1"
+                                <!--Column 2 inside Row 1-->
+                                <Button x:Name="btn1"
                                             VerticalOptions="Center"
                                             HorizontalOptions="Center"
                                             HeightRequest="{Binding Width, Source={x:Reference btn1}}"
@@ -99,7 +99,7 @@
                                             BackgroundColor="Transparent"
                                             Clicked="Attack_Clicked"
                                                 ></Button>
-                                    <Button x:Name="btn2"
+                                <Button x:Name="btn2"
                                             VerticalOptions="Center"
                                             HorizontalOptions="Center"
                                             HeightRequest="{Binding Width, Source={x:Reference btn2}}"
@@ -111,7 +111,7 @@
                                             BackgroundColor="Transparent"
                                             Clicked="Defense_Clicked"
                                                 ></Button>
-                                    <Button x:Name="btn3"
+                                <Button x:Name="btn3"
                                             VerticalOptions="Center"
                                             HorizontalOptions="Center"
                                             HeightRequest="{Binding Width, Source={x:Reference btn1}}"
@@ -124,7 +124,7 @@
                                             BackgroundColor="Transparent"
                                             Clicked="RangedDefense_Clicked"
                                                 ></Button>
-                                    <Button x:Name="btn4"
+                                <Button x:Name="btn4"
                                             VerticalOptions="Center"
                                             HorizontalOptions="Center"
                                             HeightRequest="{Binding Width, Source={x:Reference btn4}}"
@@ -136,43 +136,43 @@
                                             BackgroundColor="Transparent"
                                             Clicked="Speed_Clicked"
                                                 ></Button>
-                                    <!--End of Column 2-->
+                                <!--End of Column 2-->
 
-                                    <!--Column 3 inside Row 1-->
-                                    <Label Text="{Binding Attack}"
+                                <!--Column 3 inside Row 1-->
+                                <Label Text="{Binding Attack}"
                                                 TextColor="Aqua"
                                                     FontSize="Medium"
                                                     Grid.Column="2"
                                                     Grid.Row="0"
                                                VerticalOptions="Center"/>
-                                    <Label Text="{Binding Defense}"
+                                <Label Text="{Binding Defense}"
                                                 TextColor="Aqua"
                                                     FontSize="Medium"
                                                     Grid.Column="2"
                                                     Grid.Row="1"
                                                VerticalOptions="Center"/>
-                                    <Label Text="{Binding RangedDefense}"
+                                <Label Text="{Binding RangedDefense}"
                                                 TextColor="Aqua"
                                                     FontSize="Medium"
                                                     Grid.Column="2"
                                                     Grid.Row="2"
                                                VerticalOptions="Center"/>
-                                    <Label Text="{Binding Speed}"
+                                <Label Text="{Binding Speed}"
                                                 TextColor="Aqua"
                                                     FontSize="Medium"
                                                     Grid.Column="2"
                                                     Grid.Row="3"
                                                VerticalOptions="Center"/>
-                                    <!--End of Column 3-->
+                                <!--End of Column 3-->
 
-                                    <!--Column 4 inside Row 1-->
-                                    <Label 
+                                <!--Column 4 inside Row 1-->
+                                <Label 
                                         Style="{StaticResource IndexLabel}"
                                         Text="Necklace"
                                            Grid.Column="4"
                                            Grid.Row="1"
                                            ></Label>
-                                    <ImageButton x:Name="NecklaceItem"
+                                <ImageButton x:Name="NecklaceItem"
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="FillAndExpand"
                                                 Grid.Column="4"
@@ -184,18 +184,18 @@
                                                 BorderColor="Aqua"
                                             Clicked="Torso_Clicked"
                                                 ></ImageButton>
-                                    <!--End of Column 4-->
+                                <!--End of Column 4-->
 
-                                    <!--Column 5 inside Row 1-->
+                                <!--Column 5 inside Row 1-->
 
-                                    <Label 
+                                <Label 
                                         Style="{StaticResource IndexLabel}"
                                         Text="Hand"
                                            Grid.Column="5"
                                            Grid.Row="0"
                                            ></Label>
-                                    
-                                    <ImageButton x:Name="Head"
+
+                                <ImageButton x:Name="Head"
                                                 Source="{Binding Data.Head, Source={Binding imageURI}}"
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="FillAndExpand"
@@ -208,13 +208,13 @@
                                                 BorderColor="Aqua"
                                             Clicked="Head_Clicked"
                                                 ></ImageButton>
-                                    <Label 
+                                <Label 
                                         Style="{StaticResource IndexLabel}"
                                         Text="Feet"
                                            Grid.Column="5"
                                            Grid.Row="2"
                                            ></Label>
-                                    <ImageButton x:Name="FeetItem"
+                                <ImageButton x:Name="FeetItem"
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="FillAndExpand"
                                                 Grid.Column="5"
@@ -226,16 +226,16 @@
                                                 BorderColor="Aqua"
                                             Clicked="Boots_Clicked"
                                                 ></ImageButton>
-                                    <!--End of Column 5-->
+                                <!--End of Column 5-->
 
-                                    <!--Column 6 inside Row 1-->
-                                    <Label 
+                                <!--Column 6 inside Row 1-->
+                                <Label 
                                         Style="{StaticResource IndexLabel}"
                                         Text="R Hand"
                                            Grid.Column="6"
                                            Grid.Row="0"
                                            ></Label>
-                                    <ImageButton x:Name="PrimaryHandItem"
+                                <ImageButton x:Name="PrimaryHandItem"
                                                  Source="raygun.png"                                       
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="FillAndExpand"
@@ -249,13 +249,13 @@
                                             Clicked="RightHand_Clicked"
                                                 ></ImageButton>
 
-                                    <Label 
+                                <Label 
                                         Style="{StaticResource IndexLabel}"
                                         Text="R Finger"
                                            Grid.Column="6"
                                            Grid.Row="2"
                                            ></Label>
-                                    <ImageButton  x:Name="RightFingerItem"
+                                <ImageButton  x:Name="RightFingerItem"
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="FillAndExpand"
                                                 Grid.Column="6"
@@ -267,16 +267,16 @@
                                                 BorderColor="Aqua"
                                             Clicked="Ring1_Clicked"
                                                 ></ImageButton>
-                                    <!--End of Column 6-->
+                                <!--End of Column 6-->
 
-                                    <!--Column 7 inside Row 1-->
-                                    <Label 
+                                <!--Column 7 inside Row 1-->
+                                <Label 
                                         Style="{StaticResource IndexLabel}"
                                         Text="L Hand"
                                            Grid.Column="7"
                                            Grid.Row="0"
                                            ></Label>
-                                    <ImageButton x:Name="OffhandItem"
+                                <ImageButton x:Name="OffhandItem"
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="FillAndExpand"
                                                 Grid.Column="7"
@@ -289,13 +289,13 @@
                                             Clicked="LeftHand_Clicked"
                                                 ></ImageButton>
 
-                                    <Label 
+                                <Label 
                                         Style="{StaticResource IndexLabel}"
                                         Text="L Finger"
                                            Grid.Column="7"
                                            Grid.Row="2"
                                            ></Label>
-                                    <ImageButton x:Name="LeftFingerItem"
+                                <ImageButton x:Name="LeftFingerItem"
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="FillAndExpand"
                                                 Grid.Column="7"
@@ -308,13 +308,12 @@
                                             CommandParameter="{Binding id}"
                                             Clicked="Ring2_Clicked"
                                                 ></ImageButton>
-                                    <!--End of Column 7-->
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </RelativeLayout>
+                                <!--End of Column 7-->
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
