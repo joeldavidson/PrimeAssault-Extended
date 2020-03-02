@@ -397,7 +397,7 @@ namespace UnitTests.Engine
             Engine.CharacterList.Add(PlayerInfo);
 
             // Act
-            var result = Engine.TargedDied(PlayerInfo);
+            var result = Engine.TargetDied(PlayerInfo);
 
             // Reset
 
@@ -415,7 +415,7 @@ namespace UnitTests.Engine
             Engine.CharacterList.Add(PlayerInfo);
 
             // Act
-            var result = Engine.TargedDied(PlayerInfo);
+            var result = Engine.TargetDied(PlayerInfo);
 
             // Reset
 

@@ -108,7 +108,7 @@ namespace PrimeAssault.Engine
             //If there are not enough will add random ones
             for (int i = CharacterList.Count(); i < MaxNumberPartyCharacters; i++)
             {
-                PopulateCharacterList(Helpers.RandomPlayerHelper.GetRandomCharacter(1));
+                PopulateCharacterList(Helpers.RandomPlayerHelper.GetRandomCharacter(20));
             }
 
             return true;
