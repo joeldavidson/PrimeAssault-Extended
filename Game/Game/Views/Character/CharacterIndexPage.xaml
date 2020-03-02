@@ -21,14 +21,13 @@
             <Label Text="Character List Page" TextColor="DeepPink" FontSize="Header" BackgroundColor="Transparent"/>
 
             <ListView x:Name="CharListView" 
-                            ItemsSource="{Binding Dataset}"
-                            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                            RefreshCommand="{Binding LoadItemsCommand}"
-                            CachingStrategy="RecycleElement"
-                            ItemSelected="OnCharSelected"
-                          HasUnevenRows="True"
-                              BackgroundColor="Transparent"
-                          >
+                ItemsSource="{Binding Dataset}"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                RefreshCommand="{Binding LoadItemsCommand}"
+                CachingStrategy="RecycleElement"
+                ItemSelected="OnCharSelected"
+                HasUnevenRows="True"
+                BackgroundColor="Transparent">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
