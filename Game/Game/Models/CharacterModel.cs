@@ -11,7 +11,7 @@ namespace PrimeAssault.Models
     {
 
         //The class of the character in question
-        public string JobClass { get; set; } = "Soldier";
+        public string JobClass { get; set; }
 
 
         /// <summary>
@@ -31,8 +31,7 @@ namespace PrimeAssault.Models
             MaxHealth = 20;
             RangedDefense = 2;
             Speed = 2;
-            ImageURI = "soldier_class.png";
-            Ability = AbilityHolder.GetAbility("crocodile hunter");
+            SetJobClass("Soldier");
         }
 
         public CharacterModel(CharacterModel data)
@@ -94,6 +93,8 @@ namespace PrimeAssault.Models
             JobClass = InClass; //only done for formatting purposes, very hacky
             NextLevelMult = Current.NextLevelMult;
             ImageURI = Current.ImageURI;
+
+            Ability = AbilityHolder.GetRandomAbility();
 
             return true;
         }

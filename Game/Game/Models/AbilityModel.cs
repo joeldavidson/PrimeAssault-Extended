@@ -17,6 +17,8 @@ namespace PrimeAssault.Models
 
         public MonsterTypesEnum Advantage { get; set; } = MonsterTypesEnum.Nothing;
 
+        public AbilityEnum AbilityID { get; set; } = AbilityEnum.None;
+        
         //the bool which determines whether or not the character's ability is being used to calculate stats
         public bool IsActive { get; set; } = false;
 

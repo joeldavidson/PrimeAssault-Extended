@@ -20,9 +20,5 @@ public enum AbilityEffectEnum
     AffectHealing = 6,
     //Ability augments HealthRegen
     AffectHealthRegen =7,
-    //specific to only sewer creatures
-    SewerCreatureSpecific = 8,
-    //specific to only mechs
-    MechSpecific = 9
 }
 
