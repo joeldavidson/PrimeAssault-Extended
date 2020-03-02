@@ -90,6 +90,10 @@ namespace PrimeAssault.Models
         //Ability name of character
         public AbilityModel Ability { get; set; } = new AbilityModel();
 
+
+        //In the event that the BasePlayerModel is a monster, gives its type
+        public MonsterTypesEnum MonsterType { get; set; } = MonsterTypesEnum.Nothing;
+
         #region moves
         //First move that a character can use in combat
         public string Move1 { get; set; } = "";
@@ -146,6 +150,11 @@ namespace PrimeAssault.Models
         /// </summary>
         /// <returns></returns>
         public int GetAttack() {
+            if (Ability.IsActive)
+            {
+                ProcessAbility();
+            }
+
             var myReturn = Attack;
 
             // Get Bonus from Level
@@ -228,6 +237,131 @@ namespace PrimeAssault.Models
             return myReturn;
         }
 
+        /// <summary>
+        /// Applies the effects of any ability to the desired stats
+        /// </summary>
+        /// <returns></returns>
+        public bool ProcessAbility()
+        {
+            if (Ability.FirstEffect == AbilityEffectEnum.Nothing && Ability.SecondEffect == AbilityEffectEnum.Nothing && Ability.ThirdEffect == AbilityEffectEnum.Nothing)
+            {
+                return false;
+            }
+
+            ActivateEffect(Ability.FirstEffect, Ability.FirstEffectValue);
+            ActivateEffect(Ability.SecondEffect, Ability.SecondEffectValue);
+            ActivateEffect(Ability.ThirdEffect, Ability.ThirdEffectValue);
+
+            return true;
+        }
+
+        public bool ActivateEffect(AbilityEffectEnum Effect, double Value)
+        {
+            if (Effect == AbilityEffectEnum.Nothing)
+            {
+                return false;
+            }
+            if (Effect == AbilityEffectEnum.AffectAttack)
+            {
+                AttackMult += Value;
+                return true;
+            }
+            if (Effect == AbilityEffectEnum.AffectDefense)
+            {
+                DefenseMult += Value;
+                return true;
+            }
+            if (Effect == AbilityEffectEnum.AffectMaxHealth)
+            {
+                HealthMult += Value;
+                return true;
+            }
+            if (Effect == AbilityEffectEnum.AffectRangedDefense)
+            {
+                RangedDefenseMult += Value;
+                return true;
+            }
+            if (Effect == AbilityEffectEnum.AffectSpeed)
+            {
+                SpeedMult += Value;
+                return true;
+            }
+            if (Effect == AbilityEffectEnum.AffectHealthRegen)
+            {
+                AugmentHealth((int)Math.Ceiling(-MaxHealth * Value));
+                return true;
+            }
+            if (Effect == AbilityEffectEnum.AffectHealing) //Should act the same as enhancing attack power, since healing is based off of the attack stat
+            {
+                AttackMult += Value;
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Deactivates the effects of an active ability, if the ability affects status of a character.
+        /// </summary>
+        /// <returns></returns>
+        public bool DeactivateAbility()
+        {
+            if (!Ability.IsActive)
+            {
+                return true;
+            }
+            DeactivateEffect(Ability.FirstEffect, Ability.FirstEffectValue);
+            DeactivateEffect(Ability.SecondEffect, Ability.SecondEffectValue);
+            DeactivateEffect(Ability.ThirdEffect, Ability.ThirdEffectValue);
+
+            Ability.DeactivateAbility();
+
+            return true;
+        }
+
+        /// <summary>
+        /// Resets multipliers to a pre-effect state.
+        /// </summary>
+        /// <param name="Effect"></param>
+        /// <param name="Value"></param>
+        /// <returns></returns>
+        public bool DeactivateEffect(AbilityEffectEnum Effect, double Value)
+        {
+            if (Effect == AbilityEffectEnum.Nothing)
+            {
+                return false;
+            }
+            if (Effect == AbilityEffectEnum.AffectAttack)
+            {
+                AttackMult -= Value;
+                return true;
+            }
+            if (Effect == AbilityEffectEnum.AffectDefense)
+            {
+                DefenseMult -= Value;
+                return true;
+            }
+            if (Effect == AbilityEffectEnum.AffectMaxHealth)
+            {
+                HealthMult -= Value;
+                return true;
+            }
+            if (Effect == AbilityEffectEnum.AffectRangedDefense)
+            {
+                RangedDefenseMult -= Value;
+                return true;
+            }
+            if (Effect == AbilityEffectEnum.AffectSpeed)
+            {
+                SpeedMult -= Value;
+                return true;
+            }
+            if (Effect == AbilityEffectEnum.AffectHealing) //Should act the same as enhancing attack power, since healing is based off of the attack stat
+            {
+                AttackMult -= Value;
+                return true;
+            }
+            return false;
+        }
 
         public int GetDamageRollValue() 
         {
@@ -246,8 +380,6 @@ namespace PrimeAssault.Models
             return myReturn;
         }
 
-        
-
         //Information available in the event of a monster being updated
 
 
@@ -255,13 +387,14 @@ namespace PrimeAssault.Models
         // If the damage recived, is > health, then death occurs
         // Return the number of experience received for this attack 
         // monsters give experience to characters.  Characters don't accept expereince from monsters
-        public bool TakeDamage(int damage)
+        public bool AugmentHealth(int damage)
         {
-            if (damage <= 0)
+            if (damage == 0)
             {
                 return false;
             }
-
+           
+            //For healing, negative damage is treated as gained health
             CurrentHealth = CurrentHealth - damage;
             if (CurrentHealth <= 0)
             {
@@ -270,9 +403,14 @@ namespace PrimeAssault.Models
                 // Death...
                 CauseDeath();
             }
+            else if (CurrentHealth > MaxHealth)
+            {
+                CurrentHealth = MaxHealth;
+            }
 
             return true;
         }
+
 
         // Death
         // Alive turns to False

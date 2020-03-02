@@ -153,8 +153,87 @@ namespace PrimeAssault.Services
                 new CharacterModel {
                     Name = "Harvey's Dad",
                     Description = "Not as successful as his son.",
+                    Head = HeadString,
+                    Necklass = NecklassString,
+                    PrimaryHand = PrimaryHandString,
+                    OffHand = OffHandString,
+                    Feet = FeetString,
+                    RightFinger = RightFingerString,
+                    LeftFinger = LeftFingerString,
+                },
+                new CharacterModel
+                {
+                    Name = "Optimus Primal",
+                    Description = "Roll out, automatons!",
+                    Head = HeadString,
+                    Necklass = NecklassString,
+                    PrimaryHand = PrimaryHandString,
+                    OffHand = OffHandString,
+                    Feet = FeetString,
+                    RightFinger = RightFingerString,
+                    LeftFinger = LeftFingerString,
+                    ImageURI = "ringleader_class.png",
+                    JobClass = "Ringleader",                   
+                },
+                new CharacterModel
+                {
+                    Name = "Toaster Oven",
+                    Description = "Heats up buns, and other kitchen commodities.",
+                    Head = HeadString,
+                    Necklass = NecklassString,
+                    PrimaryHand = PrimaryHandString,
+                    OffHand = OffHandString,
+                    Feet = FeetString,
+                    RightFinger = RightFingerString,
+                    LeftFinger = LeftFingerString,
+                    ImageURI = "mechanic_class.png",
+                    JobClass = "Mechanic",    
+                },
+                new CharacterModel
+                {
+                    Name = "正宗",
+                    Description = "この悪阻らしい刀は天国を切れたと言われている",
+                    Head = HeadString,
+                    Necklass = NecklassString,
+                    PrimaryHand = PrimaryHandString,
+                    OffHand = OffHandString,
+                    Feet = FeetString,
+                    RightFinger = RightFingerString,
+                    LeftFinger = LeftFingerString,
+                    ImageURI = "mechanic_class.png",
+                    JobClass = "Mechanic",
+                },
+                new CharacterModel
+                {
+                    Name = "正宗",
+                    Description = "この悪阻らしい刀は天国を切れたと言われている",
+                    Head = HeadString,
+                    Necklass = NecklassString,
+                    PrimaryHand = PrimaryHandString,
+                    OffHand = OffHandString,
+                    Feet = FeetString,
+                    RightFinger = RightFingerString,
+                    LeftFinger = LeftFingerString,
+                    ImageURI = "mechanic_class.png",
+                    JobClass = "Mechanic",
+                },
+                new CharacterModel
+                { 
+                    Name = "Blake",
+                    Description = "He's okay I guess.",
+                    Head = HeadString,
+                    Necklass = NecklassString,
+                    PrimaryHand = PrimaryHandString,
+                    OffHand = OffHandString,
+                    Feet = FeetString,
+                    RightFinger = RightFingerString,
+                    LeftFinger = LeftFingerString,
+                    ImageURI = "hunter_class.png",
+                    JobClass = "Hunter",
                 }
-            };
+
+
+    };
 
             return datalist;
         }

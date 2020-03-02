@@ -24,7 +24,7 @@ namespace PrimeAssault.Models
         // The Damage the Item can do if it is used as a weapon in the primary hand
         public int Damage { get; set; } = 0;
 
-        // Enum of the different attributes that the item modifies, Items can only modify one item
+        // Enum of the different attributes that the item modifies, Items can only modify one attribute
         public AttributeEnum Attribute { get; set; } = AttributeEnum.Unknown;
 
         // Where the Item goes on the character.  Head, Foot etc.

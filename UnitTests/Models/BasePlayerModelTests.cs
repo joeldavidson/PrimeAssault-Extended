@@ -228,7 +228,7 @@ namespace UnitTests.Models
             var data = new BasePlayerModel<CharacterModel>();
 
             // Act
-            var result = data.TakeDamage(1);
+            var result = data.AugmentHealth(1);
 
             // Reset
 
@@ -243,7 +243,7 @@ namespace UnitTests.Models
             var data = new BasePlayerModel<CharacterModel>();
 
             // Act
-            var result = data.TakeDamage(0);
+            var result = data.AugmentHealth(0);
 
             // Reset
 
