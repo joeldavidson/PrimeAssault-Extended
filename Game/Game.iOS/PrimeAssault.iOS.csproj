@@ -294,4 +294,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\shieldRobot.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\default_item.png" />
+  </ItemGroup>
 </Project>
