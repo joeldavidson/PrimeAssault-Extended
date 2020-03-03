@@ -58,20 +58,51 @@ namespace PrimeAssault.Views
 
 			ShowModalNewRoundPage();
 
-            // Add Players to Display
-            int x = 2;
+            int x = 0;
             int y = 0;
             int flip = 180;
-            foreach (var data in EngineViewModel.Engine.CharacterList)
+            // Draw the Monsters
+            foreach (var data in EngineViewModel.Engine.MonsterList)
             {
-                StackLayout character = CreatePlayerDisplayBox(data);
-                Grid.SetColumn(character, y++);
+                StackLayout monster = CreatePlayerDisplayBox(data);
 
-                if (y == 3) 
+                if (y == 3)
                 {
                     y++;
                 }
-                
+
+                Grid.SetColumn(monster, y);
+
+                if (y < 3)
+                {
+                    Grid.SetRow(monster, x++);
+                }
+                else
+                {
+                    monster.RotationY = flip;
+                    Grid.SetRow(monster, --x);
+                    
+                }
+
+                MonsterListGrid.Children.Add(monster);
+                y++;
+            }
+
+
+            // Add Players to Display
+            x = 2;
+            y = 0;
+            foreach (var data in EngineViewModel.Engine.CharacterList)
+            {
+                StackLayout character = CreatePlayerDisplayBox(data);
+
+                if (y == 3)
+                {
+                    y++;
+                }
+
+                Grid.SetColumn(character, y);
+
                 if (y < 3)
                 {
                     Grid.SetRow(character, x--);
@@ -79,10 +110,11 @@ namespace PrimeAssault.Views
                 else
                 {
                     character.RotationY = flip;
-                    Grid.SetRow(character, x++);
+                    Grid.SetRow(character, ++x);
                 }
 
-                PartyListFrame.Children.Add(character);
+                PartyListGrid.Children.Add(character);
+                y++;
             }
         }
 
@@ -107,47 +139,6 @@ namespace PrimeAssault.Views
                 RotationY = 0,
             };
 
-            // Add the Level
-            var PlayerLevelLabel = new Label
-            {
-                Text = "Level : " + data.Level,
-                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
-                HorizontalOptions = LayoutOptions.Center,
-                HorizontalTextAlignment = TextAlignment.Center,
-                Padding = 0,
-                LineBreakMode = LineBreakMode.TailTruncation,
-                CharacterSpacing = 1,
-                LineHeight = 1,
-                MaxLines = 1,
-            };
-
-            // Add the HP
-            var PlayerHPLabel = new Label
-            {
-                //Text = "HP : " + data.GetCurrentHealthTotal,
-                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
-                HorizontalOptions = LayoutOptions.Center,
-                HorizontalTextAlignment = TextAlignment.Center,
-                Padding = 0,
-                LineBreakMode = LineBreakMode.TailTruncation,
-                CharacterSpacing = 1,
-                LineHeight = 1,
-                MaxLines = 1,
-            };
-
-            var PlayerNameLabel = new Label()
-            {
-                Text = data.Name,
-                Style = (Style)Application.Current.Resources["ValueStyle"],
-                HorizontalOptions = LayoutOptions.Center,
-                HorizontalTextAlignment = TextAlignment.Center,
-                Padding = 0,
-                LineBreakMode = LineBreakMode.TailTruncation,
-                CharacterSpacing = 1,
-                LineHeight = 1,
-                MaxLines = 1,
-            };
-
             // Put the Image Button and Text inside a layout
             var PlayerStack = new StackLayout
             {
@@ -156,11 +147,7 @@ namespace PrimeAssault.Views
                 Spacing = 0,
                 
                 Children = {
-                    PlayerImage,
-                    PlayerNameLabel,
-                    PlayerLevelLabel,
-                    PlayerHPLabel,
-                    
+                    PlayerImage                   
                 },
 
             };
