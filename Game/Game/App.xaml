@@ -121,6 +121,13 @@
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
             </Style>
 
+            <Style TargetType="Label"
+                x:Key="PopupItemTextStyle"
+                BasedOn="{StaticResource ValueStyle}">
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
+
             <Style x:Key="StatsLabel" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="VerticalOptions" Value="End"/>
