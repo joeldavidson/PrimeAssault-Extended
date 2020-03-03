@@ -45,7 +45,7 @@ namespace PrimeAssault.Services
                     rangedDefenseMult = 1,
                     speedMult = 1,
                     ImageURI = "monster_masher.png",
-                    Location = ItemLocationEnum.OffHand,
+                    Location = ItemLocationEnum.PrimaryHand,
                     Attribute = AttributeEnum.Defense},
 
                 new ItemModel {
@@ -200,22 +200,8 @@ namespace PrimeAssault.Services
                     Feet = FeetString,
                     RightFinger = RightFingerString,
                     LeftFinger = LeftFingerString,
-                    ImageURI = "mechanic_class.png",
-                    JobClass = "Mechanic",
-                },
-                new CharacterModel
-                {
-                    Name = "正宗",
-                    Description = "この悪阻らしい刀は天国を切れたと言われている",
-                    Head = HeadString,
-                    Necklass = NecklassString,
-                    PrimaryHand = PrimaryHandString,
-                    OffHand = OffHandString,
-                    Feet = FeetString,
-                    RightFinger = RightFingerString,
-                    LeftFinger = LeftFingerString,
-                    ImageURI = "mechanic_class.png",
-                    JobClass = "Mechanic",
+                    ImageURI = "brawler_class.png",
+                    JobClass = "Brawler",
                 },
                 new CharacterModel
                 { 

@@ -96,8 +96,7 @@
                             Grid.Column="2"
                             Grid.Row="1"
                             ></Label>
-                    <ImageButton x:Name="PrimaryHandItem"
-                            Source="raygun.png"                                       
+                    <ImageButton x:Name="PrimaryHandItem"                                      
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="FillAndExpand"
                         Grid.Column="2"

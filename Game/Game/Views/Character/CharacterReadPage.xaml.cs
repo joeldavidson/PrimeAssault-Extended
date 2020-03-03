@@ -93,16 +93,6 @@ namespace PrimeAssault.Views
                 ItemButton.Clicked += (sender, args) => ShowPopup(data);
             }
             */
-
-            // Add the Display Text for the item
-            var ItemLabel = new Label
-            {
-                Text = location.ToMessage(),
-                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
-                HorizontalOptions = LayoutOptions.Center,
-                HorizontalTextAlignment = TextAlignment.Center
-            };
-
             // Put the Image Button and Text inside a layout
             var ItemStack = new StackLayout
             {
@@ -110,9 +100,8 @@ namespace PrimeAssault.Views
                 Style = (Style)Application.Current.Resources["ItemImageBox"],
                 HorizontalOptions = LayoutOptions.Center,
                 Children = {
-                    ItemButton,
-                    ItemLabel
-                },
+                    ItemButton
+                }
             };
 
             return ItemStack;
