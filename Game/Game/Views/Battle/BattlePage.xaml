@@ -522,62 +522,30 @@
             <!--Top Monster Images END-->
 
             <!--Bottom Character Images BEGIN-->
-            <ImageButton Source="soldier_class.png"
-                HorizontalOptions="StartAndExpand"
-                VerticalOptions="FillAndExpand"
+            <Grid
+                x:Name="PartyListFrame"
+                Grid.Row="13"
+                Grid.RowSpan="3"
                 Grid.Column="2"
-                Grid.Row="15"
-                Grid.RowSpan="3"
-                Grid.ColumnSpan="2">
-            </ImageButton>
+                Grid.ColumnSpan="8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <ImageButton Source="soldier_class.png"
-                HorizontalOptions="EndAndExpand"
-                VerticalOptions="FillAndExpand"
-                Grid.Column="3"
-                Grid.Row="14"
-                Grid.RowSpan="3"
-                Grid.ColumnSpan="2">
-            </ImageButton>
-
-            <ImageButton Source="soldier_class.png"
-                HorizontalOptions="End"
-                VerticalOptions="FillAndExpand"
-                Grid.Column="4"
-                Grid.Row="13"
-                Grid.RowSpan="3"
-                Grid.ColumnSpan="2">
-            </ImageButton>
-
-            <ImageButton Source="soldier_class.png"
-                RotationY="180"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand"
-                Grid.Column="8"
-                Grid.Row="15"
-                Grid.RowSpan="3"
-                Grid.ColumnSpan="2">
-            </ImageButton>
-
-            <ImageButton Source="soldier_class.png"
-                RotationY="180"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand"
-                Grid.Column="7"
-                Grid.Row="14"
-                Grid.RowSpan="3"
-                Grid.ColumnSpan="2">
-            </ImageButton>
-
-            <ImageButton Source="soldier_class.png"
-                RotationY="180"
-                HorizontalOptions="Start"
-                VerticalOptions="FillAndExpand"
-                Grid.Column="6"
-                Grid.Row="13"
-                Grid.RowSpan="3"
-                Grid.ColumnSpan="2">
-            </ImageButton>
+            </Grid>
             <!--Bottom Character Images END-->
 
         </Grid>
