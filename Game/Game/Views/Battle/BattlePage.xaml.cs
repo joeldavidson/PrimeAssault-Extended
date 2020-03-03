@@ -58,15 +58,122 @@ namespace PrimeAssault.Views
 
 			ShowModalNewRoundPage();
 
-			// Add Players to Display
-		}
+            // Add Players to Display
+            int x = 2;
+            int y = 0;
+            int flip = 180;
+            foreach (var data in EngineViewModel.Engine.CharacterList)
+            {
+                StackLayout character = CreatePlayerDisplayBox(data);
+                Grid.SetColumn(character, y++);
 
-		/// <summary>
-		/// Attack Action
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public async void AttackButton_Clicked(object sender, EventArgs e)
+                if (y == 3) 
+                {
+                    y++;
+                }
+                
+                if (y < 3)
+                {
+                    Grid.SetRow(character, x--);
+                }
+                else
+                {
+                    character.RotationY = flip;
+                    Grid.SetRow(character, x++);
+                }
+
+                PartyListFrame.Children.Add(character);
+            }
+        }
+
+        /// <summary>
+        /// Return a stack layout with the Player information inside
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public StackLayout CreatePlayerDisplayBox(PlayerInfoModel data)
+        {
+            if (data == null)
+            {
+                data = new PlayerInfoModel();
+            }
+
+            // Hookup the image
+            var PlayerImage = new ImageButton
+            {
+                Source = data.ImageURI,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                RotationY = 0,
+            };
+
+            // Add the Level
+            var PlayerLevelLabel = new Label
+            {
+                Text = "Level : " + data.Level,
+                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
+                HorizontalOptions = LayoutOptions.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
+                Padding = 0,
+                LineBreakMode = LineBreakMode.TailTruncation,
+                CharacterSpacing = 1,
+                LineHeight = 1,
+                MaxLines = 1,
+            };
+
+            // Add the HP
+            var PlayerHPLabel = new Label
+            {
+                //Text = "HP : " + data.GetCurrentHealthTotal,
+                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
+                HorizontalOptions = LayoutOptions.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
+                Padding = 0,
+                LineBreakMode = LineBreakMode.TailTruncation,
+                CharacterSpacing = 1,
+                LineHeight = 1,
+                MaxLines = 1,
+            };
+
+            var PlayerNameLabel = new Label()
+            {
+                Text = data.Name,
+                Style = (Style)Application.Current.Resources["ValueStyle"],
+                HorizontalOptions = LayoutOptions.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
+                Padding = 0,
+                LineBreakMode = LineBreakMode.TailTruncation,
+                CharacterSpacing = 1,
+                LineHeight = 1,
+                MaxLines = 1,
+            };
+
+            // Put the Image Button and Text inside a layout
+            var PlayerStack = new StackLayout
+            {
+                Style = (Style)Application.Current.Resources["PlayerInfoBox"],
+                Padding = 0,
+                Spacing = 0,
+                
+                Children = {
+                    PlayerImage,
+                    PlayerNameLabel,
+                    PlayerLevelLabel,
+                    PlayerHPLabel,
+                    
+                },
+
+            };
+
+            return PlayerStack;
+        }
+
+        /// <summary>
+        /// Attack Action
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public async void AttackButton_Clicked(object sender, EventArgs e)
 		{
 			// Redraw Game Board
 			// Show who is Attack in Who
