@@ -15,12 +15,13 @@ namespace PrimeAssault.Models
         /// Default Constructor
         /// </summary>
         public PlayerInfoModel(){}
-        
+       
+
         /// <summary>
-        /// Copy from one PlayerInfoModel into Another
+        /// Create PlayerInfoModel from character
         /// </summary>
         /// <param name="data"></param>
-        public PlayerInfoModel(PlayerInfoModel data) 
+        public PlayerInfoModel(CharacterModel data)
         {
             PlayerType = data.PlayerType;
             Guid = data.Guid;
@@ -44,10 +45,10 @@ namespace PrimeAssault.Models
         }
 
         /// <summary>
-        /// Create PlayerInfoModel from character
+        /// Copy from one PlayerInfoModel into Another
         /// </summary>
         /// <param name="data"></param>
-        public PlayerInfoModel(CharacterModel data)
+        public PlayerInfoModel(PlayerInfoModel data)
         {
             PlayerType = data.PlayerType;
             Guid = data.Guid;
