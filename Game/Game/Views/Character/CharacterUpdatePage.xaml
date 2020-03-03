@@ -16,6 +16,144 @@
             Padding="40,20,40,20">
 
             <Image Source="{Binding Data.ImageURI}" HeightRequest="150" WidthRequest="150" HorizontalOptions="Center"></Image>
+            <Grid
+                    x:Name="Equipment">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="75" />
+                    <RowDefinition Height="75" />
+                    <RowDefinition Height="75" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label 
+                        Style="{StaticResource IndexLabel}"
+                        Text="Necklace"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            ></Label>
+                <ImageButton x:Name="NecklaceItem"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        BackgroundColor="##803f035f"
+                        CornerRadius="20"
+                        BorderWidth="1"
+                        BorderColor="Aqua"
+                        ></ImageButton>
+
+
+                <Label 
+                        Style="{StaticResource IndexLabel}"
+                        Text="Head"
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            ></Label>
+
+                <ImageButton x:Name="Head"
+                        Source="{Binding Data.Head, Source={Binding imageURI}}"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        BackgroundColor="##803f035f"
+                        CornerRadius="20"
+                        BorderWidth="1"
+                        BorderColor="Aqua"
+                        ></ImageButton>
+                <Label 
+                        Style="{StaticResource IndexLabel}"
+                        Text="Feet"
+                            Grid.Column="1"
+                            Grid.Row="2"
+                            ></Label>
+                <ImageButton x:Name="FeetItem"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        BackgroundColor="##803f035f"
+                        CornerRadius="20"
+                        BorderWidth="1"
+                        BorderColor="Aqua"
+                        ></ImageButton>
+
+                <Label 
+                        Style="{StaticResource IndexLabel}"
+                        Text="R Hand"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            ></Label>
+                <ImageButton x:Name="PrimaryHandItem"
+                            Source="raygun.png"                                       
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Grid.Column="2"
+                        Grid.Row="1"
+                        BackgroundColor="##803f035f"
+                        CornerRadius="20"
+                        BorderWidth="1"
+                        BorderColor="Aqua"
+                        ></ImageButton>
+
+                <Label 
+                        Style="{StaticResource IndexLabel}"
+                        Text="R Finger"
+                            Grid.Column="2"
+                            Grid.Row="2"
+                            ></Label>
+                <ImageButton  x:Name="RightFingerItem"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Grid.Column="2"
+                        Grid.Row="2"
+                        BackgroundColor="##803f035f"
+                        CornerRadius="40"
+                        BorderWidth="1"
+                        BorderColor="Aqua"
+                        ></ImageButton>
+
+                <Label 
+                        Style="{StaticResource IndexLabel}"
+                        Text="L Hand"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            ></Label>
+                <ImageButton x:Name="OffhandItem"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        BackgroundColor="##803f035f"
+                        CornerRadius="20"
+                        BorderWidth="1"
+                        BorderColor="Aqua"
+                        ></ImageButton>
+
+                <Label 
+                        Style="{StaticResource IndexLabel}"
+                        Text="L Finger"
+                            Grid.Column="0"
+                            Grid.Row="2"
+                            ></Label>
+                <ImageButton x:Name="LeftFingerItem"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        BackgroundColor="##803f035f"
+                        CornerRadius="40"
+                        BorderWidth="1"
+                        BorderColor="Aqua"
+                    CommandParameter="{Binding id}"
+                        ></ImageButton>
+
+            </Grid>
             <Label TextColor="Aqua" HorizontalOptions="Center" FontSize="Header">ANDROID LAB</Label>
             <Image Source="TempProfile.png"></Image>
 

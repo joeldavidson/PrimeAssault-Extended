@@ -176,6 +176,7 @@ namespace PrimeAssault.Views
             return PlayerStack;
         }
 
+        //Assigns the selected monsters stats to their respective labels
         public bool ShowMonsterStats(PlayerInfoModel data)
         {
             MonsterATK.Text = data.Attack.ToString();
@@ -185,14 +186,11 @@ namespace PrimeAssault.Views
             MonsterHEALTH.Text = data.CurrentHealth.ToString();
             MonsterMAXHEALTH.Text = data.MaxHealth.ToString();
             MonsterNAME.Text = data.Name;
-            //// Close the popup after 3 seconds
-            //Device.StartTimer(TimeSpan.FromSeconds(3), () => { 
-            //        PopupLoadingView.IsVisible = false;
-            //        return true; }); 
 
             return true;
         }
 
+        //Assigns the selected Players stats to their respective labels
         public bool ShowPlayerStats(PlayerInfoModel data)
         {
             CharacterATK.Text = data.Attack.ToString();
@@ -202,13 +200,10 @@ namespace PrimeAssault.Views
             CharacterHEALTH.Text = data.CurrentHealth.ToString();
             CharacterMAXHEALTH.Text = data.MaxHealth.ToString();
             CharacterNAME.Text = data.Name;
-            //// Close the popup after 3 seconds
-            //Device.StartTimer(TimeSpan.FromSeconds(3), () => { 
-            //        PopupLoadingView.IsVisible = false;
-            //        return true; }); 
 
             return true;
         }
+
         /// <summary>
         /// Attack Action
         /// </summary>
@@ -455,28 +450,6 @@ namespace PrimeAssault.Views
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        /// <summary>
-        /// The row selected from the list
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
-        public void OnDatabaseCharacterItemSelected(object sender, SelectedItemChangedEventArgs args)
-        {
-            CharacterModel data = args.SelectedItem as CharacterModel;
-            if (data == null)
-            {
-                return;
-            }
-
-
-            // Don't add more than the party max
-            if (EngineViewModel.PartyCharacterList.Count() < EngineViewModel.Engine.MaxNumberPartyCharacters)
-            {
-                EngineViewModel.PartyCharacterList.Add(data);
-            }
-
-            UpdateNextButtonState();
-        }
 
         /// <summary>
         /// Next Button is based on the count

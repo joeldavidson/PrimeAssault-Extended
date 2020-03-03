@@ -60,6 +60,72 @@ namespace PrimeAssault.Views
             return true;
         }
 
+        public void AddItemsToDisplay()
+        {
+            var GridChild = Equipment.Children;
+
+            Equipment.Children.Add(GetItemToDisplay(ItemLocationEnum.Head), 1, 0);
+            Equipment.Children.Add(GetItemToDisplay(ItemLocationEnum.Necklass), 1, 1);
+            Equipment.Children.Add(GetItemToDisplay(ItemLocationEnum.PrimaryHand), 2, 1);
+            Equipment.Children.Add(GetItemToDisplay(ItemLocationEnum.OffHand), 0, 1);
+            Equipment.Children.Add(GetItemToDisplay(ItemLocationEnum.RightFinger), 2, 2);
+            Equipment.Children.Add(GetItemToDisplay(ItemLocationEnum.LeftFinger), 0, 2);
+            Equipment.Children.Add(GetItemToDisplay(ItemLocationEnum.Feet), 1, 2);
+        }
+
+        public StackLayout GetItemToDisplay(ItemLocationEnum location)
+        {
+            // Defualt Image is the Plus
+            var ImageSource = "";
+            //var ClickableButton = true;
+
+            var data = ViewModel.Data.GetItemByLocation(location);
+            if (data == null)
+            {
+                // Show the Default Icon for the Location
+                data = new ItemModel { Location = location, ImageURI = ImageSource };
+
+                // Turn off click action
+                //ClickableButton = false;
+            }
+
+            // Hookup the Image Button to show the Item picture
+            var ItemButton = new ImageButton
+            {
+                Style = (Style)Application.Current.Resources["ImageMediumStyle"],
+                Source = data.ImageURI
+            };
+
+            /*
+            if (ClickableButton)
+            {
+                // Add a event to the user can click the item and see more
+                ItemButton.Clicked += (sender, args) => ShowPopup(data);
+            }
+            */
+
+            // Add the Display Text for the item
+            var ItemLabel = new Label
+            {
+                Text = location.ToMessage(),
+                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
+                HorizontalOptions = LayoutOptions.Center,
+                HorizontalTextAlignment = TextAlignment.Center
+            };
+
+            // Put the Image Button and Text inside a layout
+            var ItemStack = new StackLayout
+            {
+                Padding = 3,
+                Style = (Style)Application.Current.Resources["ItemImageBox"],
+                HorizontalOptions = LayoutOptions.Center,
+                Children = {
+                    ItemButton,
+                    ItemLabel
+                },
+            };
+            return ItemStack;
+        }
         /// <summary>
         /// The Level selected from the list
         /// Need to recalculate Max Health
