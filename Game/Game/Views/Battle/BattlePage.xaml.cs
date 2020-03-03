@@ -125,6 +125,7 @@ namespace PrimeAssault.Views
         /// <returns></returns>
         public StackLayout CreatePlayerDisplayBox(PlayerInfoModel data)
         {
+            var ClickableButton = true;
             if (data == null)
             {
                 data = new PlayerInfoModel();
@@ -138,6 +139,19 @@ namespace PrimeAssault.Views
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 RotationY = 0,
             };
+
+            if (data == null)
+            {
+                // Turn off click action
+                ClickableButton = false;
+            }
+
+            if (ClickableButton)
+            {
+                // Add a event to the user can click the item and see more
+                PlayerImage.Clicked += (sender, args) => ShowStats(data);
+            }
+
 
             // Put the Image Button and Text inside a layout
             var PlayerStack = new StackLayout
@@ -155,6 +169,20 @@ namespace PrimeAssault.Views
             return PlayerStack;
         }
 
+        public bool ShowStats(PlayerInfoModel data)
+        {
+            CharacterATK.Text = data.Attack.ToString();
+            CharacterDEF.Text = data.Defense.ToString();
+            CharacterRDEF.Text = data.RangedDefense.ToString();
+            CharacterSPD.Text = data.Speed.ToString();
+            CharacterNAME.Text = data.Name;
+            //// Close the popup after 3 seconds
+            //Device.StartTimer(TimeSpan.FromSeconds(3), () => { 
+            //        PopupLoadingView.IsVisible = false;
+            //        return true; }); 
+
+            return true;
+        }
         /// <summary>
         /// Attack Action
         /// </summary>
@@ -392,5 +420,89 @@ namespace PrimeAssault.Views
             await Navigation.PushModalAsync(ModalBattleGameOverPage);
         }
         #endregion PageHandelers
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////                                        //////////////////////////////////////////
+/////////////////////////////////////////////////            Character Select            //////////////////////////////////////////
+/////////////////////////////////////////////////                                        //////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// The row selected from the list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void OnDatabaseCharacterItemSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            CharacterModel data = args.SelectedItem as CharacterModel;
+            if (data == null)
+            {
+                return;
+            }
+
+
+            // Don't add more than the party max
+            if (EngineViewModel.PartyCharacterList.Count() < EngineViewModel.Engine.MaxNumberPartyCharacters)
+            {
+                EngineViewModel.PartyCharacterList.Add(data);
+            }
+
+            UpdateNextButtonState();
+        }
+
+        /// <summary>
+        /// Next Button is based on the count
+        /// 
+        /// If no selected characters, disable
+        /// 
+        /// 
+        /// </summary>
+        private void UpdateNextButtonState()
+        {
+            // If no characters disable Next button
+            AttackButton.IsEnabled = true;
+
+            var currentCount = EngineViewModel.PartyCharacterList.Count();
+            if (currentCount == 0)
+            {
+                AttackButton.IsEnabled = false;
+            }
+
+        }
+
+        /// <summary>
+        /// Clear out the old list and make the new list
+        /// </summary>
+        public void CreateEngineCharacterList()
+        {
+            // Clear the currett list
+            EngineViewModel.Engine.CharacterList.Clear();
+
+            // Load the Characters into the Engine
+            foreach (var data in EngineViewModel.PartyCharacterList)
+            {
+                EngineViewModel.Engine.CharacterList.Add(new PlayerInfoModel(data));
+            }
+        }
+
+        /// <summary>
+        /// Refresh the list on page appearing
+        /// </summary>
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            // Clear the Binding
+            BindingContext = null;
+
+            EngineViewModel.PartyCharacterList.Clear();
+
+            // Force the Binding to Update
+            BindingContext = EngineViewModel;
+
+            UpdateNextButtonState();
+        }
     }
 }

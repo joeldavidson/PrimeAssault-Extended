@@ -37,127 +37,127 @@
                     </Grid.ColumnDefinitions>
 
                     <Label 
-                                        Style="{StaticResource IndexLabel}"
-                                        Text="Necklace"
-                                           Grid.Column="1"
-                                           Grid.Row="1"
-                                           ></Label>
+                        Style="{StaticResource IndexLabel}"
+                        Text="Necklace"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            ></Label>
                     <ImageButton x:Name="NecklaceItem"
-                                                HorizontalOptions="FillAndExpand"
-                                                VerticalOptions="FillAndExpand"
-                                                Grid.Column="1"
-                                                Grid.Row="1"
-                                                BackgroundColor="##803f035f"
-                                                CornerRadius="20"
-                                                BorderWidth="1"
-                                                BorderColor="Aqua"
-                                                ></ImageButton>
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        BackgroundColor="##803f035f"
+                        CornerRadius="20"
+                        BorderWidth="1"
+                        BorderColor="Aqua"
+                        ></ImageButton>
 
 
                     <Label 
-                                        Style="{StaticResource IndexLabel}"
-                                        Text="Head"
-                                           Grid.Column="1"
-                                           Grid.Row="0"
-                                           ></Label>
+                        Style="{StaticResource IndexLabel}"
+                        Text="Head"
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            ></Label>
 
                     <ImageButton x:Name="Head"
-                                                Source="{Binding Data.Head, Source={Binding imageURI}}"
-                                                HorizontalOptions="FillAndExpand"
-                                                VerticalOptions="FillAndExpand"
-                                                Grid.Column="1"
-                                                Grid.Row="0"
-                                                BackgroundColor="##803f035f"
-                                                CornerRadius="20"
-                                                BorderWidth="1"
-                                                BorderColor="Aqua"
-                                                ></ImageButton>
+                        Source="{Binding Data.Head, Source={Binding imageURI}}"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        BackgroundColor="##803f035f"
+                        CornerRadius="20"
+                        BorderWidth="1"
+                        BorderColor="Aqua"
+                        ></ImageButton>
                     <Label 
-                                        Style="{StaticResource IndexLabel}"
-                                        Text="Feet"
-                                           Grid.Column="1"
-                                           Grid.Row="2"
-                                           ></Label>
+                        Style="{StaticResource IndexLabel}"
+                        Text="Feet"
+                            Grid.Column="1"
+                            Grid.Row="2"
+                            ></Label>
                     <ImageButton x:Name="FeetItem"
-                                                HorizontalOptions="FillAndExpand"
-                                                VerticalOptions="FillAndExpand"
-                                                Grid.Column="1"
-                                                Grid.Row="2"
-                                                BackgroundColor="##803f035f"
-                                                CornerRadius="20"
-                                                BorderWidth="1"
-                                                BorderColor="Aqua"
-                                                ></ImageButton>
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        BackgroundColor="##803f035f"
+                        CornerRadius="20"
+                        BorderWidth="1"
+                        BorderColor="Aqua"
+                        ></ImageButton>
 
                     <Label 
-                                        Style="{StaticResource IndexLabel}"
-                                        Text="R Hand"
-                                           Grid.Column="2"
-                                           Grid.Row="1"
-                                           ></Label>
+                        Style="{StaticResource IndexLabel}"
+                        Text="R Hand"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            ></Label>
                     <ImageButton x:Name="PrimaryHandItem"
-                                                 Source="raygun.png"                                       
-                                                HorizontalOptions="FillAndExpand"
-                                                VerticalOptions="FillAndExpand"
-                                                Grid.Column="2"
-                                                Grid.Row="1"
-                                                BackgroundColor="##803f035f"
-                                                CornerRadius="20"
-                                                BorderWidth="1"
-                                                BorderColor="Aqua"
-                                                ></ImageButton>
+                            Source="raygun.png"                                       
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Grid.Column="2"
+                        Grid.Row="1"
+                        BackgroundColor="##803f035f"
+                        CornerRadius="20"
+                        BorderWidth="1"
+                        BorderColor="Aqua"
+                        ></ImageButton>
 
                     <Label 
-                                        Style="{StaticResource IndexLabel}"
-                                        Text="R Finger"
-                                           Grid.Column="2"
-                                           Grid.Row="2"
-                                           ></Label>
+                        Style="{StaticResource IndexLabel}"
+                        Text="R Finger"
+                            Grid.Column="2"
+                            Grid.Row="2"
+                            ></Label>
                     <ImageButton  x:Name="RightFingerItem"
-                                                HorizontalOptions="FillAndExpand"
-                                                VerticalOptions="FillAndExpand"
-                                                Grid.Column="2"
-                                                Grid.Row="2"
-                                                BackgroundColor="##803f035f"
-                                                CornerRadius="40"
-                                                BorderWidth="1"
-                                                BorderColor="Aqua"
-                                                ></ImageButton>
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Grid.Column="2"
+                        Grid.Row="2"
+                        BackgroundColor="##803f035f"
+                        CornerRadius="40"
+                        BorderWidth="1"
+                        BorderColor="Aqua"
+                        ></ImageButton>
 
                     <Label 
-                                        Style="{StaticResource IndexLabel}"
-                                        Text="L Hand"
-                                           Grid.Column="0"
-                                           Grid.Row="1"
-                                           ></Label>
+                        Style="{StaticResource IndexLabel}"
+                        Text="L Hand"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            ></Label>
                     <ImageButton x:Name="OffhandItem"
-                                                HorizontalOptions="FillAndExpand"
-                                                VerticalOptions="FillAndExpand"
-                                                Grid.Column="0"
-                                                Grid.Row="1"
-                                                BackgroundColor="##803f035f"
-                                                CornerRadius="20"
-                                                BorderWidth="1"
-                                                BorderColor="Aqua"
-                                                ></ImageButton>
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        BackgroundColor="##803f035f"
+                        CornerRadius="20"
+                        BorderWidth="1"
+                        BorderColor="Aqua"
+                        ></ImageButton>
 
                     <Label 
-                                        Style="{StaticResource IndexLabel}"
-                                        Text="L Finger"
-                                           Grid.Column="0"
-                                           Grid.Row="2"
-                                           ></Label>
+                        Style="{StaticResource IndexLabel}"
+                        Text="L Finger"
+                            Grid.Column="0"
+                            Grid.Row="2"
+                            ></Label>
                     <ImageButton x:Name="LeftFingerItem"
-                                                HorizontalOptions="FillAndExpand"
-                                                VerticalOptions="FillAndExpand"
-                                                Grid.Column="0"
-                                                Grid.Row="2"
-                                                BackgroundColor="##803f035f"
-                                                CornerRadius="40"
-                                                BorderWidth="1"
-                                                BorderColor="Aqua"
-                                            CommandParameter="{Binding id}"
-                                                ></ImageButton>
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        BackgroundColor="##803f035f"
+                        CornerRadius="40"
+                        BorderWidth="1"
+                        BorderColor="Aqua"
+                    CommandParameter="{Binding id}"
+                        ></ImageButton>
 
                 </Grid>
 
@@ -166,9 +166,9 @@
 
             <Label Text="{Binding Data.Name}" FontSize="Header" FontAttributes="Bold" HorizontalOptions="Center" TextColor="AntiqueWhite"></Label>
             <Frame
-                            BorderColor="White"
-                            BackgroundColor="#263238"
-                            Opacity="0.75">
+                BorderColor="White"
+                BackgroundColor="#263238"
+                Opacity="0.75">
                 <Label Text="{Binding Data.Description}" FontSize="Micro" HorizontalOptions="Center" TextColor="AntiqueWhite"></Label>
           
               </Frame>
@@ -182,18 +182,13 @@
                         Grid.Column="1"
                         Orientation ="Horizontal" 
                         HorizontalOptions="Center">
+                        
                         <Label Style="{StaticResource StatsLabel}" Text="{Binding Data.CurrentHealth}" ></Label>
                         <Label Style="{StaticResource StatsLabel}" Text="/" ></Label>
                         <Label Style="{StaticResource StatsLabel}" Text="{Binding Data.MaxHealth}" ></Label>
                     </StackLayout>
 
                 </Grid>
-
-
-
-            
-
-
 
             <StackLayout Orientation ="Horizontal" HorizontalOptions="CenterAndExpand">
                 <Label Text="Ability: " FontSize="Small" TextColor="AntiqueWhite"></Label>
@@ -207,8 +202,8 @@
                 HorizontalOptions="Center">
             </Label>
             <StackLayout
-    Orientation="Horizontal"
-    HorizontalOptions="Center">
+                Orientation="Horizontal"
+                HorizontalOptions="Center">
                 
                 <Frame BackgroundColor="AliceBlue"  
                    HasShadow="True"
@@ -241,61 +236,62 @@
 
                 </Frame>
             </StackLayout>
+            
             <Grid>
                 <Button x:Name="btn0"
                         VerticalOptions="Center"
-                                            HorizontalOptions="Center"
-                                            HeightRequest="{Binding Width, Source={x:Reference btn1}}"
-                                            Text="LVL" TextColor="Aqua"
-                                            CornerRadius="40"
-                                            BorderColor="Aqua"
-                         BackgroundColor="#4D3f035f"
-                         Grid.Row="0" Grid.Column="0"
-                                                >
-                </Button>
+                        HorizontalOptions="Center"
+                        HeightRequest="{Binding Width, Source={x:Reference btn1}}"
+                        Text="LVL" TextColor="Aqua"
+                        CornerRadius="40"
+                        BorderColor="Aqua"
+                        BackgroundColor="#4D3f035f"
+                        Grid.Row="0" Grid.Column="0"
+                                                
+                ></Button>
                 
                 <Button x:Name="btn1"
                         VerticalOptions="Center"
-                                            HorizontalOptions="Center"
-                                            HeightRequest="{Binding Width, Source={x:Reference btn1}}"
-                                            Text="ATK" TextColor="Aqua"
-                                            CornerRadius="40"
-                                            BorderColor="Aqua"
-                         BackgroundColor="#4D3f035f"
-                         Grid.Row="0" Grid.Column="1"
-                                                >
-                </Button>
+                        HorizontalOptions="Center"
+                        HeightRequest="{Binding Width, Source={x:Reference btn1}}"
+                        Text="ATK" TextColor="Aqua"
+                        CornerRadius="40"
+                        BorderColor="Aqua"
+                        BackgroundColor="#4D3f035f"
+                        Grid.Row="0" Grid.Column="1"
+                                                
+                 ></Button>
                 <Button x:Name="btn2"
                         VerticalOptions="Center"
-                                            HorizontalOptions="Center"
-                                            HeightRequest="{Binding Width, Source={x:Reference btn2}}"
-                                            Text="DEF" TextColor="Aqua"
-                                            CornerRadius="40"
-                                            BorderColor="Aqua"
-                         BackgroundColor="#4D3f035f"
-                         Grid.Row="0" Grid.Column="2"
-                                                ></Button>
+                        HorizontalOptions="Center"
+                        HeightRequest="{Binding Width, Source={x:Reference btn2}}"
+                        Text="DEF" TextColor="Aqua"
+                        CornerRadius="40"
+                        BorderColor="Aqua"
+                        BackgroundColor="#4D3f035f"
+                        Grid.Row="0" Grid.Column="2"
+                 ></Button>
                 <Button x:Name="btn3"
                         VerticalOptions="Center"
-                                            HorizontalOptions="Center"
-                                            HeightRequest="{Binding Width, Source={x:Reference btn1}}"
-                                            Text="RNG" 
-                                            TextColor="Aqua"
-                                            CornerRadius="40"
-                                            BorderColor="Aqua"
-                         BackgroundColor="#4D3f035f"
-                         Grid.Row="0" Grid.Column="3"
-                                                ></Button>
+                        HorizontalOptions="Center"
+                        HeightRequest="{Binding Width, Source={x:Reference btn1}}"
+                        Text="RNG" 
+                        TextColor="Aqua"
+                        CornerRadius="40"
+                        BorderColor="Aqua"
+                        BackgroundColor="#4D3f035f"
+                        Grid.Row="0" Grid.Column="3"
+                 ></Button>
                 <Button x:Name="btn4"
-                                            VerticalOptions="Center"
-                                            HorizontalOptions="Center"
-                                            HeightRequest="{Binding Width, Source={x:Reference btn4}}"
-                                            Text="SPD" TextColor="Aqua"
-                                            CornerRadius="40"
-                                            BorderColor="Aqua"
-                         BackgroundColor="#4D3f035f"
-                         Grid.Row="0" Grid.Column="4"
-                                                ></Button>
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        HeightRequest="{Binding Width, Source={x:Reference btn4}}"
+                        Text="SPD" TextColor="Aqua"
+                        CornerRadius="40"
+                        BorderColor="Aqua"
+                        BackgroundColor="#4D3f035f"
+                        Grid.Row="0" Grid.Column="4"
+                 ></Button>
 
                 <Label  Text ="{Binding Data.Level}" VerticalOptions="Center" HorizontalOptions="Center"  TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="0"/>
                 <Label  Text ="{Binding Data.Attack}" VerticalOptions="Center" HorizontalOptions="Center"  TextColor="AntiqueWhite" FontSize="Small" Grid.Row="1" Grid.Column="1"/>

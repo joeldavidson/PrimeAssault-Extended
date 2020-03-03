@@ -53,6 +53,7 @@
 
             <!--Center Buttons BEGIN-->
             <Button 
+                x:Name="AttackButton"
                 Text="ATTACK!"
                 Clicked="AttackButton_Clicked"
                 Grid.Row="17"
@@ -211,133 +212,94 @@
             </Button>
             <!--Bottom Character Move Options END-->
 
-
-            <!--Left Hand Character Stats BEGIN-->
-            <BoxView
-                BackgroundColor="Gray"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="Fill"
+            <!--Left Hand CHARACTER Stats BEGIN-->
+            <Grid
+                x:Name="CharacterStatsGrid"
                 Grid.Row="5"
-                Grid.Column="0"
                 Grid.RowSpan="12"
-                Grid.ColumnSpan="1"/>
+                Grid.Column="0"
+                Grid.ColumnSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <Frame 
-                x:Name="lbl0"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                WidthRequest="{Binding Height, Source={x:Reference lbl0}}"
-                BorderColor="Aqua"
-                CornerRadius="45"     
-                BackgroundColor="Transparent"
-                Grid.Row="5" Grid.Column="0"
-                Grid.RowSpan="3"
-                Grid.ColumnSpan="1"
-                Margin="5">
-                <Label 
-                    Text="Norm Attack" TextColor="Aqua"
-                    FontSize="Body">
-                </Label>
-            </Frame>
+                <BoxView
+                    BackgroundColor="Gray"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Fill"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.RowSpan="12"
+                    Grid.ColumnSpan="2"/>
 
-            <Frame 
-                x:Name="lbl1"
-                WidthRequest="{Binding Height, Source={x:Reference lbl1}}"
-                BorderColor="Aqua"
-                CornerRadius="45"                    
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                BackgroundColor="Transparent"
-                Grid.Row="7" Grid.Column="0"
-                Grid.RowSpan="3"
-                Grid.ColumnSpan="1"
-                Margin="5">
-                <Label 
-                    Text="Move 1" TextColor="Aqua"
-                    FontSize="Body"
-                    HorizontalOptions="Fill">
-                </Label>
-            </Frame>
+                <StackLayout 
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Orientation="Horizontal"                    
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center">
+                    <Label x:Name="CharacterATK" TextColor="Aqua" FontSize="Body"/>
+                    <Label Text=" ATK" TextColor="Aqua" FontSize="Body" />
+                </StackLayout>
 
-            <Frame 
-                x:Name="lbl2"
-                WidthRequest="{Binding Height, Source={x:Reference lbl2}}"
-                BorderColor="Aqua"
-                CornerRadius="45"                
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                BackgroundColor="Transparent"
-                Grid.Row="9" Grid.Column="0"
-                Grid.RowSpan="3"
-                Grid.ColumnSpan="1"
-                Margin="5">
-                <Label 
-                    Text="Move 2" TextColor="Aqua"
-                    FontSize="Body">
-                </Label>
-            </Frame>
+                <StackLayout 
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Orientation="Horizontal"                    
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center">
+                    <Label x:Name="CharacterDEF" TextColor="Aqua" FontSize="Body"/>
+                    <Label Text=" DEF" TextColor="Aqua" FontSize="Body" />
+                </StackLayout>
 
-            <Frame 
-                x:Name="lbl3"
-                WidthRequest="{Binding Height, Source={x:Reference lbl3}}"
-                BorderColor="Aqua"
-                CornerRadius="45"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                BackgroundColor="Transparent"
-                Grid.Row="11" Grid.Column="0"
-                Grid.RowSpan="3"
-                Grid.ColumnSpan="1"                
-                Margin="5">
-                <Label      
-                    Text="DEF" TextColor="Aqua"
-                    FontSize="Body">
-                </Label>
-            </Frame>
+                <StackLayout 
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Orientation="Horizontal"                    
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center">
+                    <Label x:Name="CharacterRDEF" TextColor="Aqua" FontSize="Body"/>
+                    <Label Text=" RDEF" TextColor="Aqua" FontSize="Body" />
+                </StackLayout>
 
-            <Frame 
-                x:Name="lbl4"
-                WidthRequest="{Binding Height, Source={x:Reference lbl3}}"
-                BorderColor="Aqua"
-                CornerRadius="45"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                BackgroundColor="Transparent"
-                Grid.Row="13" Grid.Column="0"
-                Grid.RowSpan="3"
-                Grid.ColumnSpan="1"                
-                Margin="5">
-                <Label      
-                    Text="DEF" TextColor="Aqua"
-                    FontSize="Body">
-                </Label>
-            </Frame>
+                <StackLayout 
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Orientation="Horizontal"                    
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center">
+                    <Label x:Name="CharacterSPD" TextColor="Aqua" FontSize="Body"/>
+                    <Label Text=" SPD" TextColor="Aqua" FontSize="Body" />
+                </StackLayout>
 
-            <Label
-                Text="Char" 
-                TextColor="Aqua"
-                FontSize="Body"
-                FontAttributes="Bold"
-                VerticalOptions="Center"
-                Grid.Row="15" Grid.Column="0"
-                Grid.RowSpan="2"
-                Grid.ColumnSpan="1"
-                Margin="5">
-            </Label>
-            <Label
-                Text="Name" 
-                TextColor="Aqua"
-                FontSize="Body"
-                FontAttributes="Bold"
-                VerticalOptions="End"
-                Grid.Row="15" Grid.Column="0"
-                Grid.RowSpan="2"
-                Grid.ColumnSpan="1"
-                Margin="5">
-            </Label>
-            <!--Left Hand Character Stats END -->
+                <StackLayout 
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Orientation="Horizontal"                    
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center">
+                    <Label x:Name="CharacterNAME" TextColor="Aqua" FontSize="Body"/>
+                </StackLayout>
 
-            <!--Right Hand Monster Stats BEGIN-->
+            </Grid>
+            
+            <!--Left Hand CHARACTER Stats END -->
+
+            <!--Right Hand MONSTER Stats BEGIN-->
             <BoxView
                 BackgroundColor="Gray"
                 HorizontalOptions="FillAndExpand"
@@ -413,7 +375,7 @@
                 Grid.RowSpan="3"
                 Grid.ColumnSpan="1"
                 Margin="5">
-                <Label      
+                <Label
                     Text="RDF" TextColor="Aqua"
                     FontSize="Body">
                 </Label>
@@ -460,7 +422,7 @@
                 Grid.ColumnSpan="1"
                 Margin="5">
             </Label>
-            <!--Right Hand Monster Stats END-->
+            <!--Right Hand MONSTER Stats END-->
 
             <!--Top Monster Images BEGIN-->
             <Grid
@@ -468,7 +430,8 @@
                 Grid.Row="3"
                 Grid.RowSpan="3"
                 Grid.Column="2"
-                Grid.ColumnSpan="8">
+                Grid.ColumnSpan="8"
+                >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -513,7 +476,6 @@
                 </Grid.ColumnDefinitions>
             </Grid>
             <!--Bottom Character Images END-->
-
         </Grid>
 
 
