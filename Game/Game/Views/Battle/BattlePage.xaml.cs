@@ -80,8 +80,7 @@ namespace PrimeAssault.Views
                 else
                 {
                     monster.RotationY = flip;
-                    Grid.SetRow(monster, --x);
-                    
+                    Grid.SetRow(monster, --x);   
                 }
 
                 MonsterListGrid.Children.Add(monster);
@@ -148,8 +147,16 @@ namespace PrimeAssault.Views
 
             if (ClickableButton)
             {
-                // Add a event to the user can click the item and see more
-                PlayerImage.Clicked += (sender, args) => ShowStats(data);
+                if (data.PlayerType == PlayerTypeEnum.Character)
+                {
+                    // Add a event to the user can click the item and see more
+                    PlayerImage.Clicked += (sender, args) => ShowPlayerStats(data);
+                }
+                else
+                {
+                    // Add a event to the user can click the item and see more
+                    PlayerImage.Clicked += (sender, args) => ShowMonsterStats(data);
+                }
             }
 
 
@@ -169,12 +176,31 @@ namespace PrimeAssault.Views
             return PlayerStack;
         }
 
-        public bool ShowStats(PlayerInfoModel data)
+        public bool ShowMonsterStats(PlayerInfoModel data)
+        {
+            MonsterATK.Text = data.Attack.ToString();
+            MonsterDEF.Text = data.Defense.ToString();
+            MonsterRDEF.Text = data.RangedDefense.ToString();
+            MonsterSPD.Text = data.Speed.ToString();
+            MonsterHEALTH.Text = data.CurrentHealth.ToString();
+            MonsterMAXHEALTH.Text = data.MaxHealth.ToString();
+            MonsterNAME.Text = data.Name;
+            //// Close the popup after 3 seconds
+            //Device.StartTimer(TimeSpan.FromSeconds(3), () => { 
+            //        PopupLoadingView.IsVisible = false;
+            //        return true; }); 
+
+            return true;
+        }
+
+        public bool ShowPlayerStats(PlayerInfoModel data)
         {
             CharacterATK.Text = data.Attack.ToString();
             CharacterDEF.Text = data.Defense.ToString();
             CharacterRDEF.Text = data.RangedDefense.ToString();
             CharacterSPD.Text = data.Speed.ToString();
+            CharacterHEALTH.Text = data.CurrentHealth.ToString();
+            CharacterMAXHEALTH.Text = data.MaxHealth.ToString();
             CharacterNAME.Text = data.Name;
             //// Close the popup after 3 seconds
             //Device.StartTimer(TimeSpan.FromSeconds(3), () => { 
