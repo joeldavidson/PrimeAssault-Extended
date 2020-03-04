@@ -176,6 +176,7 @@
     <BundleResource Include="ScoreIndex.jpg" />
     <BundleResource Include="ScoreRead.jpg" />
     <BundleResource Include="ScoreUpdate.jpg" />
+    <Content Include="sewer_background.jpg" />
     <Content Include="sewer_gator.png" />
     <Content Include="shieldRobot.png" />
     <Content Include="SilverRobot.png" />

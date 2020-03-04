@@ -297,4 +297,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\victory_star.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sewer_background.jpg" />
+  </ItemGroup>
 </Project>
