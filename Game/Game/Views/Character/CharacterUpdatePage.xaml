@@ -33,9 +33,9 @@
                     x:Name="Equipment">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="75" />
-                        <RowDefinition Height="75" />
-                        <RowDefinition Height="75" />
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="100" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100" />
@@ -98,9 +98,10 @@
 
                     <Label 
                         Style="{StaticResource IndexLabel}"
-                        Text="R Hand"
+                        Text="Primary Hand"
                             Grid.Column="2"
                             Grid.Row="1"
+                        
                             ></Label>
                     <ImageButton x:Name="PrimaryHandItem"                                     
                         HorizontalOptions="FillAndExpand"
@@ -132,7 +133,7 @@
 
                     <Label 
                         Style="{StaticResource IndexLabel}"
-                        Text="L Hand"
+                        Text="Off Hand"
                             Grid.Column="0"
                             Grid.Row="1"
                             ></Label>

@@ -174,7 +174,9 @@ namespace PrimeAssault.Views
             var ItemButton = new ImageButton
             {
                 Style = (Style)Application.Current.Resources["ImageMediumStyle"],
-                Source = data.ImageURI
+                Source = data.ImageURI,
+               
+                
             };
 
             

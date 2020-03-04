@@ -59,7 +59,8 @@
                 <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="VerticalOptions" Value="Start"/>
                 <Setter Property="TextColor" Value="Aqua"/>
-
+                <Setter Property="VerticalOptions" Value="End"/>
+                <Setter Property="Padding" Value="0,0,0,10" />
 
             </Style>
 
@@ -161,6 +162,7 @@
                 BasedOn="{StaticResource ImageLargeStyle}">
                 <Setter Property="WidthRequest" Value="60" />
                 <Setter Property="HeightRequest" Value="60" />
+                <Setter Property="VerticalOptions" Value="End"/>
             </Style>
 
             <Style TargetType="Image"
