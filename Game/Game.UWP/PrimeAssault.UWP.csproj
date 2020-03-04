@@ -186,6 +186,7 @@
     <Content Include="victory_star.png" />
     <Content Include="village.jpg" />
     <Content Include="village.png" />
+    <Content Include="vs.png" />
     <Content Include="Workshop.png" />
     <Content Include="xamarin_logo.png" />
     <Content Include="add.png" />

@@ -19,6 +19,9 @@
                                     AlignContent="Start"
                                     Wrap="Wrap"/>
 
+                <Image Source="vs.png"
+                       Style="{StaticResource ImageMediumStyle}"/>
+
                 <Label Text="Monsters" Style="{StaticResource MessageStyle}"/>
 
                 <FlexLayout x:Name="MonsterListFrame"

@@ -300,4 +300,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\sewer_background.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vs.png" />
+  </ItemGroup>
 </Project>
