@@ -157,9 +157,6 @@
     <BundleResource Include="Resources\gameover.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\knight.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\troll.png" />
   </ItemGroup>
   <ItemGroup>
@@ -296,5 +293,8 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\default_item.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\victory_star.png" />
   </ItemGroup>
 </Project>

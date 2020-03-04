@@ -18,8 +18,11 @@
 
                     <StackLayout Style="{StaticResource VerticalStack}">
 
-                        <Label Text="Round Cleared" Style="{StaticResource CenterMessageStyle}"/>
-
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="victory_star.png" HeightRequest="200" WidthRequest="200"></Image>
+                            <Label Text="Round Cleared" Style="{StaticResource CenterMessageStyle}"/>
+                            <Image Source="victory_star.png" HeightRequest="200" WidthRequest="200"></Image>
+                        </StackLayout>
                         <Button Clicked="CloseButton_Clicked" Text="Close"/>
 
                         <StackLayout Style="{StaticResource HorizontalStack}">
