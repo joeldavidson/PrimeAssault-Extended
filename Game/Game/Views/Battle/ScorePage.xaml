@@ -1,50 +1,134 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PrimeAssault.Views.ScorePage">
+             x:Class="PrimeAssault.Views.ScorePage"
+            BackgroundImageSource="darkbackground.jpg">
 
     <ContentPage.Content>
-        <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
-            <StackLayout Style="{StaticResource VerticalStack}">
+        <AbsoluteLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+            <StackLayout Style="{StaticResource OuterBoxStack}"
+            Spacing="20" Padding="15,20,15,20">
 
-                <Label Text="Score Page" Style="{StaticResource CenterMessageStyle}"/>
+                <Frame
+                BackgroundColor="#33f4a460"
+            Opacity=".80"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                >
+                    <Grid ColumnSpacing="1" RowSpacing="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <StackLayout Style="{StaticResource OuterBoxStack}"
+            Spacing="10">
+                            <Label Text="Scores" Style="{StaticResource HeaderStyle}"/>
 
-                <Button Clicked="CloseButton_Clicked" Text="Close"/>
+                            <StackLayout Style="{StaticResource HorizontalStack}">
+                                <Label 
+                            Opacity="2"
+                   Text="Name : " 
+                    Style="{StaticResource LabelStyle}"/>
+                                <Label 
+                    Text="{Binding Data.Name}" 
+                    Style="{StaticResource ValueStyle}"/>
+                            </StackLayout>
 
-                <StackLayout Style="{StaticResource HorizontalStack}">
-                    <Label Text="Score : " Style="{StaticResource MessageStyle}"/>
-                    <Label Text="0" x:Name="TotalScore" Style="{StaticResource MessageStyle}"/>
-                </StackLayout>
+                            <StackLayout Style="{StaticResource HorizontalStack}">
+                                <Label 
+                    Text="PrimeAssault Date:"
+                    Style="{StaticResource LabelStyle}"/>
 
-                <Label Text="Characters" Style="{StaticResource MessageStyle}"/>
-                <FlexLayout x:Name="CharacterListFrame"
-                                    JustifyContent="Start"
-                                    AlignContent="Start"
-                                    Wrap="Wrap"/>
+                                <Label 
+                    Text="{Binding Data.PrimeAssaultDate}"
+                    Style="{StaticResource ValueStyle}"/>
+                            </StackLayout>
 
-                <Label Text="Monsters" Style="{StaticResource MessageStyle}"/>
-                <StackLayout Style="{StaticResource HorizontalStack}">
-                    <Label Text="Killed : " Style="{StaticResource LabelStyle}"/>
-                    <Label Text="0" x:Name="TotalKilled" Style="{StaticResource ValueStyle}"/>
-                </StackLayout>
-                <FlexLayout x:Name="MonsterListFrame"
-                                    JustifyContent="Start"
-                                    AlignContent="Start"
-                                    Wrap="Wrap"/>
+                            <StackLayout Style="{StaticResource HorizontalStack}">
+                                <Label 
+                    Text="AutoBattle:"                      
+                    Style="{StaticResource LabelStyle}"/>
 
-                <Label Text="Items" Style="{StaticResource MessageStyle}"/>
-                <StackLayout Style="{StaticResource HorizontalStack}">
-                    <Label Text="Collected : " Style="{StaticResource LabelStyle}"/>
-                    <Label Text="0" x:Name="TotalCollected" Style="{StaticResource ValueStyle}"/>
-                </StackLayout>
-                <FlexLayout x:Name="ItemListFrame"
-                                    JustifyContent="Start"
-                                    AlignContent="Start"
-                                    Wrap="Wrap"/>
+                                <Label 
+                    Text="{Binding Data.AutoBattle}"
+                    Style="{StaticResource ValueStyle}"/>
+                            </StackLayout>
 
-                <Button Clicked="CloseButton_Clicked" Text="Close"/>
+                            <StackLayout Style="{StaticResource HorizontalStack}">
+                                <Label 
+                    Text="Score:" 
+                    Style="{StaticResource LabelStyle}"/>
+                                <Label 
+                    Text="{Binding Data.ScoreTotal}"
+                    Style="{StaticResource ValueStyle}"/>
+                            </StackLayout>
+
+                            <StackLayout Style="{StaticResource HorizontalStack}">
+                                <Label 
+                    Text="Number of Rounds:"                      
+                    Style="{StaticResource LabelStyle}"/>
+
+                                <Label 
+                    Text="{Binding Data.RoundCount}"
+                    Style="{StaticResource ValueStyle}"/>
+                            </StackLayout>
+
+                            <StackLayout Style="{StaticResource HorizontalStack}">
+                                <Label 
+                    Text="Number of Turns:"  
+                    Style="{StaticResource LabelStyle}"/>
+
+                                <Label 
+                    Text="{Binding Data.TurnCount}"
+                    Style="{StaticResource ValueStyle}"/>
+                            </StackLayout>
+
+                            <StackLayout Style="{StaticResource HorizontalStack}">
+                                <Label 
+                    Text="Total Experience Gained:"
+                    Style="{StaticResource LabelStyle}"/>
+
+                                <Label 
+                    Text="{Binding Data.ExperienceGainedTotal}" 
+                    Style="{StaticResource ValueStyle}"/>
+                            </StackLayout>
+
+                            <StackLayout Style="{StaticResource HorizontalStack}">
+                                <Label 
+                    Text="Number of Monsters Slain:"
+                    Style="{StaticResource LabelStyle}"/>
+                                <Label 
+                    Text="{Binding Data.MonsterSlainNumber}"
+                    Style="{StaticResource ValueStyle}"/>
+                            </StackLayout>
+
+                            <Label 
+                Text="Characters at Death:"
+                Style="{StaticResource LabelStyle}"/>
+                            <Label 
+                Text="{Binding Data.CharacterAtDeathList}" 
+                Style="{StaticResource ValueStyle}"/>
+
+                            <Label 
+                Text="Monsters Killed:"
+                Style="{StaticResource LabelStyle}"/>
+                            <Label 
+                Text="{Binding Data.MonstersKilledList}" 
+                Style="{StaticResource ValueStyle}"/>
+
+                            <Label 
+                Text="Items Dropped:"
+                Style="{StaticResource LabelStyle}"/>
+                            <Label 
+                Text="{Binding Data.ItemsDroppedList}"
+                Style="{StaticResource ValueStyle}"/>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
 
             </StackLayout>
-        </ScrollView>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
