@@ -197,43 +197,43 @@
     <AndroidResource Include="Resources\drawable\neonStairs.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ScoreIndex.jpg" />
+    <AndroidResource Include="Resources\drawable\scoreindex.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ScoreUpdate.jpg" />
+    <AndroidResource Include="Resources\drawable\scoreupdate.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ScoreDelete.jpg" />
+    <AndroidResource Include="Resources\drawable\scoredelete.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ScoreCreate.jpg" />
+    <AndroidResource Include="Resources\drawable\scorecreate.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ScoreRead.jpg" />
+    <AndroidResource Include="Resources\drawable\scoreread.jpg" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\euphrates_logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\SafeHouse.png" />
+    <AndroidResource Include="Resources\drawable\safehouse.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Records.png" />
+    <AndroidResource Include="Resources\drawable\records.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\BeffJezos.png" />
+    <AndroidResource Include="Resources\drawable\beffjezos.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\gear.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\evilHarvey.png" />
+    <AndroidResource Include="Resources\drawable\evilharvey.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\shieldRobot.png" />
+    <AndroidResource Include="Resources\drawable\shieldrobot.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\SilverRobot.png" />
+    <AndroidResource Include="Resources\drawable\silverrobot.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\default_item.png" />
