@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PrimeAssault.Views.BattlePage">
     
+    
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="New Round" Clicked="NewRoundButton_Clicked"/>
-        <ToolbarItem Text="Round Over" Clicked="RoundOverButton_Clicked"/>
-        <ToolbarItem Text="Battle Over" Clicked="BattleOverButton_Clicked"/>
-        <ToolbarItem Text="Quit" Clicked="QuitButton_Clicked"/>
-        <ToolbarItem Text="Exit" Clicked="ExitButton_Clicked"/>
+        <ToolbarItem Text="New Round" Clicked="NewRoundButton_Clicked" IconImageSource="gear.png"/>
+        <ToolbarItem Text="Round Over" Clicked="RoundOverButton_Clicked" IconImageSource="gear.png"/>
+        <ToolbarItem Text="Battle Over" Clicked="BattleOverButton_Clicked" IconImageSource="gear.png"/>
+        <ToolbarItem Text="Quit" Clicked="QuitButton_Clicked" IconImageSource="gear.png"/>
+        <ToolbarItem Text="Exit" Clicked="ExitButton_Clicked" IconImageSource="cancel.png" />
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
