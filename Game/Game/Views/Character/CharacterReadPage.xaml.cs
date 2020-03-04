@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using Xamarin.Forms;
 
+using System.Linq;
 using PrimeAssault.Models;
 using PrimeAssault.ViewModels;
 using System;

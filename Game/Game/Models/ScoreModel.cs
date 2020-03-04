@@ -1,4 +1,6 @@
 ﻿using System;
+using SQLite;
+using System.Collections.Generic;
 
 namespace PrimeAssault.Models
 {
@@ -52,6 +54,22 @@ namespace PrimeAssault.Models
         // All of the items dropped and their stats. 
         // Only use Get only, set will be done by the Add feature.
         public string ItemsDroppedList { get; set; } = string.Empty;
+
+        // Add Characters to the List for Score, New Round, and Easier testing
+        [Ignore]
+        public List<PlayerInfoModel> CharacterModelDeathList { get; set; } = new List<PlayerInfoModel>();
+
+        // Add Monsters to the List for Score, New Round, and Easier testing
+        [Ignore]
+        public List<PlayerInfoModel> MonsterModelDeathList { get; set; } = new List<PlayerInfoModel>();
+
+        // Add Item to the List for Score, New Round, and Easier testing
+        [Ignore]
+        public List<ItemModel> ItemModelDropList { get; set; } = new List<ItemModel>();
+
+        // Add the Selected Items to the List for Score, New Round, and Easier testing
+        [Ignore]
+        public List<ItemModel> ItemModelSelectList { get; set; } = new List<ItemModel>();
 
         /// <summary>
         /// Instantiate new Score 

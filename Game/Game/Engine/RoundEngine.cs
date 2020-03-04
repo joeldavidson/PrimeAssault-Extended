@@ -266,6 +266,18 @@ namespace PrimeAssault.Engine
             return true;
         }
 
+        public void PickupItemsForAllCharacters()
+        {
+            // In Auto Battle this happens and the characters get their items
+            // When called manualy, make sure to do the character pickup before calling EndRound
+
+            // Have each character pickup items...
+            foreach (var character in CharacterList)
+            {
+                PickupItemsFromPool(character);
+            }
+        }
+
         /// <summary>
         /// Swap out the item if it is better
         /// 
