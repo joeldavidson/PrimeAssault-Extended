@@ -169,7 +169,7 @@
                                         Style="{StaticResource IndexLabel}"
                                         Text="Necklace"
                                            Grid.Column="4"
-                                           Grid.Row="1"
+                                           Grid.Row="2"
                                            ></Label>
                                 <ImageButton x:Name="NecklaceItem"
                                                 HorizontalOptions="FillAndExpand"
@@ -191,7 +191,7 @@
                                         Style="{StaticResource IndexLabel}"
                                         Text="Hand"
                                            Grid.Column="5"
-                                           Grid.Row="0"
+                                           Grid.Row="1"
                                            ></Label>
 
                                 <ImageButton x:Name="Head"
@@ -211,7 +211,7 @@
                                         Style="{StaticResource IndexLabel}"
                                         Text="Feet"
                                            Grid.Column="5"
-                                           Grid.Row="2"
+                                           Grid.Row="3"
                                            ></Label>
                                 <ImageButton x:Name="FeetItem"
                                                 HorizontalOptions="FillAndExpand"
@@ -232,7 +232,7 @@
                                         Style="{StaticResource IndexLabel}"
                                         Text="R Hand"
                                            Grid.Column="6"
-                                           Grid.Row="0"
+                                           Grid.Row="1"
                                            ></Label>
                                 <ImageButton x:Name="PrimaryHandItem"                                 
                                                 HorizontalOptions="FillAndExpand"
@@ -251,7 +251,7 @@
                                         Style="{StaticResource IndexLabel}"
                                         Text="R Finger"
                                            Grid.Column="6"
-                                           Grid.Row="2"
+                                           Grid.Row="3"
                                            ></Label>
                                 <ImageButton  x:Name="RightFingerItem"
                                                 HorizontalOptions="FillAndExpand"
@@ -272,7 +272,7 @@
                                         Style="{StaticResource IndexLabel}"
                                         Text="L Hand"
                                            Grid.Column="7"
-                                           Grid.Row="0"
+                                           Grid.Row="1"
                                            ></Label>
                                 <ImageButton x:Name="OffhandItem"
                                                 HorizontalOptions="FillAndExpand"
@@ -291,7 +291,7 @@
                                         Style="{StaticResource IndexLabel}"
                                         Text="L Finger"
                                            Grid.Column="7"
-                                           Grid.Row="2"
+                                           Grid.Row="3"
                                            ></Label>
                                 <ImageButton x:Name="LeftFingerItem"
                                                 HorizontalOptions="FillAndExpand"
