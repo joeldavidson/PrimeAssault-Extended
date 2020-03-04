@@ -450,58 +450,5 @@ namespace PrimeAssault.Views
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-        /// <summary>
-        /// Next Button is based on the count
-        /// 
-        /// If no selected characters, disable
-        /// 
-        /// 
-        /// </summary>
-        private void UpdateNextButtonState()
-        {
-            // If no characters disable Next button
-            AttackButton.IsEnabled = true;
-
-            var currentCount = EngineViewModel.PartyCharacterList.Count();
-            if (currentCount == 0)
-            {
-                AttackButton.IsEnabled = false;
-            }
-
-        }
-
-        /// <summary>
-        /// Clear out the old list and make the new list
-        /// </summary>
-        public void CreateEngineCharacterList()
-        {
-            // Clear the currett list
-            EngineViewModel.Engine.CharacterList.Clear();
-
-            // Load the Characters into the Engine
-            foreach (var data in EngineViewModel.PartyCharacterList)
-            {
-                EngineViewModel.Engine.CharacterList.Add(new PlayerInfoModel(data));
-            }
-        }
-
-        /// <summary>
-        /// Refresh the list on page appearing
-        /// </summary>
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            // Clear the Binding
-            BindingContext = null;
-
-            EngineViewModel.PartyCharacterList.Clear();
-
-            // Force the Binding to Update
-            BindingContext = EngineViewModel;
-
-            UpdateNextButtonState();
-        }
     }
 }
