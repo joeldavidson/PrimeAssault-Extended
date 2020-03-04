@@ -53,8 +53,10 @@ namespace PrimeAssault.Views
             CharactersListView.SelectedItem = null;
 
             // Don't add more than the party max
-            if (EngineViewModel.PartyCharacterList.Count() < EngineViewModel.Engine.MaxNumberPartyCharacters)
+            if (EngineViewModel.PartyCharacterList.Count() < EngineViewModel.Engine.MaxNumberPartyCharacters && !EngineViewModel.PartyCharacterList.Contains(data))
             {
+                //Should not allow for duplicate characters(?)
+
                 EngineViewModel.PartyCharacterList.Add(data);
             }
 
