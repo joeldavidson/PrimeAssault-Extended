@@ -303,4 +303,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\vs.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\darkbackground.jpg" />
+  </ItemGroup>
 </Project>
