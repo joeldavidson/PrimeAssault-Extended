@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PrimeAssault.Views.BattlePage">
+             x:Class="PrimeAssault.Views.BattlePage"
+             BackgroundImageSource="sewer_background.jpg">
     
     
     <ContentPage.ToolbarItems>
@@ -70,7 +71,7 @@
                 HorizontalOptions="FillAndExpand"
                 Grid.Row="9"
                 Grid.RowSpan="6"
-                Grid.Column="1"
+                Grid.Column="2"
                 Grid.ColumnSpan="9"/>
             <!--Center Buttons END-->
 
