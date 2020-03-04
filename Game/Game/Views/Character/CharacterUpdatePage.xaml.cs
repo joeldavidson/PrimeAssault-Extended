@@ -183,9 +183,10 @@ namespace PrimeAssault.Views
                 // Add a event to the user can click the item and see more
                 ItemButton.Clicked += (sender, args) => ShowPopup(location);
             }
-            
+
 
             // Add the Display Text for the item
+            //Unused for now
             var ItemLabel = new Label
             {
                 Text = location.ToMessage(),
@@ -202,7 +203,7 @@ namespace PrimeAssault.Views
                 HorizontalOptions = LayoutOptions.Center,
                 Children = {
                     ItemButton,
-                    ItemLabel
+                   // ItemLabel
                 },
             };
             return ItemStack;
