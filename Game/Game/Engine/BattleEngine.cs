@@ -18,6 +18,7 @@ namespace PrimeAssault.Engine
         /// <returns></returns>
         public bool PopulateCharacterList(CharacterModel data)
         {
+            
             CharacterList.Add(new PlayerInfoModel(data));
 
             return true;

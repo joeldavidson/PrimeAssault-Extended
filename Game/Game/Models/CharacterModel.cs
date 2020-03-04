@@ -22,7 +22,6 @@ namespace PrimeAssault.Models
         public CharacterModel()
         {
             PlayerType = PlayerTypeEnum.Character;
-            Guid = Id;
             Name = RandomPlayerHelper.GetCharacterName(); ;
             Description = RandomPlayerHelper.GetCharacterDescription();
             Attack = 5;
