@@ -221,7 +221,7 @@
     <AndroidResource Include="Resources\drawable\Records.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\BeffJezos.png" />
+    <AndroidResource Include="Resources\drawable\beffjezos.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\gear.png" />
