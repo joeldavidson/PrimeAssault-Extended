@@ -30,8 +30,9 @@ namespace PrimeAssault.Models
         // Where the Item goes on the character.  Head, Foot etc.
         public ItemLocationEnum Location { get; set; } = ItemLocationEnum.Unknown;
 
-        // The int value of an item when being sold
+        // The int value of an item when being sold (Cumulative value of all stat effects)
         public int Value { get; set; } = 0;
+
         //the string value
         public string valueString { get; set; } = "0g";
         public int attackValue { get; set; } = 0;
@@ -43,6 +44,7 @@ namespace PrimeAssault.Models
         public int speedValue { get; set; } = 0;
         //How much health the item adds
         public int healthValue { get; set; } = 0;
+
         //What the attack multiplier for the item is
         public double attackMult { get; set; } = 0;
         //What the defense multiplier for the item has
@@ -71,6 +73,7 @@ namespace PrimeAssault.Models
         public ItemModel()
         {
             ImageURI = ItemService.DefaultImageURI;
+            Value = GetValue();
         }
 
         /// <summary>
@@ -111,7 +114,7 @@ namespace PrimeAssault.Models
         //Gets the cash value of an item. This is the amount the item will be sold for. 
         int GetValue()
         {
-            return attackValue + defenseValue + rangedDefenseValue + speedValue + healthValue;
+            return (int)((attackValue + defenseValue + rangedDefenseValue + speedValue + healthValue) * (1 + attackMult + defenseMult + rangedDefenseMult + speedMult + healthMult));
         }
         /// <summary>
         /// Helper to combine the attributes into a single line, to make it easier to display the item as a string

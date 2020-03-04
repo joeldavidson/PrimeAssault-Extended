@@ -64,7 +64,7 @@
 
             <StackLayout Orientation ="Horizontal" HorizontalOptions="CenterAndExpand">
                 <Label Text="Ability: " FontSize="Small" TextColor="AntiqueWhite"></Label>
-                <Label Text="{Binding Data.Ability}" FontSize="Small" TextColor="AntiqueWhite"></Label>
+                <Label Text="{Binding Data.Ability.Name}" FontSize="Small" TextColor="AntiqueWhite"></Label>
             </StackLayout>
 
             <Label
