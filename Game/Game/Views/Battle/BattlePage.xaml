@@ -70,7 +70,7 @@
                 HorizontalOptions="FillAndExpand"
                 Grid.Row="9"
                 Grid.RowSpan="6"
-                Grid.Column="1"
+                Grid.Column="2"
                 Grid.ColumnSpan="9"/>
             <!--Center Buttons END-->
 
