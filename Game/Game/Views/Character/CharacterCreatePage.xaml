@@ -9,68 +9,287 @@
         <ToolbarItem Text="Save" Clicked="Save_Clicked" IconImageSource="icon_save.png"/>
     </ContentPage.ToolbarItems>
 
-
     <ContentPage.Content>
+        <AbsoluteLayout
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand">
 
-        <StackLayout 
+            <StackLayout 
             
             Padding="40,20,40,20">
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal">
 
-            <Image Source="{Binding Data.ImageURI}" HeightRequest="150" WidthRequest="150" HorizontalOptions="Center"></Image>
-            <Label TextColor="Aqua" HorizontalOptions="Center" FontSize="Header">ANDROID LAB</Label>
-            <Image Source="TempProfile.png"></Image>
 
-            <Entry  Text ="{Binding Data.Name}"  Placeholder="Name" FontSize="Small" />
-            <Picker x:Name="pick"
+                    <Image Source="{Binding Data.ImageURI}" HeightRequest="150" WidthRequest="150" HorizontalOptions="Center"></Image>
+                    <Grid
+                    x:Name="Equipment">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100" />
+                            <RowDefinition Height="100" />
+                            <RowDefinition Height="100" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label 
+                        Style="{StaticResource IndexLabel}"
+                        Text="Necklace"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            ></Label>
+                        <ImageButton x:Name="NecklaceItem"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        BackgroundColor="##803f035f"
+                        CornerRadius="20"
+                        BorderWidth="1"
+                        BorderColor="Aqua"
+                        ></ImageButton>
+
+
+                        <Label 
+                        Style="{StaticResource IndexLabel}"
+                        Text="Head"
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            ></Label>
+
+                        <ImageButton x:Name="Head"
+                        Source="{Binding Data.Head, Source={Binding imageURI}}"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        BackgroundColor="##803f035f"
+                        CornerRadius="20"
+                        BorderWidth="1"
+                        BorderColor="Aqua"
+                        ></ImageButton>
+                        <Label 
+                        Style="{StaticResource IndexLabel}"
+                        Text="Feet"
+                            Grid.Column="1"
+                            Grid.Row="2"
+                            ></Label>
+                        <ImageButton x:Name="FeetItem"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        BackgroundColor="##803f035f"
+                        CornerRadius="20"
+                        BorderWidth="1"
+                        BorderColor="Aqua"
+                        ></ImageButton>
+
+                        <Label 
+                        Style="{StaticResource IndexLabel}"
+                        Text="Primary Hand"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                        
+                            ></Label>
+                        <ImageButton x:Name="PrimaryHandItem"                                     
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Grid.Column="2"
+                        Grid.Row="1"
+                        BackgroundColor="##803f035f"
+                        CornerRadius="20"
+                        BorderWidth="1"
+                        BorderColor="Aqua"
+                        ></ImageButton>
+
+                        <Label 
+                        Style="{StaticResource IndexLabel}"
+                        Text="R Finger"
+                            Grid.Column="2"
+                            Grid.Row="2"
+                            ></Label>
+                        <ImageButton  x:Name="RightFingerItem"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Grid.Column="2"
+                        Grid.Row="2"
+                        BackgroundColor="##803f035f"
+                        CornerRadius="40"
+                        BorderWidth="1"
+                        BorderColor="Aqua"
+                        ></ImageButton>
+
+                        <Label 
+                        Style="{StaticResource IndexLabel}"
+                        Text="Off Hand"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            ></Label>
+                        <ImageButton x:Name="OffhandItem"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        BackgroundColor="##803f035f"
+                        CornerRadius="20"
+                        BorderWidth="1"
+                        BorderColor="Aqua"
+                        ></ImageButton>
+
+                        <Label 
+                        Style="{StaticResource IndexLabel}"
+                        Text="L Finger"
+                            Grid.Column="0"
+                            Grid.Row="2"
+                            ></Label>
+                        <ImageButton x:Name="LeftFingerItem"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        BackgroundColor="##803f035f"
+                        CornerRadius="40"
+                        BorderWidth="1"
+                        BorderColor="Aqua"
+                    CommandParameter="{Binding id}"
+                        ></ImageButton>
+
+                    </Grid>
+                </StackLayout>
+
+                <Label TextColor="Aqua" HorizontalOptions="Center" FontSize="Header">ANDROID LAB</Label>
+                <Image Source="TempProfile.png"></Image>
+
+                <Entry  Text ="{Binding Data.Name}"  Placeholder="Name" FontSize="Small" />
+                <Picker x:Name="pick"
                     Style="{StaticResource ClassPicker}"
             Title="Class"
             SelectedItem="{Binding Data.JobClass}"
             >
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Soldier</x:String>
-                        <x:String>Hunter</x:String>
-                        <x:String>Brawler</x:String>
-                        <x:String>Mechanist</x:String>
-                        <x:String>Mechanic</x:String>
-                        <x:String>Ringleader</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Soldier</x:String>
+                            <x:String>Hunter</x:String>
+                            <x:String>Brawler</x:String>
+                            <x:String>Mechanist</x:String>
+                            <x:String>Mechanic</x:String>
+                            <x:String>Ringleader</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
 
 
-            <Grid>
+                <Grid>
 
-                <Label Style="{StaticResource StatsLabel}" Text="LVL" Grid.Column="0"/>
-                <Label Style="{StaticResource StatsLabel}" Text="ATK"  Grid.Column="1"/>
-                <Label Style="{StaticResource StatsLabel}" Text="DEF" Grid.Column="2"/>
-                <Label Style="{StaticResource StatsLabel}" Text="RDF" Grid.Column="3"/>
-                <Label Style="{StaticResource StatsLabel}" Text="SPD" Grid.Column="4"/>
+                    <Label Style="{StaticResource StatsLabel}" Text="LVL" Grid.Column="0"/>
+                    <Label Style="{StaticResource StatsLabel}" Text="ATK"  Grid.Column="1"/>
+                    <Label Style="{StaticResource StatsLabel}" Text="DEF" Grid.Column="2"/>
+                    <Label Style="{StaticResource StatsLabel}" Text="RDF" Grid.Column="3"/>
+                    <Label Style="{StaticResource StatsLabel}" Text="SPD" Grid.Column="4"/>
 
-                <Picker         
+                    <Picker         
                        Grid.Row="1" Grid.Column="0"
                                 SelectedItem="{Binding SelectedItemProperty}" 
                                 SelectedIndexChanged="Level_Changed"
                                 TextColor="Black"
                                 x:Name="LevelPicker"/>
 
-                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Attack}"  Grid.Column="1"/>
-                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Defense}"  Grid.Column="2"/>
-                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.RangedDefense}"  Grid.Column="3"/>
-                <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Speed}" Grid.Column="4"/>
+                    <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Attack}"  Grid.Column="1"/>
+                    <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Defense}"  Grid.Column="2"/>
+                    <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.RangedDefense}"  Grid.Column="3"/>
+                    <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Speed}" Grid.Column="4"/>
 
 
-                <Label Style="{StaticResource StatsLabel}" Text="Max HP" Grid.Row="2" Grid.Column="0"/>
+                    <Label Style="{StaticResource StatsLabel}" Text="Max HP" Grid.Row="2" Grid.Column="0"/>
 
-                <Label 
+                    <Label 
                                 x:Name="MaxHealthValue"
                     Grid.Row="2"
                     Grid.Column='1'
                                 Text="{Binding Data.MaxHealth, StringFormat= '{0:G} hp'}" 
                                 Style="{StaticResource HealthStyle}"/>
 
-            </Grid>
+                </Grid>
 
-        </StackLayout>
+            </StackLayout>
+            <!--The Item Popup-->
+            <ContentView x:Name="PopupItemSelector" 
+                 BackgroundColor="{StaticResource PageBackgroundColor}" 
+                 IsVisible="false" 
+                 AbsoluteLayout.LayoutBounds=".5, .5,.5,.5" 
+                 AbsoluteLayout.LayoutFlags="All">
+
+                <StackLayout 
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="300"
+                    HeightRequest="300"
+                    >
+
+                    <Frame  BorderColor="{StaticResource TriciaryTextColor}" Padding="1">
+                        <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="CenterAndExpand" Padding="2">
+                            <Label x:Name="PopupLocationLabel" Style="{StaticResource PopupItemTextStyle}" />
+                            <Label x:Name="PopupLocationValue" Style="{StaticResource PopupItemTextStyle}" />
+
+                            <ListView x:Name="PopupLocationItemListView" 
+                                CachingStrategy="RecycleElement"
+                                ItemSelected="OnPopupItemSelected"
+                                HasUnevenRows="true"
+                                Margin="5,0,5,0"
+                                RowHeight="80"
+                                >
+
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid ColumnSpacing="5" RowSpacing="1">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+
+                                                <Image  Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
+                                            Source="{Binding ImageURI}"
+                                            Style="{StaticResource ImageSmallStyle}"
+                                            VerticalOptions="CenterAndExpand"/>
+
+                                                <Label Grid.Column="1" Grid.Row="0"
+                                            Text="{Binding Name}" 
+                                            Style="{StaticResource ListStyle}"/>
+
+                                                <StackLayout Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+                                                    <Label Text="{Binding Attribute}" Style="{StaticResource ListStyle}"/>
+                                                    <Label Text="{Binding Value}" Style="{StaticResource ListStyle}"/>
+                                                </StackLayout>
+
+                                                <Label Grid.Column="1" Grid.Row="2"
+                                                Text="{Binding Description}" 
+                                                Style="{StaticResource ListStyle}"
+                                                FontSize="Micro"/>
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+                            <Button x:Name="PopupCloseButton" 
+                                Clicked="ClosePopup_Clicked" 
+                                Text="Close"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ContentView>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

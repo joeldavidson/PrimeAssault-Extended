@@ -1,15 +1,12 @@
 ﻿using System;
-using PrimeAssault.Helpers;
-using PrimeAssault.Models;
-using PrimeAssault.ViewModels;
-
-
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using PrimeAssault.Models;
+using PrimeAssault.ViewModels;
 using System.ComponentModel;
+using PrimeAssault.Helpers;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -28,6 +25,8 @@ namespace PrimeAssault.Views
     {
         // The Char to create
         PlayerCharacterViewModel ViewModel { get; set; }
+
+        public ItemLocationEnum PopupLocationEnum = ItemLocationEnum.Unknown;
 
         /// <summary>
         /// Constructor for Create makes a new model
@@ -68,17 +67,168 @@ namespace PrimeAssault.Views
 
             ManageHealth();
 
+            AddItemsToDisplay();
+
+            return true;
+        }
+
+
+        /// <summary>
+        /// The row selected from the list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void OnPopupItemSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            ItemModel data = args.SelectedItem as ItemModel;
+            if (data == null)
+            {
+                return;
+            }
+
+            ViewModel.Data.AddItem(PopupLocationEnum, data.Id);
+
+            AddItemsToDisplay();
+
+            ClosePopup();
+        }
+
+        /// <summary>
+        /// Show the Popup for Selecting Items
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
+        public bool ShowPopup(ItemLocationEnum location)
+        {
+            PopupItemSelector.IsVisible = true;
+
+            PopupLocationLabel.Text = "Items for :";
+            PopupLocationValue.Text = location.ToMessage();
+
+            // Make a fake item for None
+            var NoneItem = new ItemModel
+            {
+                Id = null, // will use null to clear the item
+                Guid = "None", // how to find this item amoung all of them
+                ImageURI = "icon_cancel.png",
+                Name = "None",
+                Description = "None"
+            };
+
+            List<ItemModel> itemList = new List<ItemModel>
+            {
+                NoneItem
+            };
+
+            // Add the rest of the items to the list
+            itemList.AddRange(ItemIndexViewModel.Instance.GetLocationItems(location));
+
+            // Populate the list with the items
+            PopupLocationItemListView.ItemsSource = itemList;
+
+            // Remember the location for this popup
+            PopupLocationEnum = location;
 
             return true;
         }
 
         /// <summary>
-        /// The Level selected from the list
-        /// Need to recalculate Max Health
+        /// When the user clicks the close in the Popup
+        /// hide the view
+        /// show the scroll view
         /// </summary>
         /// <param name="sender"></param>
-        /// <param name="args"></param>
-        public void Level_Changed(object sender, EventArgs args)
+        /// <param name="e"></param>
+        public void ClosePopup_Clicked(object sender, EventArgs e)
+        {
+            ClosePopup();
+        }
+
+        /// <summary>
+        /// Close the popup
+        /// </summary>
+        public void ClosePopup()
+        {
+            PopupItemSelector.IsVisible = false;
+        }
+
+        public void AddItemsToDisplay()
+        {
+            var GridChild = Equipment.Children;
+
+            Equipment.Children.Add(GetItemToDisplay(ItemLocationEnum.Head), 1, 0);
+            Equipment.Children.Add(GetItemToDisplay(ItemLocationEnum.Necklass), 1, 1);
+            Equipment.Children.Add(GetItemToDisplay(ItemLocationEnum.PrimaryHand), 2, 1);
+            Equipment.Children.Add(GetItemToDisplay(ItemLocationEnum.OffHand), 0, 1);
+            Equipment.Children.Add(GetItemToDisplay(ItemLocationEnum.RightFinger), 2, 2);
+            Equipment.Children.Add(GetItemToDisplay(ItemLocationEnum.LeftFinger), 0, 2);
+            Equipment.Children.Add(GetItemToDisplay(ItemLocationEnum.Feet), 1, 2);
+        }
+
+        public StackLayout GetItemToDisplay(ItemLocationEnum location)
+        {
+            // Defualt Image is the Plus
+            var ImageSource = "";
+            var ClickableButton = true;
+
+            var data = ViewModel.Data.GetItemByLocation(location);
+            if (data == null)
+            {
+                // Show the Default Icon for the Location
+                data = new ItemModel { Location = location, ImageURI = ImageSource };
+
+                // Turn off click action
+                //ClickableButton = false;
+            }
+
+            // Hookup the Image Button to show the Item picture
+            var ItemButton = new ImageButton
+            {
+                Style = (Style)Application.Current.Resources["ImageMediumStyle"],
+                Source = data.ImageURI,
+
+
+            };
+
+
+            if (ClickableButton)
+            {
+                // Add a event to the user can click the item and see more
+                ItemButton.Clicked += (sender, args) => ShowPopup(location);
+            }
+
+
+            // Add the Display Text for the item
+            //Unused for now
+            var ItemLabel = new Label
+            {
+                Text = location.ToMessage(),
+                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
+                HorizontalOptions = LayoutOptions.Center,
+                HorizontalTextAlignment = TextAlignment.Center
+            };
+
+            // Put the Image Button and Text inside a layout
+            var ItemStack = new StackLayout
+            {
+                Padding = 3,
+                Style = (Style)Application.Current.Resources["ItemImageBox"],
+                HorizontalOptions = LayoutOptions.Center,
+                Children = {
+                    ItemButton,
+                   // ItemLabel
+                },
+            };
+            return ItemStack;
+        }
+
+            /// <summary>
+            /// The Level selected from the list
+            /// Need to recalculate Max Health
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="args"></param>
+            public void Level_Changed(object sender, EventArgs args)
         {
             // Change the Level
             ViewModel.Data.Level = LevelPicker.SelectedIndex + 1;
