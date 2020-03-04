@@ -23,7 +23,11 @@
         <StackLayout 
             
             Padding="40,20,40,20">
-
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal">
+                    
+                
                 <Image Source="{Binding Data.ImageURI}" HeightRequest="150" WidthRequest="150" HorizontalOptions="Center"></Image>
                 <Grid
                     x:Name="Equipment">
@@ -34,10 +38,10 @@
                         <RowDefinition Height="75" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="100" />
+                         <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
 
                     <Label 
                         Style="{StaticResource IndexLabel}"
@@ -162,7 +166,9 @@
                         ></ImageButton>
 
                 </Grid>
-                <Label TextColor="Aqua" HorizontalOptions="Center" FontSize="Header">ANDROID LAB</Label>
+                </StackLayout>
+                    
+                    <Label TextColor="Aqua" HorizontalOptions="Center" FontSize="Header">ANDROID LAB</Label>
                 <Image Source="TempProfile.png"></Image>
 
                 <Entry  Text ="{Binding Data.Name}"  Placeholder="Name" FontSize="Small" />
