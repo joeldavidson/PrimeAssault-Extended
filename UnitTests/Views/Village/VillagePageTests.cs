@@ -14,13 +14,13 @@ using Xamarin.Forms;
 namespace UnitTests.Views
 {
     [TestFixture]
-    public class VillagePageTests
+    public class SafeHousePageTests
     {
         App app;
-        VillagePage page;
+        SafeHousePage page;
 
         // Base Constructor
-        //public VillagePageTests() : base(true) { }
+        //public SafeHousePageTests() : base(true) { }
 
         [SetUp]
         public void Setup()
@@ -32,7 +32,7 @@ namespace UnitTests.Views
             app = new App();
             Application.Current = app;
 
-            page = new VillagePage();
+            page = new SafeHousePage();
         }
 
         [TearDown]
@@ -42,7 +42,7 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void VillagePage_Constructor_Default_Should_Pass()
+        public void SafeHousePage_Constructor_Default_Should_Pass()
         {
             // Arrange
 
@@ -56,7 +56,7 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void VillagePage_ItemsButton_Clicked_Default_Should_Pass()
+        public void SafeHousePage_ItemsButton_Clicked_Default_Should_Pass()
         {
             // Arrange
             // Act
@@ -69,7 +69,7 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void VillagePage_CharactersButton_Clicked_Default_Should_Pass()
+        public void SafeHousePage_CharactersButton_Clicked_Default_Should_Pass()
         {
             // Arrange
             // Act
@@ -82,7 +82,7 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void VillagePage_MonstersButton_Clicked_Default_Should_Pass()
+        public void SafeHousePage_MonstersButton_Clicked_Default_Should_Pass()
         {
             // Arrange
             // Act
@@ -95,7 +95,7 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void VillagePage_ScoresButton_Clicked_Default_Should_Pass()
+        public void SafeHousePage_ScoresButton_Clicked_Default_Should_Pass()
         {
             // Arrange
             // Act
