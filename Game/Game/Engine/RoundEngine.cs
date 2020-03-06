@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
+using PrimeAssault.ViewModels;
 using PrimeAssault.Models;
 
 namespace PrimeAssault.Engine
@@ -55,7 +56,17 @@ namespace PrimeAssault.Engine
         /// <returns></returns>
         public int AddMonstersToRound()
         {
-            for (var i = 0; i < MaxNumberPartyMonsters; i++)
+            int i;
+            for (i = MonsterList.Count(); i < MaxNumberPartyCharacters; i++)
+            {
+                foreach (var data in MonsterIndexViewModel.Instance.Dataset)
+                {
+                    MonsterList.Add(new PlayerInfoModel(data));
+                }
+                break;
+            }
+
+            for ( i = MonsterList.Count; i < MaxNumberPartyMonsters; i++)
             {
                 var data = new MonsterModel { Attack=10, CurrentHealth=10};
                 // Help identify which Monster it is
