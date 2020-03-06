@@ -143,7 +143,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual(0, result);
+            Assert.AreEqual(1, result);
         }
 
         [Test]
@@ -158,7 +158,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual(0, result);
+            Assert.AreEqual(1, result);
         }
 
         [Test]
@@ -173,7 +173,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual(0, result);
+            Assert.AreEqual(1, result);
         }
 
         [Test]
@@ -188,7 +188,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual(0, result);
+            Assert.AreEqual(21, result);
         }
 
         [Test]
@@ -203,10 +203,10 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual(0, result);
+            Assert.AreEqual(21, result);
         }
 
-        [Test]
+        [Test] //Dont understand this test... -Joel
         public void BasePlayerModel_GetDamageRollValue_Default_Should_Pass()
         {
             // Arrange
@@ -278,7 +278,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual("", result);
+            Assert.AreEqual("A level " + data.Level + " " + data.Name, result);
         }
 
         [Test]
