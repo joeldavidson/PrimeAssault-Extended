@@ -182,6 +182,7 @@ namespace PrimeAssault.Engine
             BattleMessagesModel.TurnMessageSpecial = string.Empty;
             BattleMessagesModel.AttackStatus = string.Empty;
             BattleMessagesModel.MoveStatus = string.Empty;
+            BattleMessagesModel.DamageAmount = string.Empty;
 
             // Remember Current Player
             BattleMessagesModel.PlayerType = PlayerTypeEnum.Monster;
@@ -258,10 +259,12 @@ namespace PrimeAssault.Engine
                 case HitStatusEnum.Hit:
                     // It's a Hit
                     //Calculate Damage
-                    BattleMessagesModel.DamageAmount = Attacker.GetDamageRollValue();
+                    int damage = Attacker.GetDamageRollValue();
+                    BattleMessagesModel.DamageAmount = (damage.ToString());
 
-                    Target.AugmentHealth(BattleMessagesModel.DamageAmount);
+                    Target.AugmentHealth(damage);
                     BattleMessagesModel.CurrentHealth = Target.CurrentHealth;
+                    BattleMessagesModel.DamageAmount = " for " + BattleMessagesModel.DamageAmount + " damage,";
                     BattleMessagesModel.TurnMessageSpecial = BattleMessagesModel.GetCurrentHealthMessage();
 
                     RemoveIfDead(Target);
@@ -270,7 +273,7 @@ namespace PrimeAssault.Engine
 
             Attacker.DeactivateAbility();
             Target.DeactivateAbility();
-            BattleMessagesModel.TurnMessage = Attacker.Name + BattleMessagesModel.AttackStatus + Target.Name + BattleMessagesModel.MoveStatus + BattleMessagesModel.TurnMessageSpecial;
+            BattleMessagesModel.TurnMessage = Attacker.Name + BattleMessagesModel.AttackStatus + Target.Name + BattleMessagesModel.MoveStatus + BattleMessagesModel.DamageAmount + BattleMessagesModel.TurnMessageSpecial;
             Debug.WriteLine(BattleMessagesModel.TurnMessage);
 
             return true;
@@ -509,7 +512,7 @@ namespace PrimeAssault.Engine
                 
                 // Miss
                 BattleMessagesModel.HitStatus = HitStatusEnum.Miss;
-                BattleMessagesModel.DamageAmount = 0;
+                BattleMessagesModel.DamageAmount = "0";
                 return BattleMessagesModel.HitStatus;
             }
 
