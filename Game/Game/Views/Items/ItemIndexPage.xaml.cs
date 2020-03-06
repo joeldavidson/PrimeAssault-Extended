@@ -14,10 +14,15 @@ namespace PrimeAssault.Views
     /// Index Page
     /// </summary>
     [DesignTimeVisible(false)]
+
+
     public partial class ItemIndexPage : ContentPage
     {
         // The view model, used for data binding
         readonly ItemIndexViewModel ViewModel = ItemIndexViewModel.Instance;
+
+        // Empty Constructor for UTs
+        public ItemIndexPage(bool UnitTest) { }
 
         /// <summary>
         /// Constructor for Index Page
@@ -36,7 +41,7 @@ namespace PrimeAssault.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        public async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
             ItemModel item = args.SelectedItem as ItemModel;
             if (item == null)
@@ -45,7 +50,7 @@ namespace PrimeAssault.Views
             }
 
             // Open the Read Page
-            await Navigation.PushAsync(new ItemReadPage(new ItemViewModel(item)));
+            await Navigation.PushAsync(new ItemReadPage(new GenericViewModel<ItemModel>(item)));
 
             // Manually deselect item.
             ItemsListView.SelectedItem = null;
@@ -56,9 +61,9 @@ namespace PrimeAssault.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        async void AddItem_Clicked(object sender, EventArgs e)
+        public async void AddItem_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new ItemCreatePage(new ItemViewModel())));
+            await Navigation.PushModalAsync(new NavigationPage(new ItemCreatePage()));
         }
 
         /// <summary>
@@ -85,22 +90,22 @@ namespace PrimeAssault.Views
             BindingContext = ViewModel;
         }
 
-        async void Attack_Clicked(object sender, EventArgs e)
+        public async void Attack_Clicked(object sender, EventArgs e)
         {
             await DisplayAlert("Character Attack", "The Attack stat helps determine how much damage the unit will deal! The higher the better!", "Dismiss");
         }
 
-        async void Defense_Clicked(object sender, EventArgs e)
+        public async void Defense_Clicked(object sender, EventArgs e)
         {
             await DisplayAlert("Character Defense", "The Defense stat helps determine how much damage the unit will take! The higher the better!", "Dismiss");
         }
 
-        async void RangedDefense_Clicked(object sender, EventArgs e)
+        public async void RangedDefense_Clicked(object sender, EventArgs e)
         {
             await DisplayAlert("Character Ranged Defense", "The Ranged Defense stat helps determine if the unit will get hit! The higher the better!", "Dismiss");
         }
 
-        async void Speed_Clicked(object sender, EventArgs e)
+        public async void Speed_Clicked(object sender, EventArgs e)
         {
             await DisplayAlert("Character Speed", "The Speed stat helps determine if the unit will get hit! The higher the better!", "Dismiss");
         }

@@ -17,7 +17,10 @@ namespace PrimeAssault.Views
     public partial class ItemReadPage : ContentPage
     {
         // View Model for Item
-        ItemViewModel ViewModel;
+        GenericViewModel<ItemModel> ViewModel;
+
+        // Empty Constructor for UTs
+        public ItemReadPage(bool UnitTest) { }
 
         /// <summary>
         /// Constructor called with a view model
@@ -25,7 +28,7 @@ namespace PrimeAssault.Views
         /// The viewModel is the data that should be displayed
         /// </summary>
         /// <param name="viewModel"></param>
-        public ItemReadPage(ItemViewModel data)
+        public ItemReadPage(GenericViewModel<ItemModel> data)
         {
             InitializeComponent();
 
@@ -37,7 +40,7 @@ namespace PrimeAssault.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        async void Update_Clicked(object sender, EventArgs e)
+        public async void Update_Clicked(object sender, EventArgs e)
         {
             // If the image in the data box is empty, use the default one..
             if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
@@ -45,8 +48,8 @@ namespace PrimeAssault.Views
                 ViewModel.Data.ImageURI = Services.ItemService.DefaultImageURI;
             }
 
-            MessagingCenter.Send(this, "Update", ViewModel.Data);
-            await Navigation.PopModalAsync();
+            await Navigation.PushModalAsync(new NavigationPage(new ItemUpdatePage(ViewModel)));
+            await Navigation.PopAsync();
         }
 
         /// <summary>
@@ -54,9 +57,9 @@ namespace PrimeAssault.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        async void Delete_Clicked(object sender, EventArgs e)
+        public async void Delete_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new ItemDeletePage(new ItemViewModel(ViewModel.Data))));
+            await Navigation.PushModalAsync(new NavigationPage(new ItemDeletePage(ViewModel)));
             await Navigation.PopAsync();
         }
     }
