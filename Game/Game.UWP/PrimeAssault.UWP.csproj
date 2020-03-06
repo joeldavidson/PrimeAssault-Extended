@@ -186,7 +186,6 @@
     <BundleResource Include="ScoreIndex.jpg" />
     <BundleResource Include="ScoreRead.jpg" />
     <BundleResource Include="ScoreUpdate.jpg" />
-    <Content Include="sewers.jpg" />
     <Content Include="sewer_background.jpg" />
     <Content Include="sewer_gator.png" />
     <Content Include="shieldRobot.png" />
@@ -198,7 +197,6 @@
     <Content Include="village.jpg" />
     <Content Include="village.png" />
     <Content Include="vs.png" />
-    <Content Include="wiremesh.png" />
     <Content Include="Workshop.png" />
     <Content Include="xamarin_logo.png" />
     <Content Include="add.png" />

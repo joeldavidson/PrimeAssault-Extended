@@ -307,9 +307,6 @@
     <BundleResource Include="Resources\darkbackground.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\wiremesh.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\battleback.png" />
   </ItemGroup>
 </Project>

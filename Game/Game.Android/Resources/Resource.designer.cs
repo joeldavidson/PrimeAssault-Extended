@@ -5951,10 +5951,7 @@ namespace Game.Droid
 			public const int vs = 2131165353;
 			
 			// aapt resource value: 0x7F0700AA
-			public const int wiremesh = 2131165354;
-			
-			// aapt resource value: 0x7F0700AB
-			public const int xamarin_logo = 2131165355;
+			public const int xamarin_logo = 2131165354;
 			
 			static Drawable()
 			{
