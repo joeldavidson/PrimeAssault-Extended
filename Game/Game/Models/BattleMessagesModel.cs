@@ -33,7 +33,7 @@
         public string LevelUpMessage = string.Empty;
 
         // Amount of Damage
-        public int DamageAmount = 0;
+        public string DamageAmount = string.Empty;
         
         // The Remaining Health Mesage
         public int CurrentHealth = 0;
