@@ -52,10 +52,10 @@
             <!--BEGIN: Row 1-->
             <RelativeLayout 
                 Grid.Row="1"
-                Grid.RowSpan="2"
+                Grid.RowSpan="3"
                 Grid.Column="0"
                 Grid.ColumnSpan="6"
-                VerticalOptions="Start"
+                VerticalOptions="Fill"
                 HorizontalOptions="FillAndExpand">
                 <ListView 
                     x:Name="PartyListView" 
@@ -64,8 +64,9 @@
                     RefreshCommand="{Binding LoadItemsCommand}"
                     CachingStrategy="RecycleElement"
                     ItemSelected="OnPartyCharacterItemSelected"
-                    VerticalOptions="Fill"
-                    HorizontalOptions="Center"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="Fill"
+                    Grid.ColumnSpan="3"
                     Rotation="270"
                     RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-50}"
                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=-0.5, Constant=50}"
@@ -77,11 +78,10 @@
                             <ViewCell>
                                 <ContentView
                                         Rotation="90">
-
                                     <Grid
                                         >
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
@@ -89,7 +89,6 @@
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
-
 
                                         <Label Grid.Column="0" Grid.Row="0"
                                                 Text="" 
@@ -106,7 +105,7 @@
                                                 Text="" 
                                                 Style="{StaticResource ListStyle}"/>
 
-                                        <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="2"
+                                        <Image Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2"
                                                 Source="{Binding ImageURI}"                                               
                                                 Style="{StaticResource ImageMediumStyle}"
                                                 VerticalOptions="FillAndExpand"
