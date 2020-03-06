@@ -111,7 +111,7 @@ namespace UnitTests.Views
             // Arrange
 
             // Act
-            await page.NavigateFromMenu((int)MenuItemEnum.Village);
+            await page.NavigateFromMenu((int)MenuItemEnum.SafeHouse);
 
             // Reset
 

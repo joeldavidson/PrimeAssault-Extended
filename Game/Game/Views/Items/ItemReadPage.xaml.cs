@@ -39,8 +39,14 @@ namespace PrimeAssault.Views
         /// <param name="e"></param>
         async void Update_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new ItemUpdatePage(new ItemViewModel(ViewModel.Data))));
-            await Navigation.PopAsync();
+            // If the image in the data box is empty, use the default one..
+            if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
+            {
+                ViewModel.Data.ImageURI = Services.ItemService.DefaultImageURI;
+            }
+
+            MessagingCenter.Send(this, "Update", ViewModel.Data);
+            await Navigation.PopModalAsync();
         }
 
         /// <summary>

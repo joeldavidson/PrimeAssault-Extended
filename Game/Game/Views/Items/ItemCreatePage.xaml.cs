@@ -18,6 +18,9 @@ namespace PrimeAssault.Views
         // The item to create
         ItemViewModel ViewModel { get; set; }
 
+        // Empty Constructor for UTs
+        public ItemCreatePage(bool UnitTest) { }
+
         /// <summary>
         /// Constructor for Create makes a new model
         /// </summary>

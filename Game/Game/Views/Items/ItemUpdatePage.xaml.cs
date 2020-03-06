@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using Xamarin.Forms;
 
+using PrimeAssault.Models;
 using PrimeAssault.ViewModels;
 
 namespace PrimeAssault.Views
@@ -16,16 +17,25 @@ namespace PrimeAssault.Views
     public partial class ItemUpdatePage : ContentPage
     {
         // View Model for Item
-        ItemViewModel ViewModel;
+        public GenericViewModel<ItemModel> ViewModel;
+
+        // Empty Constructor for Tests
+        public ItemUpdatePage(bool UnitTest) { }
 
         /// <summary>
         /// Constructor that takes and existing data item
         /// </summary>
-        public ItemUpdatePage(ItemViewModel data)
+        public ItemUpdatePage(GenericViewModel<ItemModel> data)
         {
             InitializeComponent();
 
             BindingContext = this.ViewModel = data;
+
+            this.ViewModel.Title = "Update " + data.Title;
+
+            //Need to make the SelectedItem a string, so it can select the correct item.
+            pick.SelectedItem = data.Data.Location.ToString();
+            pick.SelectedItem = data.Data.Attribute.ToString();
         }
 
         /// <summary>
@@ -33,7 +43,7 @@ namespace PrimeAssault.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        async void Save_Clicked(object sender, EventArgs e)
+        public async void Save_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "Update", ViewModel.Data);
             await Navigation.PopModalAsync();
@@ -44,7 +54,7 @@ namespace PrimeAssault.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        async void Cancel_Clicked(object sender, EventArgs e)
+        public async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
         }

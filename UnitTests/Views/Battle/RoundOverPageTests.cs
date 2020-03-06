@@ -57,7 +57,7 @@ namespace UnitTests.Views
         {
             // Arrange
             // Act
-            page.NextButton_Clicked(null, null);
+            page.CloseButton_Clicked(null, null);
 
             // Reset
 
@@ -70,7 +70,7 @@ namespace UnitTests.Views
         {
             // Arrange
             // Act
-            page.PickItems_Clicked(null, null);
+            page.AutoAssignButton_Clicked(null, null);
 
             // Reset
 
