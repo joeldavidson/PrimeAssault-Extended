@@ -105,6 +105,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="action.png" />
+    <Content Include="Assets\SplashScreen.scale-125.png" />
+    <Content Include="Assets\SplashScreen.scale-150.png" />
     <Content Include="battleboard.jpg" />
     <Content Include="BeffJezos.png" />
     <Content Include="Box2.png" />
