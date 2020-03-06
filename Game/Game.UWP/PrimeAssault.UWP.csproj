@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="action.png" />
+    <Content Include="battleback.png" />
     <Content Include="Assets\SplashScreen.scale-125.png" />
     <Content Include="Assets\SplashScreen.scale-150.png" />
     <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-24.png" />
@@ -185,6 +186,7 @@
     <BundleResource Include="ScoreIndex.jpg" />
     <BundleResource Include="ScoreRead.jpg" />
     <BundleResource Include="ScoreUpdate.jpg" />
+    <Content Include="sewers.jpg" />
     <Content Include="sewer_background.jpg" />
     <Content Include="sewer_gator.png" />
     <Content Include="shieldRobot.png" />
@@ -196,6 +198,7 @@
     <Content Include="village.jpg" />
     <Content Include="village.png" />
     <Content Include="vs.png" />
+    <Content Include="wiremesh.png" />
     <Content Include="Workshop.png" />
     <Content Include="xamarin_logo.png" />
     <Content Include="add.png" />
