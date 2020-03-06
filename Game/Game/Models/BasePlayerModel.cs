@@ -143,6 +143,7 @@ namespace PrimeAssault.Models
             Move2 = "Iron Grip";
             Moves[0] = new MoveModel(MoveHolder.GetMove("Crackshot"));
             Moves[1] = new MoveModel(MoveHolder.GetMove("Iron Grip"));
+            CurrentHealth = GetHealthMax();
         }
 
         /// <summary>
