@@ -1,29 +1,34 @@
 ﻿using System.ComponentModel;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
+using PrimeAssault.Models;
 using PrimeAssault.ViewModels;
 using System;
 
 namespace PrimeAssault.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
-
     /// <summary>
     /// The Read Page
     /// </summary>
     [DesignTimeVisible(false)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemDeletePage : ContentPage
     {
         // View Model for Item
-        ItemViewModel ViewModel;
+        readonly GenericViewModel<ItemModel> viewModel;
+
+        // Empty Constructor for UTs
+        public ItemDeletePage(bool UnitTest) { }
 
         // Constructor for Delete takes a view model of what to delete
-        public ItemDeletePage(ItemViewModel data)
+        public ItemDeletePage(GenericViewModel<ItemModel> data)
         {
             InitializeComponent();
 
-            BindingContext = this.ViewModel = data;
+            BindingContext = this.viewModel = data;
+
+            this.viewModel.Title = "Delete " + data.Title;
         }
 
         /// <summary>
@@ -31,9 +36,9 @@ namespace PrimeAssault.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        async void Delete_Clicked(object sender, EventArgs e)
+        public async void Delete_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "Delete", ViewModel.Data);
+            MessagingCenter.Send(this, "Delete", viewModel.Data);
             await Navigation.PopModalAsync();
         }
 
@@ -42,7 +47,7 @@ namespace PrimeAssault.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        async void Cancel_Clicked(object sender, EventArgs e)
+        public async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
         }

@@ -73,7 +73,7 @@ namespace UnitTests.Views
         {
             // Arrange
             // Act
-            page.VillageButton_Clicked(null, null);
+            page.SafeHouseButton_Clicked(null, null);
 
             // Reset
 

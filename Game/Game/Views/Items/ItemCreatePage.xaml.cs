@@ -3,6 +3,7 @@ using PrimeAssault.ViewModels;
 using System;
 using System.ComponentModel;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace PrimeAssault.Views
 {
@@ -13,10 +14,12 @@ namespace PrimeAssault.Views
     /// Create Item
     /// </summary>
     [DesignTimeVisible(false)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemCreatePage : ContentPage
     {
         // The item to create
-        ItemViewModel ViewModel { get; set; }
+        public GenericViewModel<ItemModel> ViewModel = new GenericViewModel<ItemModel>();
+
 
         // Empty Constructor for UTs
         public ItemCreatePage(bool UnitTest) { }
@@ -24,13 +27,19 @@ namespace PrimeAssault.Views
         /// <summary>
         /// Constructor for Create makes a new model
         /// </summary>
-        public ItemCreatePage(ItemViewModel data)
+        public ItemCreatePage()
         {
             InitializeComponent();
 
-            data.Data = new ItemModel();
+            this.ViewModel.Data = new ItemModel();
 
-            BindingContext = this.ViewModel = data;
+            BindingContext = this.ViewModel;
+
+            this.ViewModel.Title = "Create";
+
+            //Need to make the SelectedItem a string, so it can select the correct item.
+            pick.SelectedItem = ViewModel.Data.Location.ToString();
+            pick.SelectedItem = ViewModel.Data.Attribute.ToString();
         }
 
         /// <summary>
@@ -38,7 +47,7 @@ namespace PrimeAssault.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        async void Save_Clicked(object sender, EventArgs e)
+        public async void Save_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "Create", ViewModel.Data);
             await Navigation.PopModalAsync();
@@ -49,7 +58,7 @@ namespace PrimeAssault.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        async void Cancel_Clicked(object sender, EventArgs e)
+        public async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
         }
@@ -59,7 +68,7 @@ namespace PrimeAssault.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-            protected override bool OnBackButtonPressed()
+        protected override bool OnBackButtonPressed()
         {
             return true;
         }
