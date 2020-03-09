@@ -182,7 +182,8 @@ namespace PrimeAssault.Engine
             BattleMessagesModel.TurnMessageSpecial = string.Empty;
             BattleMessagesModel.AttackStatus = string.Empty;
             BattleMessagesModel.MoveStatus = string.Empty;
-            BattleMessagesModel.DamageAmount = string.Empty;
+            BattleMessagesModel.DamageOutput = string.Empty;
+            BattleMessagesModel.DamageAmount = 0;
 
             // Remember Current Player
             BattleMessagesModel.PlayerType = PlayerTypeEnum.Monster;
@@ -260,20 +261,24 @@ namespace PrimeAssault.Engine
                     // It's a Hit
                     //Calculate Damage
                     int damage = Attacker.GetDamageRollValue();
-                    BattleMessagesModel.DamageAmount = (damage.ToString());
+                    BattleMessagesModel.DamageAmount = (damage);
 
                     Target.AugmentHealth(damage);
                     BattleMessagesModel.CurrentHealth = Target.CurrentHealth;
-                    BattleMessagesModel.DamageAmount = " for " + BattleMessagesModel.DamageAmount + " damage,";
+                    BattleMessagesModel.DamageOutput = " for " + (BattleMessagesModel.DamageAmount).ToString() + " damage,";
                     BattleMessagesModel.TurnMessageSpecial = BattleMessagesModel.GetCurrentHealthMessage();
 
                     RemoveIfDead(Target);
+                   
+                    // If it is a character apply the experience earned
+                    CalculateExperience(Attacker, Target);
+
                     break;
             }
 
             Attacker.DeactivateAbility();
             Target.DeactivateAbility();
-            BattleMessagesModel.TurnMessage = Attacker.Name + BattleMessagesModel.AttackStatus + Target.Name + BattleMessagesModel.MoveStatus + BattleMessagesModel.DamageAmount + BattleMessagesModel.TurnMessageSpecial;
+            BattleMessagesModel.TurnMessage = Attacker.Name + BattleMessagesModel.AttackStatus + Target.Name + BattleMessagesModel.MoveStatus + BattleMessagesModel.DamageOutput + BattleMessagesModel.TurnMessageSpecial + BattleMessagesModel.ExperienceEarned;
             Debug.WriteLine(BattleMessagesModel.TurnMessage);
 
             return true;
@@ -512,7 +517,7 @@ namespace PrimeAssault.Engine
                 
                 // Miss
                 BattleMessagesModel.HitStatus = HitStatusEnum.Miss;
-                BattleMessagesModel.DamageAmount = "0";
+                BattleMessagesModel.DamageAmount = 0;
                 return BattleMessagesModel.HitStatus;
             }
 
@@ -546,6 +551,26 @@ namespace PrimeAssault.Engine
             }
 
             return result;
+        }
+        public bool CalculateExperience(PlayerInfoModel Attacker, PlayerInfoModel Target)
+        {
+            if (Attacker.PlayerType == PlayerTypeEnum.Character)
+            {
+                var experienceEarned = Target.CalculateExperienceEarned(BattleMessagesModel.DamageAmount);
+                BattleMessagesModel.ExperienceEarned = " Earned " + experienceEarned + " points. ";
+
+                var LevelUp = Attacker.AddExperience(experienceEarned);
+                if (LevelUp)
+                {
+                    BattleMessagesModel.LevelUpMessage = Attacker.Name + " is now Level " + Attacker.Level + " With Health Max of " + Attacker.GetHealthMax();
+                    Debug.WriteLine(BattleMessagesModel.LevelUpMessage);
+                }
+
+                // Add Experinece to the Score
+                BattleScore.ExperienceGainedTotal += experienceEarned;
+            }
+
+            return true;
         }
     }
 }

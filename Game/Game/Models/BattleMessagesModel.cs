@@ -25,7 +25,10 @@
 
         // Turn Message
         public string TurnMessage = string.Empty;
-        
+
+        // Turn Experience Earned Message
+        public string ExperienceEarned = string.Empty;
+
         // Turn Special Message
         public string TurnMessageSpecial = string.Empty;
         
@@ -33,8 +36,11 @@
         public string LevelUpMessage = string.Empty;
 
         // Amount of Damage
-        public string DamageAmount = string.Empty;
-        
+        public int DamageAmount = 0;
+
+        // String which damage should be displayed to user with
+        public string DamageOutput = string.Empty;
+
         // The Remaining Health Mesage
         public int CurrentHealth = 0;
 
