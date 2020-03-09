@@ -39,6 +39,8 @@ namespace PrimeAssault.Models
             Head = data.Head;
             Feet = data.Feet;
             Necklass = data.Necklass;
+            PrimaryHand = data.PrimaryHand;
+            OffHand = data.OffHand;
             RightFinger = data.RightFinger;
             LeftFinger = data.LeftFinger;
             Feet = data.Feet;
@@ -66,6 +68,8 @@ namespace PrimeAssault.Models
             Head = data.Head;
             Feet = data.Feet;
             Necklass = data.Necklass;
+            PrimaryHand = data.PrimaryHand;
+            OffHand = data.OffHand;
             RightFinger = data.RightFinger;
             LeftFinger = data.LeftFinger;
             Feet = data.Feet;

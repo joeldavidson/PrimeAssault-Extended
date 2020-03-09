@@ -25,7 +25,7 @@ namespace PrimeAssault.Engine
    
     public class TurnEngine : BaseEngine
     {
-        //variable which determines likelihood that an "AI" will use a move on any given turn.
+        //variable which determines likelihood that an "AI" will use a move on any given turn. 1 = 10%, 3 = 30%, etc...
         public static int PROBABILITY_OF_MOVE = 3; 
 
         #region Algrorithm
@@ -183,6 +183,7 @@ namespace PrimeAssault.Engine
             BattleMessagesModel.AttackStatus = string.Empty;
             BattleMessagesModel.MoveStatus = string.Empty;
             BattleMessagesModel.DamageOutput = string.Empty;
+            BattleMessagesModel.ExperienceEarned = string.Empty;
             BattleMessagesModel.DamageAmount = 0;
 
             // Remember Current Player

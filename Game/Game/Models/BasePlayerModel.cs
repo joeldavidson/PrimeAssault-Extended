@@ -423,15 +423,68 @@ namespace PrimeAssault.Models
 
         public string FormatOutput() { return "A level " + Level + " " + Name; }
 
-        public bool AddExperience(int newExperience) {
+        public bool AddExperience(int newExperience) 
+        {
+            // Don't allow going lower in experience
+            if (newExperience < 0)
+            {
+                return false;
+            }
+
+            // Increment the Experience
             ExperienceTotal += newExperience;
-            LevelUp();
-            return true; 
+
+            // Can't level UP if at max.
+            if (Level >= LevelTableHelper.MaxLevel)
+            {
+                return false;
+            }
+
+            // Then check for Level UP
+            // If experience is higher than the experience at the next level, level up is OK.
+            if (ExperienceTotal >= LevelTableHelper.Instance.LevelDetailsList[Level + 1].Experience)
+            {
+                return LevelUp();
+            }
+            return false;
         }
 
         virtual public bool LevelUp()
         {
-            return true;
+            // Walk the Level Table descending order
+            // Stop when experience is >= experience in the table
+            for (var i = LevelTableHelper.Instance.LevelDetailsList.Count - 1; i > 0; i--)
+            {
+                // Check the Level
+                // If the Level is > Experience for the Index, increment the Level.
+                if (LevelTableHelper.Instance.LevelDetailsList[i].Experience <= ExperienceTotal)
+                {
+                    var NewLevel = LevelTableHelper.Instance.LevelDetailsList[i].Level;
+
+                    // When leveling up, the current health is adjusted up by an offset of the MaxHealth, rather than full restore
+                    var OldCurrentHealth = CurrentHealth;
+                    var OldMaxHealth = MaxHealth;
+
+                    // Set new Health
+                    // New health, is d10 of the new level.  So leveling up 1 level is 1 d10, leveling up 2 levels is 2 d10.
+                    var NewHealthAddition = DiceHelper.RollDice(NewLevel - Level, 10);
+
+                    // Increment the Max health
+                    MaxHealth += NewHealthAddition;
+
+                    // Calculate new current health
+                    // old max was 10, current health 8, new max is 15 so (15-(10-8)) = current health
+                    CurrentHealth = (MaxHealth - (OldMaxHealth - OldCurrentHealth));
+
+                    // Set the new level
+                    Level = NewLevel;
+
+                    // Done, exit
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public int CalculateExperienceEarned(int damage) { return 0; }
