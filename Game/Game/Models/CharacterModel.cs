@@ -76,6 +76,14 @@ namespace PrimeAssault.Models
             Moves[1] = data.Moves[1];
             Ability = data.Ability;
 
+            AddItem(ItemLocationEnum.Feet, data.GetItemByLocation(ItemLocationEnum.Feet).Id);
+            AddItem(ItemLocationEnum.Head, data.GetItemByLocation(ItemLocationEnum.Head).Id);
+            AddItem(ItemLocationEnum.LeftFinger, data.GetItemByLocation(ItemLocationEnum.LeftFinger).Id);
+            AddItem(ItemLocationEnum.RightFinger, data.GetItemByLocation(ItemLocationEnum.RightFinger).Id);
+            AddItem(ItemLocationEnum.Necklass, data.GetItemByLocation(ItemLocationEnum.Necklass).Id);
+            AddItem(ItemLocationEnum.PrimaryHand, data.GetItemByLocation(ItemLocationEnum.PrimaryHand).Id);
+            AddItem(ItemLocationEnum.OffHand, data.GetItemByLocation(ItemLocationEnum.OffHand).Id);
+
             return true;
         }
 
