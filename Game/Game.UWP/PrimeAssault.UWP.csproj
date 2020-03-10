@@ -177,9 +177,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
-    <Content Include="..\..\..\..\Users\blake\OneDrive\Pictures\raygun.png">
-      <Link>raygun.png</Link>
-    </Content>
+    <Content Include="raygun.png" />
     <Content Include="raygun_bw.png" />
     <Content Include="Records.png" />
     <Content Include="redarrow.png" />
