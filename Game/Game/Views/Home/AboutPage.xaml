@@ -119,9 +119,8 @@
                 <StackLayout Style="{StaticResource HorizontalStack}"
                                     Padding="50,0,0,0">
 
-                    <Label Text="Have the battles get exponentially harder each round as the monsters level up.  1, 2, 4, 8, 16, 20
-Add a debug switch, when enabled the game gets harder and harder each week until it is impossible.
-" />
+                    <Label Text="Have the battles get exponentially harder each round as the monsters level up.  1, 2, 4, 8, 16, 20 Add a debug switch, when enabled the game gets harder and harder each week until it is impossible." 
+                           LineBreakMode="WordWrap"/>
 
                 </StackLayout>
             </StackLayout>
@@ -147,10 +146,8 @@ Add a debug switch, when enabled the game gets harder and harder each week until
 
                 <StackLayout Style="{StaticResource HorizontalStack}"
                                     Padding="50,0,0,0">
-                    <Label Text="Suddenly the monsters in the round multiple as copies of themselves until 6 monsters are in the round. This can happen anytime during the round, so say you kill 2 monsters and 4 are left, then suddenly pop it's like spring and now there are 6 again.
-Add a debug switch to control and a % chance.  When the chance happens fill up the monster list to be 6 again.
-
-" />
+                    <Label Text="Suddenly the monsters in the round multiple as copies of themselves until 6 monsters are in the round. This can happen anytime during the round, so say you kill 2 monsters and 4 are left, then suddenly pop it's like spring and now there are 6 again. Add a debug switch to control and a % chance. When the chance happens fill up the monster list to be 6 again." 
+                           LineBreakMode="WordWrap"/>
 
                 </StackLayout>
             </StackLayout>
@@ -177,8 +174,8 @@ Add a debug switch to control and a % chance.  When the chance happens fill up t
                 <StackLayout Style="{StaticResource HorizontalStack}"
                                     Padding="50,0,0,0">
 
-                    <Label Text="A % chance your item breaks after a successful hit.  Broken items are dropped.  Sorry, you should pay extra for rental insurance.
-Add a debug switch to enable the feature, and a % chance.  If the % happens, drop the item and show it in the output window that rental insurance was a good idea." />
+                    <Label Text="A % chance your item breaks after a successful hit.  Broken items are dropped. Sorry, you should pay extra for rental insurance. Add a debug switch to enable the feature, and a % chance.  If the % happens, drop the item and show it in the output window that rental insurance was a good idea." 
+                           LineBreakMode="WordWrap"/>
 
                 </StackLayout>
             </StackLayout>
@@ -205,8 +202,8 @@ Add a debug switch to enable the feature, and a % chance.  If the % happens, dro
                 <StackLayout Style="{StaticResource HorizontalStack}"
                                     Padding="50,0,0,0">
 
-                    <Label Text="A % chance your item breaks after a successful hit.  Broken items are dropped.  Sorry, you should pay extra for rental insurance.
-Add a debug switch to enable the feature, and a % chance.  If the % happens, drop the item and show it in the output window that rental insurance was a good idea." />
+                    <Label Text="A % chance your item breaks after a successful hit.  Broken items are dropped. Sorry, you should pay extra for rental insurance. Add a debug switch to enable the feature, and a % chance.  If the % happens, drop the item and show it in the output window that rental insurance was a good idea." 
+                           LineBreakMode="WordWrap"/>
 
                 </StackLayout>
             </StackLayout>
