@@ -54,7 +54,7 @@
             Orientation="Horizontal"
                 HorizontalOptions="Center">
 
-                <Image Source="raygun-BW.png" HeightRequest="150" WidthRequest="150"></Image>
+                <Image Source="raygun_bw.png" HeightRequest="150" WidthRequest="150"></Image>
                 <StackLayout
                     Orientation="Vertical"
                     HorizontalOptions="Center">
