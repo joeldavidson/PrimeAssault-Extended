@@ -61,7 +61,7 @@ namespace PrimeAssault.Models
             return true;
         }
 
-        //The monster (inherits from base)
+        //The monster (inherits from base) and its default monster stats
         public MonsterModel() : base()
         {
             PlayerType = PlayerTypeEnum.Monster;
@@ -70,8 +70,8 @@ namespace PrimeAssault.Models
             Description = RandomPlayerHelper.GetMonsterDescription();
             Attack = 7;
             Defense = 5;
-            CurrentHealth = 20;
             MaxHealth = 20;
+            CurrentHealth = GetHealthMax();
             RangedDefense = 2;
             Speed = 2;
             ImageURI = "sewer_gator.png";

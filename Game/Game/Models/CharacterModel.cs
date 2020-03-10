@@ -26,7 +26,6 @@ namespace PrimeAssault.Models
             Description = RandomPlayerHelper.GetCharacterDescription();
             Attack = 5;
             Defense = 5;
-            CurrentHealth = 20;
             MaxHealth = 20;
             RangedDefense = 2;
             Speed = 2;
