@@ -173,7 +173,6 @@ namespace PrimeAssault.Views
                 Source = data.ImageURI,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                RotationY = 0,
             };
 
 
@@ -184,19 +183,6 @@ namespace PrimeAssault.Views
                 ClickableButton = false;
             }
 
-            if (ClickableButton)
-            {
-                if (data.PlayerType == PlayerTypeEnum.Character)
-                {
-                    // Add a event to the user can click the item and see more
-                    PlayerImage.Clicked += (sender, args) => ShowPlayerStats(data);
-                }
-                else
-                {
-                    // Add a event to the user can click the item and see more
-                    PlayerImage.Clicked += (sender, args) => ShowMonsterStats(data);
-                }
-            }
 
 
             // Put the Image Button and Text inside a layout
@@ -213,6 +199,12 @@ namespace PrimeAssault.Views
                     },
 
                 };
+                if (ClickableButton)
+                {
+                        PlayerImage.Clicked += (sender, args) => ShowPlayerStats(data);
+                        AttackButton.Clicked += (sender, args) => UnitDies(data, PlayerImage);
+                        AttackButton.Clicked += (sender, args) => UnitAttacks(data, PlayerImage);
+                }
                 return PlayerStack;
             }
             else
@@ -228,11 +220,29 @@ namespace PrimeAssault.Views
                     },
 
                 };
+                if (ClickableButton)
+                {                        // Add a event to the user can click the item and see more
+                        PlayerImage.Clicked += (sender, args) => ShowMonsterStats(data);
+                        AttackButton.Clicked += (sender, args) => UnitDies(data, PlayerImage);
+                        AttackButton.Clicked += (sender, args) => UnitAttacks(data, PlayerImage);
+                }
                 return PlayerStack;
             }
             
         }
 
+        public void UnitDies(PlayerInfoModel data, ImageButton PlayerImage)
+        {
+            if(data.CurrentHealth < 1)
+            {
+                PlayerImage.RotateTo(90);
+            }
+        }
+
+        public void UnitAttacks(PlayerInfoModel data, ImageButton PlayerImage)
+        {
+            //PlayerImage.RotateTo(20);
+        }
 
         //Assigns the selected monsters stats to their respective labels
         public bool ShowMonsterStats(PlayerInfoModel data)
@@ -244,6 +254,10 @@ namespace PrimeAssault.Views
             MonsterHEALTH.Text = data.CurrentHealth.ToString();
             MonsterMAXHEALTH.Text = data.MaxHealth.ToString();
             MonsterNAME.Text = data.Name;
+            if(data.CurrentHealth < 1)
+            {
+
+            }
             if (RedArrow.IsVisible == true && Grid.GetColumn(RedArrow) == data.Y)
             {
                 RedArrow.IsVisible = false;
@@ -292,7 +306,6 @@ namespace PrimeAssault.Views
 		{
 			// Redraw Game Board
 			// Show who is Attack in Who
-
 			// Hold the current state
 			var RoundCondition = EngineViewModel.Engine.RoundNextTurn();
 

@@ -203,5 +203,85 @@ namespace UnitTests.Views
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
+
+        [Test]
+        public void Hack_21_Switch_OnToggled_Default_Should_Pass()
+        {
+            // Arrange
+
+            StackLayout frame = (StackLayout)page.FindByName("Hack21Frame");
+            var current = frame.IsVisible;
+
+            ToggledEventArgs args = new ToggledEventArgs(current);
+
+
+            // Act
+            page.DebugSettingsSwitch_OnToggled(null, args);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(!current); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void Hack_22_Switch_OnToggled_Default_Should_Pass()
+        {
+            // Arrange
+
+            StackLayout frame = (StackLayout)page.FindByName("Hack22Frame");
+            var current = frame.IsVisible;
+
+            ToggledEventArgs args = new ToggledEventArgs(current);
+
+
+            // Act
+            page.DebugSettingsSwitch_OnToggled(null, args);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(!current); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void Hack_23_Switch_OnToggled_Default_Should_Pass()
+        {
+            // Arrange
+
+            StackLayout frame = (StackLayout)page.FindByName("Hack23Frame");
+            var current = frame.IsVisible;
+
+            ToggledEventArgs args = new ToggledEventArgs(current);
+
+
+            // Act
+            page.DebugSettingsSwitch_OnToggled(null, args);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(!current); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void Hack_24_Switch_OnToggled_Default_Should_Pass()
+        {
+            // Arrange
+
+            StackLayout frame = (StackLayout)page.FindByName("Hack24Frame");
+            var current = frame.IsVisible;
+
+            ToggledEventArgs args = new ToggledEventArgs(current);
+
+
+            // Act
+            page.DebugSettingsSwitch_OnToggled(null, args);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(!current); // Got to here, so it happened...
+        }
     }
 }

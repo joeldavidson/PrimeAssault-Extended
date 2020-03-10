@@ -19,7 +19,7 @@ namespace UnitTests.Engine
         public void Setup()
         {
             Engine = new BattleEngine();
-            Engine.StartBattle(false);   // Clear the Engine
+            Engine.StartBattle(true);   // Start engine in auto battle mode
         }
 
         [TearDown]
@@ -55,25 +55,6 @@ namespace UnitTests.Engine
 
             // Assert
             Assert.AreEqual(true, result);
-        }
-
-        [Test]
-        public void TurnEngine_Attack_InValid_Empty_Monster_List_Should_Fail()
-        {
-            // Arrange
-            var PlayerInfo = new PlayerInfoModel(new CharacterModel());
-
-            // Clar the Monster List to cause the error
-            Engine.MonsterList.Clear();
-
-            // Act
-            var result = Engine.Attack(PlayerInfo);
-
-            // Reset
-            Engine.StartBattle(false);   // Clear the Engine
-
-            // Assert
-            Assert.AreEqual(false, result);
         }
 
         [Test]
@@ -113,87 +94,14 @@ namespace UnitTests.Engine
         }
 
         [Test]
-        public void TurnEngine_SelectCharacterToAttack_InValid_Empty_List_Should_Fail()
-        {
-            // Arrange
-            var PlayerInfo = new PlayerInfoModel();
-            Engine.CharacterList = new List<PlayerInfoModel>();
-
-            // Act
-            var result = Engine.SelectCharacterToAttack();
-
-            // Reset
-            Engine.StartBattle(false);   // Clear the Engine
-
-            // Assert
-            Assert.AreEqual(null, result);
-        }
-
-        [Test]
-        public void TurnEngine_SelectCharacterToAttack_InValid_Null_List_Should_Fail()
-        {
-            // Arrange
-            var PlayerInfo = new PlayerInfoModel();
-
-            // Remember the List
-            var saveList = Engine.CharacterList;
-
-            Engine.CharacterList = null;
-
-            // Act
-            var result = Engine.SelectCharacterToAttack();
-
-            // Reset
-            Engine.CharacterList = saveList;
-            Engine.StartBattle(false);   // Clear the Engine
-
-            // Assert
-            Assert.AreEqual(null, result);
-        }
-
-        [Test]
-        public void TurnEngine_SelectCharacterToAttack_Valid_Default_Should_Pass()
-        {
-            // Arrange
-            var PlayerInfo = new PlayerInfoModel();
-            Engine.CharacterList.Add(new PlayerInfoModel(new CharacterModel()));
-
-            // Act
-            var result = Engine.SelectCharacterToAttack();
-
-            // Reset
-            Engine.StartBattle(false);   // Clear the Engine
-
-            // Assert
-            Assert.AreNotEqual(null, result);
-        }
-
-        [Test]
-        public void TurnEngine_SelectMonsterToAttack_InValid_Empty_List_Should_Fail()
-        {
-            // Arrange
-            var PlayerInfo = new PlayerInfoModel();
-            Engine.MonsterList = new List<PlayerInfoModel>();
-
-            // Act
-            var result = Engine.SelectMonsterToAttack();
-
-            // Reset
-            Engine.StartBattle(false);   // Clear the Engine
-
-            // Assert
-            Assert.AreEqual(null, result);
-        }
-
-        [Test]
         public void TurnEngine_SelectMonsterToAttack_InValid_Null_List_Should_Fail()
         {
             // Arrange
 
-            // Remember the List
-            var saveList = Engine.MonsterList;
-            
-            Engine.MonsterList = null;
+            // remember the list
+            var saveList = Engine.PlayerList;
+
+            Engine.PlayerList = null;
 
             // Act
             var result = Engine.SelectMonsterToAttack();
@@ -201,7 +109,7 @@ namespace UnitTests.Engine
             // Reset
 
             // Restore the List
-            Engine.MonsterList = saveList;
+            Engine.PlayerList = saveList;
             Engine.StartBattle(false);   // Clear the Engine
 
             // Assert
@@ -209,21 +117,294 @@ namespace UnitTests.Engine
         }
 
         [Test]
-        public void TurnEngine_SelectMonsterToAttack_Valid_Default_Should_Pass()
+        public void TurnEngine_SelectMonsterToAttack_InValid_Empty_List_Should_Fail()
         {
             // Arrange
-            var PlayerInfo = new PlayerInfoModel();
-            Engine.MonsterList.Add(new PlayerInfoModel(new MonsterModel()));
+
+            // remember the list
+            var saveList = Engine.PlayerList;
+
+            Engine.PlayerList = new List<PlayerInfoModel>();
 
             // Act
             var result = Engine.SelectMonsterToAttack();
 
             // Reset
+
+            // Restore the List
+            Engine.PlayerList = saveList;
+            Engine.StartBattle(false);   // Clear the Engine
+
+            // Assert
+            Assert.AreEqual(null, result);
+        }
+
+        [Test]
+        public void TurnEngine_SelectMonsterToAttack_InValid_Dead_List_Should_Fail()
+        {
+            // Arrange
+
+            // remember the list
+            var saveList = Engine.PlayerList;
+
+            Engine.PlayerList = new List<PlayerInfoModel>();
+
+            var data = new PlayerInfoModel(new MonsterModel());
+            data.Alive = false;
+            Engine.PlayerList.Add(data);
+
+            // Act
+            var result = Engine.SelectMonsterToAttack();
+
+            // Reset
+
+            // Restore the List
+            Engine.PlayerList = saveList;
+            Engine.StartBattle(false);   // Clear the Engine
+
+            // Assert
+            Assert.AreEqual(null, result);
+        }
+
+        [Test]
+        public void TurnEngine_SelectMonsterToAttack_InValid_Dead_Character_List_Should_Fail()
+        {
+            // Arrange
+
+            // remember the list
+            var saveList = Engine.PlayerList;
+
+            Engine.PlayerList = new List<PlayerInfoModel>();
+
+            var data = new PlayerInfoModel(new MonsterModel());
+            data.Alive = false;
+            data.PlayerType = PlayerTypeEnum.Character;
+            Engine.PlayerList.Add(data);
+
+            // Act
+            var result = Engine.SelectMonsterToAttack();
+
+            // Reset
+
+            // Restore the List
+            Engine.PlayerList = saveList;
+            Engine.StartBattle(false);   // Clear the Engine
+
+            // Assert
+            Assert.AreEqual(null, result);
+        }
+
+        [Test]
+        public void TurnEngine_SelectMonsterToAttack_InValid_Alive_Character_List_Should_Fail()
+        {
+            // Arrange
+
+            // remember the list
+            var saveList = Engine.PlayerList;
+
+            Engine.PlayerList = new List<PlayerInfoModel>();
+
+            var data = new PlayerInfoModel(new MonsterModel());
+            data.Alive = true;
+            data.PlayerType = PlayerTypeEnum.Character;
+            Engine.PlayerList.Add(data);
+
+            // Act
+            var result = Engine.SelectMonsterToAttack();
+
+            // Reset
+
+            // Restore the List
+            Engine.PlayerList = saveList;
+            Engine.StartBattle(false);   // Clear the Engine
+
+            // Assert
+            Assert.AreEqual(null, result);
+        }
+
+        [Test]
+        public void TurnEngine_SelectMonsterToAttack_Valid_List_Should_Pass()
+        {
+            // Arrange
+
+            // remember the list
+            var saveList = Engine.PlayerList;
+
+            Engine.PlayerList = new List<PlayerInfoModel>();
+
+            var data = new PlayerInfoModel(new MonsterModel());
+            Engine.PlayerList.Add(data);
+
+            // Act
+            var result = Engine.SelectMonsterToAttack();
+
+            // Reset
+
+            // Restore the List
+            Engine.PlayerList = saveList;
             Engine.StartBattle(false);   // Clear the Engine
 
             // Assert
             Assert.AreNotEqual(null, result);
         }
+
+        // mike
+
+        [Test]
+        public void TurnEngine_SelectCharacterToAttack_InValid_Null_List_Should_Fail()
+        {
+            // Arrange
+
+            // remember the list
+            var saveList = Engine.PlayerList;
+
+            Engine.PlayerList = null;
+
+            // Act
+            var result = Engine.SelectCharacterToAttack();
+
+            // Reset
+
+            // Restore the List
+            Engine.PlayerList = saveList;
+            Engine.StartBattle(false);   // Clear the Engine
+
+            // Assert
+            Assert.AreEqual(null, result);
+        }
+
+        [Test]
+        public void TurnEngine_SelectCharacterToAttack_InValid_Empty_List_Should_Fail()
+        {
+            // Arrange
+
+            // remember the list
+            var saveList = Engine.PlayerList;
+
+            Engine.PlayerList = new List<PlayerInfoModel>();
+
+            // Act
+            var result = Engine.SelectCharacterToAttack();
+
+            // Reset
+
+            // Restore the List
+            Engine.PlayerList = saveList;
+            Engine.StartBattle(false);   // Clear the Engine
+
+            // Assert
+            Assert.AreEqual(null, result);
+        }
+
+        [Test]
+        public void TurnEngine_SelectCharacterToAttack_InValid_Dead_List_Should_Fail()
+        {
+            // Arrange
+
+            // remember the list
+            var saveList = Engine.PlayerList;
+
+            Engine.PlayerList = new List<PlayerInfoModel>();
+
+            var data = new PlayerInfoModel(new CharacterModel());
+            data.Alive = false;
+            Engine.PlayerList.Add(data);
+
+            // Act
+            var result = Engine.SelectCharacterToAttack();
+
+            // Reset
+
+            // Restore the List
+            Engine.PlayerList = saveList;
+            Engine.StartBattle(false);   // Clear the Engine
+
+            // Assert
+            Assert.AreEqual(null, result);
+        }
+
+        [Test]
+        public void TurnEngine_SelectCharacterToAttack_InValid_Dead_Monster_List_Should_Fail()
+        {
+            // Arrange
+
+            // remember the list
+            var saveList = Engine.PlayerList;
+
+            Engine.PlayerList = new List<PlayerInfoModel>();
+
+            var data = new PlayerInfoModel(new CharacterModel());
+            data.Alive = false;
+            data.PlayerType = PlayerTypeEnum.Monster;
+            Engine.PlayerList.Add(data);
+
+            // Act
+            var result = Engine.SelectCharacterToAttack();
+
+            // Reset
+
+            // Restore the List
+            Engine.PlayerList = saveList;
+            Engine.StartBattle(false);   // Clear the Engine
+
+            // Assert
+            Assert.AreEqual(null, result);
+        }
+
+        [Test]
+        public void TurnEngine_SelectCharacterToAttack_InValid_Alive_Monster_List_Should_Fail()
+        {
+            // Arrange
+
+            // remember the list
+            var saveList = Engine.PlayerList;
+
+            Engine.PlayerList = new List<PlayerInfoModel>();
+
+            var data = new PlayerInfoModel(new CharacterModel());
+            data.Alive = true;
+            data.PlayerType = PlayerTypeEnum.Monster;
+            Engine.PlayerList.Add(data);
+
+            // Act
+            var result = Engine.SelectCharacterToAttack();
+
+            // Reset
+
+            // Restore the List
+            Engine.PlayerList = saveList;
+            Engine.StartBattle(false);   // Clear the Engine
+
+            // Assert
+            Assert.AreEqual(null, result);
+        }
+
+        [Test]
+        public void TurnEngine_SelectCharacterToAttack_Valid_List_Should_Pass()
+        {
+            // Arrange
+
+            // remember the list
+            var saveList = Engine.PlayerList;
+
+            Engine.PlayerList = new List<PlayerInfoModel>();
+
+            var data = new PlayerInfoModel(new CharacterModel());
+            Engine.PlayerList.Add(data);
+
+            // Act
+            var result = Engine.SelectCharacterToAttack();
+
+            // Reset
+
+            // Restore the List
+            Engine.PlayerList = saveList;
+            Engine.StartBattle(false);   // Clear the Engine
+
+            // Assert
+            Assert.AreNotEqual(null, result);
+        }
+
 
         [Test]
         public void TurnEngine_RolltoHitTarget_Hit_Should_Pass()
@@ -232,14 +413,14 @@ namespace UnitTests.Engine
             var AttackScore = 10;
             var DefenseScore = 0;
 
-            DiceHelper.EnableRandomValues();
-            DiceHelper.SetForcedRandomValue(3); // Always roll a 3.
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(3); // Always roll a 3.
             
             // Act
             var result = Engine.RollToHitTarget(AttackScore, DefenseScore);
 
             // Reset
-            DiceHelper.DisableRandomValues();
+            DiceHelper.DisableForcedRolls();
 
             // Assert
             Assert.AreEqual(HitStatusEnum.Hit, result);
@@ -252,14 +433,14 @@ namespace UnitTests.Engine
             var AttackScore = 1;
             var DefenseScore = 100;
 
-            DiceHelper.EnableRandomValues();
-            DiceHelper.SetForcedRandomValue(2);
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(2);
 
             // Act
             var result = Engine.RollToHitTarget(AttackScore, DefenseScore);
 
             // Reset
-            DiceHelper.DisableRandomValues();
+            DiceHelper.DisableForcedRolls();
 
             // Assert
             Assert.AreEqual(HitStatusEnum.Miss, result);
@@ -272,14 +453,14 @@ namespace UnitTests.Engine
             var AttackScore = 1;
             var DefenseScore = 100;
 
-            DiceHelper.EnableRandomValues();
-            DiceHelper.SetForcedRandomValue(1);
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(1);
 
             // Act
             var result = Engine.RollToHitTarget(AttackScore, DefenseScore);
 
             // Reset
-            DiceHelper.DisableRandomValues();
+            DiceHelper.DisableForcedRolls();
 
             // Assert
             Assert.AreEqual(HitStatusEnum.Miss, result);
@@ -292,14 +473,14 @@ namespace UnitTests.Engine
             var AttackScore = 1;
             var DefenseScore = 100;
 
-            DiceHelper.EnableRandomValues();
-            DiceHelper.SetForcedRandomValue(20);
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(20);
 
             // Act
             var result = Engine.RollToHitTarget(AttackScore, DefenseScore);
 
             // Reset
-            DiceHelper.DisableRandomValues();
+            DiceHelper.DisableForcedRolls();
 
             // Assert
             Assert.AreEqual(HitStatusEnum.Hit, result);
@@ -328,14 +509,14 @@ namespace UnitTests.Engine
 
             var PlayerInfo = new PlayerInfoModel(player);
 
-            DiceHelper.EnableRandomValues();
-            DiceHelper.SetForcedRandomValue(0);
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(0);
 
             // Act
             var result = Engine.DropItems(PlayerInfo);
 
             // Reset
-            DiceHelper.DisableRandomValues();
+            DiceHelper.DisableForcedRolls();
 
             // Assert
             Assert.AreEqual(0, result);
@@ -353,14 +534,14 @@ namespace UnitTests.Engine
 
             var PlayerInfo = new PlayerInfoModel(player);
 
-            DiceHelper.EnableRandomValues();
-            DiceHelper.SetForcedRandomValue(0);
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(0);
 
             // Act
             var result = Engine.DropItems(PlayerInfo);
 
             // Reset
-            DiceHelper.DisableRandomValues();
+            DiceHelper.DisableForcedRolls();
 
             // Assert
             Assert.AreEqual(2, result);
@@ -374,14 +555,16 @@ namespace UnitTests.Engine
 
             var PlayerInfo = new PlayerInfoModel(player);
 
-            DiceHelper.EnableRandomValues();
-            DiceHelper.SetForcedRandomValue(1);
+            DiceHelper.EnableForcedRolls();
+            
+            // Drop is 0-Number, so 2 will yield 1
+            DiceHelper.SetForcedRollValue(2);   
 
             // Act
             var result = Engine.DropItems(PlayerInfo);
 
             // Reset
-            DiceHelper.DisableRandomValues();
+            DiceHelper.DisableForcedRolls();
 
             // Assert
             Assert.AreEqual(1, result);
@@ -478,14 +661,14 @@ namespace UnitTests.Engine
             Engine.MonsterList.Add(MonsterPlayer);
 
             // Forece a Miss
-            DiceHelper.EnableRandomValues();
-            DiceHelper.SetForcedRandomValue(1);
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(1);
 
             // Act
             var result = Engine.TurnAsAttack(CharacterPlayer, MonsterPlayer);
 
             // Reset
-            DiceHelper.DisableRandomValues();
+            DiceHelper.DisableForcedRolls();
 
             // Assert
             Assert.AreEqual(true, result);
@@ -504,14 +687,14 @@ namespace UnitTests.Engine
             Engine.MonsterList.Add(MonsterPlayer);
 
             // Forece a Miss
-            DiceHelper.EnableRandomValues();
-            DiceHelper.SetForcedRandomValue(20);
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(20);
 
             // Act
             var result = Engine.TurnAsAttack(CharacterPlayer, MonsterPlayer);
 
             // Reset
-            DiceHelper.DisableRandomValues();
+            DiceHelper.DisableForcedRolls();
 
             // Assert
             Assert.AreEqual(true, result);
@@ -532,14 +715,14 @@ namespace UnitTests.Engine
             Engine.MonsterList.Add(MonsterPlayer);
 
             // Forece a Miss
-            DiceHelper.EnableRandomValues();
-            DiceHelper.SetForcedRandomValue(20);
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(20);
 
             // Act
             var result = Engine.TurnAsAttack(CharacterPlayer, MonsterPlayer);
 
             // Reset
-            DiceHelper.DisableRandomValues();
+            DiceHelper.DisableForcedRolls();
 
             // Assert
             Assert.AreEqual(true, result);
@@ -558,14 +741,14 @@ namespace UnitTests.Engine
             Engine.CharacterList.Add(CharacterPlayer);
 
             // Forece a Miss
-            DiceHelper.EnableRandomValues();
-            DiceHelper.SetForcedRandomValue(1);
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(1);
 
             // Act
             var result = Engine.TurnAsAttack(MonsterPlayer, CharacterPlayer);
 
             // Reset
-            DiceHelper.DisableRandomValues();
+            DiceHelper.DisableForcedRolls();
 
             // Assert
             Assert.AreEqual(true, result);
@@ -584,14 +767,14 @@ namespace UnitTests.Engine
             Engine.CharacterList.Add(CharacterPlayer);
 
             // Forece a Miss
-            DiceHelper.EnableRandomValues();
-            DiceHelper.SetForcedRandomValue(20);
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(20);
 
             // Act
             var result = Engine.TurnAsAttack(MonsterPlayer, CharacterPlayer);
 
             // Reset
-            DiceHelper.DisableRandomValues();
+            DiceHelper.DisableForcedRolls();
 
             // Assert
             Assert.AreEqual(true, result);
@@ -647,6 +830,37 @@ namespace UnitTests.Engine
 
             // Assert
             Assert.AreEqual(false, result);
+        }
+
+        [Test]
+        public void TurnEngine_TurnAsAttack_Character_Attacks_Monster_Levels_Up_Should_Pass()
+        {
+            // Arrange
+            var Monster = new MonsterModel();
+            var MonsterPlayer = new PlayerInfoModel(Monster);
+            Engine.MonsterList.Add(MonsterPlayer);
+
+            var Character = new CharacterModel();
+
+            var CharacterPlayer = new PlayerInfoModel(Character);
+
+            CharacterPlayer.ExperienceTotal = 300;    // Enough for next level
+
+            Engine.CharacterList.Add(CharacterPlayer);
+
+            // Forece a Miss
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(20);
+
+            // Act
+            var result = Engine.TurnAsAttack(CharacterPlayer,MonsterPlayer);
+
+            // Reset
+            DiceHelper.DisableForcedRolls();
+
+            // Assert
+            Assert.AreEqual(true, result);
+            Assert.AreEqual(2, CharacterPlayer.Level);
         }
     }
 }

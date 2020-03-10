@@ -42,6 +42,9 @@ namespace PrimeAssault.Engine
         /// <returns></returns>
         public ScoreModel GetScoreObject() { return BattleScore; }
 
+        // The Battle Engine
+        BattleEngine Engine = new BattleEngine();
+
         /// <summary>
         /// Run Auto Battle
         /// </summary>
@@ -89,7 +92,7 @@ namespace PrimeAssault.Engine
         /// <summary>
         /// Create Characters for Party
         /// </summary>
-        private bool CreateCharacterParty()
+        public bool CreateCharacterParty()
         {
             // Picks 6 Characters
 
