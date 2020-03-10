@@ -35,6 +35,19 @@ namespace PrimeAssault.Models
             CurrentHealth = data.GetHealthCurrent();
             MaxHealth = data.GetHealthMax();
 
+            Attack = data.Attack;
+            Defense = data.Defense;
+            RangedDefense = data.RangedDefense;
+            Speed = data.Speed;
+            MaxHealth = data.GetHealthMax();
+            CurrentHealth = data.GetHealthCurrent();
+
+            AttackMult = data.AttackMult;
+            DefenseMult = data.DefenseMult;
+            RangedDefenseMult = data.RangedDefenseMult;
+            SpeedMult = data.SpeedMult;
+            HealthMult = data.HealthMult;
+
             // Set the strings for the items
             Head = data.Head;
             Feet = data.Feet;
@@ -64,6 +77,19 @@ namespace PrimeAssault.Models
             CurrentHealth = data.GetHealthCurrent();
             MaxHealth = data.GetHealthMax();
 
+            Attack = data.Attack;
+            Defense = data.Defense;
+            RangedDefense = data.RangedDefense;
+            Speed = data.Speed;
+            MaxHealth = data.GetHealthMax();
+            CurrentHealth = data.GetHealthCurrent();
+
+            AttackMult = data.AttackMult;
+            DefenseMult = data.DefenseMult;
+            RangedDefenseMult = data.RangedDefenseMult;
+            SpeedMult = data.SpeedMult;
+            HealthMult = data.HealthMult;
+
             // Set the strings for the items
             Head = data.Head;
             Feet = data.Feet;
@@ -92,6 +118,19 @@ namespace PrimeAssault.Models
             ImageURI = data.ImageURI;
             CurrentHealth = data.GetHealthCurrent();
             MaxHealth = data.GetHealthMax();
+
+            Attack = data.Attack;
+            Defense = data.Defense;
+            RangedDefense = data.RangedDefense;
+            Speed = data.Speed;
+            MaxHealth = data.GetHealthMax();
+            CurrentHealth = data.GetHealthCurrent();
+
+            AttackMult = data.AttackMult;
+            DefenseMult = data.DefenseMult;
+            RangedDefenseMult = data.RangedDefenseMult;
+            SpeedMult = data.SpeedMult;
+            HealthMult = data.HealthMult;
 
             // Set the strings for the items
             Head = data.Head;
