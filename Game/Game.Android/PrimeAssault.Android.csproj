@@ -253,5 +253,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\battleback.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\raygun-BW.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

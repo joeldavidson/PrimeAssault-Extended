@@ -16,83 +16,82 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Style="{StaticResource OuterBoxStack}"
+            Spacing="20" Padding="15,20,15,20">
 
             <Label Text="Item List Page" TextColor="DeepPink" FontSize="Header" BackgroundColor="Transparent"/>
-
-            <RelativeLayout>
-                <ListView x:Name="ItemsListView" 
+            <ListView x:Name="ItemsListView" 
                             ItemsSource="{Binding Dataset}"
                             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                             RefreshCommand="{Binding LoadItemsCommand}"
                             CachingStrategy="RecycleElement"
                             ItemSelected="OnItemSelected"
                             BackgroundColor="Transparent">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid Margin="5" BackgroundColor="#4D3f035f" HeightRequest="200">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        
+                        <ViewCell>
 
-                                    <!--Column 1 inside Row 1-->
-                                    <Image Source="{Binding ImageURI}"
-                                                         HorizontalOptions="CenterAndExpand"
-                                                         VerticalOptions="CenterAndExpand"
+                            <Grid Margin="5" BackgroundColor="#4D3f035f" HeightRequest="200">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <!--Column 1 inside Row 1-->
+                                <Image Source="{Binding ImageURI}"
+                                                         HorizontalOptions="Center"
+                                                         VerticalOptions="Center"
                                                          Grid.Column="0"
                                                          Grid.Row="0"
                                                          Grid.RowSpan="2">
-                                    </Image>
-                                    <Button Text="{Binding Name}" TextColor="Aqua"
+                                </Image>
+                                <Button Text="{Binding Name}" TextColor="Aqua"
                                             BackgroundColor="Transparent"
                                                     Grid.Column="0"
                                                     Grid.Row="2"
                                                 CornerRadius="20"
                                                 BorderColor="Aqua"
                                             VerticalOptions="FillAndExpand"
+                                            HorizontalOptions="FillAndExpand"
                                                     ></Button>
 
-                                    <Label Text= "{Binding Location}" TextColor="Aqua"
+                                <Label Text= "{Binding Location}" TextColor="Aqua"
                                            Grid.Column="0"
                                            Grid.Row="3"
                                            VerticalOptions="StartAndExpand"
                                            HorizontalOptions="Center"
                                            ></Label>
 
-                                    <Grid Margin="5" Grid.Row="3" Grid.Column="0">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <Label Text= "Value: " TextColor="Aqua"
+                                <Grid Margin="5" Grid.Row="3" Grid.Column="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text= "Value: " TextColor="Aqua"
                                            Grid.Column="0"
                                            VerticalOptions="EndAndExpand"
-                                           HorizontalOptions="Center"
+                                           HorizontalOptions="End"
                                          ></Label>
-                                            <Label Text= "{Binding Value}" TextColor="Aqua"
+                                    <Label Text= "{Binding Value}" TextColor="Aqua"
                                            Grid.Column="1"
                                            VerticalOptions="EndAndExpand"
                                            HorizontalOptions="Center"
                                            ></Label>
-                                    </Grid>
-                                    <!--End of Column 1-->
 
-                                    <!--Column 2 inside Row 1-->
-                                    <!--Column 2 inside Row 1-->
-                                    <Button x:Name="btn1"
+                                </Grid>
+                                <!--End of Column 1-->
+
+                                <!--Column 2 inside Row 1-->
+                                <!--Column 2 inside Row 1-->
+                                <Button x:Name="btn1"
                                             VerticalOptions="Center"
                                             HorizontalOptions="Center"
                                             HeightRequest="{Binding Width, Source={x:Reference btn1}}"
@@ -104,7 +103,7 @@
                                             BackgroundColor="Transparent"
                                             Clicked="Attack_Clicked"
                                                 ></Button>
-                                    <Button x:Name="btn2"
+                                <Button x:Name="btn2"
                                             VerticalOptions="Center"
                                             HorizontalOptions="Center"
                                             HeightRequest="{Binding Width, Source={x:Reference btn2}}"
@@ -116,7 +115,7 @@
                                             BackgroundColor="Transparent"
                                             Clicked="Defense_Clicked"
                                                 ></Button>
-                                    <Button x:Name="btn3"
+                                <Button x:Name="btn3"
                                             VerticalOptions="Center"
                                             HorizontalOptions="Center"
                                             HeightRequest="{Binding Width, Source={x:Reference btn1}}"
@@ -129,7 +128,7 @@
                                             BackgroundColor="Transparent"
                                             Clicked="RangedDefense_Clicked"
                                                 ></Button>
-                                    <Button x:Name="btn4"
+                                <Button x:Name="btn4"
                                             VerticalOptions="Center"
                                             HorizontalOptions="Center"
                                             HeightRequest="{Binding Width, Source={x:Reference btn4}}"
@@ -141,43 +140,42 @@
                                             BackgroundColor="Transparent"
                                             Clicked="Speed_Clicked"
                                                 ></Button>
-                                    <!--End of Column 2-->
+                                <!--End of Column 2-->
 
-                                    <!--Column 3 inside Row 1-->
-                                    <Label Text="{Binding attackValue}"
+                                <!--Column 3 inside Row 1-->
+                                <Label Text="{Binding attackValue}"
                                                 TextColor="Aqua"
                                                     FontSize="Medium"
                                                     Grid.Column="2"
                                                     Grid.Row="0"
                                                VerticalOptions="Center"/>
-                                    <Label Text="{Binding defenseValue}"
+                                <Label Text="{Binding defenseValue}"
                                                 TextColor="Aqua"
                                                     FontSize="Medium"
                                                     Grid.Column="2"
                                                     Grid.Row="1"
                                                VerticalOptions="Center"/>
-                                    <Label Text="{Binding rangedDefenseValue}"
+                                <Label Text="{Binding rangedDefenseValue}"
                                                 TextColor="Aqua"
                                                     FontSize="Medium"
                                                     Grid.Column="2"
                                                     Grid.Row="2"
                                                VerticalOptions="Center"/>
-                                    <Label Text="{Binding speedValue}"
+                                <Label Text="{Binding speedValue}"
                                                 TextColor="Aqua"
                                                     FontSize="Medium"
                                                     Grid.Column="2"
                                                     Grid.Row="3"
                                                VerticalOptions="Center"/>
-                                    <!--End of Column 3-->
+                                <!--End of Column 3-->
 
 
 
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </RelativeLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 
