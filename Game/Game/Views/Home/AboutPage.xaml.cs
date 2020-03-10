@@ -46,7 +46,6 @@ namespace PrimeAssault.Views
         {
             var assembly = typeof(App).GetTypeInfo().Assembly;
             var stream = assembly.GetManifestResourceStream("PrimeAssault." + filename);
-            //var stream = assembly.GetManifestResourceStream("Audio." + filename);
             return stream;
 
         }

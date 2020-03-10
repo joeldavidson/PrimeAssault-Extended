@@ -11,10 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="attackse.ogg" />
     <None Remove="feelgood.mp3" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="attackse.ogg" />
     <EmbeddedResource Include="feelgood.mp3" />
   </ItemGroup>
 

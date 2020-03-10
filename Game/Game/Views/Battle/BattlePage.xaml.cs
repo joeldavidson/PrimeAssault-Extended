@@ -5,19 +5,25 @@ using Xamarin.Forms.Xaml;
 using PrimeAssault.Models;
 using System.Linq;
 using PrimeAssault.ViewModels;
-
+using System.IO;
+using System.Reflection;
+using Plugin.SimpleAudioPlayer;
 
 namespace PrimeAssault.Views
 {
-	/// <summary>
-	/// The Main PrimeAssault Page
-	/// </summary>
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+
+    /// <summary>
+    /// The Main PrimeAssault Page
+    /// </summary>
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class BattlePage: ContentPage
 	{
 
-		// This uses the Instance so it can be shared with other Battle Pages as needed
-		public BattleEngineViewModel EngineViewModel = BattleEngineViewModel.Instance;
+        //Creates a SimpleAudioPlayer object to be used for sound effects
+        ISimpleAudioPlayer AudioPlayer;
+
+        // This uses the Instance so it can be shared with other Battle Pages as needed
+        public BattleEngineViewModel EngineViewModel = BattleEngineViewModel.Instance;
 
 		#region PageHandelerVariables
 		// Hold the Selected Characters
@@ -79,6 +85,24 @@ namespace PrimeAssault.Views
 			ShowModalNewRoundPage();
             initializeAllMonsters();
             initializeAllCharacters();
+
+            //Defining the audioplayer
+            AudioPlayer = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+
+            //Assigning a soundeffect to be played by AudioPlayer object
+            var stream = GetStreamFromFile("attackse.ogg");
+
+          
+            AudioPlayer.Load(stream);
+
+        }
+
+        //Assembles audioplayer to play the file that is included in the parameter
+        Stream GetStreamFromFile(string filename)
+        {
+            var assembly = typeof(App).GetTypeInfo().Assembly;
+            var stream = assembly.GetManifestResourceStream("PrimeAssault." + filename);
+            return stream;
 
         }
 
@@ -241,7 +265,10 @@ namespace PrimeAssault.Views
 
         public void UnitAttacks(PlayerInfoModel data, ImageButton PlayerImage)
         {
+            //Attack sound effect played
+            AudioPlayer.Play();
             //PlayerImage.RotateTo(20);
+
         }
 
         //Assigns the selected monsters stats to their respective labels
