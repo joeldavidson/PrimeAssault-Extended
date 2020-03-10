@@ -68,10 +68,11 @@
                             BackgroundColor="#263238"
                             Opacity="0.75">
                         <StackLayout 
-                    Orientation="Horizontal"
-                    HorizontalOptions="Center">
+                                Orientation="Horizontal"
+                                HorizontalOptions="Center"
+                                VerticalOptions="CenterAndExpand">
 
-                            <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Value}"/>
+                            <Entry Style="{StaticResource StatsEntry}" Text ="{Binding Data.Value}" HeightRequest="35"/>
 
                            </StackLayout>
                     </Frame>
