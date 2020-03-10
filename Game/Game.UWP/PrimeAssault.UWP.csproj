@@ -133,7 +133,7 @@
     <Content Include="gear.png" />
     <BundleResource Include="grey_door.png" />
     <BundleResource Include="home_background.png" />
-    <Content Include="GoldArrow.png" />
+    <Content Include="goldarrow.png" />
     <Content Include="hunter_class.png" />
     <Content Include="icon_add.png" />
     <Content Include="icon_cancel.png" />
@@ -180,9 +180,9 @@
     <Content Include="..\..\..\..\Users\blake\OneDrive\Pictures\raygun.png">
       <Link>raygun.png</Link>
     </Content>
-    <Content Include="raygun-BW.png" />
+    <Content Include="raygun_bw.png" />
     <Content Include="Records.png" />
-    <Content Include="RedArrow.png" />
+    <Content Include="redarrow.png" />
     <Content Include="ringleader_class.png" />
     <Content Include="SafeHouse.png" />
     <Content Include="score.png" />

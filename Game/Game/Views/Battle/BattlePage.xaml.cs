@@ -37,7 +37,7 @@ namespace PrimeAssault.Views
 
         public ImageButton GoldArrow = new ImageButton
         {
-            Source = "GoldArrow.png",
+            Source = "goldarrow.png",
             HorizontalOptions = LayoutOptions.FillAndExpand,
             VerticalOptions = LayoutOptions.FillAndExpand,
             HeightRequest = 50,
@@ -47,7 +47,7 @@ namespace PrimeAssault.Views
 
         public ImageButton RedArrow = new ImageButton
         {
-            Source = "RedArrow.png",
+            Source = "redarrow.png",
             HorizontalOptions = LayoutOptions.FillAndExpand,
             VerticalOptions = LayoutOptions.FillAndExpand,
             HeightRequest = 50,

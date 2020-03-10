@@ -239,7 +239,7 @@
     <AndroidResource Include="Resources\drawable\battleback.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\raygun-BW.png" />
+    <AndroidResource Include="Resources\drawable\raygun_bw.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\scoreread.jpg" />
@@ -257,7 +257,7 @@
     <AndroidResource Include="Resources\drawable\scoreindex.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\GoldArrow.png" />
+    <AndroidResource Include="Resources\drawable\goldarrow.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\RedArrow.png" />
