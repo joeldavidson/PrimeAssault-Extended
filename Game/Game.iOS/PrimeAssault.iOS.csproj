@@ -295,7 +295,7 @@
     <BundleResource Include="Resources\battleback.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\raygun-BW.png" />
+    <BundleResource Include="Resources\raygun_bw.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\scoredelete.jpg" />
@@ -313,9 +313,9 @@
     <BundleResource Include="Resources\scorecreate.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\GoldArrow.png" />
+    <BundleResource Include="Resources\goldarrow.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\RedArrow.png" />
+    <BundleResource Include="Resources\redarrow.png" />
   </ItemGroup>
 </Project>
