@@ -53,6 +53,50 @@ namespace PrimeAssault.Views
         }
 
         /// <summary>
+        /// Sow or hide the Debug Settings
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void Hack_21_OnToggled(object sender, ToggledEventArgs e)
+        {
+            // Show or hide the Debug Settings
+            Hack21Frame.IsVisible = (e.Value);
+        }
+
+        /// <summary>
+        /// Sow or hide the Debug Settings
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void Hack_22_OnToggled(object sender, ToggledEventArgs e)
+        {
+            // Show or hide the Debug Settings
+            Hack22Frame.IsVisible = (e.Value);
+        }
+
+        /// <summary>
+        /// Sow or hide the Debug Settings
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void Hack_23_OnToggled(object sender, ToggledEventArgs e)
+        {
+            // Show or hide the Debug Settings
+            Hack23Frame.IsVisible = (e.Value);
+        }
+
+        /// <summary>
+        /// Sow or hide the Debug Settings
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void Hack_24_OnToggled(object sender, ToggledEventArgs e)
+        {
+            // Show or hide the Debug Settings
+            Hack24Frame.IsVisible = (e.Value);
+        }
+
+        /// <summary>
         /// Data Source Toggle
         /// </summary>
         /// <param name="sender"></param>

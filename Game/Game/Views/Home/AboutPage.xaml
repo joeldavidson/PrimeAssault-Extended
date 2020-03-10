@@ -96,6 +96,123 @@
 
                 </StackLayout>
             </StackLayout>
+            <!--Debug Settings Frame End-->
+
+            <!--Debug Settings Frame-->
+            <StackLayout Style="{StaticResource HorizontalStack}">
+
+                <Label
+                    Text="Hack 21"
+                    Style="{DynamicResource DebugSwitchLabel}"/>
+
+                <Switch
+                    x:Name="Hack21Switch"
+                    HorizontalOptions="EndAndExpand"
+                    Toggled="Hack_21_OnToggled"
+                    IsToggled="False"/>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource VerticalStack}"
+                        x:Name="Hack21Frame"
+                        IsVisible="False">
+
+                <StackLayout Style="{StaticResource HorizontalStack}"
+                                    Padding="50,0,0,0">
+
+                    <Label Text="Have the battles get exponentially harder each round as the monsters level up.  1, 2, 4, 8, 16, 20
+Add a debug switch, when enabled the game gets harder and harder each week until it is impossible.
+" />
+
+                </StackLayout>
+            </StackLayout>
+            <!--Debug Settings Frame End-->
+
+            <!--Debug Settings Frame-->
+            <StackLayout Style="{StaticResource HorizontalStack}">
+
+                <Label
+                    Text="Hack 22"
+                    Style="{DynamicResource DebugSwitchLabel}"/>
+
+                <Switch
+                    x:Name="Hack22Switch"
+                    HorizontalOptions="EndAndExpand"
+                    Toggled="Hack_22_OnToggled"
+                    IsToggled="False"/>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource VerticalStack}"
+                        x:Name="Hack22Frame"
+                        IsVisible="False">
+
+                <StackLayout Style="{StaticResource HorizontalStack}"
+                                    Padding="50,0,0,0">
+                    <Label Text="Suddenly the monsters in the round multiple as copies of themselves until 6 monsters are in the round. This can happen anytime during the round, so say you kill 2 monsters and 4 are left, then suddenly pop it's like spring and now there are 6 again.
+Add a debug switch to control and a % chance.  When the chance happens fill up the monster list to be 6 again.
+
+" />
+
+                </StackLayout>
+            </StackLayout>
+            <!--Debug Settings Frame End-->
+
+            <!--Debug Settings Frame-->
+            <StackLayout Style="{StaticResource HorizontalStack}">
+
+                <Label
+                    Text="Hack 23"
+                    Style="{DynamicResource DebugSwitchLabel}"/>
+
+                <Switch
+                    x:Name="Hack23Switch"
+                    HorizontalOptions="EndAndExpand"
+                    Toggled="Hack_23_OnToggled"
+                    IsToggled="False"/>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource VerticalStack}"
+                        x:Name="Hack23Frame"
+                        IsVisible="False">
+
+                <StackLayout Style="{StaticResource HorizontalStack}"
+                                    Padding="50,0,0,0">
+
+                    <Label Text="A % chance your item breaks after a successful hit.  Broken items are dropped.  Sorry, you should pay extra for rental insurance.
+Add a debug switch to enable the feature, and a % chance.  If the % happens, drop the item and show it in the output window that rental insurance was a good idea." />
+
+                </StackLayout>
+            </StackLayout>
+            <!--Debug Settings Frame End-->
+
+            <!--Debug Settings Frame-->
+            <StackLayout Style="{StaticResource HorizontalStack}">
+
+                <Label
+                    Text="Hack 24"
+                    Style="{DynamicResource DebugSwitchLabel}"/>
+
+                <Switch
+                    x:Name="Hack24Switch"
+                    HorizontalOptions="EndAndExpand"
+                    Toggled="Hack_24_OnToggled"
+                    IsToggled="False"/>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource VerticalStack}"
+                        x:Name="Hack24Frame"
+                        IsVisible="False">
+
+                <StackLayout Style="{StaticResource HorizontalStack}"
+                                    Padding="50,0,0,0">
+
+                    <Label Text="A % chance your item breaks after a successful hit.  Broken items are dropped.  Sorry, you should pay extra for rental insurance.
+Add a debug switch to enable the feature, and a % chance.  If the % happens, drop the item and show it in the output window that rental insurance was a good idea." />
+
+                </StackLayout>
+            </StackLayout>
+            <!--Debug Settings Frame End-->
+
+
         </StackLayout>
     </ScrollView>
 </ContentPage>
