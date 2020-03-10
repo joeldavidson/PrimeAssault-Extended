@@ -118,7 +118,8 @@
                             Grid.Column="4"
                             ItemsSource="{x:Static local_helpers:ItemLocationEnumHelper.GetListCharacter}" 
                             SelectedItem="{Binding Data.Location, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
-                            TitleColor="Aqua"
+                            TextColor="Black"
+                            TitleColor="Black"
                             x:Name="LocationPicker">
                     </Picker>
                 </Grid>
