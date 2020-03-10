@@ -48,12 +48,13 @@
             Orientation="Horizontal"
                 HorizontalOptions="Center">
 
-                <Image Source="raygun.png" HeightRequest="150" WidthRequest="150"></Image>
+                <Image Source="raygun-BW.png" HeightRequest="150" WidthRequest="150"></Image>
                 <StackLayout
                     Orientation="Vertical"
                     HorizontalOptions="Center">
 
                     <Entry Text="{Binding Data.Name}" Placeholder="Item name" FontSize="Small" WidthRequest="300"/>
+                    <Entry  Text ="{Binding Data.ImageURI}"  Placeholder="Item image selection..." FontSize="Small" />
                     <Editor Text="{Binding Data.Description}" TextColor="Black" Placeholder ="Item description" PlaceholderColor="Black" FontSize="Small" Margin="0" AutoSize="TextChanges" WidthRequest="300"/>
                     <Label HorizontalOptions ="Center" Text="Value" TextColor="AntiqueWhite" FontSize="Medium" />
                     <Frame
