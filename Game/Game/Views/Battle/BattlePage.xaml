@@ -50,7 +50,6 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <!--Center Buttons BEGIN-->
@@ -63,16 +62,19 @@
                 Grid.Column="10"
                 Grid.ColumnSpan="2"
                 />
-
+            
             <Label 
                 x:Name="BattleMessages"
                 LineBreakMode="WordWrap" 
                 MaxLines="11" 
                 HorizontalOptions="FillAndExpand"
-                Grid.Row="9"
-                Grid.RowSpan="6"
+                Grid.Row="7"
+                Grid.RowSpan="8"
                 Grid.Column="2"
-                Grid.ColumnSpan="9"/>
+                FontAttributes="Bold"
+                Grid.ColumnSpan="8"                
+                BackgroundColor="#B02F4F4F"
+                Opacity=".80"/>
             <!--Center Buttons END-->
 
             <!--Top Monster Move Options BEGIN-->
@@ -251,7 +253,7 @@
                     Orientation="Horizontal"                    
                     VerticalOptions="Center"
                     HorizontalOptions="Start"
-                    Margin="10">
+                    Margin="5,0,5,0">
                     <Label x:Name="CharacterATK" TextColor="Aqua" FontSize="Body"/>
                     <Label Text=" ATK" TextColor="Aqua" FontSize="Body" HorizontalTextAlignment="End"/>
                 </StackLayout>
@@ -262,7 +264,8 @@
                     Grid.ColumnSpan="2"
                     Orientation="Horizontal"                    
                     VerticalOptions="Center"
-                    HorizontalOptions="Start">
+                    HorizontalOptions="Start"
+                    Margin="5,0,5,0">
                     <Label x:Name="CharacterDEF" TextColor="Aqua" FontSize="Body"/>
                     <Label Text=" DEF" TextColor="Aqua" FontSize="Body" HorizontalTextAlignment="End"/>
                 </StackLayout>
@@ -273,7 +276,8 @@
                     Grid.ColumnSpan="2"
                     Orientation="Horizontal"                    
                     VerticalOptions="Center"
-                    HorizontalOptions="Start">
+                    HorizontalOptions="Start"
+                    Margin="5,0,5,0">
                     <Label x:Name="CharacterRDEF" TextColor="Aqua" FontSize="Body"/>
                     <Label Text=" RDEF" TextColor="Aqua" FontSize="Body" HorizontalTextAlignment="End"/>
                 </StackLayout>
@@ -284,7 +288,8 @@
                     Grid.ColumnSpan="2"
                     Orientation="Horizontal"                    
                     VerticalOptions="Center"
-                    HorizontalOptions="Start">
+                    HorizontalOptions="Start"
+                    Margin="5,0,5,0">
                     <Label x:Name="CharacterSPD" TextColor="Aqua" FontSize="Body"/>
                     <Label Text=" SPD" TextColor="Aqua" FontSize="Body" HorizontalTextAlignment="End"/>
                 </StackLayout>
@@ -295,7 +300,8 @@
                     Grid.ColumnSpan="2"
                     Orientation="Horizontal"                    
                     VerticalOptions="Center"
-                    HorizontalOptions="Center">
+                    HorizontalOptions="Center"
+                    Margin="5,0,5,0">
                     <Label x:Name="CharacterHEALTH" TextColor="Aqua" FontSize="Body" HorizontalTextAlignment="End"/>
                     <Label Text=" / " TextColor="Aqua" FontSize="Body" HorizontalTextAlignment="End"/>
                     <Label x:Name="CharacterMAXHEALTH" TextColor="Aqua" FontSize="Body" HorizontalTextAlignment="End"/>
@@ -307,8 +313,9 @@
                     Grid.ColumnSpan="2"
                     Orientation="Horizontal"                    
                     VerticalOptions="Center"
-                    HorizontalOptions="Center">
-                    <Label x:Name="CharacterNAME" TextColor="Aqua" FontSize="Body" HorizontalTextAlignment="End"/>
+                    HorizontalOptions="Center"
+                    Margin="5,0,5,0">
+                    <Label x:Name="CharacterNAME" TextColor="Aqua" FontSize="Body" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"/>
                 </StackLayout>
             </Grid>
             
@@ -319,7 +326,7 @@
                 x:Name="MonsterStatsGrid"
                 Grid.Row="5"
                 Grid.RowSpan="12"
-                Grid.Column="11"
+                Grid.Column="10"
                 Grid.ColumnSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -350,7 +357,7 @@
                     Orientation="Horizontal"                    
                     VerticalOptions="Center"
                     HorizontalOptions="Start"
-                    Margin="10">
+                    Margin="5,0,5,0">
                     <Label x:Name="MonsterATK" TextColor="Aqua" FontSize="Body"/>
                     <Label Text=" ATK" TextColor="Aqua" FontSize="Body" HorizontalTextAlignment="End"/>
                 </StackLayout>
@@ -361,7 +368,8 @@
                     Grid.ColumnSpan="2"
                     Orientation="Horizontal"                    
                     VerticalOptions="Center"
-                    HorizontalOptions="Start">
+                    HorizontalOptions="Start"
+                    Margin="5,0,5,0">
                     <Label x:Name="MonsterDEF" TextColor="Aqua" FontSize="Body"/>
                     <Label Text=" DEF" TextColor="Aqua" FontSize="Body" HorizontalTextAlignment="End"/>
                 </StackLayout>
@@ -372,7 +380,8 @@
                     Grid.ColumnSpan="2"
                     Orientation="Horizontal"                    
                     VerticalOptions="Center"
-                    HorizontalOptions="Start">
+                    HorizontalOptions="Start"
+                    Margin="5,0,5,0">
                     <Label x:Name="MonsterRDEF" TextColor="Aqua" FontSize="Body"/>
                     <Label Text=" RDEF" TextColor="Aqua" FontSize="Body" HorizontalTextAlignment="End"/>
                 </StackLayout>
@@ -383,7 +392,8 @@
                     Grid.ColumnSpan="2"
                     Orientation="Horizontal"                    
                     VerticalOptions="Center"
-                    HorizontalOptions="Start">
+                    HorizontalOptions="Start"
+                    Margin="5,0,5,0">
                     <Label x:Name="MonsterSPD" TextColor="Aqua" FontSize="Body"/>
                     <Label Text=" SPD" TextColor="Aqua" FontSize="Body" HorizontalTextAlignment="End"/>
                 </StackLayout>
@@ -394,7 +404,8 @@
                     Grid.ColumnSpan="2"
                     Orientation="Horizontal"                    
                     VerticalOptions="Center"
-                    HorizontalOptions="Center">
+                    HorizontalOptions="Center"
+                    Margin="5,0,5,0">
                     <Label x:Name="MonsterHEALTH" TextColor="Aqua" FontSize="Body" HorizontalTextAlignment="End"/>
                     <Label Text=" / " TextColor="Aqua" FontSize="Body" HorizontalTextAlignment="End"/>
                     <Label x:Name="MonsterMAXHEALTH" TextColor="Aqua" FontSize="Body" HorizontalTextAlignment="End"/>
@@ -405,9 +416,10 @@
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
                     Orientation="Horizontal"                    
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center">
-                    <Label x:Name="MonsterNAME" TextColor="Aqua" FontSize="Body" HorizontalTextAlignment="End"/>
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="Center"
+                    Margin="5,0,5,0">
+                    <Label x:Name="MonsterNAME" TextColor="Aqua" FontSize="Body" HorizontalTextAlignment="Center" VerticalOptions="Center" LineBreakMode="WordWrap"/>
                 </StackLayout>
             </Grid>
             <!--Right Hand MONSTER Stats END-->
