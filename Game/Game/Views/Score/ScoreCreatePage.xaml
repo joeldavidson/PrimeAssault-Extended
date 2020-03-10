@@ -9,7 +9,7 @@
              xmlns:local_enum="clr-namespace:PrimeAssault.Models"
              x:Class="PrimeAssault.Views.ScoreCreatePage"
              Title="{Binding Title}"
-             BackgroundImageSource="ScoreCreate.jpg">
+             BackgroundImageSource="scorecreate.jpg">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png"/>

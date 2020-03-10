@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="PrimeAssault.Views.ScoreReadPage"
              Title="{Binding Title}"
-             BackgroundImageSource="ScoreRead.jpg">
+             BackgroundImageSource="scoreread.jpg">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Update" Clicked="Update_Clicked" IconImageSource="icon_edit.png"/>

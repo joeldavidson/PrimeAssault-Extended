@@ -7,7 +7,7 @@
              x:Name="BrowseItemsPage"
              x:Class="PrimeAssault.Views.ScoreIndexPage"
              Title="{Binding Title}"
-             BackgroundImageSource="ScoreIndex.jpg">
+             BackgroundImageSource="scoreindex.jpg">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="AddScore_Clicked" IconImageSource="icon_add.png"/>

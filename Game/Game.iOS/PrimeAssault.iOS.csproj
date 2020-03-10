@@ -244,19 +244,19 @@
     <BundleResource Include="Resources\neonStairs.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ScoreIndex.jpg" />
+    <BundleResource Include="Resources\scoreindex.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ScoreCreate.jpg" />
+    <BundleResource Include="Resources\scorecreate.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ScoreDelete.jpg" />
+    <BundleResource Include="Resources\scoredelete.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ScoreUpdate.jpg" />
+    <BundleResource Include="Resources\scoreupdate.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ScoreRead.jpg" />
+    <BundleResource Include="Resources\scoreread.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\monster_masher.png" />

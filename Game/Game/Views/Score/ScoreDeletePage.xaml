@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="PrimeAssault.Views.ScoreDeletePage"
              Title="{Binding Title}"
-             BackgroundImageSource="ScoreDelete.jpg">
+             BackgroundImageSource="scoredelete.jpg">
     
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png"/>
