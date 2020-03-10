@@ -57,6 +57,9 @@ namespace PrimeAssault.Models
             RightFinger = data.RightFinger;
             LeftFinger = data.LeftFinger;
             Feet = data.Feet;
+
+            X = data.X;
+            Y = data.Y;
         }
 
         /// <summary>
@@ -99,6 +102,10 @@ namespace PrimeAssault.Models
             RightFinger = data.RightFinger;
             LeftFinger = data.LeftFinger;
             Feet = data.Feet;
+
+
+            X = data.X;
+            Y = data.Y;
         }
 
         /// <summary>
@@ -139,6 +146,10 @@ namespace PrimeAssault.Models
             RightFinger = data.RightFinger;
             LeftFinger = data.LeftFinger;
             Feet = data.Feet;
+
+
+            X = data.X;
+            Y = data.Y;
         }
         /*
         public override string FormatOutput()

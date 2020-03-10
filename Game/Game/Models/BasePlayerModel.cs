@@ -90,6 +90,10 @@ namespace PrimeAssault.Models
         //Ability name of character
         public AbilityModel Ability { get; set; } = new AbilityModel();
 
+        public int X { get; set; } = 0;
+
+        public int Y { get; set; } = 0;
+
 
         //In the event that the BasePlayerModel is a monster, gives its type
         public MonsterTypesEnum MonsterType { get; set; } = MonsterTypesEnum.Nothing;

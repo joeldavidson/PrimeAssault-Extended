@@ -312,4 +312,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\scorecreate.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\GoldArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\RedArrow.png" />
+  </ItemGroup>
 </Project>

@@ -35,12 +35,32 @@ namespace PrimeAssault.Views
 		// HTML Formatting for message output box
 		public HtmlWebViewSource htmlSource = new HtmlWebViewSource();
 
-		#endregion PageHandelerVariables
+        public ImageButton GoldArrow = new ImageButton
+        {
+            Source = "GoldArrow.png",
+            HorizontalOptions = LayoutOptions.FillAndExpand,
+            VerticalOptions = LayoutOptions.FillAndExpand,
+            HeightRequest = 50,
+            WidthRequest = 50,
+            IsVisible = false,
+        };
 
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		public BattlePage ()
+        public ImageButton RedArrow = new ImageButton
+        {
+            Source = "RedArrow.png",
+            HorizontalOptions = LayoutOptions.FillAndExpand,
+            VerticalOptions = LayoutOptions.FillAndExpand,
+            HeightRequest = 50,
+            WidthRequest = 50,
+            IsVisible = false,
+        };
+
+        #endregion PageHandelerVariables
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public BattlePage ()
 		{
 			InitializeComponent ();
 
@@ -57,7 +77,13 @@ namespace PrimeAssault.Views
 			EngineViewModel.Engine.CurrentAttacker = EngineViewModel.Engine.PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Character).FirstOrDefault();
 
 			ShowModalNewRoundPage();
+            initializeAllMonsters();
+            initializeAllCharacters();
 
+        }
+
+        public void initializeAllMonsters()
+        {
             int x = 0;
             int y = 0;
             int flip = 180;
@@ -80,43 +106,54 @@ namespace PrimeAssault.Views
                 else
                 {
                     monster.RotationY = flip;
-                    Grid.SetRow(monster, --x);   
+                    Grid.SetRow(monster, --x);
                 }
-
+                data.Y = y;
+                data.X = x;
                 MonsterListGrid.Children.Add(monster);
                 y++;
             }
+        }
 
-
+        public void initializeAllCharacters()
+        {
             // Add Players to Display
-            x = 2;
-            y = 0;
+            int x = 2;
+            int y = 0;
+            int flip = 180;
             foreach (var data in EngineViewModel.Engine.CharacterList)
             {
                 StackLayout character = CreatePlayerDisplayBox(data);
 
+                //character.Children
                 if (y == 3)
                 {
                     y++;
                 }
 
                 Grid.SetColumn(character, y);
-
+                //Grid.SetColumn(ArrowImage, y);
                 if (y < 3)
                 {
+                    //  Grid.SetColumn(ArrowImage, x);
                     Grid.SetRow(character, x--);
+
                 }
                 else
                 {
                     character.RotationY = flip;
                     Grid.SetRow(character, ++x);
                 }
-
+                data.Y = y;
+                data.X = x;
+                if(data.X < 0)
+                {
+                    data.X = 0;
+                }
                 PartyListGrid.Children.Add(character);
                 y++;
             }
         }
-
         /// <summary>
         /// Return a stack layout with the Player information inside
         /// </summary>
@@ -138,6 +175,8 @@ namespace PrimeAssault.Views
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 RotationY = 0,
             };
+
+
 
             if (data == null)
             {
@@ -161,20 +200,39 @@ namespace PrimeAssault.Views
 
 
             // Put the Image Button and Text inside a layout
-            var PlayerStack = new StackLayout
+            if (data.PlayerType == PlayerTypeEnum.Character)
             {
-                Style = (Style)Application.Current.Resources["PlayerInfoBox"],
-                Padding = 0,
-                Spacing = 0,
-                
-                Children = {
-                    PlayerImage                   
-                },
+                var PlayerStack = new StackLayout
+                {
+                    Style = (Style)Application.Current.Resources["PlayerInfoBox"],
+                    Padding = 0,
+                    Spacing = 0,
 
-            };
+                    Children = {
+                        PlayerImage
+                    },
 
-            return PlayerStack;
+                };
+                return PlayerStack;
+            }
+            else
+            {
+                var PlayerStack = new StackLayout
+                {
+                    Style = (Style)Application.Current.Resources["PlayerInfoBox"],
+                    Padding = 0,
+                    Spacing = 0,
+
+                    Children = {
+                        PlayerImage
+                    },
+
+                };
+                return PlayerStack;
+            }
+            
         }
+
 
         //Assigns the selected monsters stats to their respective labels
         public bool ShowMonsterStats(PlayerInfoModel data)
@@ -186,7 +244,17 @@ namespace PrimeAssault.Views
             MonsterHEALTH.Text = data.CurrentHealth.ToString();
             MonsterMAXHEALTH.Text = data.MaxHealth.ToString();
             MonsterNAME.Text = data.Name;
-
+            if (RedArrow.IsVisible == true && Grid.GetColumn(RedArrow) == data.Y)
+            {
+                RedArrow.IsVisible = false;
+            }
+            else
+            {
+                RedArrow.IsVisible = true;
+            }
+            Grid.SetRow(RedArrow, data.X);
+            Grid.SetColumn(RedArrow, data.Y);
+            MonsterListGrid.Children.Add(RedArrow);
             return true;
         }
 
@@ -200,6 +268,17 @@ namespace PrimeAssault.Views
             CharacterHEALTH.Text = data.CurrentHealth.ToString();
             CharacterMAXHEALTH.Text = data.MaxHealth.ToString();
             CharacterNAME.Text = data.Name;
+            if (GoldArrow.IsVisible == true && Grid.GetColumn(GoldArrow) == data.Y)
+            {
+                GoldArrow.IsVisible = false;
+            }
+            else
+            {
+                GoldArrow.IsVisible = true;
+            }
+            Grid.SetRow(GoldArrow, data.X);
+            Grid.SetColumn(GoldArrow, data.Y);
+            PartyListGrid.Children.Add(GoldArrow);
 
             return true;
         }

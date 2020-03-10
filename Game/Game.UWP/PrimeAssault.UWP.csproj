@@ -133,6 +133,7 @@
     <Content Include="gear.png" />
     <BundleResource Include="grey_door.png" />
     <BundleResource Include="home_background.png" />
+    <Content Include="GoldArrow.png" />
     <Content Include="hunter_class.png" />
     <Content Include="icon_add.png" />
     <Content Include="icon_cancel.png" />
@@ -181,6 +182,7 @@
     </Content>
     <Content Include="raygun-BW.png" />
     <Content Include="Records.png" />
+    <Content Include="RedArrow.png" />
     <Content Include="ringleader_class.png" />
     <Content Include="SafeHouse.png" />
     <Content Include="score.png" />

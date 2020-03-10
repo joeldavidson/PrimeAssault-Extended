@@ -58,6 +58,9 @@ namespace PrimeAssault.Models
             Moves[1] = data.Moves[1];
             Ability = data.Ability;
 
+            X = data.X;
+            Y = data.Y;
+
             return true;
         }
 
@@ -75,8 +78,9 @@ namespace PrimeAssault.Models
             RangedDefense = 2;
             Speed = 2;
             ImageURI = "sewer_gator.png";
-            
-           
+
+            X = 0;
+            Y = 0;
         }
 
         public bool SetLevel(int targetLevel)

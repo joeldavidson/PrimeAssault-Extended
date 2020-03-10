@@ -30,6 +30,8 @@ namespace PrimeAssault.Models
             RangedDefense = 2;
             Speed = 2;
             SetJobClass("Soldier");
+            X = 0;
+            Y = 0;
         }
 
         public CharacterModel(CharacterModel data)
@@ -74,6 +76,9 @@ namespace PrimeAssault.Models
             Moves[0] = data.Moves[0];
             Moves[1] = data.Moves[1];
             Ability = data.Ability;
+
+            X = data.X;
+            Y = data.Y;
             return true;
         }
 
