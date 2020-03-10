@@ -16,7 +16,8 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Style="{StaticResource OuterBoxStack}"
+            Spacing="20" Padding="15,20,15,20">
 
             <Label Text="Item List Page" TextColor="DeepPink" FontSize="Header" BackgroundColor="Transparent"/>
             <ListView x:Name="ItemsListView" 
@@ -28,7 +29,9 @@
                             BackgroundColor="Transparent">
                 <ListView.ItemTemplate>
                     <DataTemplate>
+                        
                         <ViewCell>
+
                             <Grid Margin="5" BackgroundColor="#4D3f035f" HeightRequest="200">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -39,17 +42,13 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
                                 <!--Column 1 inside Row 1-->
                                 <Image Source="{Binding ImageURI}"
-                                                         HorizontalOptions="CenterAndExpand"
-                                                         VerticalOptions="CenterAndExpand"
+                                                         HorizontalOptions="Center"
+                                                         VerticalOptions="Center"
                                                          Grid.Column="0"
                                                          Grid.Row="0"
                                                          Grid.RowSpan="2">
@@ -85,6 +84,7 @@
                                            VerticalOptions="EndAndExpand"
                                            HorizontalOptions="Center"
                                            ></Label>
+
                                 </Grid>
                                 <!--End of Column 1-->
 
