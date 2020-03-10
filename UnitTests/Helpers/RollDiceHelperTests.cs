@@ -7,20 +7,6 @@ namespace UnitTests.Helpers
     [TestFixture]
     public class RollDiceHelperTests
     {
-        //[Test]
-        //public void RollDiceHelper_RollDice_Valid_1Time_6sided_Should_Pass()
-        //{
-        //    // Arrange
-
-        //    // Act
-        //    var result = DiceHelper.RollDice(1, 6);
-
-        //    // Reset
-
-        //    // Assert
-        //    Assert.AreEqual(1, result);
-        //}
-
         [Test]
         public void RollDiceHelper_RollDice_Valid_1Time_6sided_Should_Between_1_and_6()
         {
@@ -55,14 +41,14 @@ namespace UnitTests.Helpers
         public void RollDiceHelper_RollDice_Valid_1Time_6sided_Forced_6_Should_Pass()
         {
             // Arrange
-            DiceHelper.EnableRandomValues();
-            DiceHelper.SetForcedRandomValue(6);
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(6);
 
             // Act
             var result = DiceHelper.RollDice(1, 6);
 
             // Reset
-            DiceHelper.DisableRandomValues();
+            DiceHelper.DisableForcedRolls();
 
             // Assert
             Assert.AreEqual(6, result);
@@ -79,7 +65,7 @@ namespace UnitTests.Helpers
             // Reset
 
             // Assert
-            Assert.AreEqual(result, 0);
+            Assert.AreEqual(0, result);
         }
 
         [Test]
@@ -93,7 +79,7 @@ namespace UnitTests.Helpers
             // Reset
 
             // Assert
-            Assert.AreEqual(result, 0);
+            Assert.AreEqual(0,result);
         }
 
         [Test]
@@ -107,7 +93,7 @@ namespace UnitTests.Helpers
             // Reset
 
             // Assert
-            Assert.AreEqual(result, 0);
+            Assert.AreEqual(0, result);
         }
     }
 }

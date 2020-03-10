@@ -251,6 +251,16 @@ namespace PrimeAssault.Engine
 
             BattleMessagesModel.HitStatus = RollToHitTarget(AttackScore, DefenseScore);
 
+            // Hackathon
+            // Hackathon Scenario 2, Bob alwasys misses
+            if (Attacker.Name.Equals("Bob"))
+            {
+                BattleMessagesModel.HitStatus = HitStatusEnum.Miss;
+                BattleMessagesModel.TurnMessage = "Bob always Misses";
+                Debug.WriteLine(BattleMessagesModel.TurnMessage);
+                return true;
+            }
+
             switch (BattleMessagesModel.HitStatus)
             {
                 case HitStatusEnum.Miss:

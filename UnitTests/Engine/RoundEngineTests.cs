@@ -4,8 +4,6 @@ using PrimeAssault.Engine;
 using PrimeAssault.Models;
 using System.Threading.Tasks;
 using System.Linq;
-using System.Collections.Generic;
-using PrimeAssault.Services;
 using PrimeAssault.ViewModels;
 
 namespace UnitTests.Engine
@@ -19,7 +17,9 @@ namespace UnitTests.Engine
         public void Setup()
         {
             Engine = new BattleEngine();
-            Engine.StartBattle(false);   // Clear the Engine
+
+            //Start the Engine in AutoBattle Mode
+            Engine.StartBattle(true);   
         }
 
         [TearDown]
@@ -50,10 +50,9 @@ namespace UnitTests.Engine
                 Speed = 20,
                 Level = 20,
                 CurrentHealth = 100,
-                ExperiencePoints = 1000,
+                ExperienceTotal = 1000,
                 Name = "Z",
                 ListOrder = 1,
-                Guid = "me"
             };
 
             var MonsterPlayer = new PlayerInfoModel(Monster);
@@ -65,7 +64,7 @@ namespace UnitTests.Engine
                 Speed = 1,
                 Level = 1,
                 CurrentHealth = 2,
-                ExperiencePoints = 1,
+                ExperienceTotal= 1,
                 Name = "C",
                 ListOrder = 10
             };
@@ -86,7 +85,7 @@ namespace UnitTests.Engine
             // Reset
 
             // Assert
-            Assert.AreEqual("me", result[0].Guid);
+            Assert.AreEqual("Z", result[0].Name);
         }
 
         [Test]
@@ -98,10 +97,9 @@ namespace UnitTests.Engine
                 Speed = 20,
                 Level = 20,
                 CurrentHealth = 100,
-                ExperiencePoints = 1000,
+                ExperienceTotal = 1000,
                 Name = "Z",
                 ListOrder = 1,
-                Guid = "me"
             };
 
             var MonsterPlayer = new PlayerInfoModel(Monster);
@@ -113,7 +111,7 @@ namespace UnitTests.Engine
                 Speed = 20,
                 Level = 1,
                 CurrentHealth = 2,
-                ExperiencePoints = 1,
+                ExperienceTotal = 1,
                 Name = "C",
                 ListOrder = 10
             };
@@ -134,7 +132,7 @@ namespace UnitTests.Engine
             // Reset
 
             // Assert
-            Assert.AreEqual("me", result[0].Guid);
+            Assert.AreEqual("Z", result[0].Name);
         }
 
         [Test]
@@ -147,10 +145,9 @@ namespace UnitTests.Engine
                 Speed = 20,
                 Level = 1,
                 CurrentHealth = 100,
-                ExperiencePoints = 1,
+                ExperienceTotal = 1,
                 Name = "Z",
                 ListOrder = 1,
-                Guid = "me"
             };
 
             var MonsterPlayer = new PlayerInfoModel(Monster);
@@ -163,7 +160,7 @@ namespace UnitTests.Engine
                 Speed = 20,
                 Level = 1,
                 CurrentHealth = 2,
-                ExperiencePoints = 1,
+                ExperienceTotal = 1,
                 Name = "C",
                 ListOrder = 10,
             };
@@ -184,7 +181,7 @@ namespace UnitTests.Engine
             // Reset
 
             // Assert
-            Assert.AreEqual("me", result[0].Guid);
+            Assert.AreEqual("Z", result[0].Name);
         }
 
         [Test]
@@ -196,10 +193,9 @@ namespace UnitTests.Engine
                 Speed = 20,
                 Level = 1,
                 CurrentHealth = 1,
-                ExperiencePoints = 1,
+                ExperienceTotal = 1,
                 Name = "A",
                 ListOrder = 1,
-                Guid = "me"
             };
 
             var MonsterPlayer = new PlayerInfoModel(Monster);
@@ -211,7 +207,7 @@ namespace UnitTests.Engine
                 Speed = 20,
                 Level = 1,
                 CurrentHealth = 2,
-                ExperiencePoints = 1,
+                ExperienceTotal = 1,
                 Name = "A",
                 ListOrder = 10
             };
@@ -232,7 +228,7 @@ namespace UnitTests.Engine
             // Reset
 
             // Assert
-            Assert.AreEqual("me", result[0].Guid);
+            Assert.AreEqual(1, result[0].ListOrder);
         }
 
         [Test]
@@ -247,10 +243,9 @@ namespace UnitTests.Engine
                 Speed = 20,
                 Level = 1,
                 CurrentHealth = 1,
-                ExperiencePoints = 1,
+                ExperienceTotal = 1,
                 Name = "Z",
                 ListOrder = 1,
-                Guid = "me"
             };
 
             var CharacterPlayer = new PlayerInfoModel(Character);
@@ -262,7 +257,7 @@ namespace UnitTests.Engine
                 Speed = 20,
                 Level = 1,
                 CurrentHealth = 2,
-                ExperiencePoints = 1,
+                ExperienceTotal = 1,
                 Name = "ZZ",
                 ListOrder = 10
             };
@@ -282,7 +277,7 @@ namespace UnitTests.Engine
             // Reset
 
             // Assert
-            Assert.AreEqual("me", result[0].Guid);
+            Assert.AreEqual("Z", result[0].Name);
         }
 
         [Test]
@@ -297,7 +292,7 @@ namespace UnitTests.Engine
                 Speed = 20,
                 Level = 1,
                 CurrentHealth = 1,
-                ExperiencePoints = 1,
+                ExperienceTotal = 1,
                 Name = "Z",
                 ListOrder = 1,
                 Guid = "me"
@@ -348,7 +343,7 @@ namespace UnitTests.Engine
                 Speed = 20,
                 Level = 1,
                 CurrentHealth = 1,
-                ExperiencePoints = 1,
+                ExperienceTotal= 1,
                 Name = "Z",
                 ListOrder = 1,
                 Guid = "me"
@@ -398,7 +393,7 @@ namespace UnitTests.Engine
                 Speed = 20,
                 Level = 1,
                 CurrentHealth = 1,
-                ExperiencePoints = 1,
+                ExperienceTotal = 1,
                 Name = "Z",
                 ListOrder = 1,
                 Guid = "me"
@@ -448,7 +443,7 @@ namespace UnitTests.Engine
                 Speed = 20,
                 Level = 1,
                 CurrentHealth = 1,
-                ExperiencePoints = 1,
+                ExperienceTotal = 1,
                 Name = "Z",
                 ListOrder = 1,
                 Guid = "me"
@@ -486,7 +481,7 @@ namespace UnitTests.Engine
         }
 
         [Test]
-        public async Task RoundEngine_PickupItemsFromPool_Default_Should_Pass()
+        public void RoundEngine_PickupItemsFromPool_Default_Should_Pass()
         {
             Engine.MonsterList.Clear();
 
@@ -497,7 +492,7 @@ namespace UnitTests.Engine
                 Speed = 20,
                 Level = 1,
                 CurrentHealth = 1,
-                ExperiencePoints = 1,
+                ExperienceTotal = 1,
                 Name = "Z",
                 ListOrder = 1,
                 Guid = "me"
@@ -534,7 +529,7 @@ namespace UnitTests.Engine
                 Speed = 20,
                 Level = 1,
                 CurrentHealth = 1,
-                ExperiencePoints = 1,
+                ExperienceTotal = 1,
                 Name = "Z",
                 ListOrder = 1,
                 Guid = "me"
@@ -543,7 +538,6 @@ namespace UnitTests.Engine
             // Add each model here to warm up and load it.
             PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
-            var CharacterPlayer = new PlayerInfoModel(Character);
             Engine.CharacterList.Clear();
             Engine.CharacterList.Add(new PlayerInfoModel(Character));
 
@@ -570,28 +564,15 @@ namespace UnitTests.Engine
                 Speed = 20,
                 Level = 1,
                 CurrentHealth = 1,
-                ExperiencePoints = 1,
+                ExperienceTotal = 1,
                 Name = "Characer",
-                ListOrder = 1,
-            };
-
-            var Monster = new MonsterModel
-            {
-                Speed = 20,
-                Level = 1,
-                CurrentHealth = 1,
-                ExperiencePoints = 1,
-                Name = "Monster",
                 ListOrder = 1,
             };
 
             // Add each model here to warm up and load it.
             PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
-            var CharacterPlayer = new PlayerInfoModel(Character);
             Engine.CharacterList.Clear();
-
-            //Engine.CharacterList.Add(new PlayerInfoModel(Character));
 
             Engine.MonsterList.Add(new PlayerInfoModel(Character));
 
@@ -618,25 +599,14 @@ namespace UnitTests.Engine
                 Speed = 20,
                 Level = 1,
                 CurrentHealth = 1,
-                ExperiencePoints = 1,
+                ExperienceTotal = 1,
                 Name = "Characer",
-                ListOrder = 1,
-            };
-
-            var Monster = new MonsterModel
-            {
-                Speed = 20,
-                Level = 1,
-                CurrentHealth = 1,
-                ExperiencePoints = 1,
-                Name = "Monster",
                 ListOrder = 1,
             };
 
             // Add each model here to warm up and load it.
             PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
-            var CharacterPlayer = new PlayerInfoModel(Character);
             Engine.CharacterList.Clear();
 
             Engine.CharacterList.Add(new PlayerInfoModel(Character));
@@ -666,25 +636,14 @@ namespace UnitTests.Engine
                 Speed = 20,
                 Level = 1,
                 CurrentHealth = 1,
-                ExperiencePoints = 1,
+                ExperienceTotal = 1,
                 Name = "Characer",
-                ListOrder = 1,
-            };
-
-            var Monster = new MonsterModel
-            {
-                Speed = 20,
-                Level = 1,
-                CurrentHealth = 1,
-                ExperiencePoints = 1,
-                Name = "Monster",
                 ListOrder = 1,
             };
 
             // Add each model here to warm up and load it.
             PrimeAssault.Helpers.DataSetsHelper.WarmUp();
 
-            var CharacterPlayer = new PlayerInfoModel(Character);
             Engine.CharacterList.Clear();
 
             Engine.CharacterList.Add(new PlayerInfoModel(Character));
@@ -715,7 +674,7 @@ namespace UnitTests.Engine
                                             Speed = 200,
                                             Level = 1,
                                             CurrentHealth = 1,
-                                            ExperiencePoints = 1,
+                                            ExperienceTotal = 1,
                                             Name = "Mike",
                                             ListOrder = 1,
                                         });
@@ -726,7 +685,7 @@ namespace UnitTests.Engine
                                             Speed = 20,
                                             Level = 1,
                                             CurrentHealth = 1,
-                                            ExperiencePoints = 1,
+                                            ExperienceTotal = 1,
                                             Name = "Doug",
                                             ListOrder = 2,
                                         });
@@ -737,7 +696,7 @@ namespace UnitTests.Engine
                                             Speed = 2,
                                             Level = 1,
                                             CurrentHealth = 1,
-                                            ExperiencePoints = 1,
+                                            ExperienceTotal = 1,
                                             Name = "Sue",
                                             ListOrder = 3,
                                         });
@@ -748,7 +707,7 @@ namespace UnitTests.Engine
                                         Speed = 1,
                                         Level = 1,
                                         CurrentHealth = 1,
-                                        ExperiencePoints = 1,
+                                        ExperienceTotal = 1,
                                         Name = "Monster",
                                         ListOrder = 4,
                                     });
@@ -768,8 +727,8 @@ namespace UnitTests.Engine
             // Make the List
             Engine.PlayerList = Engine.MakePlayerList();
 
-            // List is Mike, Doug, Monster, Sue
-            Engine.PlayerCurrent = CharacterPlayerMike;
+            // Set Mike as the Player
+            Engine.CurrentAttacker = CharacterPlayerMike;
 
             // Act
             var result = Engine.GetNextPlayerInList();
@@ -793,7 +752,7 @@ namespace UnitTests.Engine
                                             Speed = 200,
                                             Level = 1,
                                             CurrentHealth = 1,
-                                            ExperiencePoints = 1,
+                                            ExperienceTotal = 1,
                                             Name = "Mike",
                                             ListOrder = 1,
                                         });
@@ -804,7 +763,7 @@ namespace UnitTests.Engine
                                             Speed = 20,
                                             Level = 1,
                                             CurrentHealth = 1,
-                                            ExperiencePoints = 1,
+                                            ExperienceTotal = 1,
                                             Name = "Doug",
                                             ListOrder = 2,
                                         });
@@ -815,7 +774,7 @@ namespace UnitTests.Engine
                                             Speed = 2,
                                             Level = 1,
                                             CurrentHealth = 1,
-                                            ExperiencePoints = 1,
+                                            ExperienceTotal = 1,
                                             Name = "Sue",
                                             ListOrder = 3,
                                         });
@@ -826,7 +785,7 @@ namespace UnitTests.Engine
                                         Speed = 1,
                                         Level = 1,
                                         CurrentHealth = 1,
-                                        ExperiencePoints = 1,
+                                        ExperienceTotal = 1,
                                         Name = "Monster",
                                         ListOrder = 4,
                                     });
@@ -846,8 +805,8 @@ namespace UnitTests.Engine
             // Make the List
             Engine.PlayerList = Engine.MakePlayerList();
 
-            // List is Mike, Doug, Monster, Sue
-            Engine.PlayerCurrent = CharacterPlayerSue;
+            // Set Sue as the Player
+            Engine.CurrentAttacker = CharacterPlayerSue;
 
             // Act
             var result = Engine.GetNextPlayerInList();
@@ -871,7 +830,7 @@ namespace UnitTests.Engine
                                             Speed = 200,
                                             Level = 1,
                                             CurrentHealth = 1,
-                                            ExperiencePoints = 1,
+                                            ExperienceTotal = 1,
                                             Name = "Mike",
                                             ListOrder = 1,
                                         });
@@ -882,7 +841,7 @@ namespace UnitTests.Engine
                                             Speed = 20,
                                             Level = 1,
                                             CurrentHealth = 1,
-                                            ExperiencePoints = 1,
+                                            ExperienceTotal = 1,
                                             Name = "Doug",
                                             ListOrder = 2,
                                         });
@@ -893,7 +852,7 @@ namespace UnitTests.Engine
                                             Speed = 2,
                                             Level = 1,
                                             CurrentHealth = 1,
-                                            ExperiencePoints = 1,
+                                            ExperienceTotal = 1,
                                             Name = "Sue",
                                             ListOrder = 3,
                                         });
@@ -904,7 +863,7 @@ namespace UnitTests.Engine
                                         Speed = 1,
                                         Level = 1,
                                         CurrentHealth = 1,
-                                        ExperiencePoints = 1,
+                                        ExperienceTotal = 1,
                                         Name = "Monster",
                                         ListOrder = 4,
                                     });
@@ -924,9 +883,6 @@ namespace UnitTests.Engine
             // Make the List
             Engine.PlayerList = Engine.MakePlayerList();
 
-            // List is Mike, Doug, Monster, Sue
-            Engine.PlayerCurrent = MonsterPlayer;
-
             // Act
             var result = Engine.GetNextPlayerInList();
 
@@ -936,6 +892,7 @@ namespace UnitTests.Engine
             // Assert
             Assert.AreEqual("Mike", result.Name);
         }
+
         [Test]
         public void RoundEngine_GetNextPlayerInList_EmptyList_Should_Return_Null()
         {
@@ -950,7 +907,7 @@ namespace UnitTests.Engine
                                             Speed = 2,
                                             Level = 1,
                                             CurrentHealth = 1,
-                                            ExperiencePoints = 1,
+                                            ExperienceTotal = 1,
                                             Name = "Sue",
                                             ListOrder = 3,
                                         });
@@ -961,7 +918,7 @@ namespace UnitTests.Engine
                                         Speed = 1,
                                         Level = 1,
                                         CurrentHealth = 1,
-                                        ExperiencePoints = 1,
+                                        ExperienceTotal = 1,
                                         Name = "Monster",
                                         ListOrder = 4,
                                     });
@@ -981,17 +938,250 @@ namespace UnitTests.Engine
 
             // Arrange
 
-            // List is Mike, Doug, Monster, Sue
-            Engine.PlayerCurrent = MonsterPlayer;
+            // Act
+            var result = Engine.GetNextPlayerInList();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(null, result);
+        }
+
+        [Test]
+        public void RoundEngine_GetNextPlayerInList_LastInList_Should_Return_FirstInList()
+        {
+            // Arrange
+
+            // Add each model here to warm up and load it.
+            PrimeAssault.Helpers.DataSetsHelper.WarmUp();
+
+            var CharacterPlayerMike = new PlayerInfoModel(
+                                       new CharacterModel
+                                       {
+                                           Speed = 200,
+                                           Level = 1,
+                                           CurrentHealth = 1,
+                                           ExperienceTotal = 1,
+                                           Name = "Mike",
+                                           ListOrder = 1,
+                                       });
+
+            var CharacterPlayerDoug = new PlayerInfoModel(
+                                        new CharacterModel
+                                        {
+                                            Speed = 20,
+                                            Level = 1,
+                                            CurrentHealth = 1,
+                                            ExperienceTotal = 1,
+                                            Name = "Doug",
+                                            ListOrder = 2,
+                                        });
+
+            var CharacterPlayerSue = new PlayerInfoModel(
+                                        new CharacterModel
+                                        {
+                                            Speed = 2,
+                                            Level = 1,
+                                            CurrentHealth = 1,
+                                            ExperienceTotal = 1,
+                                            Name = "Sue",
+                                            ListOrder = 3,
+                                        });
+
+            var MonsterPlayer = new PlayerInfoModel(
+                                    new MonsterModel
+                                    {
+                                        Speed = 1,
+                                        Level = 1,
+                                        CurrentHealth = 1,
+                                        ExperienceTotal = 1,
+                                        Name = "Monster",
+                                        ListOrder = 4,
+                                    });
+
+            // Add each model here to warm up and load it.
+            PrimeAssault.Helpers.DataSetsHelper.WarmUp();
+
+            Engine.CharacterList.Clear();
+
+            Engine.CharacterList.Add(CharacterPlayerMike);
+            Engine.CharacterList.Add(CharacterPlayerDoug);
+            Engine.CharacterList.Add(CharacterPlayerSue);
+
+            Engine.MonsterList.Clear();
+            Engine.MonsterList.Add(MonsterPlayer);
+
+            // Make the List
+            Engine.PlayerList = Engine.MakePlayerList();
+
+            // Set the current player to the last one in the list
+            Engine.CurrentAttacker = Engine.PlayerList.Last();
 
             // Act
             var result = Engine.GetNextPlayerInList();
 
             // Reset
 
-
             // Assert
-            Assert.AreEqual(null, result);
+            Assert.AreEqual(Engine.PlayerList.First().Guid, result.Guid);
         }
+
+        //[Test]
+        //public void RoundEngine_MakePlayerList_Monster_Dead_Should_Remove_From_List()
+        //{
+        //    // Arrange
+
+        //    // Add each model here to warm up and load it.
+        //    PrimeAssault.Helpers.DataSetsHelper.WarmUp();
+
+        //    var CharacterPlayerMike = new PlayerInfoModel(
+        //                               new CharacterModel
+        //                               {
+        //                                   Speed = 200,
+        //                                   Level = 1,
+        //                                   CurrentHealth = 1,
+        //                                   ExperienceTotal = 1,
+        //                                   Name = "Mike",
+        //                                   ListOrder = 1,
+        //                               });
+
+        //    var CharacterPlayerDoug = new PlayerInfoModel(
+        //                                new CharacterModel
+        //                                {
+        //                                    Speed = 20,
+        //                                    Level = 1,
+        //                                    CurrentHealth = 1,
+        //                                    ExperienceTotal = 1,
+        //                                    Name = "Doug",
+        //                                    ListOrder = 2,
+        //                                });
+
+        //    var CharacterPlayerSue = new PlayerInfoModel(
+        //                                new CharacterModel
+        //                                {
+        //                                    Speed = 2,
+        //                                    Level = 1,
+        //                                    CurrentHealth = 1,
+        //                                    ExperienceTotal = 1,
+        //                                    Name = "Sue",
+        //                                    ListOrder = 3,
+        //                                });
+
+        //    var MonsterPlayer = new PlayerInfoModel(
+        //                            new MonsterModel
+        //                            {
+        //                                Speed = 1,
+        //                                Level = 1,
+        //                                CurrentHealth = 1,
+        //                                ExperienceTotal = 1,
+        //                                Name = "Monster",
+        //                                ListOrder = 4,
+        //                            });
+
+        //    // Add each model here to warm up and load it.
+        //    PrimeAssault.Helpers.DataSetsHelper.WarmUp();
+
+        //    Engine.CharacterList.Clear();
+
+        //    Engine.CharacterList.Add(CharacterPlayerMike);
+        //    Engine.CharacterList.Add(CharacterPlayerDoug);
+        //    Engine.CharacterList.Add(CharacterPlayerSue);
+
+        //    Engine.MonsterList.Clear();
+        //    Engine.MonsterList.Add(MonsterPlayer);
+
+        //    // Make the List
+        //    Engine.PlayerList = Engine.MakePlayerList();
+
+        //    // Mark as dead
+        //    MonsterPlayer.Alive = false;
+
+        //    // Act
+        //    Engine.PlayerList = Engine.MakePlayerList();
+
+        //    // Reset
+
+        //    // Assert
+        //    Assert.AreEqual(null, Engine.PlayerList.Find(m=>m.Id.Contains(MonsterPlayer.Id)));
+        //}
+
+        //[Test]
+        //public void RoundEngine_MakePlayerList_Character_Dead_Should_Remove_From_List()
+        //{
+        //    // Arrange
+
+        //    // Add each model here to warm up and load it.
+        //    PrimeAssault.Helpers.DataSetsHelper.WarmUp();
+
+        //    var CharacterPlayerMike = new PlayerInfoModel(
+        //                               new CharacterModel
+        //                               {
+        //                                   Speed = 200,
+        //                                   Level = 1,
+        //                                   CurrentHealth = 1,
+        //                                   ExperienceTotal = 1,
+        //                                   Name = "Mike",
+        //                                   ListOrder = 1,
+        //                               });
+
+        //    var CharacterPlayerDoug = new PlayerInfoModel(
+        //                                new CharacterModel
+        //                                {
+        //                                    Speed = 20,
+        //                                    Level = 1,
+        //                                    CurrentHealth = 1,
+        //                                    ExperienceTotal = 1,
+        //                                    Name = "Doug",
+        //                                    ListOrder = 2,
+        //                                });
+
+        //    var CharacterPlayerSue = new PlayerInfoModel(
+        //                                new CharacterModel
+        //                                {
+        //                                    Speed = 2,
+        //                                    Level = 1,
+        //                                    CurrentHealth = 1,
+        //                                    ExperienceTotal = 1,
+        //                                    Name = "Sue",
+        //                                    ListOrder = 3,
+        //                                });
+
+        //    var MonsterPlayer = new PlayerInfoModel(
+        //                            new MonsterModel
+        //                            {
+        //                                Speed = 1,
+        //                                Level = 1,
+        //                                CurrentHealth = 1,
+        //                                ExperienceTotal = 1,
+        //                                Name = "Monster",
+        //                                ListOrder = 4,
+        //                            });
+
+        //    // Add each model here to warm up and load it.
+        //    PrimeAssault.Helpers.DataSetsHelper.WarmUp();
+
+        //    Engine.CharacterList.Clear();
+
+        //    Engine.CharacterList.Add(CharacterPlayerMike);
+        //    Engine.CharacterList.Add(CharacterPlayerDoug);
+        //    Engine.CharacterList.Add(CharacterPlayerSue);
+
+        //    Engine.MonsterList.Clear();
+        //    Engine.MonsterList.Add(MonsterPlayer);
+
+        //    // Make the List
+        //    Engine.PlayerList = Engine.MakePlayerList();
+
+        //    // Mark as dead
+        //    CharacterPlayerMike.Alive = false;
+
+        //    // Act
+        //    Engine.PlayerList = Engine.MakePlayerList();
+
+        //    // Reset
+
+        //    // Assert
+        //    Assert.AreEqual(null, Engine.PlayerList.Find(m => m.Id.Contains(CharacterPlayerMike.Id)));
+        //}
     }
 }

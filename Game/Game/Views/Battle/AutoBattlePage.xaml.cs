@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PrimeAssault.Engine;
+using PrimeAssault.Models;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,6 +12,9 @@ namespace PrimeAssault.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AutoBattlePage : ContentPage
 	{
+		// Hold the Engine, so it can be swapped out for unit testing
+		public AutoBattleEngine Engine = new AutoBattleEngine();
+
 		/// <summary>
 		/// Constructor
 		/// </summary>

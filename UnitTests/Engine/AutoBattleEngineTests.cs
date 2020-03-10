@@ -4,6 +4,8 @@ using PrimeAssault.Engine;
 using PrimeAssault.Models;
 using System.Threading.Tasks;
 using PrimeAssault.Helpers;
+using System.Linq;
+using PrimeAssault.ViewModels;
 
 namespace UnitTests.Engine
 {
@@ -51,26 +53,35 @@ namespace UnitTests.Engine
             Assert.IsNotNull(result);
         }
 
-        [Test]
-        public void AutoBattleEngine_RunAutoBattle_Default_Should_Pass()
+       [Test]
+        public async Task AutoBattleEngine_RunAutoBattle_Default_Should_Pass()
         {
             //Arrange
 
-            DiceHelper.EnableRandomValues();
-            DiceHelper.SetForcedRandomValue(3);
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(3);
+
+            var data = new CharacterModel { Level = 1, MaxHealth = 10 };
+
+            Engine.CharacterList.Add(new PlayerInfoModel(data));
+            Engine.CharacterList.Add(new PlayerInfoModel(data));
+            Engine.CharacterList.Add(new PlayerInfoModel(data));
+            Engine.CharacterList.Add(new PlayerInfoModel(data));
+            Engine.CharacterList.Add(new PlayerInfoModel(data));
+            Engine.CharacterList.Add(new PlayerInfoModel(data));
 
             //Act
-            var result = Engine.RunAutoBattle();
+            var result = await Engine.RunAutoBattle();
 
             //Reset
-            DiceHelper.DisableRandomValues();
+            DiceHelper.DisableForcedRolls();
 
             //Assert
-            Assert.IsNotNull(result);
+            Assert.AreEqual(true, result);
         }
 
         [Test]
-        public void AutoBattleEngine_RunAutoBattle_Monsters_1_Should_Pass()
+        public async Task AutoBattleEngine_RunAutoBattle_Monsters_1_Should_Pass()
         {
             //Arrange
 
@@ -84,7 +95,7 @@ namespace UnitTests.Engine
                                 Speed = -1,
                                 Level = 10,
                                 CurrentHealth = 11,
-                                ExperiencePoints = 1,
+                                ExperienceTotal = 1,
                                 Name = "Mike",
                                 ListOrder = 1,
                             });
@@ -92,12 +103,55 @@ namespace UnitTests.Engine
             Engine.CharacterList.Add(CharacterPlayerMike);
 
             //Act
-            var result = Engine.RunAutoBattle();
+            var result = await Engine.RunAutoBattle();
 
             //Reset
 
             //Assert
-            Assert.IsNotNull(result);
+            Assert.AreEqual(true, result);
+        }
+
+        [Test]
+        public async Task AutoBattleEngine_CreateCharacterParty_Characters_Should_Assign_6()
+        {
+            //Arrange
+            Engine.MaxNumberPartyCharacters = 6;
+
+            CharacterIndexViewModel.Instance.Dataset.Clear();
+
+            await CharacterIndexViewModel.Instance.CreateAsync(new CharacterModel { Name = "1" });
+            await CharacterIndexViewModel.Instance.CreateAsync(new CharacterModel { Name = "2" });
+            await CharacterIndexViewModel.Instance.CreateAsync(new CharacterModel { Name = "3" });
+            await CharacterIndexViewModel.Instance.CreateAsync(new CharacterModel { Name = "4" });
+            await CharacterIndexViewModel.Instance.CreateAsync(new CharacterModel { Name = "5" });
+            await CharacterIndexViewModel.Instance.CreateAsync(new CharacterModel { Name = "6" });
+            await CharacterIndexViewModel.Instance.CreateAsync(new CharacterModel { Name = "7" });
+
+            //Act
+            var result = Engine.CreateCharacterParty();
+
+            //Reset
+
+            //Assert
+            Assert.AreEqual(6, Engine.CharacterList.Count());
+            Assert.AreEqual("6", Engine.CharacterList.ElementAt(5).Name);
+        }
+
+        [Test]
+        public void AutoBattleEngine_CreateCharacterParty_Characters_CharacterIndex_None_Should_Create_6()
+        {
+            //Arrange
+            Engine.MaxNumberPartyCharacters = 6;
+
+            CharacterIndexViewModel.Instance.Dataset.Clear();
+            
+            //Act
+            var result = Engine.CreateCharacterParty();
+
+            //Reset
+
+            //Assert
+            Assert.AreEqual(6, Engine.CharacterList.Count());
         }
     }
 }
