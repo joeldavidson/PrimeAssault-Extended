@@ -48,7 +48,7 @@
             Orientation="Horizontal"
                 HorizontalOptions="Center">
 
-                <Image Source="raygun.png" HeightRequest="150" WidthRequest="150"></Image>
+                <Image Source="{Binding Data.ImageURI}" HeightRequest="150" WidthRequest="150"></Image>
                 <StackLayout
                     Orientation="Vertical"
                     HorizontalOptions="Center">
