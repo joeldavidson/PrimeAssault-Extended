@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="using:PrimeAssault.Models"
+             xmlns:local_helpers="clr-namespace:PrimeAssault.Helpers"
+             xmlns:local_enum="clr-namespace:PrimeAssault.Models"
              x:Class="PrimeAssault.Views.CharCreatePage"
               BackgroundImageSource="workshop.png">
 
@@ -8,6 +14,12 @@
         <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png" />
         <ToolbarItem Text="Save" Clicked="Save_Clicked" IconImageSource="icon_save.png"/>
     </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local_helpers:StringEnumConverter x:Key="ClassPicker"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.Content>
         <AbsoluteLayout
@@ -171,6 +183,7 @@
                     Style="{StaticResource ClassPicker}"
             Title="Class"
             SelectedItem="{Binding Data.JobClass}"
+                        TextColor="Black"
             >
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
