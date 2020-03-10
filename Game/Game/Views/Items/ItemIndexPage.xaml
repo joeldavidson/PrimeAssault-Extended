@@ -60,6 +60,7 @@
                                                 CornerRadius="20"
                                                 BorderColor="Aqua"
                                             VerticalOptions="FillAndExpand"
+                                            HorizontalOptions="FillAndExpand"
                                                     ></Button>
 
                                 <Label Text= "{Binding Location}" TextColor="Aqua"
@@ -77,7 +78,7 @@
                                     <Label Text= "Value: " TextColor="Aqua"
                                            Grid.Column="0"
                                            VerticalOptions="EndAndExpand"
-                                           HorizontalOptions="Center"
+                                           HorizontalOptions="End"
                                          ></Label>
                                     <Label Text= "{Binding Value}" TextColor="Aqua"
                                            Grid.Column="1"
