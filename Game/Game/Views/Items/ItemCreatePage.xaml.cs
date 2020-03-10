@@ -38,8 +38,8 @@ namespace PrimeAssault.Views
             this.ViewModel.Title = "Create";
 
             //Need to make the SelectedItem a string, so it can select the correct item.
-            pick.SelectedItem = ViewModel.Data.Location.ToString();
-            pick.SelectedItem = ViewModel.Data.Attribute.ToString();
+            LocationPicker.SelectedItem = ViewModel.Data.Location.ToString();
+            //pick.SelectedItem = ViewModel.Data.Attribute.ToString();
         }
 
         /// <summary>
