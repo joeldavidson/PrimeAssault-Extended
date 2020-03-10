@@ -5,6 +5,8 @@ using PrimeAssault.Views;
 using Xamarin.Forms.Mocks;
 using Xamarin.Forms;
 using PrimeAssault.Helpers;
+using PrimeAssault.Models;
+using PrimeAssault.Engine;
 
 namespace UnitTests.Views
 {
@@ -52,14 +54,26 @@ namespace UnitTests.Views
         {
             // Arrange
 
-            DiceHelper.EnableRandomValues();
-            DiceHelper.SetForcedRandomValue(3);
-            
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(3);
+
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(3);
+
+            var data = new CharacterModel { Level = 1, MaxHealth = 10 };
+
+            page.Engine.CharacterList.Add(new PlayerInfoModel(data));
+            page.Engine.CharacterList.Add(new PlayerInfoModel(data));
+            page.Engine.CharacterList.Add(new PlayerInfoModel(data));
+            page.Engine.CharacterList.Add(new PlayerInfoModel(data));
+            page.Engine.CharacterList.Add(new PlayerInfoModel(data));
+            page.Engine.CharacterList.Add(new PlayerInfoModel(data));
+
             // Act
             page.AutobattleButton_Clicked(null, null);
 
             // Reset
-            DiceHelper.DisableRandomValues();
+            DiceHelper.DisableForcedRolls();
 
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...

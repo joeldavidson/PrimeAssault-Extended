@@ -19,19 +19,19 @@ namespace PrimeAssault.Helpers
         private static int _ForcedRandomValue = 1;
 
         // What number should return for random numbers (1 is good choice...)
-        public static void SetForcedRandomValue(int value)
+        public static void SetForcedRollValue(int value)
         {
             _ForcedRandomValue = value;
         }
 
         // Turn Random State Off
-        public static void DisableRandomValues()
+        public static void DisableForcedRolls()
         {
             ForceRollsToNotRandom = false;
         }
 
         // Turn Random State On
-        public static void EnableRandomValues()
+        public static void EnableForcedRolls()
         {
             ForceRollsToNotRandom = true;
         }
@@ -44,6 +44,11 @@ namespace PrimeAssault.Helpers
         /// <returns></returns>
         public static int RollDice(int rolls, int dice)
         {
+            if (ForceRollsToNotRandom)
+            {
+                return rolls * _ForcedRandomValue;
+            }
+
             if (rolls < 1)
             {
                 return 0;
@@ -52,11 +57,6 @@ namespace PrimeAssault.Helpers
             if (dice < 1)
             {
                 return 0;
-            }
-
-            if (ForceRollsToNotRandom)
-            {
-                return rolls * _ForcedRandomValue;
             }
 
             var myReturn = 0;
