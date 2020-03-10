@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 using PrimeAssault.Models;
 using PrimeAssault.ViewModels;
@@ -14,6 +15,7 @@ namespace PrimeAssault.Views
     /// Item Update Page
     /// </summary>
     [DesignTimeVisible(false)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemUpdatePage : ContentPage
     {
         // View Model for Item
@@ -34,8 +36,8 @@ namespace PrimeAssault.Views
             this.ViewModel.Title = "Update " + data.Title;
 
             //Need to make the SelectedItem a string, so it can select the correct item.
-            pick.SelectedItem = data.Data.Location.ToString();
-            pick.SelectedItem = data.Data.Attribute.ToString();
+            LocationPicker.SelectedItem = data.Data.Location.ToString();
+            //pick.SelectedItem = ViewModel.Data.Attribute.ToString();
         }
 
         /// <summary>
