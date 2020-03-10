@@ -244,21 +244,6 @@
     <BundleResource Include="Resources\neonStairs.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\scoreindex.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\scorecreate.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\scoredelete.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\scoreupdate.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\scoreread.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\monster_masher.png" />
   </ItemGroup>
   <ItemGroup>
@@ -311,5 +296,20 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\raygun-BW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\scoredelete.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\scoreindex.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\scoreread.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\scoreupdate.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\scorecreate.jpg" />
   </ItemGroup>
 </Project>

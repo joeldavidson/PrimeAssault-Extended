@@ -184,11 +184,11 @@
     <Content Include="ringleader_class.png" />
     <Content Include="SafeHouse.png" />
     <Content Include="score.png" />
-    <BundleResource Include="scorecreate.jpg" />
-    <BundleResource Include="scoredelete.jpg" />
-    <BundleResource Include="scoreindex.jpg" />
-    <BundleResource Include="scoreread.jpg" />
-    <BundleResource Include="scoreupdate.jpg" />
+    <Content Include="scorecreate.jpg" />
+    <Content Include="scoredelete.jpg" />
+    <Content Include="scoreindex.jpg" />
+    <Content Include="scoreread.jpg" />
+    <Content Include="scoreupdate.jpg" />
     <Content Include="sewer_background.jpg" />
     <Content Include="sewer_gator.png" />
     <Content Include="shieldRobot.png" />
