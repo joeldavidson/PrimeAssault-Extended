@@ -20,8 +20,8 @@ namespace PrimeAssault.Views
 	{
 
         //Creates a SimpleAudioPlayer object to be used for sound effects
-        ISimpleAudioPlayer AudioPlayer;
-
+        ISimpleAudioPlayer AttackSE;
+        ISimpleAudioPlayer DeathSE;
         // This uses the Instance so it can be shared with other Battle Pages as needed
         public BattleEngineViewModel EngineViewModel = BattleEngineViewModel.Instance;
 
@@ -87,13 +87,15 @@ namespace PrimeAssault.Views
             initializeAllCharacters();
 
             //Defining the audioplayer
-            AudioPlayer = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+            AttackSE = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+            DeathSE = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
 
             //Assigning a soundeffect to be played by AudioPlayer object
-            var stream = GetStreamFromFile("attackse.ogg");
+            var stream = GetStreamFromFile("attack_se.ogg");
+            AttackSE.Load(stream);
 
-          
-            AudioPlayer.Load(stream);
+            stream = GetStreamFromFile("death_se.ogg");
+            DeathSE.Load(stream);
 
         }
 
@@ -260,13 +262,15 @@ namespace PrimeAssault.Views
             if(data.CurrentHealth < 1)
             {
                 PlayerImage.RotateTo(90);
+                DeathSE.Play();
             }
         }
 
         public void UnitAttacks(PlayerInfoModel data, ImageButton PlayerImage)
         {
             //Attack sound effect played
-            AudioPlayer.Play();
+            
+            AttackSE.Play();
             //PlayerImage.RotateTo(20);
 
         }
