@@ -426,18 +426,19 @@ namespace PrimeAssault.Models
             Alive = false;
 
             //Hack 16
-            ReanimateZombie();
+            ReanimateZombie(50);
 
             return Alive;
         }
 
-        public bool ReanimateZombie()
+        public bool ReanimateZombie(int percentChance)
         {
-            if (Alive)
+            int randomNum = DiceHelper.RollDice(1, 100);
+            if (Alive || randomNum > percentChance || PlayerType != PlayerTypeEnum.Monster)
             {
                 return false;
             }
-            
+
             Alive = true;
             Name = "Zombie " + Name;
             CurrentHealth = (int)(GetHealthMax() * .5);
