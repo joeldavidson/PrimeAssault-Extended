@@ -183,8 +183,6 @@ namespace PrimeAssault.Engine
                 return false;
             }
 
-
-
             // Set Messages to empty
             BattleMessagesModel.TurnMessage = string.Empty;
             BattleMessagesModel.TurnMessageSpecial = string.Empty;
@@ -201,6 +199,12 @@ namespace PrimeAssault.Engine
 
             BattleMessagesModel.TargetName = Target.Name;
             BattleMessagesModel.AttackerName = Attacker.Name;
+
+            Predicate<PlayerInfoModel> nameFinder = (PlayerInfoModel p) => { return p.Name == Attacker.Name; };
+            if (MonsterList.Exists(nameFinder))
+            {
+                MonsterList.Find(nameFinder).lastToAttack = true;
+            }
 
             //checks for if move can potentially be used...
             MoveModel moveUsed = null;
