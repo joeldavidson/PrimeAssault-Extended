@@ -56,6 +56,8 @@ namespace PrimeAssault.Views
             IsVisible = false,
         };
 
+        public PlayerInfoModel currentCharacter;
+
         #endregion PageHandelerVariables
 
         /// <summary>
@@ -288,10 +290,6 @@ namespace PrimeAssault.Views
             MonsterHEALTH.Text = data.CurrentHealth.ToString();
             MonsterMAXHEALTH.Text = data.MaxHealth.ToString();
             MonsterNAME.Text = data.Name;
-            if(data.CurrentHealth < 1)
-            {
-
-            }
             if (RedArrow.IsVisible == true && Grid.GetColumn(RedArrow) == data.Y)
             {
                 RedArrow.IsVisible = false;
@@ -324,6 +322,7 @@ namespace PrimeAssault.Views
             {
                 GoldArrow.IsVisible = true;
             }
+            currentCharacter = data;
             Grid.SetRow(GoldArrow, data.X);
             Grid.SetColumn(GoldArrow, data.Y);
             PartyListGrid.Children.Add(GoldArrow);
@@ -333,7 +332,7 @@ namespace PrimeAssault.Views
 
         public async void PotionButton_Clicked(object sender, EventArgs e)
         {
-            
+            currentCharacter.CurrentHealth = currentCharacter.MaxHealth;
         }
 
         /// <summary>
