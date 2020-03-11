@@ -99,8 +99,9 @@ namespace PrimeAssault.Views
         public void PercentageChance_ValueChanged(object sender, Xamarin.Forms.ValueChangedEventArgs args)
         {
             Percentage_Chance.Value = Math.Round(args.NewValue);
-            double value = args.NewValue;
+            int value = (int)args.NewValue;
             Percentage_Label.Text = String.Format("Percent chance of zombification: {0}%", value);
+            MessagingCenter.Send(this, "ZombificationChance", value);
         }
 
         public void Hack_19_OnToggled(object sender, ToggledEventArgs e)
