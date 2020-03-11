@@ -473,6 +473,7 @@ namespace PrimeAssault.Views
 
             if (answer)
             {
+                MusicCenter.Battle_Music_Pause();
                 await Navigation.PopModalAsync();
             }
         }
