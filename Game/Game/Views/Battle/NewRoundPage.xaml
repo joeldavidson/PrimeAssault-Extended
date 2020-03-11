@@ -14,21 +14,25 @@
 
                 <Button Clicked="BeginButton_Clicked" Text="Begin"/>
 
-                <Label Text="Characters" Style="{StaticResource MessageStyle}"/>
+                <Label Text="Characters" Style="{StaticResource MessageStyle}"
+                       HorizontalOptions="Center"/>
 
                 <FlexLayout x:Name="PartyListFrame"
-                                    JustifyContent="Start"
-                                    AlignContent="Start"
+                                    JustifyContent="Center"
+                                    AlignContent="Center"
+                            HorizontalOptions="Center"
                                     Wrap="Wrap"/>
 
                 <Image Source="vs.png"
                        Style="{StaticResource ImageMediumStyle}"/>
 
-                <Label Text="Monsters" Style="{StaticResource MessageStyle}"/>
+                <Label Text="Monsters" Style="{StaticResource MessageStyle}"
+                       HorizontalOptions="Center"/>
 
                 <FlexLayout x:Name="MonsterListFrame"
-                                    JustifyContent="Start"
-                                    AlignContent="Start"
+                                    JustifyContent="Center"
+                                    AlignContent="SpaceEvenly"
+                            HorizontalOptions="Center"
                                     Wrap="Wrap"/>
 
                 <StackLayout Padding="1"></StackLayout>
