@@ -103,6 +103,7 @@ namespace PrimeAssault.Views
         {
             // Show or hide the Debug Settings
             Hack19Frame.IsVisible = (e.Value);
+
         }
 
         public void Hack19_Chance_Changed(object sender, Xamarin.Forms.ValueChangedEventArgs args)

@@ -145,7 +145,7 @@
                 </StackLayout>
                 
                 <Slider x:Name="Percentage_Chance" HorizontalOptions="FillAndExpand" ValueChanged="PercentageChance_ValueChanged" IsEnabled="{Binding IsEnabled}" Minimum="0" Maximum="100" BindingContext=""/>
-                <Label  x:Name="Percentage_Label" Text="Percent chance of zombification: %0" HorizontalOptions="Center" VerticalOptions ="CenterAndExpand"></Label>
+                <Label  x:Name="Percentage_Label" Text="Percent chance of zombification: 0%" HorizontalOptions="Center" VerticalOptions ="CenterAndExpand"></Label>
                 
             </StackLayout>
             <!--Debug Settings Frame End-->
@@ -177,7 +177,7 @@
 
                 </StackLayout>
                 <Slider x:Name="Hack19_Chance" HorizontalOptions="FillAndExpand" ValueChanged="Hack19_Chance_Changed" IsEnabled="{Binding IsEnabled}" Minimum="0" Maximum="100" BindingContext=""/>
-                <Label  x:Name="Hack19_Chance_Label" Text="Percent chance of Feeling Good: %0" HorizontalOptions="Center" VerticalOptions ="CenterAndExpand"></Label>
+                <Label  x:Name="Hack19_Chance_Label" Text="Percent chance of Feeling Good: 0%" HorizontalOptions="Center" VerticalOptions ="CenterAndExpand"></Label>
 
             </StackLayout>
             <!--Debug Settings Frame End-->
