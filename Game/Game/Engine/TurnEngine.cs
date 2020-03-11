@@ -87,7 +87,6 @@ namespace PrimeAssault.Engine
 
             // Do Attack
             TurnAsAttack(Attacker, Target);
-            AudioCenter.Attack_Sound();
             CurrentAttacker = new PlayerInfoModel(Attacker);
             CurrentDefender = new PlayerInfoModel(Target);
 
@@ -283,6 +282,7 @@ namespace PrimeAssault.Engine
 
                 case HitStatusEnum.Hit:
                     // It's a Hit
+                    AudioCenter.Attack_Sound();
                     Target.lastToGetHit = true;
                     //Calculate Damage
                     int damage = Attacker.GetDamageRollValue();
