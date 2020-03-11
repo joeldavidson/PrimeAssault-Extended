@@ -60,7 +60,7 @@ namespace Scenario
             // Act
 
             // Assert
-           
+
 
             // Act
             var result = EngineViewModel;
@@ -293,6 +293,41 @@ namespace Scenario
             //Assert
             Assert.AreEqual(true, result);
             Assert.AreEqual(HitStatusEnum.Hit, BattleEngine.BattleMessagesModel.HitStatus);
+        }
+
+        [Test]
+        public void HackathonScenario_Scenario_18_Audio_Should_Play_On_Hit()
+        {
+            /* 
+            * Scenario Number:  
+            *      18
+            *      
+            * Description: 
+            *      Make a sound effect play when a unit attacks
+            * 
+            * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+            *      No Code changes requied 
+            * 
+            * Test Algrorithm:
+            *       Create a character
+            *       Create an enemy
+            *       
+            *      Startup Battle
+            *      Run Auto Battle
+            * 
+            * Test Conditions:
+            *      Default condition is sufficient
+            * 
+            * Validation:
+            *      Verify Battle Returned True
+            *       Verify AudioCenter is created
+            *       Verify AudioCenter.Attack_Sound() works
+            *  
+            */
+
+            //Arrange
+
+            // Set Character Conditions
         }
     }
 }
