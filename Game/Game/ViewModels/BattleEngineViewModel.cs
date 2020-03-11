@@ -2,7 +2,11 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
 
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 using PrimeAssault.Engine;
@@ -19,7 +23,9 @@ namespace PrimeAssault.ViewModels
 
         // Make this a singleton so it only exist one time because holds all the data records in memory
         private static volatile BattleEngineViewModel instance;
-        private static readonly object syncRoot = new Object();
+        private static readonly object syncRoot = new Object();        
+        // Track if the system needs refreshing
+        public bool _needsRefresh;
 
         public static BattleEngineViewModel Instance
         {
@@ -72,13 +78,13 @@ namespace PrimeAssault.ViewModels
         {
             MessagingCenter.Subscribe<AboutPage, int>(this, "Zombification", async (obj, data) =>
             {
-                SetZombieApocalypse(data);
+                await SetZombieApocalypse(data);
             });
 
             #endregion Constructor
         }
 
-        public bool SetZombieApocalypse(int input)
+        async public Task<bool> SetZombieApocalypse(int input)
         {
             if (input == 0)
             {
@@ -88,7 +94,16 @@ namespace PrimeAssault.ViewModels
             {
                 ZombieApocalypse = true;
             }
-            return ZombieApocalypse;
+            return await Task.FromResult(true);
+        }
+
+        /// <summary>
+        /// Sets the need to refresh 
+        /// </summary>
+        /// <param name="value"></param>
+        public void SetNeedsRefresh(bool value)
+        {
+            _needsRefresh = value;
         }
 
     }

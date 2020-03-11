@@ -1,5 +1,19 @@
-﻿
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
+
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using Xamarin.Forms;
+
+using PrimeAssault.Engine;
 using PrimeAssault.Models;
+using PrimeAssault.Views;
+using PrimeAssault.Services;
+using PrimeAssault.ViewModels;
 
 namespace PrimeAssault.Engine
 {
@@ -13,6 +27,31 @@ namespace PrimeAssault.Engine
 
         // For Hack 16
         public bool ZombieApocalypse =false;
+
+        #region Constructor
+
+        public BattleEngine()
+        {
+            MessagingCenter.Subscribe<AboutPage, int>(this, "Zombification", async (obj, data) =>
+            {
+                await SetZombieApocalypse(data);
+            });
+
+            #endregion Constructor
+        }
+
+        async public Task<bool> SetZombieApocalypse(int input)
+        {
+            if (input == 0)
+            {
+                ZombieApocalypse = false;
+            }
+            else
+            {
+                ZombieApocalypse = true;
+            }
+            return await Task.FromResult(true);
+        }
 
         /// <summary>
         /// Add the charcter to the character list

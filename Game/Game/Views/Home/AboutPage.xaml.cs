@@ -4,6 +4,7 @@ using System.Reflection;
 using Xamarin.Forms;
 using Plugin.SimpleAudioPlayer;
 using System.IO;
+using PrimeAssault.ViewModels;
 
 namespace PrimeAssault.Views
 {
@@ -14,6 +15,8 @@ namespace PrimeAssault.Views
     public partial class AboutPage : ContentPage
     {
         ISimpleAudioPlayer player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+
+        BattleEngineViewModel battle = new BattleEngineViewModel();
 
         // Constructor for UnitTests
         public AboutPage(bool UnitTest){}
@@ -82,6 +85,7 @@ namespace PrimeAssault.Views
             // Show or hide the Debug Settings
             Hack16Frame.IsVisible = (e.Value);
 
+            // Flip the settings
             if (Hack16Switch.IsToggled == true)
             {
                 MessagingCenter.Send(this, "Zombification", 1);
