@@ -37,6 +37,10 @@ namespace PrimeAssault.Engine
         // Player currently engaged
         public PlayerInfoModel PlayerCurrent;
 
+        public PlayerInfoModel attackMissed;
+
+
+
         // Current Round State
         public RoundEnum RoundStateEnum = RoundEnum.Unknown;
 
