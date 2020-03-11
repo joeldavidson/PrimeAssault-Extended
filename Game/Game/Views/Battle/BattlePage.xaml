@@ -99,7 +99,7 @@
                 FontAttributes="Bold"
                 Grid.ColumnSpan="8"                
                 BackgroundColor="#B02F4F4F"
-                Opacity=".80"/>
+                Opacity=".90"/>
             <!--Center Buttons END-->
 
             <!--Top Monster Move Options BEGIN-->
