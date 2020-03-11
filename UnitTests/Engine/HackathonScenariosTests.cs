@@ -309,11 +309,9 @@ namespace Scenario
             *      No Code changes requied 
             * 
             * Test Algrorithm:
-            *      Create Character named Mike
-            *      Set speed to -1 so he is really slow
-            *      Set Max health to 1 so he is weak
-            *      Set Current Health to 1 so he is weak
-            *  
+            *       Create a character
+            *       Create an enemy
+            *       
             *      Startup Battle
             *      Run Auto Battle
             * 
@@ -322,8 +320,8 @@ namespace Scenario
             * 
             * Validation:
             *      Verify Battle Returned True
-            *      Verify Mike is not in the Player List
-            *      Verify Round Count is 1
+            *       Verify AudioCenter is created
+            *       Verify AudioCenter.Attack_Sound() works
             *  
             */
 
