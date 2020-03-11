@@ -377,7 +377,6 @@ namespace Scenario
             Assert.AreEqual(true, result);
         }
 
-        [Test]
         public void HackathonScenario_Scenario_18_Audio_Should_Play_On_Hit()
         {
             /* 
@@ -410,6 +409,20 @@ namespace Scenario
             //Arrange
 
             // Set Character Conditions
+            // Arrange
+            var PlayerInfo = new PlayerInfoModel();
+            Engine.MonsterList.Add(new PlayerInfoModel(new MonsterModel()));
+
+            // Act
+            Engine.Attack(PlayerInfo);
+
+            var result = Engine.Attack(PlayerInfo);
+
+            // Reset
+            Engine.StartBattle(false);   // Clear the Engine
+
+            // Assert
+            Assert.AreEqual(true, result);
         }
     }
 }
