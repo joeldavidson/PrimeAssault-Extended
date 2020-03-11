@@ -69,6 +69,8 @@ namespace PrimeAssault.ViewModels
         public ObservableCollection<CharacterModel> DatabaseCharacterList { get; set; } = CharacterIndexViewModel.Instance.Dataset;
 
         public bool ZombieApocalypse { get; set; } = false;
+
+        public int ChanceOfRes { get; set; } = 0;
         #region Constructor
 
         /// <summary>
@@ -79,6 +81,11 @@ namespace PrimeAssault.ViewModels
             MessagingCenter.Subscribe<AboutPage, int>(this, "Zombification", async (obj, data) =>
             {
                 await SetZombieApocalypse(data);
+            });
+
+            MessagingCenter.Subscribe<AboutPage, int>(this, "ZombificationChance", async (obj, data) =>
+            {
+                await SetResChance(data);
             });
 
             #endregion Constructor
@@ -94,6 +101,12 @@ namespace PrimeAssault.ViewModels
             {
                 ZombieApocalypse = true;
             }
+            return await Task.FromResult(true);
+        }
+
+        async public Task<bool> SetResChance(int input)
+        {
+            ChanceOfRes = input;
             return await Task.FromResult(true);
         }
 

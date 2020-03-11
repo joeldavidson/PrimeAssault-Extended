@@ -27,6 +27,7 @@ namespace PrimeAssault.Engine
 
         // For Hack 16
         public bool ZombieApocalypse =false;
+        public int ResChance = 0;
 
         #region Constructor
 
@@ -36,6 +37,12 @@ namespace PrimeAssault.Engine
             {
                 await SetZombieApocalypse(data);
             });
+
+            MessagingCenter.Subscribe<AboutPage, int>(this, "ZombificationChance", async (obj, data) =>
+            {
+                await SetResChance(data);
+            });
+
 
             #endregion Constructor
         }
@@ -52,7 +59,11 @@ namespace PrimeAssault.Engine
             }
             return await Task.FromResult(true);
         }
-
+        async public Task<bool> SetResChance(int input)
+        {
+            ResChance = input;
+            return await Task.FromResult(true);
+        }
         /// <summary>
         /// Add the charcter to the character list
         /// </summary>
@@ -79,6 +90,8 @@ namespace PrimeAssault.Engine
                 AutoBattle = isAutoBattle
             };
 
+            BattleMessagesModel.ZombieApocalypse = ZombieApocalypse;
+            BattleMessagesModel.ResChance = ResChance;
             BattleRunning = true;
 
             NewRound();

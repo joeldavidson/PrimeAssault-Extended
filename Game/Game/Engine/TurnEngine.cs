@@ -295,7 +295,12 @@ namespace PrimeAssault.Engine
                     BattleMessagesModel.CurrentHealth = Target.CurrentHealth;
                     BattleMessagesModel.DamageOutput = " for " + (BattleMessagesModel.DamageAmount).ToString() + " damage,";
                     BattleMessagesModel.TurnMessageSpecial = BattleMessagesModel.GetCurrentHealthMessage();
-                    
+                   
+                    if (!Target.Alive && Target.PlayerType == PlayerTypeEnum.Monster && BattleMessagesModel.ZombieApocalypse)
+                    {
+                        Target.Zombify(BattleMessagesModel.ResChance);
+                    }
+
                     RemoveIfDead(Target);
                    
                     // If it is a character apply the experience earned
