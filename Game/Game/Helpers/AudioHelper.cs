@@ -64,6 +64,11 @@ namespace PrimeAssault.Helpers
         {
             BattleMusic.Play();
         }
+
+        public void Battle_Music_Pause()
+        {
+            BattleMusic.Stop();
+        }
         public void Attack_Sound()
         {
             AttackSE.Play();
