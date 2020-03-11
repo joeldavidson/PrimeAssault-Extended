@@ -5,7 +5,7 @@ using Xamarin.Forms.Xaml;
 using PrimeAssault.Models;
 using System.Linq;
 using PrimeAssault.ViewModels;
-
+using PrimeAssault.Helpers;
 
 namespace PrimeAssault.Views
 {
@@ -15,9 +15,10 @@ namespace PrimeAssault.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class BattlePage: ContentPage
 	{
+        AudioHelper MusicCenter = new AudioHelper(true);
 
-		// This uses the Instance so it can be shared with other Battle Pages as needed
-		public BattleEngineViewModel EngineViewModel = BattleEngineViewModel.Instance;
+        // This uses the Instance so it can be shared with other Battle Pages as needed
+        public BattleEngineViewModel EngineViewModel = BattleEngineViewModel.Instance;
 
 		#region PageHandelerVariables
 		// Hold the Selected Characters
@@ -55,6 +56,10 @@ namespace PrimeAssault.Views
             IsVisible = false,
         };
 
+        public PlayerInfoModel currentCharacter;
+
+        public int Potions;
+
         #endregion PageHandelerVariables
 
         /// <summary>
@@ -76,10 +81,11 @@ namespace PrimeAssault.Views
 			EngineViewModel.Engine.CurrentDefender = EngineViewModel.Engine.PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Monster).FirstOrDefault();
 			EngineViewModel.Engine.CurrentAttacker = EngineViewModel.Engine.PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Character).FirstOrDefault();
 
-			ShowModalNewRoundPage();
+            Potions = EngineViewModel.Engine.MaxNumberPotions;
+            ShowModalNewRoundPage();
             initializeAllMonsters();
             initializeAllCharacters();
-
+            MusicCenter.Battle_Music();
         }
 
         public void initializeAllMonsters()
@@ -183,8 +189,6 @@ namespace PrimeAssault.Views
                 ClickableButton = false;
             }
 
-
-
             // Put the Image Button and Text inside a layout
             if (data.PlayerType == PlayerTypeEnum.Character)
             {
@@ -287,10 +291,6 @@ namespace PrimeAssault.Views
             MonsterHEALTH.Text = data.CurrentHealth.ToString();
             MonsterMAXHEALTH.Text = data.MaxHealth.ToString();
             MonsterNAME.Text = data.Name;
-            if(data.CurrentHealth < 1)
-            {
-
-            }
             if (RedArrow.IsVisible == true && Grid.GetColumn(RedArrow) == data.Y)
             {
                 RedArrow.IsVisible = false;
@@ -323,11 +323,18 @@ namespace PrimeAssault.Views
             {
                 GoldArrow.IsVisible = true;
             }
+            currentCharacter = data;
             Grid.SetRow(GoldArrow, data.X);
             Grid.SetColumn(GoldArrow, data.Y);
             PartyListGrid.Children.Add(GoldArrow);
 
             return true;
+        }
+
+        public async void PotionButton_Clicked(object sender, EventArgs e)
+        {
+            currentCharacter.CurrentHealth = currentCharacter.MaxHealth;
+            Potions--;
         }
 
         /// <summary>
@@ -450,6 +457,7 @@ namespace PrimeAssault.Views
         /// <param name="e"></param>
         public async void ExitButton_Clicked(object sender, EventArgs e)
         {
+            MusicCenter.Battle_Music_Pause();
             await Navigation.PopModalAsync();
         }
 
@@ -466,6 +474,7 @@ namespace PrimeAssault.Views
 
             if (answer)
             {
+                MusicCenter.Battle_Music_Pause();
                 await Navigation.PopModalAsync();
             }
         }
@@ -482,6 +491,7 @@ namespace PrimeAssault.Views
             Debug.WriteLine(outputString);
 
             ShowModalPageGameOver();
+            MusicCenter.Battle_Music_Pause();
 
             // Back up to the Start of Battle
             await Navigation.PopToRootAsync();
@@ -566,14 +576,5 @@ namespace PrimeAssault.Views
             await Navigation.PushModalAsync(ModalBattleGameOverPage);
         }
         #endregion PageHandelers
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////                                        //////////////////////////////////////////
-/////////////////////////////////////////////////            Character Select            //////////////////////////////////////////
-/////////////////////////////////////////////////                                        //////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     }
 }
