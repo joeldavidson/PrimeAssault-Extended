@@ -5,19 +5,25 @@ using Xamarin.Forms.Xaml;
 using PrimeAssault.Models;
 using System.Linq;
 using PrimeAssault.ViewModels;
-
+using System.IO;
+using System.Reflection;
+using Plugin.SimpleAudioPlayer;
 
 namespace PrimeAssault.Views
 {
-	/// <summary>
-	/// The Main PrimeAssault Page
-	/// </summary>
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+
+    /// <summary>
+    /// The Main PrimeAssault Page
+    /// </summary>
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class BattlePage: ContentPage
 	{
 
-		// This uses the Instance so it can be shared with other Battle Pages as needed
-		public BattleEngineViewModel EngineViewModel = BattleEngineViewModel.Instance;
+        //Creates a SimpleAudioPlayer object to be used for sound effects
+        ISimpleAudioPlayer AttackSE;
+        ISimpleAudioPlayer DeathSE;
+        // This uses the Instance so it can be shared with other Battle Pages as needed
+        public BattleEngineViewModel EngineViewModel = BattleEngineViewModel.Instance;
 
 		#region PageHandelerVariables
 		// Hold the Selected Characters
@@ -79,6 +85,26 @@ namespace PrimeAssault.Views
 			ShowModalNewRoundPage();
             initializeAllMonsters();
             initializeAllCharacters();
+
+            //Defining the audioplayer
+            AttackSE = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+            DeathSE = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+
+            //Assigning a soundeffect to be played by AudioPlayer object
+            var stream = GetStreamFromFile("attack_se.ogg");
+            AttackSE.Load(stream);
+
+            stream = GetStreamFromFile("death_se.ogg");
+            DeathSE.Load(stream);
+
+        }
+
+        //Assembles audioplayer to play the file that is included in the parameter
+        Stream GetStreamFromFile(string filename)
+        {
+            var assembly = typeof(App).GetTypeInfo().Assembly;
+            var stream = assembly.GetManifestResourceStream("PrimeAssault." + filename);
+            return stream;
 
         }
 
@@ -173,7 +199,6 @@ namespace PrimeAssault.Views
                 Source = data.ImageURI,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                RotationY = 0,
             };
 
 
@@ -184,19 +209,6 @@ namespace PrimeAssault.Views
                 ClickableButton = false;
             }
 
-            if (ClickableButton)
-            {
-                if (data.PlayerType == PlayerTypeEnum.Character)
-                {
-                    // Add a event to the user can click the item and see more
-                    PlayerImage.Clicked += (sender, args) => ShowPlayerStats(data);
-                }
-                else
-                {
-                    // Add a event to the user can click the item and see more
-                    PlayerImage.Clicked += (sender, args) => ShowMonsterStats(data);
-                }
-            }
 
 
             // Put the Image Button and Text inside a layout
@@ -213,6 +225,12 @@ namespace PrimeAssault.Views
                     },
 
                 };
+                if (ClickableButton)
+                {
+                        PlayerImage.Clicked += (sender, args) => ShowPlayerStats(data);
+                        AttackButton.Clicked += (sender, args) => UnitDies(data, PlayerImage);
+                        AttackButton.Clicked += (sender, args) => UnitAttacks(data, PlayerImage);
+                }
                 return PlayerStack;
             }
             else
@@ -228,11 +246,34 @@ namespace PrimeAssault.Views
                     },
 
                 };
+                if (ClickableButton)
+                {                        // Add a event to the user can click the item and see more
+                        PlayerImage.Clicked += (sender, args) => ShowMonsterStats(data);
+                        AttackButton.Clicked += (sender, args) => UnitDies(data, PlayerImage);
+                        AttackButton.Clicked += (sender, args) => UnitAttacks(data, PlayerImage);
+                }
                 return PlayerStack;
             }
             
         }
 
+        public void UnitDies(PlayerInfoModel data, ImageButton PlayerImage)
+        {
+            if(data.CurrentHealth < 1)
+            {
+                PlayerImage.RotateTo(90);
+                DeathSE.Play();
+            }
+        }
+
+        public void UnitAttacks(PlayerInfoModel data, ImageButton PlayerImage)
+        {
+            //Attack sound effect played
+            
+            AttackSE.Play();
+            //PlayerImage.RotateTo(20);
+
+        }
 
         //Assigns the selected monsters stats to their respective labels
         public bool ShowMonsterStats(PlayerInfoModel data)
@@ -244,6 +285,10 @@ namespace PrimeAssault.Views
             MonsterHEALTH.Text = data.CurrentHealth.ToString();
             MonsterMAXHEALTH.Text = data.MaxHealth.ToString();
             MonsterNAME.Text = data.Name;
+            if(data.CurrentHealth < 1)
+            {
+
+            }
             if (RedArrow.IsVisible == true && Grid.GetColumn(RedArrow) == data.Y)
             {
                 RedArrow.IsVisible = false;
@@ -292,7 +337,6 @@ namespace PrimeAssault.Views
 		{
 			// Redraw Game Board
 			// Show who is Attack in Who
-
 			// Hold the current state
 			var RoundCondition = EngineViewModel.Engine.RoundNextTurn();
 

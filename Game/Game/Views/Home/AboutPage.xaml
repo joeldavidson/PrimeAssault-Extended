@@ -26,7 +26,26 @@
             <!--Database Settings Frame-->
 
             <StackLayout Style="{StaticResource HorizontalStack}">
+                <Button
+                        x:Name="btnPlay"
+                        Text="Play"
+                        Clicked="Play_Clicked"
 
+                        />
+
+                <Button
+                        x:Name="btnPause"
+                        Text="Pause"
+                        Clicked="Pause_Clicked"
+
+                        />
+
+                <Button
+                        x:Name="btnStop"
+                        Text="Stop"
+                        Clicked="Stop_Clicked"
+
+                        />
                 <Label
                         Text="Database Settings"
                         Style="{DynamicResource DebugSwitchLabel}"/>
