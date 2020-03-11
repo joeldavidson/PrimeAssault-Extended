@@ -93,24 +93,7 @@ namespace UnitTests.Engine
             Assert.AreEqual(true, result);
         }
 
-        public void TurnEngine_Attack_Sound_Effect_Plays_Should_Pass()
-        {
-            // Arrange
-            var PlayerInfo = new PlayerInfoModel();
-            Engine.MonsterList.Add(new PlayerInfoModel(new MonsterModel()));
-
-            // Act
-            Engine.Attack(PlayerInfo);
-
-            var result = Engine.Attack(PlayerInfo);
-
-            // Reset
-            Engine.StartBattle(false);   // Clear the Engine
-
-            // Assert
-            Assert.AreEqual(true, result);
-        }
-
+        
         [Test]
         public void TurnEngine_SelectMonsterToAttack_InValid_Null_List_Should_Fail()
         {

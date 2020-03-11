@@ -295,8 +295,8 @@ namespace Scenario
             Assert.AreEqual(HitStatusEnum.Hit, BattleEngine.BattleMessagesModel.HitStatus);
         }
 
-        [Test]
-        public void HackathonScenario_Scenario_18_Audio_Should_Play_On_Hit()
+
+        public void HackathonScenario_Scenario_18_Should_Play_on_Hit()
         {
             /* 
             * Scenario Number:  
@@ -328,6 +328,20 @@ namespace Scenario
             //Arrange
 
             // Set Character Conditions
+            // Arrange
+            var PlayerInfo = new PlayerInfoModel();
+            Engine.MonsterList.Add(new PlayerInfoModel(new MonsterModel()));
+
+            // Act
+            Engine.Attack(PlayerInfo);
+
+            var result = Engine.Attack(PlayerInfo);
+
+            // Reset
+            Engine.StartBattle(false);   // Clear the Engine
+
+            // Assert
+            Assert.AreEqual(true, result);
         }
     }
 }
