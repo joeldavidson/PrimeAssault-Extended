@@ -1,6 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Reflection;
 using Xamarin.Forms;
+using Plugin.SimpleAudioPlayer;
+using System.IO;
 
 namespace PrimeAssault.Views
 {
@@ -10,6 +13,8 @@ namespace PrimeAssault.Views
     [DesignTimeVisible(false)]
     public partial class AboutPage : ContentPage
     {
+        ISimpleAudioPlayer player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+
         // Constructor for UnitTests
         public AboutPage(bool UnitTest){}
 
@@ -20,6 +25,7 @@ namespace PrimeAssault.Views
         {
             InitializeComponent();
 
+
             // Hide the Debug Settings
             DatabaseSettingsFrame.IsVisible = false;
 
@@ -28,6 +34,20 @@ namespace PrimeAssault.Views
 
             // Set to the curent date and time
             CurrentDateTime.Text = DateTime.Now.ToString("MM/dd/yy hh:mm:ss");
+
+
+            var stream = GetStreamFromFile("feelgood.mp3");
+            player.Load(stream);
+        }
+
+
+
+        Stream GetStreamFromFile(string filename)
+        {
+            var assembly = typeof(App).GetTypeInfo().Assembly;
+            var stream = assembly.GetManifestResourceStream("PrimeAssault." + filename);
+            return stream;
+
         }
 
         /// <summary>
@@ -51,6 +71,26 @@ namespace PrimeAssault.Views
            // Show or hide the Debug Settings
            DebugSettingsFrame.IsVisible = (e.Value);
         }
+
+        /// <summary>
+        /// Sow or hide the Debug Settings
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void Hack_16_OnToggled(object sender, ToggledEventArgs e)
+        {
+            // Show or hide the Debug Settings
+            Hack16Frame.IsVisible = (e.Value);
+        }
+
+        public void PercentageChance_ValueChanged(object sender, Xamarin.Forms.ValueChangedEventArgs args)
+        {
+            Percentage_Chance.Value = Math.Round(args.NewValue);
+            double value = args.NewValue;
+            Percentage_Label.Text = String.Format("Percent chance of zombification: %{0}", value);
+        }
+
+
 
         /// <summary>
         /// Sow or hide the Debug Settings
@@ -128,5 +168,22 @@ namespace PrimeAssault.Views
                 MessagingCenter.Send(this, "WipeDataList", true);
             }
         }
+        
+
+        private void Stop_Clicked(object sender, EventArgs e)
+        {
+            player.Stop();
+        }
+
+        private void Pause_Clicked(object sender, EventArgs e)
+        {
+            player.Pause();
+        }
+
+        private void Play_Clicked(object sender, EventArgs e)
+        {
+            player.Play();
+        }
+
     }
 }

@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="action.png" />
+    <Content Include="Assets\feelgood.mp3" />
     <Content Include="battleback.png" />
     <Content Include="Assets\SplashScreen.scale-125.png" />
     <Content Include="Assets\SplashScreen.scale-150.png" />
