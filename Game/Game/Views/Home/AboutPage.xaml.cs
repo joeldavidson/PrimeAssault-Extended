@@ -99,6 +99,11 @@ namespace PrimeAssault.Views
             Percentage_Label.Text = String.Format("Percent chance of zombification: %{0}", value);
         }
 
+        public void Hack_19_OnToggled(object sender, ToggledEventArgs e)
+        {
+            // Show or hide the Debug Settings
+            Hack19Frame.IsVisible = (e.Value);
+        }
 
 
         /// <summary>

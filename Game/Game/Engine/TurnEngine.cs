@@ -7,6 +7,11 @@ using PrimeAssault.Models;
 using PrimeAssault.Helpers;
 using PrimeAssault.ViewModels;
 
+using System.IO;
+using System.Reflection;
+using Plugin.SimpleAudioPlayer;
+
+
 namespace PrimeAssault.Engine
 {
     /* 
@@ -25,6 +30,9 @@ namespace PrimeAssault.Engine
    
     public class TurnEngine : BaseEngine
     {
+        AudioHelper AudioCenter = new AudioHelper();
+        
+
         //variable which determines likelihood that an "AI" will use a move on any given turn. 1 = 10%, 3 = 30%, etc...
         public static int PROBABILITY_OF_MOVE = 3; 
 
@@ -46,7 +54,6 @@ namespace PrimeAssault.Engine
         public bool TakeTurn(PlayerInfoModel Attacker)
         {
             // Choose Action.  Such as Move, Attack etc.
-
             var result = Attack(Attacker);
 
             BattleScore.TurnCount++;
@@ -80,7 +87,6 @@ namespace PrimeAssault.Engine
 
             // Do Attack
             TurnAsAttack(Attacker, Target);
-
             CurrentAttacker = new PlayerInfoModel(Attacker);
             CurrentDefender = new PlayerInfoModel(Target);
 
@@ -177,6 +183,8 @@ namespace PrimeAssault.Engine
                 return false;
             }
 
+
+
             // Set Messages to empty
             BattleMessagesModel.TurnMessage = string.Empty;
             BattleMessagesModel.TurnMessageSpecial = string.Empty;
@@ -261,15 +269,21 @@ namespace PrimeAssault.Engine
                 return true;
             }
 
+            Attacker.lastToAttack = true;
+
             switch (BattleMessagesModel.HitStatus)
             {
+                
+
                 case HitStatusEnum.Miss:
                     // It's a Miss
-
+                    AudioCenter.Miss_Sound();
                     break;
 
                 case HitStatusEnum.Hit:
                     // It's a Hit
+                    AudioCenter.Attack_Sound();
+                    Target.lastToGetHit = true;
                     //Calculate Damage
                     int damage = Attacker.GetDamageRollValue();
                     BattleMessagesModel.DamageAmount = (damage);
@@ -278,7 +292,7 @@ namespace PrimeAssault.Engine
                     BattleMessagesModel.CurrentHealth = Target.CurrentHealth;
                     BattleMessagesModel.DamageOutput = " for " + (BattleMessagesModel.DamageAmount).ToString() + " damage,";
                     BattleMessagesModel.TurnMessageSpecial = BattleMessagesModel.GetCurrentHealthMessage();
-
+                    
                     RemoveIfDead(Target);
                    
                     // If it is a character apply the experience earned
@@ -291,7 +305,6 @@ namespace PrimeAssault.Engine
             Target.DeactivateAbility();
             BattleMessagesModel.TurnMessage = Attacker.Name + BattleMessagesModel.AttackStatus + Target.Name + BattleMessagesModel.MoveStatus + BattleMessagesModel.DamageOutput + BattleMessagesModel.TurnMessageSpecial + BattleMessagesModel.ExperienceEarned;
             Debug.WriteLine(BattleMessagesModel.TurnMessage);
-
             return true;
         }
 
@@ -427,6 +440,7 @@ namespace PrimeAssault.Engine
         {
             // Mark Status in output
             BattleMessagesModel.TurnMessageSpecial = " and causes death. ";
+            AudioCenter.Death_Sound();
 
             // Remove target from list...
 

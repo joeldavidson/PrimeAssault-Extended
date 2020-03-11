@@ -30,6 +30,8 @@ namespace PrimeAssault.Models
             RangedDefense = 2;
             Speed = 2;
             SetJobClass("Soldier");
+            lastToAttack = false;
+            lastToGetHit = false;
             X = 0;
             Y = 0;
         }
@@ -76,6 +78,9 @@ namespace PrimeAssault.Models
             Moves[0] = data.Moves[0];
             Moves[1] = data.Moves[1];
             Ability = data.Ability;
+
+            lastToAttack = data.lastToAttack;
+            lastToGetHit = data.lastToGetHit;
 
             X = data.X;
             Y = data.Y;

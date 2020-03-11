@@ -5,25 +5,19 @@ using Xamarin.Forms.Xaml;
 using PrimeAssault.Models;
 using System.Linq;
 using PrimeAssault.ViewModels;
-using System.IO;
-using System.Reflection;
-using Plugin.SimpleAudioPlayer;
+
 
 namespace PrimeAssault.Views
 {
-
-    /// <summary>
-    /// The Main PrimeAssault Page
-    /// </summary>
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+	/// <summary>
+	/// The Main PrimeAssault Page
+	/// </summary>
+	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class BattlePage: ContentPage
 	{
 
-        //Creates a SimpleAudioPlayer object to be used for sound effects
-        ISimpleAudioPlayer AttackSE;
-        ISimpleAudioPlayer DeathSE;
-        // This uses the Instance so it can be shared with other Battle Pages as needed
-        public BattleEngineViewModel EngineViewModel = BattleEngineViewModel.Instance;
+		// This uses the Instance so it can be shared with other Battle Pages as needed
+		public BattleEngineViewModel EngineViewModel = BattleEngineViewModel.Instance;
 
 		#region PageHandelerVariables
 		// Hold the Selected Characters
@@ -86,26 +80,6 @@ namespace PrimeAssault.Views
             initializeAllMonsters();
             initializeAllCharacters();
 
-            //Defining the audioplayer
-            AttackSE = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
-            DeathSE = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
-
-            //Assigning a soundeffect to be played by AudioPlayer object
-            var stream = GetStreamFromFile("attack_se.ogg");
-            AttackSE.Load(stream);
-
-            stream = GetStreamFromFile("death_se.ogg");
-            DeathSE.Load(stream);
-
-        }
-
-        //Assembles audioplayer to play the file that is included in the parameter
-        Stream GetStreamFromFile(string filename)
-        {
-            var assembly = typeof(App).GetTypeInfo().Assembly;
-            var stream = assembly.GetManifestResourceStream("PrimeAssault." + filename);
-            return stream;
-
         }
 
         public void initializeAllMonsters()
@@ -128,6 +102,7 @@ namespace PrimeAssault.Views
                 if (y < 3)
                 {
                     Grid.SetRow(monster, x++);
+                    data.flip = flip;
                 }
                 else
                 {
@@ -163,12 +138,12 @@ namespace PrimeAssault.Views
                 {
                     //  Grid.SetColumn(ArrowImage, x);
                     Grid.SetRow(character, x--);
-
                 }
                 else
                 {
                     character.RotationY = flip;
                     Grid.SetRow(character, ++x);
+                    data.flip = flip;
                 }
                 data.Y = y;
                 data.X = x;
@@ -202,7 +177,6 @@ namespace PrimeAssault.Views
             };
 
 
-
             if (data == null)
             {
                 // Turn off click action
@@ -227,9 +201,10 @@ namespace PrimeAssault.Views
                 };
                 if (ClickableButton)
                 {
-                        PlayerImage.Clicked += (sender, args) => ShowPlayerStats(data);
-                        AttackButton.Clicked += (sender, args) => UnitDies(data, PlayerImage);
-                        AttackButton.Clicked += (sender, args) => UnitAttacks(data, PlayerImage);
+                    PlayerImage.Clicked += (sender, args) => ShowPlayerStats(data);
+                    AttackButton.Clicked += (sender, args) => UnitAttacks(data, PlayerImage);
+                    AttackButton.Clicked += (sender, args) => UnitGetsHit(data, PlayerImage);
+                    AttackButton.Clicked += (sender, args) => UnitDies(data, PlayerImage);
                 }
                 return PlayerStack;
             }
@@ -248,9 +223,10 @@ namespace PrimeAssault.Views
                 };
                 if (ClickableButton)
                 {                        // Add a event to the user can click the item and see more
-                        PlayerImage.Clicked += (sender, args) => ShowMonsterStats(data);
-                        AttackButton.Clicked += (sender, args) => UnitDies(data, PlayerImage);
-                        AttackButton.Clicked += (sender, args) => UnitAttacks(data, PlayerImage);
+                    PlayerImage.Clicked += (sender, args) => ShowMonsterStats(data);
+                    AttackButton.Clicked += (sender, args) => UnitAttacks(data, PlayerImage);
+                    AttackButton.Clicked += (sender, args) => UnitGetsHit(data, PlayerImage);
+                    AttackButton.Clicked += (sender, args) => UnitDies(data, PlayerImage);
                 }
                 return PlayerStack;
             }
@@ -262,17 +238,43 @@ namespace PrimeAssault.Views
             if(data.CurrentHealth < 1)
             {
                 PlayerImage.RotateTo(90);
-                DeathSE.Play();
             }
         }
 
         public void UnitAttacks(PlayerInfoModel data, ImageButton PlayerImage)
         {
-            //Attack sound effect played
-            
-            AttackSE.Play();
-            //PlayerImage.RotateTo(20);
+            if (data.lastToAttack)
+            {
+                rotateHit(data, PlayerImage);
+                data.lastToAttack = false;
+            }
+        }
 
+
+        public void UnitGetsHit(PlayerInfoModel data, ImageButton PlayerImage)
+        {
+            if (data.lastToGetHit)
+            {
+                rotateGetsHit(data, PlayerImage);
+                data.lastToGetHit = false;
+            }
+        }
+
+        async void rotateHit(PlayerInfoModel data, ImageButton PlayerImage)
+        {
+            await PlayerImage.RotateTo(180, 500, Easing.SpringOut);
+            await PlayerImage.RotateTo(0, 500, Easing.Linear);
+        }
+
+        async void rotateGetsHit(PlayerInfoModel data, ImageButton PlayerImage)
+        {
+            int rVal = -20;
+            if(data.flip > 0)
+            {
+                rVal *= -1;
+            }
+            await PlayerImage.RotateTo(rVal, 500, Easing.SpringOut);
+            await PlayerImage.RotateTo(0, 500, Easing.CubicIn);
         }
 
         //Assigns the selected monsters stats to their respective labels

@@ -90,7 +90,11 @@ namespace PrimeAssault.Models
         //Ability name of character
         public AbilityModel Ability { get; set; } = new AbilityModel();
 
-        public bool Reanimated { get; set; } = false;
+        public bool lastToAttack { get; set; } = false;
+
+        public bool lastToGetHit { get; set; } = false;
+
+        public int flip { get; set; } = 0;
 
         public int X { get; set; } = 0;
 
@@ -424,26 +428,7 @@ namespace PrimeAssault.Models
         public bool CauseDeath()
         {
             Alive = false;
-
-            //Hack 16
-            ReanimateZombie(50);
-
             return Alive;
-        }
-
-        public bool ReanimateZombie(int percentChance)
-        {
-            int randomNum = DiceHelper.RollDice(1, 100);
-            if (Alive || randomNum > percentChance || PlayerType != PlayerTypeEnum.Monster)
-            {
-                return false;
-            }
-
-            Alive = true;
-            Name = "Zombie " + Name;
-            CurrentHealth = (int)(GetHealthMax() * .5);
-
-            return true;
         }
 
         public string FormatOutput() { return "A level " + Level + " " + Name; }
