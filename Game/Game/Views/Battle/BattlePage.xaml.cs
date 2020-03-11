@@ -456,6 +456,7 @@ namespace PrimeAssault.Views
         /// <param name="e"></param>
         public async void ExitButton_Clicked(object sender, EventArgs e)
         {
+            MusicCenter.Battle_Music_Pause();
             await Navigation.PopModalAsync();
         }
 
@@ -488,6 +489,7 @@ namespace PrimeAssault.Views
             Debug.WriteLine(outputString);
 
             ShowModalPageGameOver();
+            MusicCenter.Battle_Music_Pause();
 
             // Back up to the Start of Battle
             await Navigation.PopToRootAsync();
