@@ -16,6 +16,7 @@ namespace Scenario
 
         AutoBattleEngine AutoBattleEngine;
         BattleEngine BattleEngine;
+        BattleMessagesModel BattleMessages;
 
         [SetUp]
         public void Setup()
@@ -296,6 +297,86 @@ namespace Scenario
         }
 
         [Test]
+        public async Task HackathonScenario_Scenario_16_Zombies_Should_Not_SpawnAsync()
+        {
+            /* 
+             * Scenario Number:  
+             *      16
+             *      
+             * Description: 
+             *      See Default Test
+             * 
+             * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+             *      Battle Messages Page, PlayerInfoModel, BattleEngineViewModel
+             *                 
+             * Test Algrorithm:
+             *      Create Character party of 6
+             *      Create Monster close to death
+             *      Set chance of zombification to 100
+             *      Run game until zombie wins
+             * 
+             * Test Conditions:
+             *      Control Zombification to be 100%
+             *  
+             *  Validation
+             *      Character party loses (since zombie will be revived forever)
+             *      
+             */
+
+            //Arrange
+
+            BattleMessages.ZombieApocalypse = true;
+            BattleMessages.ResChance = 100;
+
+            // Set Character Conditions
+
+            BattleEngine.MaxNumberPartyCharacters = 6;
+
+            PlayerInfoModel CharacterPlayer;
+            for (int i = 0; i < BattleEngine.MaxNumberPartyCharacters; i++)
+            {
+                CharacterPlayer = new PlayerInfoModel(
+                            new CharacterModel
+                            {
+                                Speed = 200,
+                                Level = 10,
+                                CurrentHealth = 100,
+                                ExperienceTotal = 100,
+                                Name = "Bob",
+                            });
+                BattleEngine.CharacterList.Add(CharacterPlayer);
+            }
+
+
+            // Set Monster Conditions
+
+            // Add a monster to attack
+            BattleEngine.MaxNumberPartyCharacters = 1;
+
+            var MonsterPlayer = new PlayerInfoModel(
+                new MonsterModel
+                {
+                    Speed = 1,
+                    Level = 1,
+                    CurrentHealth = 1,
+                    ExperienceTotal = 1,
+                    Name = "Monster",
+                });
+
+            BattleEngine.CharacterList.Add(MonsterPlayer);
+
+            bool result = await AutoBattleEngine.RunAutoBattle();
+
+            //reset
+
+            BattleMessages.ZombieApocalypse = false;
+            BattleMessages.ResChance = 0;
+
+            //Assert
+
+            Assert.AreEqual(true, result);
+        }
+
         public void HackathonScenario_Scenario_18_Audio_Should_Play_On_Hit()
         {
             /* 
@@ -328,6 +409,20 @@ namespace Scenario
             //Arrange
 
             // Set Character Conditions
+            // Arrange
+            var PlayerInfo = new PlayerInfoModel();
+            Engine.MonsterList.Add(new PlayerInfoModel(new MonsterModel()));
+
+            // Act
+            Engine.Attack(PlayerInfo);
+
+            var result = Engine.Attack(PlayerInfo);
+
+            // Reset
+            Engine.StartBattle(false);   // Clear the Engine
+
+            // Assert
+            Assert.AreEqual(true, result);
         }
     }
 }

@@ -205,6 +205,10 @@ namespace PrimeAssault.Engine
             {
                 MonsterList.Find(nameFinder).lastToAttack = true;
             }
+            else if (CharacterList.Exists(nameFinder))
+            {
+                CharacterList.Find(nameFinder).lastToAttack = true;
+            }
 
             //checks for if move can potentially be used...
             MoveModel moveUsed = null;
