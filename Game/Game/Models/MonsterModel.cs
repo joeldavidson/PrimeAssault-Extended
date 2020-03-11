@@ -58,8 +58,13 @@ namespace PrimeAssault.Models
             Moves[1] = data.Moves[1];
             Ability = data.Ability;
 
+            lastToAttack = data.lastToAttack;
+            lastToGetHit = data.lastToGetHit;
+
             X = data.X;
             Y = data.Y;
+
+            flip = data.flip;
 
             return true;
         }
@@ -78,9 +83,11 @@ namespace PrimeAssault.Models
             RangedDefense = 2;
             Speed = 2;
             ImageURI = "sewer_gator.png";
-
+            lastToAttack = false;
+            lastToGetHit = false;
             X = 0;
             Y = 0;
+            flip = 0;
         }
 
         public bool SetLevel(int targetLevel)
