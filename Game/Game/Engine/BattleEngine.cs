@@ -27,6 +27,9 @@ namespace PrimeAssault.Engine
 
         // For Hack 16
         public bool ZombieApocalypse =false;
+
+        public bool Mulligan = false;
+
         public int ResChance = 0;
 
         #region Constructor
@@ -43,8 +46,25 @@ namespace PrimeAssault.Engine
                 await SetResChance(data);
             });
 
-
+            MessagingCenter.Subscribe<AboutPage, int>(this, "Mulligan", async (obj, data) =>
+            {
+                await SetMulligan(data);
+            });
+            }
             #endregion Constructor
+
+
+        async public Task<bool> SetMulligan(int input)
+        {
+            if (input == 0)
+            {
+                Mulligan = false;
+            }
+            else
+            {
+                Mulligan = true;
+            }
+            return await Task.FromResult(true);
         }
 
         async public Task<bool> SetZombieApocalypse(int input)
@@ -93,6 +113,7 @@ namespace PrimeAssault.Engine
             BattleMessagesModel.ZombieApocalypse = ZombieApocalypse;
             BattleMessagesModel.ResChance = ResChance;
             BattleRunning = true;
+            BattleMessagesModel.Mulligan = Mulligan;
 
             NewRound();
 

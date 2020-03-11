@@ -23,33 +23,6 @@ namespace PrimeAssault.Engine
     /// </summary>
     public class RoundEngine : TurnEngine
     {
-
-        #region Constructor
-
-        public RoundEngine()
-        {
-            MessagingCenter.Subscribe<AboutPage, int>(this, "Mulligan", async (obj, data) =>
-            {
-                await SetMulligan(data);
-            });
-        }
-        #endregion Constructor
-
-
-        async public Task<bool> SetMulligan(int input)
-        {
-            if (input == 0)
-            {
-                Mulligan = false;
-            }
-            else
-            {
-                Mulligan = true;
-            }
-            return await Task.FromResult(true);
-        }
-
-
         /// <summary>
         /// Clear the List between Rounds
         /// </summary>
@@ -188,7 +161,7 @@ namespace PrimeAssault.Engine
             // Get Next Player
             var PlayerCurrent = GetNextPlayerInList();
 
-            if (Mulligan && (attackMissed != null))
+            if (BattleMessagesModel.Mulligan && (attackMissed != null))
             {
                 PlayerCurrent = attackMissed;
             }

@@ -46,6 +46,10 @@
 
         // For hack 16
         public bool ZombieApocalypse;
+
+        //for hack 20 
+        public bool Mulligan;
+
         public int ResChance;
 
         // Beginning of the Html Block for html formatting
