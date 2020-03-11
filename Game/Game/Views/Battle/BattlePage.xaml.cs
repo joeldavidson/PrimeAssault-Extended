@@ -334,12 +334,20 @@ namespace PrimeAssault.Views
 
         public async void PotionButton_Clicked(object sender, EventArgs e)
         {
-            PotionsLeft.Text = Potions.ToString();
+            
             if (Potions > 0)
             {
-                currentCharacter.CurrentHealth = currentCharacter.MaxHealth;
-                Potions--;
+                if(currentCharacter.CurrentHealth == currentCharacter.MaxHealth)
+                {
+                    Potions--;
+                }
+                else
+                {
+                    currentCharacter.CurrentHealth = currentCharacter.MaxHealth;
+                    Potions--;
+                }
             }
+            PotionsLeft.Text = Potions.ToString();
         }
 
         /// <summary>
