@@ -102,6 +102,39 @@
             <StackLayout Style="{StaticResource HorizontalStack}">
 
                 <Label
+                    Text="Hack 16"
+                    Style="{DynamicResource DebugSwitchLabel}"/>
+
+                <Switch
+                    x:Name="Hack16Switch"
+                    HorizontalOptions="EndAndExpand"
+                    Toggled="Hack_16_OnToggled"
+                    IsToggled="False"/>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource VerticalStack}"
+                        x:Name="Hack16Frame"
+                        IsVisible="False">
+
+                <StackLayout Style="{StaticResource HorizontalStack}"
+                                    Padding="50,0,0,0">
+
+                    <Label Text="When you kill a monster, there is a chance it returns from the dead and continues attacking as a zombie monster." 
+                           LineBreakMode="WordWrap"/>
+
+                    
+                </StackLayout>
+                
+                <Slider x:Name="Percentage_Chance" HorizontalOptions="FillAndExpand" ValueChanged="PercentageChance_ValueChanged" IsEnabled="{Binding IsEnabled}" Minimum="0" Maximum="100" BindingContext=""/>
+                <Label  x:Name="Percentage_Label" Text="Percent chance of zombification: %0" HorizontalOptions="Center" VerticalOptions ="CenterAndExpand"></Label>
+                
+            </StackLayout>
+            <!--Debug Settings Frame End-->
+
+            <!--Debug Settings Frame-->
+            <StackLayout Style="{StaticResource HorizontalStack}">
+
+                <Label
                     Text="Hack 21"
                     Style="{DynamicResource DebugSwitchLabel}"/>
 

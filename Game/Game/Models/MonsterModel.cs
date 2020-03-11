@@ -20,7 +20,6 @@ namespace PrimeAssault.Models
         //Item that is dropped by the monster
         ItemModel Drop = new ItemModel(); //should be retrieved at random?
 
-
         override public bool Update(MonsterModel data)
         {
             PlayerType = data.PlayerType;

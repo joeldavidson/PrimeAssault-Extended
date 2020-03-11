@@ -90,6 +90,8 @@ namespace PrimeAssault.Models
         //Ability name of character
         public AbilityModel Ability { get; set; } = new AbilityModel();
 
+        public bool Reanimated { get; set; } = false;
+
         public int X { get; set; } = 0;
 
         public int Y { get; set; } = 0;
@@ -422,7 +424,25 @@ namespace PrimeAssault.Models
         public bool CauseDeath()
         {
             Alive = false;
+
+            //Hack 16
+            ReanimateZombie();
+
             return Alive;
+        }
+
+        public bool ReanimateZombie()
+        {
+            if (Alive)
+            {
+                return false;
+            }
+            
+            Alive = true;
+            Name = "Zombie " + Name;
+            CurrentHealth = (int)(GetHealthMax() * .5);
+
+            return true;
         }
 
         public string FormatOutput() { return "A level " + Level + " " + Name; }

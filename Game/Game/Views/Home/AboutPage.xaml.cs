@@ -57,6 +57,26 @@ namespace PrimeAssault.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        public void Hack_16_OnToggled(object sender, ToggledEventArgs e)
+        {
+            // Show or hide the Debug Settings
+            Hack16Frame.IsVisible = (e.Value);
+        }
+
+        public void PercentageChance_ValueChanged(object sender, Xamarin.Forms.ValueChangedEventArgs args)
+        {
+            Percentage_Chance.Value = Math.Round(args.NewValue);
+            double value = args.NewValue;
+            Percentage_Label.Text = String.Format("Percent chance of zombification: %{0}", value);
+        }
+
+
+
+        /// <summary>
+        /// Sow or hide the Debug Settings
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Hack_21_OnToggled(object sender, ToggledEventArgs e)
         {
             // Show or hide the Debug Settings
