@@ -108,6 +108,16 @@ namespace PrimeAssault.Views
             // Show or hide the Debug Settings
             Hack19Frame.IsVisible = (e.Value);
 
+            // Flip the settings
+            if (Hack19Switch.IsToggled == true)
+            {
+                MessagingCenter.Send(this, "Zombification", 1);
+            }
+            else
+            {
+                MessagingCenter.Send(this, "Zombification", 0);
+            }
+
         }
 
         public void Hack19_Chance_Changed(object sender, Xamarin.Forms.ValueChangedEventArgs args)
