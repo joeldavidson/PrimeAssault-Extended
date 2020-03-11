@@ -86,6 +86,7 @@ namespace PrimeAssault.Views
             initializeAllMonsters();
             initializeAllCharacters();
             MusicCenter.Battle_Music();
+            PotionsLeft.Text = Potions.ToString();
         }
 
         public void initializeAllMonsters()
@@ -333,8 +334,12 @@ namespace PrimeAssault.Views
 
         public async void PotionButton_Clicked(object sender, EventArgs e)
         {
-            currentCharacter.CurrentHealth = currentCharacter.MaxHealth;
-            Potions--;
+            PotionsLeft.Text = Potions.ToString();
+            if (Potions > 0)
+            {
+                currentCharacter.CurrentHealth = currentCharacter.MaxHealth;
+                Potions--;
+            }
         }
 
         /// <summary>
