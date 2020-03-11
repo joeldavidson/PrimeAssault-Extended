@@ -58,8 +58,13 @@ namespace PrimeAssault.Models
             LeftFinger = data.LeftFinger;
             Feet = data.Feet;
 
+            lastToAttack = data.lastToAttack;
+            lastToGetHit = data.lastToGetHit;
+
             X = data.X;
             Y = data.Y;
+
+            flip = data.flip;
         }
 
         /// <summary>
@@ -103,9 +108,14 @@ namespace PrimeAssault.Models
             LeftFinger = data.LeftFinger;
             Feet = data.Feet;
 
+            lastToAttack = data.lastToAttack;
+            lastToGetHit = data.lastToGetHit;
+
 
             X = data.X;
             Y = data.Y;
+
+            flip = data.flip;
         }
 
         /// <summary>
@@ -147,9 +157,14 @@ namespace PrimeAssault.Models
             LeftFinger = data.LeftFinger;
             Feet = data.Feet;
 
+            lastToAttack = data.lastToAttack;
+            lastToGetHit = data.lastToGetHit;
+
 
             X = data.X;
             Y = data.Y;
+
+            flip = data.flip;
         }
         /*
         public override string FormatOutput()

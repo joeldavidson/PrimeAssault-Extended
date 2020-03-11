@@ -184,6 +184,8 @@ namespace PrimeAssault.Engine
                 return false;
             }
 
+
+
             // Set Messages to empty
             BattleMessagesModel.TurnMessage = string.Empty;
             BattleMessagesModel.TurnMessageSpecial = string.Empty;
@@ -268,8 +270,12 @@ namespace PrimeAssault.Engine
                 return true;
             }
 
+            Attacker.lastToAttack = true;
+
             switch (BattleMessagesModel.HitStatus)
             {
+                
+
                 case HitStatusEnum.Miss:
                     // It's a Miss
                     AudioCenter.Miss_Sound();
@@ -277,6 +283,7 @@ namespace PrimeAssault.Engine
 
                 case HitStatusEnum.Hit:
                     // It's a Hit
+                    Target.lastToGetHit = true;
                     //Calculate Damage
                     int damage = Attacker.GetDamageRollValue();
                     BattleMessagesModel.DamageAmount = (damage);
@@ -285,7 +292,7 @@ namespace PrimeAssault.Engine
                     BattleMessagesModel.CurrentHealth = Target.CurrentHealth;
                     BattleMessagesModel.DamageOutput = " for " + (BattleMessagesModel.DamageAmount).ToString() + " damage,";
                     BattleMessagesModel.TurnMessageSpecial = BattleMessagesModel.GetCurrentHealthMessage();
-
+                    
                     RemoveIfDead(Target);
                    
                     // If it is a character apply the experience earned
@@ -298,7 +305,6 @@ namespace PrimeAssault.Engine
             Target.DeactivateAbility();
             BattleMessagesModel.TurnMessage = Attacker.Name + BattleMessagesModel.AttackStatus + Target.Name + BattleMessagesModel.MoveStatus + BattleMessagesModel.DamageOutput + BattleMessagesModel.TurnMessageSpecial + BattleMessagesModel.ExperienceEarned;
             Debug.WriteLine(BattleMessagesModel.TurnMessage);
-
             return true;
         }
 

@@ -9,16 +9,15 @@ using PrimeAssault.ViewModels;
 
 namespace PrimeAssault.Views
 {
-
-    /// <summary>
-    /// The Main PrimeAssault Page
-    /// </summary>
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+	/// <summary>
+	/// The Main PrimeAssault Page
+	/// </summary>
+	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class BattlePage: ContentPage
 	{
 
-        // This uses the Instance so it can be shared with other Battle Pages as needed
-        public BattleEngineViewModel EngineViewModel = BattleEngineViewModel.Instance;
+		// This uses the Instance so it can be shared with other Battle Pages as needed
+		public BattleEngineViewModel EngineViewModel = BattleEngineViewModel.Instance;
 
 		#region PageHandelerVariables
 		// Hold the Selected Characters
@@ -80,10 +79,8 @@ namespace PrimeAssault.Views
 			ShowModalNewRoundPage();
             initializeAllMonsters();
             initializeAllCharacters();
-            
-        }
 
-        
+        }
 
         public void initializeAllMonsters()
         {
@@ -105,6 +102,7 @@ namespace PrimeAssault.Views
                 if (y < 3)
                 {
                     Grid.SetRow(monster, x++);
+                    data.flip = flip;
                 }
                 else
                 {
@@ -140,12 +138,12 @@ namespace PrimeAssault.Views
                 {
                     //  Grid.SetColumn(ArrowImage, x);
                     Grid.SetRow(character, x--);
-
                 }
                 else
                 {
                     character.RotationY = flip;
                     Grid.SetRow(character, ++x);
+                    data.flip = flip;
                 }
                 data.Y = y;
                 data.X = x;
@@ -179,7 +177,6 @@ namespace PrimeAssault.Views
             };
 
 
-
             if (data == null)
             {
                 // Turn off click action
@@ -204,9 +201,10 @@ namespace PrimeAssault.Views
                 };
                 if (ClickableButton)
                 {
-                        PlayerImage.Clicked += (sender, args) => ShowPlayerStats(data);
-                        AttackButton.Clicked += (sender, args) => UnitDies(data, PlayerImage);
-                        AttackButton.Clicked += (sender, args) => UnitAttacks(data, PlayerImage);
+                    PlayerImage.Clicked += (sender, args) => ShowPlayerStats(data);
+                    AttackButton.Clicked += (sender, args) => UnitAttacks(data, PlayerImage);
+                    AttackButton.Clicked += (sender, args) => UnitGetsHit(data, PlayerImage);
+                    AttackButton.Clicked += (sender, args) => UnitDies(data, PlayerImage);
                 }
                 return PlayerStack;
             }
@@ -225,9 +223,10 @@ namespace PrimeAssault.Views
                 };
                 if (ClickableButton)
                 {                        // Add a event to the user can click the item and see more
-                        PlayerImage.Clicked += (sender, args) => ShowMonsterStats(data);
-                        AttackButton.Clicked += (sender, args) => UnitDies(data, PlayerImage);
-                        AttackButton.Clicked += (sender, args) => UnitAttacks(data, PlayerImage);
+                    PlayerImage.Clicked += (sender, args) => ShowMonsterStats(data);
+                    AttackButton.Clicked += (sender, args) => UnitAttacks(data, PlayerImage);
+                    AttackButton.Clicked += (sender, args) => UnitGetsHit(data, PlayerImage);
+                    AttackButton.Clicked += (sender, args) => UnitDies(data, PlayerImage);
                 }
                 return PlayerStack;
             }
@@ -244,8 +243,38 @@ namespace PrimeAssault.Views
 
         public void UnitAttacks(PlayerInfoModel data, ImageButton PlayerImage)
         {
-            //PlayerImage.RotateTo(20);
+            if (data.lastToAttack)
+            {
+                rotateHit(data, PlayerImage);
+                data.lastToAttack = false;
+            }
+        }
 
+
+        public void UnitGetsHit(PlayerInfoModel data, ImageButton PlayerImage)
+        {
+            if (data.lastToGetHit)
+            {
+                rotateGetsHit(data, PlayerImage);
+                data.lastToGetHit = false;
+            }
+        }
+
+        async void rotateHit(PlayerInfoModel data, ImageButton PlayerImage)
+        {
+            await PlayerImage.RotateTo(180, 500, Easing.SpringOut);
+            await PlayerImage.RotateTo(0, 500, Easing.Linear);
+        }
+
+        async void rotateGetsHit(PlayerInfoModel data, ImageButton PlayerImage)
+        {
+            int rVal = -20;
+            if(data.flip > 0)
+            {
+                rVal *= -1;
+            }
+            await PlayerImage.RotateTo(rVal, 500, Easing.SpringOut);
+            await PlayerImage.RotateTo(0, 500, Easing.CubicIn);
         }
 
         //Assigns the selected monsters stats to their respective labels
