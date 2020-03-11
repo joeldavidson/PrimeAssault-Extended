@@ -150,6 +150,7 @@
     <Content Include="mechanist_class.png" />
     <Content Include="monster_masher.png" />
     <Content Include="neonStairs.jpg" />
+    <Content Include="potion.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />

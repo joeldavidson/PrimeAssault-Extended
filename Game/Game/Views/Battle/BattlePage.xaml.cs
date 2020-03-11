@@ -330,6 +330,11 @@ namespace PrimeAssault.Views
             return true;
         }
 
+        public async void PotionButton_Clicked(object sender, EventArgs e)
+        {
+            
+        }
+
         /// <summary>
         /// Attack Action
         /// </summary>
