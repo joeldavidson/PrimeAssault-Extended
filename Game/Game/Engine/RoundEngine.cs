@@ -1,16 +1,55 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Linq;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
 
-using PrimeAssault.ViewModels;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using Xamarin.Forms;
+
+using PrimeAssault.Engine;
 using PrimeAssault.Models;
+using PrimeAssault.Views;
+using PrimeAssault.Services;
+using PrimeAssault.ViewModels;
 
 namespace PrimeAssault.Engine
 {
+
     /// <summary>
     /// Manages the Rounds
     /// </summary>
     public class RoundEngine : TurnEngine
     {
+
+        #region Constructor
+
+        public RoundEngine()
+        {
+            MessagingCenter.Subscribe<AboutPage, int>(this, "Mulligan", async (obj, data) =>
+            {
+                await SetMulligan(data);
+            });
+        }
+        #endregion Constructor
+
+
+        async public Task<bool> SetMulligan(int input)
+        {
+            if (input == 0)
+            {
+                Mulligan = false;
+            }
+            else
+            {
+                Mulligan = true;
+            }
+            return await Task.FromResult(true);
+        }
+
+
         /// <summary>
         /// Clear the List between Rounds
         /// </summary>
@@ -148,6 +187,11 @@ namespace PrimeAssault.Engine
 
             // Get Next Player
             var PlayerCurrent = GetNextPlayerInList();
+
+            if (Mulligan && (attackMissed != null))
+            {
+                PlayerCurrent = attackMissed;
+            }
 
             return PlayerCurrent;
         }

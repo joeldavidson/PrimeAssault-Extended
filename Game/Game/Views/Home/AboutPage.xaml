@@ -181,7 +181,36 @@
 
             </StackLayout>
             <!--Debug Settings Frame End-->
+            
+            <!--Debug Settings Frame-->
+            <StackLayout Style="{StaticResource HorizontalStack}">
 
+                <Label
+                    Text="Hack 20"
+                    Style="{DynamicResource DebugSwitchLabel}"/>
+
+                <Switch
+                    x:Name="Hack20Switch"
+                    HorizontalOptions="EndAndExpand"
+                    Toggled="Hack_20_OnToggled"
+                    IsToggled="False"/>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource VerticalStack}"
+                        x:Name="Hack20Frame"
+                        IsVisible="False">
+
+                <StackLayout Style="{StaticResource HorizontalStack}"
+                                    Padding="50,0,0,0">
+
+                    <Label Text="Like any good sport, mulligans occur.  If you swing and miss, then swing again."
+                           LineBreakMode="WordWrap"/>
+
+                </StackLayout>
+            </StackLayout>
+            <!--Debug Settings Frame End-->
+            
+            
             <!--Debug Settings Frame-->
             <StackLayout Style="{StaticResource HorizontalStack}">
 
