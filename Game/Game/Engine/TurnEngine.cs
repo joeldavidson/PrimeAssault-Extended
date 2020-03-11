@@ -272,7 +272,7 @@ namespace PrimeAssault.Engine
             {
                 case HitStatusEnum.Miss:
                     // It's a Miss
-
+                    AudioCenter.Miss_Sound();
                     break;
 
                 case HitStatusEnum.Hit:
@@ -537,7 +537,6 @@ namespace PrimeAssault.Engine
                 // Miss
                 BattleMessagesModel.HitStatus = HitStatusEnum.Miss;
                 BattleMessagesModel.DamageAmount = 0;
-                AudioCenter.Miss_Sound();
                 return BattleMessagesModel.HitStatus;
             }
 
