@@ -5,7 +5,7 @@ using Xamarin.Forms.Xaml;
 using PrimeAssault.Models;
 using System.Linq;
 using PrimeAssault.ViewModels;
-
+using PrimeAssault.Helpers;
 
 namespace PrimeAssault.Views
 {
@@ -15,9 +15,10 @@ namespace PrimeAssault.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class BattlePage: ContentPage
 	{
+        AudioHelper MusicCenter = new AudioHelper(true);
 
-		// This uses the Instance so it can be shared with other Battle Pages as needed
-		public BattleEngineViewModel EngineViewModel = BattleEngineViewModel.Instance;
+        // This uses the Instance so it can be shared with other Battle Pages as needed
+        public BattleEngineViewModel EngineViewModel = BattleEngineViewModel.Instance;
 
 		#region PageHandelerVariables
 		// Hold the Selected Characters
@@ -79,7 +80,7 @@ namespace PrimeAssault.Views
 			ShowModalNewRoundPage();
             initializeAllMonsters();
             initializeAllCharacters();
-
+            MusicCenter.Battle_Music();
         }
 
         public void initializeAllMonsters()
@@ -328,6 +329,11 @@ namespace PrimeAssault.Views
             PartyListGrid.Children.Add(GoldArrow);
 
             return true;
+        }
+
+        public async void PotionButton_Clicked(object sender, EventArgs e)
+        {
+            
         }
 
         /// <summary>

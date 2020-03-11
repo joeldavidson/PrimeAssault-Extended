@@ -124,6 +124,8 @@ namespace PrimeAssault.Services
             return datalist;
         }
 
+
+
         public static List<CharacterModel> LoadData(CharacterModel temp)
         {
             var HeadString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Head);

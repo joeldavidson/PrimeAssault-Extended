@@ -100,16 +100,22 @@ namespace PrimeAssault.Views
         {
             Percentage_Chance.Value = Math.Round(args.NewValue);
             double value = args.NewValue;
-            Percentage_Label.Text = String.Format("Percent chance of zombification: %{0}", value);
+            Percentage_Label.Text = String.Format("Percent chance of zombification: {0}%", value);
         }
 
         public void Hack_19_OnToggled(object sender, ToggledEventArgs e)
         {
             // Show or hide the Debug Settings
             Hack19Frame.IsVisible = (e.Value);
+
         }
 
-
+        public void Hack19_Chance_Changed(object sender, Xamarin.Forms.ValueChangedEventArgs args)
+        {
+            Hack19_Chance.Value = Math.Round(args.NewValue);
+            double value = args.NewValue;
+            Hack19_Chance_Label.Text = String.Format("Percent chance of Feeling Good: {0}%", value);
+        }
         /// <summary>
         /// Sow or hide the Debug Settings
         /// </summary>
