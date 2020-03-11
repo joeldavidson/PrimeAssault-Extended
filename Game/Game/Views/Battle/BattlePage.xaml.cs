@@ -5,9 +5,7 @@ using Xamarin.Forms.Xaml;
 using PrimeAssault.Models;
 using System.Linq;
 using PrimeAssault.ViewModels;
-using System.IO;
-using System.Reflection;
-using Plugin.SimpleAudioPlayer;
+
 
 namespace PrimeAssault.Views
 {
@@ -19,9 +17,6 @@ namespace PrimeAssault.Views
 	public partial class BattlePage: ContentPage
 	{
 
-        //Creates a SimpleAudioPlayer object to be used for sound effects
-        ISimpleAudioPlayer AttackSE;
-        ISimpleAudioPlayer DeathSE;
         // This uses the Instance so it can be shared with other Battle Pages as needed
         public BattleEngineViewModel EngineViewModel = BattleEngineViewModel.Instance;
 
@@ -85,28 +80,10 @@ namespace PrimeAssault.Views
 			ShowModalNewRoundPage();
             initializeAllMonsters();
             initializeAllCharacters();
-
-            //Defining the audioplayer
-            AttackSE = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
-            DeathSE = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
-
-            //Assigning a soundeffect to be played by AudioPlayer object
-            var stream = GetStreamFromFile("attack_se.ogg");
-            AttackSE.Load(stream);
-
-            stream = GetStreamFromFile("death_se.ogg");
-            DeathSE.Load(stream);
-
+            
         }
 
-        //Assembles audioplayer to play the file that is included in the parameter
-        Stream GetStreamFromFile(string filename)
-        {
-            var assembly = typeof(App).GetTypeInfo().Assembly;
-            var stream = assembly.GetManifestResourceStream("PrimeAssault." + filename);
-            return stream;
-
-        }
+        
 
         public void initializeAllMonsters()
         {
@@ -262,15 +239,11 @@ namespace PrimeAssault.Views
             if(data.CurrentHealth < 1)
             {
                 PlayerImage.RotateTo(90);
-                DeathSE.Play();
             }
         }
 
         public void UnitAttacks(PlayerInfoModel data, ImageButton PlayerImage)
         {
-            //Attack sound effect played
-            
-            AttackSE.Play();
             //PlayerImage.RotateTo(20);
 
         }
