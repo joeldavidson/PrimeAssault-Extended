@@ -44,6 +44,10 @@
         // The Remaining Health Mesage
         public int CurrentHealth = 0;
 
+        // For hack 16
+        public bool ZombieApocalypse;
+        public int ResChance;
+
         // Beginning of the Html Block for html formatting
         public string htmlHead = @"<html><body bgcolor=""#E8D0B6""><p>";
         

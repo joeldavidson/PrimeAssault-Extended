@@ -16,7 +16,7 @@ namespace PrimeAssault.Models
 
         //Default monster image
         const string DEFAULT_URI = "sewer_gator.png";
-        
+
         //Item that is dropped by the monster
         ItemModel Drop = new ItemModel(); //should be retrieved at random?
 
@@ -91,7 +91,7 @@ namespace PrimeAssault.Models
 
         public bool SetLevel(int targetLevel)
         {
-            if (targetLevel > 0 && targetLevel <22)
+            if (targetLevel > 0 && targetLevel < 22)
             {
                 Level = targetLevel;
             }
@@ -114,6 +114,5 @@ namespace PrimeAssault.Models
         {
             return (LevelTableHelper.Instance.LevelDetailsList[Level].Experience);
         }
-
     }
 }

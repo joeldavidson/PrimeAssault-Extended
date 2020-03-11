@@ -27,9 +27,7 @@ namespace PrimeAssault.Engine
 
         // For Hack 16
         public bool ZombieApocalypse =false;
-
-        //Hack 19 The James Brown One
-        public bool Hack19 = false;
+        public int ResChance = 0;
 
         #region Constructor
 
@@ -40,10 +38,11 @@ namespace PrimeAssault.Engine
                 await SetZombieApocalypse(data);
             });
 
-            MessagingCenter.Subscribe<AboutPage, int>(this, "IFeelGood", async (obj, data) =>
+            MessagingCenter.Subscribe<AboutPage, int>(this, "ZombificationChance", async (obj, data) =>
             {
-                await SetHack19(data);
+                await SetResChance(data);
             });
+
 
             #endregion Constructor
         }
@@ -60,20 +59,11 @@ namespace PrimeAssault.Engine
             }
             return await Task.FromResult(true);
         }
-
-        async public Task<bool> SetHack19(int input)
+        async public Task<bool> SetResChance(int input)
         {
-            if (input == 0)
-            {
-                Hack19 = false;
-            }
-            else
-            {
-                Hack19 = true;
-            }
+            ResChance = input;
             return await Task.FromResult(true);
         }
-
         /// <summary>
         /// Add the charcter to the character list
         /// </summary>
@@ -100,6 +90,8 @@ namespace PrimeAssault.Engine
                 AutoBattle = isAutoBattle
             };
 
+            BattleMessagesModel.ZombieApocalypse = ZombieApocalypse;
+            BattleMessagesModel.ResChance = ResChance;
             BattleRunning = true;
 
             NewRound();

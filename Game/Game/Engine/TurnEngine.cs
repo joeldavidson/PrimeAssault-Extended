@@ -31,7 +31,7 @@ namespace PrimeAssault.Engine
     public class TurnEngine : BaseEngine
     {
         AudioHelper AudioCenter = new AudioHelper();
-        
+
 
         //variable which determines likelihood that an "AI" will use a move on any given turn. 1 = 10%, 3 = 30%, etc...
         public static int PROBABILITY_OF_MOVE = 3; 
@@ -279,6 +279,7 @@ namespace PrimeAssault.Engine
 
                 case HitStatusEnum.Miss:
                     // It's a Miss
+                    attackMissed = Attacker;
                     AudioCenter.Miss_Sound();
                     break;
 
@@ -294,7 +295,12 @@ namespace PrimeAssault.Engine
                     BattleMessagesModel.CurrentHealth = Target.CurrentHealth;
                     BattleMessagesModel.DamageOutput = " for " + (BattleMessagesModel.DamageAmount).ToString() + " damage,";
                     BattleMessagesModel.TurnMessageSpecial = BattleMessagesModel.GetCurrentHealthMessage();
-                    
+                   
+                    if (!Target.Alive && Target.PlayerType == PlayerTypeEnum.Monster && BattleMessagesModel.ZombieApocalypse)
+                    {
+                        Target.Zombify(BattleMessagesModel.ResChance);
+                    }
+
                     RemoveIfDead(Target);
                    
                     // If it is a character apply the experience earned

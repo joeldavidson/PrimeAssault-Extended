@@ -70,8 +70,7 @@ namespace PrimeAssault.ViewModels
 
         public bool ZombieApocalypse { get; set; } = false;
 
-        public bool Hack19 { get; set; } = false;
-
+        public int ChanceOfRes { get; set; } = 0;
         #region Constructor
 
         /// <summary>
@@ -84,9 +83,9 @@ namespace PrimeAssault.ViewModels
                 await SetZombieApocalypse(data);
             });
 
-            MessagingCenter.Subscribe<AboutPage, int>(this, "IFeelGood", async (obj, data) =>
+            MessagingCenter.Subscribe<AboutPage, int>(this, "ZombificationChance", async (obj, data) =>
             {
-                await SetHack19(data);
+                await SetResChance(data);
             });
 
             #endregion Constructor
@@ -105,17 +104,9 @@ namespace PrimeAssault.ViewModels
             return await Task.FromResult(true);
         }
 
-
-        async public Task<bool> SetHack19(int input)
+        async public Task<bool> SetResChance(int input)
         {
-            if (input == 0)
-            {
-                Hack19 = false;
-            }
-            else
-            {
-                Hack19 = true;
-            }
+            ChanceOfRes = input;
             return await Task.FromResult(true);
         }
 

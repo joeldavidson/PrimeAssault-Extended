@@ -1,4 +1,5 @@
-﻿
+﻿using PrimeAssault.Helpers;
+
 namespace PrimeAssault.Models
 {
     /// <summary>
@@ -166,6 +167,21 @@ namespace PrimeAssault.Models
 
             flip = data.flip;
         }
+
+        public bool Zombify(int ResChance)
+        {
+            int ResPower = DiceHelper.RollDice(1, 100);
+            if (!Alive && ResPower <= ResChance)
+            {
+                CurrentHealth = (int)GetHealthMax() / 2;
+                Alive = true;
+                Name = "Zombie " + Name;
+                return true;
+            }
+            return false;
+
+        }
+
         /*
         public override string FormatOutput()
         {
