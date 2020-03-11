@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 
 using Xamarin.Forms;
 
+using PrimeAssault.Engine;
 using PrimeAssault.Models;
 using PrimeAssault.Views;
 using PrimeAssault.Services;
@@ -61,6 +62,7 @@ namespace PrimeAssault.ViewModels
         // Have the Database Character List point to the Character View Model List
         public ObservableCollection<CharacterModel> DatabaseCharacterList { get; set; } = CharacterIndexViewModel.Instance.Dataset;
 
+        public bool ZombieApocalypse { get; set; } = false;
         #region Constructor
 
         /// <summary>
@@ -68,8 +70,26 @@ namespace PrimeAssault.ViewModels
         /// </summary>
         public BattleEngineViewModel()
         {
+            MessagingCenter.Subscribe<AboutPage, int>(this, "Zombification", async (obj, data) =>
+            {
+                SetZombieApocalypse(data);
+            });
+
+            #endregion Constructor
         }
 
-        #endregion Constructor
+        public bool SetZombieApocalypse(int input)
+        {
+            if (input == 0)
+            {
+                ZombieApocalypse = false;
+            }
+            else
+            {
+                ZombieApocalypse = true;
+            }
+            return ZombieApocalypse;
+        }
+
     }
 }

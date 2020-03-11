@@ -65,6 +65,7 @@ namespace PrimeAssault.Services
             return new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
         }
 
+        public bool ZombieApocalypse = false;
         /// <summary>
         /// Bool for testing
         /// </summary>

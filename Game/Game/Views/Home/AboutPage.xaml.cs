@@ -81,6 +81,15 @@ namespace PrimeAssault.Views
         {
             // Show or hide the Debug Settings
             Hack16Frame.IsVisible = (e.Value);
+
+            if (Hack16Switch.IsToggled == true)
+            {
+                MessagingCenter.Send(this, "Zombification", 1);
+            }
+            else
+            {
+                MessagingCenter.Send(this, "Zombification", 0);
+            }
         }
 
         public void PercentageChance_ValueChanged(object sender, Xamarin.Forms.ValueChangedEventArgs args)

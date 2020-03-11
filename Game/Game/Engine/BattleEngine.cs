@@ -11,6 +11,9 @@ namespace PrimeAssault.Engine
         // Track if the Battle is Running or Not
         public bool BattleRunning = false;
 
+        // For Hack 16
+        public bool ZombieApocalypse =false;
+
         /// <summary>
         /// Add the charcter to the character list
         /// </summary>
