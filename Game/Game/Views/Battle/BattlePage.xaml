@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PrimeAssault.Views.BattlePage"
              BackgroundImageSource="battleback.png">
-    
-    
+
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="New Round" Clicked="NewRoundButton_Clicked" IconImageSource="gear.png"/>
         <ToolbarItem Text="Round Over" Clicked="RoundOverButton_Clicked" IconImageSource="gear.png"/>
@@ -104,9 +104,11 @@
 
             <!--Top Monster Move Options BEGIN-->
             <BoxView
-                BackgroundColor="Gray"
+               
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="Fill"
+                BackgroundColor="#131418"
+                Opacity="0.8"
                 Grid.Row="0"
                 Grid.Column="2"
                 Grid.RowSpan="3"
@@ -174,9 +176,10 @@
 
             <!--Bottom Character Move Options BEGIN-->
             <BoxView
-                BackgroundColor="Gray"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="Fill"
+                BackgroundColor="#131418"
+                Opacity="0.8"
                 Grid.Row="19"
                 Grid.Column="2"
                 Grid.RowSpan="3"
@@ -263,9 +266,10 @@
                 </Grid.ColumnDefinitions>
 
                 <BoxView
-                    BackgroundColor="Gray"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="Fill"
+                   HorizontalOptions="FillAndExpand"
+                VerticalOptions="Fill"
+                BackgroundColor="#131418"
+                Opacity="0.8"
                     Grid.Row="0"
                     Grid.Column="0"
                     Grid.RowSpan="12"
@@ -367,9 +371,10 @@
                 </Grid.ColumnDefinitions>
 
                 <BoxView
-                    BackgroundColor="Gray"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="Fill"
+                     HorizontalOptions="FillAndExpand"
+                VerticalOptions="Fill"
+                BackgroundColor="#131418"
+                Opacity="0.8"
                     Grid.Row="0"
                     Grid.Column="0"
                     Grid.RowSpan="12"
