@@ -154,6 +154,37 @@
             <StackLayout Style="{StaticResource HorizontalStack}">
 
                 <Label
+                    Text="Hack 19"
+                    Style="{DynamicResource DebugSwitchLabel}"/>
+
+                <Switch
+                    x:Name="Hack19Switch"
+                    HorizontalOptions="EndAndExpand"
+                    Toggled="Hack_19_OnToggled"
+                    IsToggled="False"/>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource VerticalStack}"
+                        x:Name="Hack19Frame"
+                        IsVisible="False">
+
+                <StackLayout Style="{StaticResource HorizontalStack}"
+                                    Padding="50,0,0,0">
+
+                    <Label Text="All characters get a D20 added to their Attack Score, Monsters get a D20 subtracted to their defense." 
+                           LineBreakMode="WordWrap"/>
+
+
+                </StackLayout>
+
+            
+            </StackLayout>
+            <!--Debug Settings Frame End-->
+
+            <!--Debug Settings Frame-->
+            <StackLayout Style="{StaticResource HorizontalStack}">
+
+                <Label
                     Text="Hack 21"
                     Style="{DynamicResource DebugSwitchLabel}"/>
 
