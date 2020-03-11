@@ -14,6 +14,7 @@
     <None Remove="attack_se.ogg" />
     <None Remove="death_se.ogg" />
     <None Remove="feelgood.mp3" />
+    <None Remove="ff_music.mp3" />
     <None Remove="miss_se.ogg" />
   </ItemGroup>
 
@@ -21,6 +22,7 @@
     <EmbeddedResource Include="attack_se.ogg" />
     <EmbeddedResource Include="death_se.ogg" />
     <EmbeddedResource Include="feelgood.mp3" />
+    <EmbeddedResource Include="ff_music.mp3" />
     <EmbeddedResource Include="miss_se.ogg" />
   </ItemGroup>
 
