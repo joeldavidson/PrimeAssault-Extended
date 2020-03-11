@@ -58,6 +58,8 @@ namespace PrimeAssault.Views
 
         public PlayerInfoModel currentCharacter;
 
+        public int Potions;
+
         #endregion PageHandelerVariables
 
         /// <summary>
@@ -79,7 +81,8 @@ namespace PrimeAssault.Views
 			EngineViewModel.Engine.CurrentDefender = EngineViewModel.Engine.PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Monster).FirstOrDefault();
 			EngineViewModel.Engine.CurrentAttacker = EngineViewModel.Engine.PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Character).FirstOrDefault();
 
-			ShowModalNewRoundPage();
+            Potions = EngineViewModel.Engine.MaxNumberPotions;
+            ShowModalNewRoundPage();
             initializeAllMonsters();
             initializeAllCharacters();
             MusicCenter.Battle_Music();
@@ -185,8 +188,6 @@ namespace PrimeAssault.Views
                 // Turn off click action
                 ClickableButton = false;
             }
-
-
 
             // Put the Image Button and Text inside a layout
             if (data.PlayerType == PlayerTypeEnum.Character)
@@ -333,6 +334,7 @@ namespace PrimeAssault.Views
         public async void PotionButton_Clicked(object sender, EventArgs e)
         {
             currentCharacter.CurrentHealth = currentCharacter.MaxHealth;
+            Potions--;
         }
 
         /// <summary>

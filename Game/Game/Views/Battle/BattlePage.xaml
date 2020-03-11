@@ -64,7 +64,18 @@
                 HeightRequest="75"
                 WidthRequest="200"
                 />
-
+            
+            <Label
+                Text="{Binding PostionsLeft}"
+                Grid.Row="19"
+                FontSize="Header"
+                Grid.RowSpan="2"
+                Grid.Column="10"
+                Grid.ColumnSpan="2"
+                HeightRequest="75"
+                WidthRequest="200"
+                />
+            
             <ImageButton 
                 x:Name="PotionButton"
                 Source="potion.png"
