@@ -10,7 +10,7 @@ using PrimeAssault.ViewModels;
 using System.IO;
 using System.Reflection;
 using Plugin.SimpleAudioPlayer;
-
+using System;
 
 namespace PrimeAssault.Engine
 {
@@ -268,8 +268,6 @@ namespace PrimeAssault.Engine
                 Debug.WriteLine(BattleMessagesModel.TurnMessage);
                 return true;
             }
-
-            Attacker.lastToAttack = true;
 
             switch (BattleMessagesModel.HitStatus)
             {
