@@ -558,7 +558,7 @@ namespace PrimeAssault.Engine
             if (Attacker.PlayerType == PlayerTypeEnum.Character)
             {
                 var experienceEarned = Target.CalculateExperienceEarned(BattleMessagesModel.DamageAmount);
-                BattleMessagesModel.ExperienceEarned = " Earned " + experienceEarned + " points. ";
+                BattleMessagesModel.ExperienceEarned = " Earned " + experienceEarned + " exp. ";
 
                 var LevelUp = Attacker.AddExperience(experienceEarned);
                 if (LevelUp)

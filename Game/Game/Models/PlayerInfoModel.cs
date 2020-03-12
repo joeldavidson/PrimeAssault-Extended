@@ -58,6 +58,9 @@ namespace PrimeAssault.Models
             LeftFinger = data.LeftFinger;
             Feet = data.Feet;
 
+            ExperienceRemaining = data.ExperienceRemaining;
+            ExperienceTotal = data.ExperienceTotal;
+
             X = data.X;
             Y = data.Y;
         }
@@ -103,6 +106,8 @@ namespace PrimeAssault.Models
             LeftFinger = data.LeftFinger;
             Feet = data.Feet;
 
+            ExperienceRemaining = data.ExperienceRemaining;
+            ExperienceTotal = data.ExperienceTotal;
 
             X = data.X;
             Y = data.Y;
@@ -147,6 +152,8 @@ namespace PrimeAssault.Models
             LeftFinger = data.LeftFinger;
             Feet = data.Feet;
 
+            ExperienceRemaining = data.ExperienceRemaining;
+            ExperienceTotal = data.ExperienceTotal;
 
             X = data.X;
             Y = data.Y;

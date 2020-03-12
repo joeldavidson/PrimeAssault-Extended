@@ -8,12 +8,6 @@ namespace PrimeAssault.Models
     //Enemie
     public class MonsterModel : BasePlayerModel<MonsterModel>
     {
-        //current xp give equation
-        //(BASE_XP + (LVL_MULT * level) ^ LVL_EXP) = (1 + (2 * level) ^ 2)
-        const int BASE_XP = 1;
-        const int LVL_MULT = 2;
-        const int LVL_EXP = 2;
-
         //Default monster image
         const string DEFAULT_URI = "sewer_gator.png";
         
@@ -33,6 +27,8 @@ namespace PrimeAssault.Models
             RangedDefense = data.RangedDefense;
             Defense = data.Defense;
 
+            ExperienceTotal = data.ExperienceTotal;
+            ExperienceRemaining = data.ExperienceRemaining;
             if (data.Level < 22 && data.Level > 0)
             {
                 Level = data.Level;
@@ -67,6 +63,7 @@ namespace PrimeAssault.Models
         //The monster (inherits from base) and its default monster stats
         public MonsterModel() : base()
         {
+            //UniqueItem = null;
             PlayerType = PlayerTypeEnum.Monster;
             ImageURI = DEFAULT_URI;
             Name = RandomPlayerHelper.GetMonsterName();
@@ -77,7 +74,10 @@ namespace PrimeAssault.Models
             CurrentHealth = GetHealthMax();
             RangedDefense = 2;
             Speed = 2;
-            ImageURI = "sewer_gator.png";
+            ImageURI = DEFAULT_URI;
+            ExperienceTotal = 0;
+            ExperienceRemaining = LevelTableHelper.Instance.LevelDetailsList[Level + 1].Experience - 1;
+
 
             X = 0;
             Y = 0;

@@ -51,6 +51,9 @@ namespace PrimeAssault.Models
         // The experience points the player has used in sorting ties... ---ASK QUESTION: DON'T UNDERSTAND IMPORTANCE OF EXPERIENCE POINTS VS TOTAL EXPERIENCE
         public int ExperiencePoints { get; set; } = 0;
 
+        // The Experience available to given up
+        public int ExperienceRemaining { get; set; }
+
         // Current Health
         public int CurrentHealth { get; set; } = 20;
 
@@ -491,7 +494,32 @@ namespace PrimeAssault.Models
             return false;
         }
 
-        public int CalculateExperienceEarned(int damage) { return 0; }
+        public int CalculateExperienceEarned(int damage) {
+            if (damage < 1)
+            {
+                return 0;
+            }
+
+            int remainingHealth = Math.Max(CurrentHealth - damage, 0); // Go to 0 is OK...
+            double rawPercent = (double)remainingHealth / (double)CurrentHealth;
+            double deltaPercent = 1 - rawPercent;
+            var pointsAllocate = (int)Math.Floor(ExperienceRemaining * deltaPercent);
+
+            // Catch rounding of low values, and force to 1.
+            if (pointsAllocate < 1)
+            {
+                pointsAllocate = 1;
+            }
+
+            // Take away the points from remaining experience
+            ExperienceRemaining -= pointsAllocate;
+            if (ExperienceRemaining < 0)
+            {
+                pointsAllocate = 0;
+            }
+
+            return pointsAllocate;
+        }
 
         //Used to access first move in character
         public MoveModel GetFirstMove(int index) { return Moves[0]; }

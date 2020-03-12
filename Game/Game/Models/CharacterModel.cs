@@ -32,6 +32,8 @@ namespace PrimeAssault.Models
             SetJobClass("Soldier");
             X = 0;
             Y = 0;
+            ExperienceTotal = 0;
+            ExperienceRemaining = LevelTableHelper.Instance.LevelDetailsList[Level + 1].Experience - 1;
         }
 
         public CharacterModel(CharacterModel data)
@@ -52,6 +54,9 @@ namespace PrimeAssault.Models
             RangedDefense = data.RangedDefense;
             Defense = data.Defense;
 
+
+            ExperienceTotal = data.ExperienceTotal;
+            ExperienceRemaining = data.ExperienceRemaining;
             if (data.Level < 21 && data.Level > 0)
             {
                 Level = data.Level;
