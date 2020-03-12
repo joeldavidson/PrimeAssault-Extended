@@ -109,11 +109,12 @@ namespace PrimeAssault.Views
                 if (y < 3)
                 {
                     Grid.SetRow(monster, x++);
-                    data.flip = flip;
+                    
                 }
                 else
                 {
                     monster.RotationY = flip;
+                    data.flip = flip;
                     Grid.SetRow(monster, --x);
                 }
                 data.Y = y;
@@ -267,8 +268,18 @@ namespace PrimeAssault.Views
 
         async void rotateHit(PlayerInfoModel data, ImageButton PlayerImage)
         {
-            await PlayerImage.RotateTo(180, 500, Easing.SpringOut);
-            await PlayerImage.RotateTo(0, 500, Easing.Linear);
+            int tValY = 100;
+            int tValX = 100;
+            if (data.PlayerType == PlayerTypeEnum.Character)
+            {
+                tValY *= -1;
+            }
+            if(data.flip < 180)
+            {
+                tValX *= -1;
+            }
+            await PlayerImage.TranslateTo(data.X + tValX, data.Y + tValY, 500, Easing.SpringOut);
+            await PlayerImage.TranslateTo(data.X, data.Y, 500, Easing.Linear);
         }
 
         async void rotateGetsHit(PlayerInfoModel data, ImageButton PlayerImage)
