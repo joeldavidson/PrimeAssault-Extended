@@ -411,15 +411,15 @@ namespace Scenario
             // Set Character Conditions
             // Arrange
             var PlayerInfo = new PlayerInfoModel();
-            Engine.MonsterList.Add(new PlayerInfoModel(new MonsterModel()));
+            BattleEngine.MonsterList.Add(new PlayerInfoModel(new MonsterModel()));
 
             // Act
-            Engine.Attack(PlayerInfo);
+            BattleEngine.Attack(PlayerInfo);
 
-            var result = Engine.Attack(PlayerInfo);
+            var result = BattleEngine.Attack(PlayerInfo);
 
             // Reset
-            Engine.StartBattle(false);   // Clear the Engine
+            BattleEngine.StartBattle(false);   // Clear the Engine
 
             // Assert
             Assert.AreEqual(true, result);

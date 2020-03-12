@@ -108,7 +108,7 @@ namespace PrimeAssault.Views
         {
             // Show or hide the Debug Settings
             Hack19Frame.IsVisible = (e.Value);
-
+            player.Play();
             // Flip the settings
             if (Hack19Switch.IsToggled == true)
             {
@@ -123,6 +123,7 @@ namespace PrimeAssault.Views
 
         public void Hack19_Chance_Changed(object sender, Xamarin.Forms.ValueChangedEventArgs args)
         {
+            player.Stop();
             Hack19_Chance.Value = Math.Round(args.NewValue);
             double value = args.NewValue;
             Hack19_Chance_Label.Text = String.Format("Percent chance of Feeling Good: {0}%", value);
@@ -226,21 +227,5 @@ namespace PrimeAssault.Views
             }
         }
         
-
-        private void Stop_Clicked(object sender, EventArgs e)
-        {
-            player.Stop();
-        }
-
-        private void Pause_Clicked(object sender, EventArgs e)
-        {
-            player.Pause();
-        }
-
-        private void Play_Clicked(object sender, EventArgs e)
-        {
-            player.Play();
-        }
-
     }
 }
