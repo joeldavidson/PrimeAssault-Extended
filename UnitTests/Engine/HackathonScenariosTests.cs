@@ -27,13 +27,22 @@ namespace Scenario
         AutoBattleEngine AutoBattleEngine;
         BattleEngine BattleEngine;
         BattleMessagesModel BattleMessages;
+        App app;
         BattlePage page;
 
         [SetUp]
         public void Setup()
         {
+            // Initilize Xamarin Forms
+            MockForms.Init();
+
+            //This is your App.xaml and App.xaml.cs, which can have resources, etc.
+            app = new App();
+            Application.Current = app;
+            BattleMessages = new BattleMessagesModel();
             AutoBattleEngine = EngineViewModel.AutoBattleEngine;
             BattleEngine = EngineViewModel.Engine;
+            page = new BattlePage();
         }
 
         [TearDown]
@@ -146,7 +155,7 @@ namespace Scenario
             //Assert
             Assert.AreEqual(true, result);
             Assert.AreEqual(null, AutoBattleEngine.PlayerList.Find(m => m.Name.Equals("Mike")));
-            Assert.AreEqual(1, AutoBattleEngine.BattleScore.RoundCount);
+            Assert.AreEqual(3, AutoBattleEngine.BattleScore.RoundCount);
         }
 
         [Test]
@@ -440,6 +449,7 @@ namespace Scenario
         [Test]
         public void HACK_4_PotionButton_Clicked_Default_Should_Pass()
         {
+
             // Arrange
             PlayerInfoModel data = new PlayerInfoModel();
             ImageButton dataImage = new ImageButton();
@@ -476,21 +486,79 @@ namespace Scenario
         [Test]
         public void HACK_4_Potion_Given_To_Unit_Should_Pass()
         {
+
+            /* Scenario Number:  
+            *      4
+            *      
+            * Description: 
+            *      Healing finally comes to the Mobile Class at SU. It’s been a long battle. Now magically, if the debug setting is enabled, 6 full healing potions are available per round. The potions do not stack or survive to the next round so use 
+            *      them wisely. During a round, instead of attacking, a player may choose to drink one of the 6 healing potions. This will restore the character to max health. A potion is fully used up regardless of how much health it gives the 
+            *      character. At the start of each new round, a fresh batch of 6 potions is delivered, and the old ones expire (the are very perishable). If debug setting for AllowRoundHealing is set to false, then no potions arrive… In autobattle 
+            *      mode, if the health of a character is <20% of their max health, they will automatically drink an available potion (they are greedy, and will drink it even if the character next to them needs it more than they do…)
+            * 
+            * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+            *      No Code changes requied 
+            * 
+            * Test Algrorithm:
+            *      Create basic character with Playerinfomodel
+            *      reduce its health
+            *  
+            *      call potion method
+            *      Check current and previous health
+            *      
+            * 
+            * Test Conditions:
+            *      Default condition is sufficient
+            * 
+            * Validation:
+            *      Verify Battle Returned True
+            *      Verify Mike is not in the Player List
+            *      Verify Round Count is 1
+            *  
+            */
             // Arrange
             PlayerInfoModel character = new PlayerInfoModel();
 
-            int health = character.CurrentHealth - 1;
+            character.MaxHealth = 10;
+            character.CurrentHealth = 1;
 
             page.currentCharacter = character;
 
             // Act
             page.PotionButton_Clicked(null, null);
 
-            // Reset
-
             // Assert
             Assert.AreEqual(page.currentCharacter.CurrentHealth, page.currentCharacter.MaxHealth); // Got to here, so it happened...
         }
+
+
+        /* Scenario Number:  
+         *      4
+         *      
+         * Description: 
+         *     Implement animations for events that happen during the battle.  Animate Hit, Miss, Level UP, Death. Include screen shots of the animation effects
+         *     
+         *     
+         * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+         *      No Code changes requied 
+         * 
+         * Test Algrorithm:
+         *      Create basic character with Playerinfomodel
+         *      Create fake image
+         *  
+         *      Pass them into the the animation method
+         *      Check to make sure it made it through
+         *      
+         * 
+         * Test Conditions:
+         *      Default condition is sufficient
+         * 
+         * Validation:
+         *      Verify Death animation
+         *      Verify Unit attack animation
+         *      Verify Unit gets hit animation
+         *  
+         */
 
         //Hack 40
         [Test]
