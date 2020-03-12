@@ -1,11 +1,21 @@
 ﻿using NUnit.Framework;
-
 using PrimeAssault.Engine;
 using PrimeAssault.Models;
 using System.Threading.Tasks;
+using System.IO;
+using System.Reflection;
 using PrimeAssault.Helpers;
 using System.Linq;
 using PrimeAssault.ViewModels;
+using Plugin.SimpleAudioPlayer;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text;
+using PrimeAssault;
+using PrimeAssault.Views;
+using Xamarin.Forms.Mocks;
+using Xamarin.Forms;
 
 namespace Scenario
 {
@@ -17,6 +27,7 @@ namespace Scenario
         AutoBattleEngine AutoBattleEngine;
         BattleEngine BattleEngine;
         BattleMessagesModel BattleMessages;
+        BattlePage page;
 
         [SetUp]
         public void Setup()
@@ -259,7 +270,7 @@ namespace Scenario
                                 Level = 10,
                                 CurrentHealth = 100,
                                 ExperienceTotal = 100,
-                                Name = "Mike",
+                                Name = "Joe",
                             });
 
             BattleEngine.CharacterList.Add(CharacterPlayer);
@@ -423,6 +434,142 @@ namespace Scenario
 
             // Assert
             Assert.AreEqual(true, result);
+        }
+
+        //Hack 04
+        [Test]
+        public void HACK_4_PotionButton_Clicked_Default_Should_Pass()
+        {
+            // Arrange
+            PlayerInfoModel data = new PlayerInfoModel();
+            ImageButton dataImage = new ImageButton();
+            // Act
+            page.PotionButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        //Hack 04
+        [Test]
+        public void HACK_4_Potion_Not_Given_To_Unit_Should_Pass()
+        {
+            // Arrange
+            PlayerInfoModel character = new PlayerInfoModel();
+
+            int health = character.CurrentHealth - 1;
+
+            page.currentCharacter = character;
+
+            // Act
+            //page.PotionButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.AreNotEqual(page.currentCharacter.CurrentHealth, page.currentCharacter.MaxHealth); // Got to here, so it happened...
+        }
+
+        //Hack 04
+        [Test]
+        public void HACK_4_Potion_Given_To_Unit_Should_Pass()
+        {
+            // Arrange
+            PlayerInfoModel character = new PlayerInfoModel();
+
+            int health = character.CurrentHealth - 1;
+
+            page.currentCharacter = character;
+
+            // Act
+            page.PotionButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(page.currentCharacter.CurrentHealth, page.currentCharacter.MaxHealth); // Got to here, so it happened...
+        }
+
+        //Hack 40
+        [Test]
+        public void HACK_40_UnitDies_Default_Should_Pass()
+        {
+            // Arrange
+            PlayerInfoModel data = new PlayerInfoModel();
+            ImageButton dataImage = new ImageButton();
+            // Act
+            page.UnitDies(data, dataImage);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        //Hack 40
+        [Test]
+        public void HACK_40_UnitAttacks_Default_Should_Pass()
+        {
+            // Arrange
+            PlayerInfoModel data = new PlayerInfoModel();
+            ImageButton dataImage = new ImageButton();
+            // Act
+            page.UnitAttacks(data, dataImage);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        //Hack 40
+        [Test]
+        public void HACK_40_UnitGetsHit_Default_Should_Pass()
+        {
+            // Arrange
+            PlayerInfoModel data = new PlayerInfoModel();
+            ImageButton dataImage = new ImageButton();
+            // Act
+            page.UnitGetsHit(data, dataImage);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        //Hack 40
+        [Test]
+        public void HACK_40_rotateHit_Default_Should_Pass()
+        {
+            // Arrange
+            PlayerInfoModel data = new PlayerInfoModel();
+            ImageButton dataImage = new ImageButton();
+            // Act
+            page.rotateHit(data, dataImage);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        //Hack 40
+        [Test]
+        public void HACK_40_rotateGetsHit_Default_Should_Pass()
+        {
+            // Arrange
+            PlayerInfoModel data = new PlayerInfoModel();
+            ImageButton dataImage = new ImageButton();
+            // Act
+            page.rotateGetsHit(data, dataImage);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
         }
     }
 }

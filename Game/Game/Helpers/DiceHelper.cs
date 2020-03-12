@@ -16,7 +16,7 @@ namespace PrimeAssault.Helpers
         public static bool ForceRollsToNotRandom = false;
 
         // Holds the random value for the sytem
-        private static int _ForcedRandomValue = 1;
+        private static int _ForcedRandomValue = 2;
 
         // What number should return for random numbers (1 is good choice...)
         public static void SetForcedRollValue(int value)
@@ -46,28 +46,30 @@ namespace PrimeAssault.Helpers
         {
             if (ForceRollsToNotRandom)
             {
-                return rolls * _ForcedRandomValue;
+                rolls *= _ForcedRandomValue;
+                return rolls;
             }
 
             if (rolls < 1)
             {
                 return 0;
             }
-
-            if (dice < 1)
+            else if (dice < 1)
             {
                 return 0;
             }
-
-            var myReturn = 0;
-
-            for (var i = 0; i < rolls; i++)
+            else
             {
-                // Add one to the dice, because random is between.  So 1-10 is rnd.Next(1,11)
-                myReturn += rnd.Next(1, dice + 1);
-            }
+                var myReturn = 0;
 
-            return myReturn;
+                for (var i = 0; i < rolls; i++)
+                {
+                    // Add one to the dice, because random is between.  So 1-10 is rnd.Next(1,11)
+                    myReturn += rnd.Next(1, dice + 1);
+                }
+
+                return myReturn;
+            }
         }
     }
 }

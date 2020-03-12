@@ -26,14 +26,12 @@ namespace PrimeAssault.Helpers
 
         public AudioHelper(bool Music = false)
         {
-           
-            if (Music)
+            BattleMusic = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+            if (Music && BattleMusic != null)
             {
-                BattleMusic = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
                 var stream = GetStreamFromFile("ff_music.mp3");
                 BattleMusic.Load(stream);
             }
-
             else
             {
                 //Defining the audioplayers
@@ -41,20 +39,21 @@ namespace PrimeAssault.Helpers
                 DeathSE = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
                 MissSE = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
                 FeelGoodSE = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
-              
-                //Assigning soundeffects to be played by AudioPlayer objects
-                var stream = GetStreamFromFile("attack_se.ogg");
-                AttackSE.Load(stream);
+                if (AttackSE != null)
+                {
+                    //Assigning soundeffects to be played by AudioPlayer objects
+                    var stream = GetStreamFromFile("attack_se.ogg");
+                    AttackSE.Load(stream);
 
-                stream = GetStreamFromFile("miss_se.ogg");
-                MissSE.Load(stream);
+                    stream = GetStreamFromFile("miss_se.ogg");
+                    MissSE.Load(stream);
 
-                stream = GetStreamFromFile("death_se.ogg");
-                DeathSE.Load(stream);
+                    stream = GetStreamFromFile("death_se.ogg");
+                    DeathSE.Load(stream);
 
-                stream = GetStreamFromFile("feelgood.mp3");
-                FeelGoodSE.Load(stream);
-
+                    stream = GetStreamFromFile("feelgood.mp3");
+                    FeelGoodSE.Load(stream);
+                }
 
             }
 
@@ -62,31 +61,37 @@ namespace PrimeAssault.Helpers
 
         public void Battle_Music()
         {
-            BattleMusic.Play();
+            if (BattleMusic != null)
+                BattleMusic.Play();
         }
 
         public void Battle_Music_Pause()
         {
-            BattleMusic.Stop();
+            if (BattleMusic != null)
+                BattleMusic.Stop();
         }
         public void Attack_Sound()
         {
-            AttackSE.Play();
+            if (AttackSE != null)
+                AttackSE.Play();
         }
 
         public void Miss_Sound()
         {
-            MissSE.Play();
+            if (MissSE != null)
+                MissSE.Play();
         }
 
         public void Death_Sound()
         {
-            DeathSE.Play();
+            if (DeathSE != null)
+                DeathSE.Play();
         }
 
         public void FeelGood_Sound()
         {
-            FeelGoodSE.Play();
+            if (FeelGoodSE != null)
+                FeelGoodSE.Play();
         }
 
     }
