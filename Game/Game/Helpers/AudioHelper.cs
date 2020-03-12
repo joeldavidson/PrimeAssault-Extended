@@ -30,7 +30,7 @@ namespace PrimeAssault.Helpers
             if (Music)
             {
                 BattleMusic = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
-                var stream = GetStreamFromFile("ff_music.mp3");
+                var stream = GetStreamFromFile("knight_of_fire.mp3");
                 BattleMusic.Load(stream);
             }
 
