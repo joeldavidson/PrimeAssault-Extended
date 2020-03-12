@@ -266,7 +266,7 @@ namespace PrimeAssault.Views
             }
         }
 
-        async void rotateHit(PlayerInfoModel data, ImageButton PlayerImage)
+        public async void rotateHit(PlayerInfoModel data, ImageButton PlayerImage)
         {
             int tValY = 100;
             int tValX = 100;
@@ -282,7 +282,7 @@ namespace PrimeAssault.Views
             await PlayerImage.TranslateTo(data.X, data.Y, 500, Easing.Linear);
         }
 
-        async void rotateGetsHit(PlayerInfoModel data, ImageButton PlayerImage)
+        public async void rotateGetsHit(PlayerInfoModel data, ImageButton PlayerImage)
         {
             int rVal = -20;
             if(data.flip > 0)
