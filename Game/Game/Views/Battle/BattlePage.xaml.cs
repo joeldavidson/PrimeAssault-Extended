@@ -191,6 +191,7 @@ namespace PrimeAssault.Views
                 ClickableButton = false;
             }
 
+
             // Put the Image Button and Text inside a layout
             if (data.PlayerType == PlayerTypeEnum.Character)
             {
