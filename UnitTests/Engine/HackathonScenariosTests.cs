@@ -476,10 +476,13 @@ namespace Scenario
             // Act
             //page.PotionButton_Clicked(null, null);
 
-            // Reset
+
 
             // Assert
             Assert.AreNotEqual(page.currentCharacter.CurrentHealth, page.currentCharacter.MaxHealth); // Got to here, so it happened...
+
+            // Reset
+            BattleEngine.StartBattle(false);   // Clear the Engine
         }
 
         //Hack 04
@@ -529,6 +532,8 @@ namespace Scenario
 
             // Assert
             Assert.AreEqual(page.currentCharacter.CurrentHealth, page.currentCharacter.MaxHealth); // Got to here, so it happened...
+            // Reset
+            BattleEngine.StartBattle(false);   // Clear the Engine
         }
 
 
@@ -586,10 +591,10 @@ namespace Scenario
             // Act
             page.UnitAttacks(data, dataImage);
 
-            // Reset
-
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
+            // Reset
+            BattleEngine.StartBattle(false);   // Clear the Engine
         }
 
         //Hack 40
@@ -602,10 +607,11 @@ namespace Scenario
             // Act
             page.UnitGetsHit(data, dataImage);
 
-            // Reset
-
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
+
+            // Reset
+            BattleEngine.StartBattle(false);   // Clear the Engine
         }
 
         //Hack 40
@@ -622,6 +628,10 @@ namespace Scenario
 
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
+
+
+            // Reset
+            BattleEngine.StartBattle(false);   // Clear the Engine
         }
 
         //Hack 40
@@ -638,6 +648,10 @@ namespace Scenario
 
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
+
+
+            // Reset
+            BattleEngine.StartBattle(false);   // Clear the Engine
         }
     }
 }
