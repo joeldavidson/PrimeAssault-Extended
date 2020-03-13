@@ -46,6 +46,9 @@ namespace PrimeAssault.Engine
         // Max Number of Monsters
         public int MaxNumberPartyMonsters = 6;
 
+        //Max Number of potions
+        public int MaxNumberPotions = 6;
+
         #endregion Properties
     }
 }

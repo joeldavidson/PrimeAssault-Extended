@@ -54,11 +54,17 @@ namespace PrimeAssault.Engine
         public bool TakeAutoTurn(PlayerInfoModel Attacker)
         {
             // Choose Action.  Such as Move, Attack etc.
-
             var result = Attack(Attacker);
 
             BattleScore.TurnCount++;
-
+            if(BattleScore.TurnCount % 2 != 0)
+            {
+                BattleMessagesModel.EnemyTurn = true;
+            }
+            else
+            {
+                BattleMessagesModel.EnemyTurn = false;
+            }
             return result;
         }
 
@@ -77,7 +83,7 @@ namespace PrimeAssault.Engine
         /// <returns></returns>
         public bool Attack(PlayerInfoModel Attacker, bool IsAutoBattle = true)
         {
-            var Target = AttackChoice(Attacker); ;
+            var Target = AttackChoice(Attacker);
             // For Attack, Choose Who
             if (IsAutoBattle)
             {
@@ -96,6 +102,9 @@ namespace PrimeAssault.Engine
 
             CurrentAttacker = new PlayerInfoModel(Attacker);
             CurrentDefender = new PlayerInfoModel(Target);
+
+            BattleMessagesModel.attackingUnit = CurrentAttacker;
+            BattleMessagesModel.defendingUnit = CurrentDefender;
 
             return true;
         }
@@ -252,6 +261,16 @@ namespace PrimeAssault.Engine
             BattleMessagesModel.TargetName = Target.Name;
             BattleMessagesModel.AttackerName = Attacker.Name;
 
+            Predicate<PlayerInfoModel> nameFinder = (PlayerInfoModel p) => { return p.Name == Attacker.Name; };
+            if (MonsterList.Exists(nameFinder))
+            {
+                MonsterList.Find(nameFinder).lastToAttack = true;
+            }
+            else if (CharacterList.Exists(nameFinder))
+            {
+                CharacterList.Find(nameFinder).lastToAttack = true;
+            }
+
             //checks for if move can potentially be used...
             MoveModel moveUsed = null;
             if ((Attacker.Moves[0].Uses != 0 || Attacker.Moves[1].Uses != 0) && IsAutoBattle) //Assumes attackers always have two moves
@@ -332,6 +351,7 @@ namespace PrimeAssault.Engine
 
                 case HitStatusEnum.Hit:
                     // It's a Hit
+                    Target.lastToGetHit = true;
                     //Calculate Damage
                     int damage = Attacker.GetDamageRollValue();
                     BattleMessagesModel.DamageAmount = (damage);
