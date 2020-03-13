@@ -473,7 +473,8 @@ namespace PrimeAssault.Views
 
                 MonsterSelected(currentMonster);
             }
-		}
+            Deselect_Clicked(sender, e);
+        }
         #region PageHandelers
 
         /// <summary>
