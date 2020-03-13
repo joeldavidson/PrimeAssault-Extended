@@ -27,6 +27,7 @@ namespace PrimeAssault.Models
             Guid = data.Guid;
             Alive = data.Alive;
             ExperienceTotal = data.ExperienceTotal;
+            ExperienceRemaining = data.ExperienceRemaining;
             Level = data.Level;
             Name = data.Name;
             Description = data.Description;
@@ -57,9 +58,6 @@ namespace PrimeAssault.Models
             RightFinger = data.RightFinger;
             LeftFinger = data.LeftFinger;
             Feet = data.Feet;
-
-            ExperienceRemaining = data.ExperienceRemaining;
-            ExperienceTotal = data.ExperienceTotal;
 
             X = data.X;
             Y = data.Y;
@@ -75,6 +73,7 @@ namespace PrimeAssault.Models
             Guid = data.Guid;
             Alive = data.Alive;
             ExperienceTotal = data.ExperienceTotal;
+            ExperienceRemaining = data.ExperienceRemaining;
             Level = data.Level;
             Name = data.Name;
             Description = data.Description;
@@ -106,9 +105,6 @@ namespace PrimeAssault.Models
             LeftFinger = data.LeftFinger;
             Feet = data.Feet;
 
-            ExperienceRemaining = data.ExperienceRemaining;
-            ExperienceTotal = data.ExperienceTotal;
-
             X = data.X;
             Y = data.Y;
         }
@@ -123,6 +119,7 @@ namespace PrimeAssault.Models
             Guid = data.Guid;
             Alive = data.Alive;
             ExperienceTotal = data.ExperienceTotal;
+            ExperienceRemaining = data.ExperienceRemaining;
             Level = data.Level;
             Name = data.Name;
             Description = data.Description;
@@ -151,9 +148,6 @@ namespace PrimeAssault.Models
             RightFinger = data.RightFinger;
             LeftFinger = data.LeftFinger;
             Feet = data.Feet;
-
-            ExperienceRemaining = data.ExperienceRemaining;
-            ExperienceTotal = data.ExperienceTotal;
 
             X = data.X;
             Y = data.Y;

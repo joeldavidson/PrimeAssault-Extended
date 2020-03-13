@@ -6,6 +6,7 @@ using PrimeAssault.Services;
 using PrimeAssault.Models;
 using PrimeAssault.Helpers;
 using PrimeAssault.ViewModels;
+using System;
 
 namespace PrimeAssault.Engine
 {
@@ -560,7 +561,12 @@ namespace PrimeAssault.Engine
                 var experienceEarned = Target.CalculateExperienceEarned(BattleMessagesModel.DamageAmount);
                 BattleMessagesModel.ExperienceEarned = " Earned " + experienceEarned + " exp. ";
 
-                var LevelUp = Attacker.AddExperience(experienceEarned);
+                Predicate<PlayerInfoModel> nameFinder = (PlayerInfoModel p) => { return p.Name == Attacker.Name; };
+
+                PlayerInfoModel Leveler= CharacterList.Find(nameFinder);
+                var LevelUp = Leveler.AddExperience(experienceEarned);
+                Attacker.ExperienceRemaining = Leveler.ExperienceRemaining;
+                Attacker.ExperienceTotal = Leveler.ExperienceTotal;
                 if (LevelUp)
                 {
                     BattleMessagesModel.LevelUpMessage = Attacker.Name + " is now Level " + Attacker.Level + " With Health Max of " + Attacker.GetHealthMax();

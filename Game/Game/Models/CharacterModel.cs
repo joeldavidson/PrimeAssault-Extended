@@ -47,8 +47,8 @@ namespace PrimeAssault.Models
             PlayerType = data.PlayerType;
             Name = data.Name;
             Description = data.Description;
-            CurrentHealth = data.CurrentHealth;
             MaxHealth = data.MaxHealth;
+            CurrentHealth = data.CurrentHealth;
             Speed = data.Speed;
             Attack = data.Attack;
             RangedDefense = data.RangedDefense;
@@ -108,11 +108,35 @@ namespace PrimeAssault.Models
 
         public override bool LevelUp()
         {
-            if (Level < LevelTableHelper.MaxLevel)
+            // Walk the Level Table descending order
+            // Stop when experience is >= experience in the table
+            for (var i = LevelTableHelper.Instance.LevelDetailsList.Count - 1; i > 0; i--)
             {
-                if (LevelTableHelper.Instance.LevelDetailsList[Level + 1].Experience <= ExperienceTotal)
+                // Check the Level
+                // If the Level is > Experience for the Index, increment the Level.
+                if (LevelTableHelper.Instance.LevelDetailsList[i].Experience <= ExperienceTotal)
                 {
-                    ++Level;
+                    var NewLevel = LevelTableHelper.Instance.LevelDetailsList[i].Level;
+
+                    // When leveling up, the current health is adjusted up by an offset of the MaxHealth, rather than full restore
+                    var OldCurrentHealth = CurrentHealth;
+                    var OldMaxHealth = MaxHealth;
+
+                    // Set new Health
+                    // New health, is d10 of the new level.  So leveling up 1 level is 1 d10, leveling up 2 levels is 2 d10.
+                    var NewHealthAddition = DiceHelper.RollDice(NewLevel - Level, 10);
+
+                    // Increment the Max health
+                    MaxHealth += NewHealthAddition;
+
+                    // Calculate new current health
+                    // old max was 10, current health 8, new max is 15 so (15-(10-8)) = current health
+                    CurrentHealth = (MaxHealth - (OldMaxHealth - OldCurrentHealth));
+
+                    // Set the new level
+                    Level = NewLevel;
+
+                    // Done, exit
                     return true;
                 }
             }

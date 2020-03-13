@@ -173,7 +173,7 @@ namespace PrimeAssault.Services
                     RightFinger = RightFingerString,
                     LeftFinger = LeftFingerString,
                     ImageURI = "ringleader_class.png",
-                    JobClass = "Ringleader",                   
+                    JobClass = "Ringleader",
                 },
                 new CharacterModel
                 {
@@ -187,7 +187,7 @@ namespace PrimeAssault.Services
                     RightFinger = RightFingerString,
                     LeftFinger = LeftFingerString,
                     ImageURI = "mechanic_class.png",
-                    JobClass = "Mechanic",    
+                    JobClass = "Mechanic",
                 },
                 new CharacterModel
                 {
@@ -204,7 +204,7 @@ namespace PrimeAssault.Services
                     JobClass = "Brawler",
                 },
                 new CharacterModel
-                { 
+                {
                     Name = "Blake",
                     Description = "He's okay I guess.",
                     Head = HeadString,
@@ -216,7 +216,27 @@ namespace PrimeAssault.Services
                     LeftFinger = LeftFingerString,
                     ImageURI = "hunter_class.png",
                     JobClass = "Hunter",
-                }
+                },
+                new CharacterModel {
+                    Name = "Heavy Boy",
+                    Description = "He's goofy strong",
+                    Head = HeadString,
+                    Necklass = NecklassString,
+                    PrimaryHand = PrimaryHandString,
+                    OffHand = OffHandString,
+                    Feet = FeetString,
+                    RightFinger = RightFingerString,
+                    LeftFinger = LeftFingerString,
+                    ImageURI = "mechanist_class.png",
+                    JobClass = "Mechanist",
+                    Defense = 200,
+                    MaxHealth = 200,
+                    Speed = 500,
+                    Attack = 500,
+                    CurrentHealth = 201,
+                     
+                    
+        }
 
 
     };
