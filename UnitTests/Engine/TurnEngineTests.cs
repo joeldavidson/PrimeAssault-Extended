@@ -312,7 +312,7 @@ namespace UnitTests.Engine
             var PlayerInfo = new PlayerInfoModel(new CharacterModel());
 
             // Act
-            var result = Engine.TakeTurn(PlayerInfo);
+            var result = Engine.TakeAutoTurn(PlayerInfo);
 
             // Reset
 

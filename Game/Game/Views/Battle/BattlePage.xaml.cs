@@ -349,6 +349,7 @@ namespace PrimeAssault.Views
             currentAndroid.selected = false;
         }
 
+        //normal attack selected
         public async void normAttack_Clicked(object sender, EventArgs e)
         {
             Deselect_Clicked(sender, e);
@@ -356,7 +357,7 @@ namespace PrimeAssault.Views
             NormAttack.BorderColor = Color.Gold;
         }
 
-
+        //move 1 selected
         public async void move1_Clicked(object sender, EventArgs e)
         {
             Deselect_Clicked(sender, e);
@@ -365,7 +366,7 @@ namespace PrimeAssault.Views
         }
 
 
-
+        //move 2 selected
         public async void move2_Clicked(object sender, EventArgs e)
         {
             Deselect_Clicked(sender, e);
@@ -373,6 +374,7 @@ namespace PrimeAssault.Views
             Move2.BorderColor = Color.Gold;
         }
 
+        //move deselected
         public async void Deselect_Clicked(object sender, EventArgs e)
         {
             EngineViewModel.Engine.BattleMessagesModel.normATK = false;
@@ -473,7 +475,8 @@ namespace PrimeAssault.Views
 
                 MonsterSelected(currentMonster);
             }
-		}
+            Deselect_Clicked(sender, e);
+        }
         #region PageHandelers
 
         /// <summary>

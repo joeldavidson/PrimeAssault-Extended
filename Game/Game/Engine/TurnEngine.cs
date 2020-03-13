@@ -75,11 +75,11 @@ namespace PrimeAssault.Engine
         /// </summary>
         /// <param name="Attacker"></param>
         /// <returns></returns>
-        public bool Attack(PlayerInfoModel Attacker)
+        public bool Attack(PlayerInfoModel Attacker, bool IsAutoBattle = true)
         {
             
             // For Attack, Choose Who
-            var Target = AttackChoice(Attacker);
+            var Target = AttackChoice(Attacker); //
 
             if (Target == null)
             {
@@ -88,7 +88,7 @@ namespace PrimeAssault.Engine
 
 
             // Do Attack
-            TurnAsAttack(Attacker, Target);
+            TurnAsAttack(Attacker, Target, IsAutoBattle);
 
             CurrentAttacker = new PlayerInfoModel(Attacker);
             CurrentDefender = new PlayerInfoModel(Target);
@@ -175,7 +175,7 @@ namespace PrimeAssault.Engine
         /// <param name="Target"></param>
         /// <param name="DefenseScore"></param>
         /// <returns></returns>
-        public bool TurnAsAttack(PlayerInfoModel Attacker, PlayerInfoModel Target) //Kind of monolothic, consider decomposing
+        public bool TurnAsAttack(PlayerInfoModel Attacker, PlayerInfoModel Target, bool IsAutoBattle = true) //Kind of monolothic, consider decomposing
         {
             if (Attacker == null)
             {
@@ -207,10 +207,22 @@ namespace PrimeAssault.Engine
 
             //checks for if move can potentially be used...
             MoveModel moveUsed = null;
-            if (Attacker.Moves[0].Uses != 0 || Attacker.Moves[1].Uses != 0) //Assumes attackers always have two moves
+            if ((Attacker.Moves[0].Uses != 0 || Attacker.Moves[1].Uses != 0) && IsAutoBattle) //Assumes attackers always have two moves
             {
                 //uses move...
                 moveUsed = UseMove(Attacker);
+            }
+            else
+            {
+                if (BattleMessagesModel.move1ATK)
+                {
+                    moveUsed = Attacker.Moves[0];
+                }
+                else if (BattleMessagesModel.move2ATK)
+                {
+                    moveUsed = Attacker.Moves[1];
+                }
+
             }
 
             //need to check for any active attack/defense abilities...
