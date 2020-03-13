@@ -280,14 +280,14 @@ namespace PrimeAssault.Views
                 Grid.SetColumn(RedArrow, data.Y);
                 MonsterListGrid.Children.Add(RedArrow);
                 currentMonster = data;
-                currentMonster.turn = true;
+                currentMonster.selected = true;
             }
-            return currentMonster.turn;
+            return currentMonster.selected;
         }
 
         public void deselectMonster()
         {
-            currentMonster.turn = false;
+            currentMonster.selected = false;
         }
 
 
@@ -332,14 +332,14 @@ namespace PrimeAssault.Views
                 Grid.SetColumn(GoldArrow, data.Y);
                 PartyListGrid.Children.Add(GoldArrow);
                 currentAndroid = data;
-                currentAndroid.turn = true;
+                currentAndroid.selected = true;
             }
-            return currentAndroid.turn;
+            return currentAndroid.selected;
         }
 
         public void deselectPlayer()
         {
-            currentAndroid.turn = false;
+            currentAndroid.selected = false;
         }
 
 
@@ -350,7 +350,7 @@ namespace PrimeAssault.Views
         /// <param name="e"></param>
         public async void AttackButton_Clicked(object sender, EventArgs e)
 		{
-            if (currentMonster.turn == false)
+            if (currentMonster.selected == false)
             {
                 await DisplayAlert("No target", "Select an Enemy to attack", "Continue", "Cancel");
             }
