@@ -97,7 +97,9 @@ namespace PrimeAssault.Models
 
         public int Y { get; set; } = 0;
 
-        public bool turn { get; set; } = false;
+
+        public bool selected { get; set; } = false;
+
 
 
         //In the event that the BasePlayerModel is a monster, gives its type
