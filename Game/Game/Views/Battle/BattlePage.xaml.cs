@@ -86,6 +86,7 @@ namespace PrimeAssault.Views
 
         }
 
+        //places monsters on the screen
         public void initializeAllMonsters()
         {
             int x = 0;
@@ -119,6 +120,7 @@ namespace PrimeAssault.Views
             }
         }
 
+        //places characters on the screen
         public void initializeAllCharacters()
         {
             // Add Players to Display
@@ -264,6 +266,7 @@ namespace PrimeAssault.Views
             MonsterNAME.Text = ""; ;
         }
 
+        //applies visual indicators of who is selected
         public bool MonsterSelected(PlayerInfoModel data)
         {
             deselectMonster();
@@ -285,6 +288,7 @@ namespace PrimeAssault.Views
             return currentMonster.selected;
         }
 
+        //removes visual indicators of who is selected
         public void deselectMonster()
         {
             currentMonster.selected = false;
@@ -316,6 +320,7 @@ namespace PrimeAssault.Views
             CharacterNAME.Text = ""; ;
         }
 
+        //applies visual indicators of who is selected
         public bool PlayerSelected(PlayerInfoModel data)
         {
             deselectPlayer();
@@ -337,6 +342,8 @@ namespace PrimeAssault.Views
             return currentAndroid.selected;
         }
 
+
+        //removes visual indicators of who is selected
         public void deselectPlayer()
         {
             currentAndroid.selected = false;
@@ -434,6 +441,7 @@ namespace PrimeAssault.Views
             }
 		}
         #region PageHandelers
+
         /// <summary>
         /// Battle Over
         /// Battle Over button shows when all characters are dead
