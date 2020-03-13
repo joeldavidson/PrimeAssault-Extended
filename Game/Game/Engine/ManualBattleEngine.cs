@@ -13,7 +13,7 @@ namespace PrimeAssault.Engine
         /// <returns></returns>
         public ScoreModel GetScoreObject() { return BattleScore; }
 
-        public async Task<bool> RunAutoBattle()
+        public async Task<bool> RunManualBattle()
         {
             RoundEnum RoundCondition;
 
@@ -25,7 +25,7 @@ namespace PrimeAssault.Engine
 
             CreateCharacterParty();
 
-            // Start Battle in AutoBattle mode
+            // Start Battle not in AutoBattle mode
             StartBattle(false);
 
             // Fight Loop. Continue until Game is Over...
@@ -35,6 +35,7 @@ namespace PrimeAssault.Engine
 
                 // Do the turn...
                 // If the round is over start a new one...
+
                 RoundCondition = RoundNextTurn(); //What guides decisionmaking for turn order and targeting and attack
 
                 if (RoundCondition == RoundEnum.NewRound)

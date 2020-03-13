@@ -66,9 +66,9 @@ namespace PrimeAssault.Engine
                 break;
             }
 
-            for ( i = MonsterList.Count; i < MaxNumberPartyMonsters; i++)
+            for (i = MonsterList.Count; i < MaxNumberPartyMonsters; i++)
             {
-                var data = new MonsterModel { Attack=10, CurrentHealth=10};
+                var data = new MonsterModel { Attack = 10, CurrentHealth = 10 };
                 // Help identify which Monster it is
                 data.Name += " " + MonsterList.Count() + 1;
                 MonsterList.Add(new PlayerInfoModel(data));
@@ -128,6 +128,11 @@ namespace PrimeAssault.Engine
             // Decide Who gets next turn
             // Remember who just went...
             PlayerCurrent = GetNextPlayerTurn(); //Turn order
+
+            if (!BattleScore.AutoBattle && PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
+            {
+                ManualTurn(PlayerCurrent);
+            }
 
             // Do the turn....
             TakeTurn(PlayerCurrent); //Attack, targeting, damage
@@ -234,7 +239,7 @@ namespace PrimeAssault.Engine
             // If not, return first player (looped)
 
             // If List is empty, return null
-            if (PlayerList.Count ==0)
+            if (PlayerList.Count == 0)
             {
                 return null;
             }
@@ -249,7 +254,7 @@ namespace PrimeAssault.Engine
             var index = PlayerList.FindIndex(m => m.Guid.Equals(PlayerCurrent.Guid));
 
             // If at the end of the list, return the first element
-            if (index == PlayerList.Count()-1)
+            if (index == PlayerList.Count() - 1)
             {
                 return PlayerList.FirstOrDefault();
             }
@@ -335,6 +340,14 @@ namespace PrimeAssault.Engine
             }
 
             return true;
+        }
+
+        public bool ManualTurn(PlayerInfoModel Attacker)
+        {
+            //Must await input from a user which includes both Type of attack (move or normal) and enemy
+            //Attack must be processed
+            //continue as normal
+            return false;
         }
     }
 }

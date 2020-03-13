@@ -70,6 +70,7 @@ namespace PrimeAssault.Engine
         /// <returns></returns>
         public bool Attack(PlayerInfoModel Attacker)
         {
+            
             // For Attack, Choose Who
             var Target = AttackChoice(Attacker);
 

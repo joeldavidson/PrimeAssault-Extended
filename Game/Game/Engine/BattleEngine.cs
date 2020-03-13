@@ -39,10 +39,7 @@ namespace PrimeAssault.Engine
                 AutoBattle = isAutoBattle
             };
 
-            if (isAutoBattle)
-            {
-                BattleRunning = true;
-            }
+            BattleRunning = true;
 
             NewRound();
 
