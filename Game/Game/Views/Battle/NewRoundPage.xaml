@@ -15,7 +15,8 @@
 
                 <Button Clicked="BeginButton_Clicked" Text="Begin"/>
 
-                <Label Text="Characters" Style="{StaticResource MessageStyle}"
+                <Label Text="The Uprising" Style="{StaticResource MessageStyle}"
+                       TextColor="Aqua"
                        HorizontalOptions="Center"/>
 
                 <FlexLayout x:Name="PartyListFrame"
@@ -27,7 +28,8 @@
                 <Image Source="vs.png"
                        Style="{StaticResource ImageMediumStyle}"/>
 
-                <Label Text="Monsters" Style="{StaticResource MessageStyle}"
+                <Label Text="Euphrates Minions" Style="{StaticResource MessageStyle}"
+                       TextColor="#e74c3c"
                        HorizontalOptions="Center"/>
 
                 <FlexLayout x:Name="MonsterListFrame"
