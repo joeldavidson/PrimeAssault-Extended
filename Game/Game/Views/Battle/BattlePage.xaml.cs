@@ -428,6 +428,9 @@ namespace PrimeAssault.Views
 
                 // Monsters turn, so auto pick a Character to Attack
                 EngineViewModel.Engine.CurrentDefender = EngineViewModel.Engine.AttackChoice(EngineViewModel.Engine.CurrentAttacker);
+
+
+                MonsterSelected(currentMonster);
             }
 		}
         #region PageHandelers
