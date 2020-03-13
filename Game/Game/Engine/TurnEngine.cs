@@ -51,7 +51,7 @@ namespace PrimeAssault.Engine
         /// </summary>
         /// <param name="Attacker"></param>
         /// <returns></returns>
-        public bool TakeTurn(PlayerInfoModel Attacker)
+        public bool TakeAutoTurn(PlayerInfoModel Attacker)
         {
             // Choose Action.  Such as Move, Attack etc.
 

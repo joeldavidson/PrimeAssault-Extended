@@ -131,11 +131,11 @@ namespace PrimeAssault.Engine
 
             if (!BattleScore.AutoBattle && PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
             {
-                ManualTurn(PlayerCurrent);
+                TakeManualTurn(PlayerCurrent);
             }
 
             // Do the turn....
-            TakeTurn(PlayerCurrent); //Attack, targeting, damage
+            TakeAutoTurn(PlayerCurrent); //Attack, targeting, damage
 
             RoundStateEnum = RoundEnum.NextTurn;
 
@@ -342,11 +342,22 @@ namespace PrimeAssault.Engine
             return true;
         }
 
-        public bool ManualTurn(PlayerInfoModel Attacker)
+        public bool TakeManualTurn(PlayerInfoModel Attacker)
         {
             //Must await input from a user which includes both Type of attack (move or normal) and enemy
             //Attack must be processed
             //continue as normal
+
+            //Reset PlayerAttackModel
+            
+            
+            var result = Attack(Attacker);
+
+            BattleScore.TurnCount++;
+
+            return result;
+
+
             return false;
         }
     }
