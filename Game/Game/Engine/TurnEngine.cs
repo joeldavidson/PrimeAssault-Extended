@@ -77,9 +77,13 @@ namespace PrimeAssault.Engine
         /// <returns></returns>
         public bool Attack(PlayerInfoModel Attacker, bool IsAutoBattle = true)
         {
-            
+            var Target = AttackChoice(Attacker); ;
             // For Attack, Choose Who
-            var Target = AttackChoice(Attacker); //
+            if (IsAutoBattle)
+            {
+                Target = AttackChoice(Attacker, IsAutoBattle); //
+            }
+
 
             if (Target == null)
             {
@@ -101,18 +105,35 @@ namespace PrimeAssault.Engine
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public PlayerInfoModel AttackChoice(PlayerInfoModel data)
+        public PlayerInfoModel AttackChoice(PlayerInfoModel data, bool IsAutoBattle = false)
         {
-            switch (data.PlayerType)
+            if (IsAutoBattle)
             {
-                case PlayerTypeEnum.Monster:
-                    return SelectCharacterToAttack();
+                switch (data.PlayerType)
+                {
+                    case PlayerTypeEnum.Monster:
+                        return SelectCharacterToAttack();
 
-                case PlayerTypeEnum.Character:
-                default:
-                    return SelectMonsterToAttack();
+                    case PlayerTypeEnum.Character:
+                    default:
+                        return Auto_SelectMonsterToAttack();
+                }
+            }
+            else
+            {
+                switch (data.PlayerType)
+                {
+                    case PlayerTypeEnum.Monster:
+                        return SelectCharacterToAttack();
+
+                    case PlayerTypeEnum.Character:
+                    default:
+                        return SelectMonsterToAttack();
+                }
+
             }
         }
+
 
         /// <summary>
         /// Pick the Character to Attack
@@ -136,6 +157,32 @@ namespace PrimeAssault.Engine
                 .OrderBy(m => m.GetHealthCurrent())
                 .OrderBy(m => m.GetAttack())
                 .OrderBy(m => m.ListOrder).FirstOrDefault();
+
+            return Defender;
+        }
+
+        /// <summary>
+        /// Pick the Monster to Attack
+        /// </summary>
+        /// <returns></returns>
+        public PlayerInfoModel Auto_SelectMonsterToAttack()
+        {
+            if (MonsterList == null)
+            {
+                return null;
+            }
+
+            if (MonsterList.Count < 1)
+            {
+                return null;
+            }
+
+            // Select first one to hit in the list for now...
+            // Attack the Weakness (lowest HP) MonsterModel first 
+            var Defender = MonsterList
+                .Where(m => m.Alive)
+                .OrderBy(m => m.GetHealthCurrent())
+                .OrderBy(m => m.GetAttack()).FirstOrDefault();
 
             return Defender;
         }
