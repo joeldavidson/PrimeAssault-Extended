@@ -34,7 +34,7 @@ namespace PrimeAssault.Models
             Y = 0;
             ExperienceTotal = 0;
             ExperienceRemaining = LevelTableHelper.Instance.LevelDetailsList[Level + 1].Experience - 1;
-            turn = false;
+            selected = false;
         }
 
         public CharacterModel(CharacterModel data)
@@ -85,7 +85,7 @@ namespace PrimeAssault.Models
 
             X = data.X;
             Y = data.Y;
-            turn = data.turn;
+            selected = data.selected;
             return true;
         }
 

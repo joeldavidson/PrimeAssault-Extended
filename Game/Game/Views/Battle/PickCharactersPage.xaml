@@ -169,9 +169,22 @@
             <!--END: Row 3-->
 
             <!--BEGIN: Row 4-->
-            <Label Text="Characters" Style="{StaticResource CenterMessageStyle}"
-                   Grid.Row="3"
-                   Grid.ColumnSpan="3"/>
+            <Label 
+                HorizontalOptions="Center"
+               HorizontalTextAlignment="Center"
+                Grid.Row="3"
+                FontSize="Small"
+                FontAttributes="Italic"
+                Grid.ColumnSpan ="6">It's time to carry out OPERATION PRIME ASSAULT</Label>
+            
+            <Label Text="Mechs available for commission"
+                   HorizontalTextAlignment="Center"
+                   TextColor="#FFB102"
+                   FontAttributes="Bold"
+                   FontSize="Medium"
+                   Grid.Row="4"
+                   HorizontalOptions="Center"
+                   Grid.ColumnSpan="6"/>
 
             <ListView 
                 x:Name="CharactersListView" 
@@ -179,10 +192,11 @@
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                 RefreshCommand="{Binding LoadItemsCommand}"
                 CachingStrategy="RecycleElement"
+                BackgroundColor="#161616"
                 ItemSelected="OnDatabaseCharacterItemSelected"
                 HasUnevenRows="true"
                 Margin="5,0,5,0"
-                Grid.Row="4"
+                Grid.Row="5"
                 Grid.RowSpan="3"
                 Grid.Column="1"
                 Grid.ColumnSpan="4">
@@ -238,7 +252,7 @@
                 Text="Begin Battle"
                 IsEnabled="False"
                 HorizontalOptions="Center"
-                Grid.Row="7"
+                Grid.Row="8"
                 Grid.Column="1"
                 Grid.ColumnSpan="4"/>
             <!--END: Row 7-->

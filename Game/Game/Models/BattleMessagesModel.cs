@@ -50,6 +50,12 @@
         // Ending of the Html Block for Html formatting
         public string htmlTail = @"</p></body></html>";
 
+        public bool normATK { get; set; } = false;
+
+        public bool move1ATK { get; set; } = false;
+
+        public bool move2ATK { get; set; } = false;
+
         /// <summary>
         /// Return formatted string
         /// </summary>

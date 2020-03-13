@@ -86,6 +86,7 @@ namespace PrimeAssault.Views
 
         }
 
+        //places monsters on the screen
         public void initializeAllMonsters()
         {
             int x = 0;
@@ -119,6 +120,7 @@ namespace PrimeAssault.Views
             }
         }
 
+        //places characters on the screen
         public void initializeAllCharacters()
         {
             // Add Players to Display
@@ -264,6 +266,7 @@ namespace PrimeAssault.Views
             MonsterNAME.Text = ""; ;
         }
 
+        //applies visual indicators of who is selected
         public bool MonsterSelected(PlayerInfoModel data)
         {
             deselectMonster();
@@ -280,14 +283,15 @@ namespace PrimeAssault.Views
                 Grid.SetColumn(RedArrow, data.Y);
                 MonsterListGrid.Children.Add(RedArrow);
                 currentMonster = data;
-                currentMonster.turn = true;
+                currentMonster.selected = true;
             }
-            return currentMonster.turn;
+            return currentMonster.selected;
         }
 
+        //removes visual indicators of who is selected
         public void deselectMonster()
         {
-            currentMonster.turn = false;
+            currentMonster.selected = false;
         }
 
 
@@ -316,6 +320,7 @@ namespace PrimeAssault.Views
             CharacterNAME.Text = ""; ;
         }
 
+        //applies visual indicators of who is selected
         public bool PlayerSelected(PlayerInfoModel data)
         {
             deselectPlayer();
@@ -332,14 +337,50 @@ namespace PrimeAssault.Views
                 Grid.SetColumn(GoldArrow, data.Y);
                 PartyListGrid.Children.Add(GoldArrow);
                 currentAndroid = data;
-                currentAndroid.turn = true;
+                currentAndroid.selected = true;
             }
-            return currentAndroid.turn;
+            return currentAndroid.selected;
         }
 
+
+        //removes visual indicators of who is selected
         public void deselectPlayer()
         {
-            currentAndroid.turn = false;
+            currentAndroid.selected = false;
+        }
+
+        public async void normAttack_Clicked(object sender, EventArgs e)
+        {
+            Deselect_Clicked(sender, e);
+            EngineViewModel.Engine.BattleMessagesModel.normATK = true;
+            NormAttack.BorderColor = Color.Gold;
+        }
+
+
+        public async void move1_Clicked(object sender, EventArgs e)
+        {
+            Deselect_Clicked(sender, e);
+            EngineViewModel.Engine.BattleMessagesModel.move1ATK = true;
+            Move1.BorderColor = Color.Gold;
+        }
+
+
+
+        public async void move2_Clicked(object sender, EventArgs e)
+        {
+            Deselect_Clicked(sender, e);
+            EngineViewModel.Engine.BattleMessagesModel.move2ATK = true;
+            Move2.BorderColor = Color.Gold;
+        }
+
+        public async void Deselect_Clicked(object sender, EventArgs e)
+        {
+            EngineViewModel.Engine.BattleMessagesModel.normATK = false;
+            EngineViewModel.Engine.BattleMessagesModel.move1ATK = false;
+            EngineViewModel.Engine.BattleMessagesModel.move2ATK = false;
+            NormAttack.BorderColor = Color.Aqua;
+            Move1.BorderColor = Color.Aqua;
+            Move2.BorderColor = Color.Aqua;
         }
 
 
@@ -350,7 +391,7 @@ namespace PrimeAssault.Views
         /// <param name="e"></param>
         public async void AttackButton_Clicked(object sender, EventArgs e)
 		{
-            if (currentMonster.turn == false)
+            if (currentMonster.selected == false)
             {
                 await DisplayAlert("No target", "Select an Enemy to attack", "Continue", "Cancel");
             }
@@ -428,9 +469,13 @@ namespace PrimeAssault.Views
 
                 // Monsters turn, so auto pick a Character to Attack
                 EngineViewModel.Engine.CurrentDefender = EngineViewModel.Engine.AttackChoice(EngineViewModel.Engine.CurrentAttacker);
+
+
+                MonsterSelected(currentMonster);
             }
 		}
         #region PageHandelers
+
         /// <summary>
         /// Battle Over
         /// Battle Over button shows when all characters are dead
