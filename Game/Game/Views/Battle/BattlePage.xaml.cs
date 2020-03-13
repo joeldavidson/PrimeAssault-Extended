@@ -35,6 +35,10 @@ namespace PrimeAssault.Views
 		// HTML Formatting for message output box
 		public HtmlWebViewSource htmlSource = new HtmlWebViewSource();
 
+        public PlayerInfoModel currentMonster = new PlayerInfoModel();
+
+        public PlayerInfoModel currentAndroid = new PlayerInfoModel();
+
         public Image GoldArrow = new Image
         {
             Source = "GoldArrow.png",
@@ -189,12 +193,12 @@ namespace PrimeAssault.Views
                 if (data.PlayerType == PlayerTypeEnum.Character)
                 {
                     // Add a event to the user can click the item and see more
-                    PlayerImage.Clicked += (sender, args) => ShowPlayerStats(data);
+                    PlayerImage.Clicked += (sender, args) => PlayerSelected(data);
                 }
                 else
                 {
                     // Add a event to the user can click the item and see more
-                    PlayerImage.Clicked += (sender, args) => ShowMonsterStats(data);
+                    PlayerImage.Clicked += (sender, args) => MonsterSelected(data);
                 }
             }
 
@@ -235,8 +239,9 @@ namespace PrimeAssault.Views
 
 
         //Assigns the selected monsters stats to their respective labels
-        public bool ShowMonsterStats(PlayerInfoModel data)
+        public void ShowMonsterStats(PlayerInfoModel data)
         {
+            
             MonsterATK.Text = data.Attack.ToString();
             MonsterDEF.Text = data.Defense.ToString();
             MonsterRDEF.Text = data.RangedDefense.ToString();
@@ -244,19 +249,47 @@ namespace PrimeAssault.Views
             MonsterHEALTH.Text = data.CurrentHealth.ToString();
             MonsterMAXHEALTH.Text = data.MaxHealth.ToString();
             MonsterNAME.Text = data.Name;
+        }
+
+        //Assigns the selected monsters stats to their respective labels
+        public void HideMonsterStats(PlayerInfoModel data)
+        {
+
+            MonsterATK.Text = "";
+            MonsterDEF.Text = "";
+            MonsterRDEF.Text = "";
+            MonsterSPD.Text = "";
+            MonsterHEALTH.Text = "";
+            MonsterMAXHEALTH.Text = "";
+            MonsterNAME.Text = ""; ;
+        }
+
+        public bool MonsterSelected(PlayerInfoModel data)
+        {
+            deselectMonster();
             if (RedArrow.IsVisible == true && Grid.GetColumn(RedArrow) == data.Y)
             {
                 RedArrow.IsVisible = false;
+                HideMonsterStats(data);
             }
             else
             {
                 RedArrow.IsVisible = true;
+                ShowMonsterStats(data);
+                Grid.SetRow(RedArrow, data.X);
+                Grid.SetColumn(RedArrow, data.Y);
+                MonsterListGrid.Children.Add(RedArrow);
+                currentMonster = data;
+                currentMonster.turn = true;
             }
-            Grid.SetRow(RedArrow, data.X);
-            Grid.SetColumn(RedArrow, data.Y);
-            MonsterListGrid.Children.Add(RedArrow);
-            return true;
+            return currentMonster.turn;
         }
+
+        public void deselectMonster()
+        {
+            currentMonster.turn = false;
+        }
+
 
         //Assigns the selected Players stats to their respective labels
         public bool ShowPlayerStats(PlayerInfoModel data)
@@ -268,20 +301,47 @@ namespace PrimeAssault.Views
             CharacterHEALTH.Text = data.CurrentHealth.ToString();
             CharacterMAXHEALTH.Text = data.MaxHealth.ToString();
             CharacterNAME.Text = data.Name;
+            return true;
+        }
+
+        //Assigns the selected Players stats to their respective labels
+        public void HidePlayerStats(PlayerInfoModel data)
+        {
+            CharacterATK.Text = "";
+            CharacterDEF.Text = "";
+            CharacterRDEF.Text = "";
+            CharacterSPD.Text = "";
+            CharacterHEALTH.Text = "";
+            CharacterMAXHEALTH.Text = "";
+            CharacterNAME.Text = ""; ;
+        }
+
+        public bool PlayerSelected(PlayerInfoModel data)
+        {
+            deselectPlayer();
             if (GoldArrow.IsVisible == true && Grid.GetColumn(GoldArrow) == data.Y)
             {
                 GoldArrow.IsVisible = false;
+                HidePlayerStats(data);
             }
             else
             {
                 GoldArrow.IsVisible = true;
+                ShowPlayerStats(data);
+                Grid.SetRow(GoldArrow, data.X);
+                Grid.SetColumn(GoldArrow, data.Y);
+                PartyListGrid.Children.Add(GoldArrow);
+                currentAndroid = data;
+                currentAndroid.turn = true;
             }
-            Grid.SetRow(GoldArrow, data.X);
-            Grid.SetColumn(GoldArrow, data.Y);
-            PartyListGrid.Children.Add(GoldArrow);
-
-            return true;
+            return currentAndroid.turn;
         }
+
+        public void deselectPlayer()
+        {
+            currentAndroid.turn = false;
+        }
+
 
         /// <summary>
         /// Attack Action
@@ -290,78 +350,85 @@ namespace PrimeAssault.Views
         /// <param name="e"></param>
         public async void AttackButton_Clicked(object sender, EventArgs e)
 		{
-			// Redraw Game Board
-			// Show who is Attack in Who
-
-			// Hold the current state
-			var RoundCondition = EngineViewModel.Engine.RoundNextTurn();
-
-			if (RoundCondition == RoundEnum.NewRound)
-			{
-				// Show the New Monster List, and Items Gained
-				EngineViewModel.Engine.NewRound();
-                ShowModalNewRoundPage();
-                ShowModalRoundOverPage();
-				Debug.WriteLine("Round Over");
-
+            if (currentMonster.turn == false)
+            {
+                await DisplayAlert("No target", "Select an Enemy to attack", "Continue", "Cancel");
             }
+            else
+            {
+                // Redraw Game Board
+                // Show who is Attack in Who
 
-			// Check for Game Over
-			if (RoundCondition == RoundEnum.PrimeAssaultOver)
-			{
-				Debug.WriteLine("Game Over");
+                // Hold the current state
+                var RoundCondition = EngineViewModel.Engine.RoundNextTurn();
 
-				// Wrap up
-				EngineViewModel.Engine.EndBattle();
+                if (RoundCondition == RoundEnum.NewRound)
+                {
+                    // Show the New Monster List, and Items Gained
+                    EngineViewModel.Engine.NewRound();
+                    ShowModalNewRoundPage();
+                    ShowModalRoundOverPage();
+                    Debug.WriteLine("Round Over");
 
-				// Let the Player Know it is over
-				bool answer = await DisplayAlert("Game Over", "Enjoy", "Yes", "Cancel");
+                }
 
-				// Clear the players from the center of the board
+                // Check for Game Over
+                if (RoundCondition == RoundEnum.PrimeAssaultOver)
+                {
+                    Debug.WriteLine("Game Over");
 
-				// Change to the Game Over Button
+                    // Wrap up
+                    EngineViewModel.Engine.EndBattle();
 
-				// Save the Score to the Score View Model, by sending a message to it.
-				var Score = EngineViewModel.Engine.BattleScore;
-				MessagingCenter.Send(this, "AddData", Score);
+                    // Let the Player Know it is over
+                    bool answer = await DisplayAlert("Game Over", "Enjoy", "Yes", "Cancel");
 
-				return;
-			}
+                    // Clear the players from the center of the board
 
-			// Output the Game Board of What Happened, update UI Etc.
+                    // Change to the Game Over Button
 
-			// Output The Message that happened.
-			BattleMessages.Text = string.Format("{0} \n {1}", EngineViewModel.Engine.BattleMessagesModel.TurnMessage, BattleMessages.Text);
+                    // Save the Score to the Score View Model, by sending a message to it.
+                    var Score = EngineViewModel.Engine.BattleScore;
+                    MessagingCenter.Send(this, "AddData", Score);
 
-			if (!string.IsNullOrEmpty(EngineViewModel.Engine.BattleMessagesModel.LevelUpMessage))
-			{
-				BattleMessages.Text = string.Format("{0} \n {1}", EngineViewModel.Engine.BattleMessagesModel.LevelUpMessage, BattleMessages.Text);
-			}
+                    return;
+                }
 
-			// TODO: TEAM
-			///
-			/// Now that the turn is over, need to change the attacker and defender 
-			/// In the UI game, the player would choose who to attack
-			/// The monster would auto pick
-			///
-			/// For this example, just setting it back to the Charcter, so they can wack on the monster until it ends...
-			///
+                // Output the Game Board of What Happened, update UI Etc.
 
-			// Get the turn, set the current player and attacker to match
-			EngineViewModel.Engine.CurrentAttacker = EngineViewModel.Engine.GetNextPlayerTurn();
+                // Output The Message that happened.
+                BattleMessages.Text = string.Format("{0} \n {1}", EngineViewModel.Engine.BattleMessagesModel.TurnMessage, BattleMessages.Text);
 
-			if (EngineViewModel.Engine.CurrentAttacker.PlayerType == PlayerTypeEnum.Character)
-			{
-				// User would select who to attack
+                if (!string.IsNullOrEmpty(EngineViewModel.Engine.BattleMessagesModel.LevelUpMessage))
+                {
+                    BattleMessages.Text = string.Format("{0} \n {1}", EngineViewModel.Engine.BattleMessagesModel.LevelUpMessage, BattleMessages.Text);
+                }
 
-				// for now just auto selecting
-				EngineViewModel.Engine.CurrentDefender = EngineViewModel.Engine.AttackChoice(EngineViewModel.Engine.CurrentAttacker);
+                // TODO: TEAM
+                ///
+                /// Now that the turn is over, need to change the attacker and defender 
+                /// In the UI game, the player would choose who to attack
+                /// The monster would auto pick
+                ///
+                /// For this example, just setting it back to the Charcter, so they can wack on the monster until it ends...
+                ///
 
-				return;
-			}
+                // Get the turn, set the current player and attacker to match
+                EngineViewModel.Engine.CurrentAttacker = EngineViewModel.Engine.GetNextPlayerTurn();
 
-			// Monsters turn, so auto pick a Character to Attack
-			EngineViewModel.Engine.CurrentDefender = EngineViewModel.Engine.AttackChoice(EngineViewModel.Engine.CurrentAttacker);
+                if (EngineViewModel.Engine.CurrentAttacker.PlayerType == PlayerTypeEnum.Character)
+                {
+                    // User would select who to attack
+
+                    // for now just auto selecting
+                    EngineViewModel.Engine.CurrentDefender = EngineViewModel.Engine.AttackChoice(EngineViewModel.Engine.CurrentAttacker);
+
+                    return;
+                }
+
+                // Monsters turn, so auto pick a Character to Attack
+                EngineViewModel.Engine.CurrentDefender = EngineViewModel.Engine.AttackChoice(EngineViewModel.Engine.CurrentAttacker);
+            }
 		}
         #region PageHandelers
         /// <summary>
