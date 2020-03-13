@@ -133,9 +133,11 @@ namespace PrimeAssault.Engine
             {
                 TakeManualTurn(PlayerCurrent);
             }
-
-            // Do the turn....
-            TakeAutoTurn(PlayerCurrent); //Attack, targeting, damage
+            else
+            {
+                // Do the turn....
+                TakeAutoTurn(PlayerCurrent); //Attack, targeting, damage
+            }
 
             RoundStateEnum = RoundEnum.NextTurn;
 
@@ -347,18 +349,13 @@ namespace PrimeAssault.Engine
             //Must await input from a user which includes both Type of attack (move or normal) and enemy
             //Attack must be processed
             //continue as normal
-
-            //Reset PlayerAttackModel
             
-            
-            var result = Attack(Attacker);
+            var result = Attack(Attacker, false);
 
             BattleScore.TurnCount++;
 
             return result;
 
-
-            return false;
         }
     }
 }
