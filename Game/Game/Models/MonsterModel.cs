@@ -56,6 +56,7 @@ namespace PrimeAssault.Models
 
             X = data.X;
             Y = data.Y;
+            turn = data.turn;
 
             return true;
         }
@@ -80,6 +81,7 @@ namespace PrimeAssault.Models
 
             X = 0;
             Y = 0;
+            turn = false;
         }
 
         public bool SetLevel(int targetLevel)

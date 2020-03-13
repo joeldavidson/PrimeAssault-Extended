@@ -11,8 +11,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="attack_se.ogg" />
+    <None Remove="death_se.ogg" />
+    <None Remove="miss_se.ogg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="attack_se.ogg" />
+    <EmbeddedResource Include="death_se.ogg" />
+    <EmbeddedResource Include="miss_se.ogg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
+    <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.4.0" />
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991640" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
   </ItemGroup>

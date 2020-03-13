@@ -79,7 +79,8 @@
 
             <!--Top Monster Move Options BEGIN-->
             <BoxView
-                BackgroundColor="Gray"
+                BackgroundColor="#131418"
+                Opacity="0.8"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="Fill"
                 Grid.Row="0"
@@ -149,7 +150,8 @@
 
             <!--Bottom Character Move Options BEGIN-->
             <BoxView
-                BackgroundColor="Gray"
+                BackgroundColor="#131418"
+                Opacity="0.8"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="Fill"
                 Grid.Row="19"
@@ -238,7 +240,8 @@
                 </Grid.ColumnDefinitions>
 
                 <BoxView
-                    BackgroundColor="Gray"
+                    BackgroundColor="#131418"
+                Opacity="0.8"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="Fill"
                     Grid.Row="0"
@@ -342,7 +345,8 @@
                 </Grid.ColumnDefinitions>
 
                 <BoxView
-                    BackgroundColor="Gray"
+                    BackgroundColor="#131418"
+                Opacity="0.8"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="Fill"
                     Grid.Row="0"
