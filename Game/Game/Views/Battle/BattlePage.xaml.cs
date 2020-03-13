@@ -349,6 +349,40 @@ namespace PrimeAssault.Views
             currentAndroid.selected = false;
         }
 
+        public async void normAttack_Clicked(object sender, EventArgs e)
+        {
+            Deselect_Clicked(sender, e);
+            EngineViewModel.Engine.BattleMessagesModel.normATK = true;
+            NormAttack.BorderColor = Color.Gold;
+        }
+
+
+        public async void move1_Clicked(object sender, EventArgs e)
+        {
+            Deselect_Clicked(sender, e);
+            EngineViewModel.Engine.BattleMessagesModel.move1ATK = true;
+            Move1.BorderColor = Color.Gold;
+        }
+
+
+
+        public async void move2_Clicked(object sender, EventArgs e)
+        {
+            Deselect_Clicked(sender, e);
+            EngineViewModel.Engine.BattleMessagesModel.move2ATK = true;
+            Move2.BorderColor = Color.Gold;
+        }
+
+        public async void Deselect_Clicked(object sender, EventArgs e)
+        {
+            EngineViewModel.Engine.BattleMessagesModel.normATK = false;
+            EngineViewModel.Engine.BattleMessagesModel.move1ATK = false;
+            EngineViewModel.Engine.BattleMessagesModel.move2ATK = false;
+            NormAttack.BorderColor = Color.Aqua;
+            Move1.BorderColor = Color.Aqua;
+            Move2.BorderColor = Color.Aqua;
+        }
+
 
         /// <summary>
         /// Attack Action

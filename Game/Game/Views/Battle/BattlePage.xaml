@@ -87,7 +87,7 @@
                 Grid.Column="2"
                 Grid.RowSpan="3"
                 Grid.ColumnSpan="8"/>
-
+            <!--
             <Button 
                 x:Name="btn0"
                 WidthRequest="{Binding Height, Source={x:Reference btn0}}"
@@ -146,6 +146,7 @@
                 Grid.RowSpan="3"
                 Grid.ColumnSpan="2">
             </Button>
+            -->
             <!--Top Monster Move Options END-->
 
             <!--Bottom Character Move Options BEGIN-->
@@ -160,14 +161,15 @@
                 Grid.ColumnSpan="8"/>
 
             <Button 
-                x:Name="btn4"
-                WidthRequest="{Binding Height, Source={x:Reference btn4}}"
+                x:Name="NormAttack"
+                WidthRequest="{Binding Height, Source={x:Reference NormAttack}}"
                 VerticalOptions="Fill"
                 HorizontalOptions="CenterAndExpand"           
                 Text="Norm Attack" TextColor="Aqua"
                 BorderColor="Aqua"
                 CornerRadius="45"
                 Margin="5"
+                Clicked="normAttack_Clicked"
                 BackgroundColor="Transparent"
                 Grid.Row="19" Grid.Column="2"
                 Grid.RowSpan="3"
@@ -175,14 +177,15 @@
             </Button>
 
             <Button
-                x:Name="btn5"
-                WidthRequest="{Binding Height, Source={x:Reference btn5}}"
+                x:Name="Move1"
+                WidthRequest="{Binding Height, Source={x:Reference Move1}}"
                 VerticalOptions="Fill"
                 HorizontalOptions="CenterAndExpand"      
                 Text="Move 1" TextColor="Aqua"
                 BorderColor="Aqua"
                 CornerRadius="45"
                 Margin="5"
+                Clicked="move1_Clicked"
                 BackgroundColor="Transparent"
                 Grid.Row="19" Grid.Column="4"
                 Grid.RowSpan="3"
@@ -190,14 +193,15 @@
             </Button>
 
             <Button
-                x:Name="btn6"
-                WidthRequest="{Binding Height, Source={x:Reference btn6}}"
+                x:Name="Move2"
+                WidthRequest="{Binding Height, Source={x:Reference Move2}}"
                 VerticalOptions="Fill"
                 HorizontalOptions="CenterAndExpand"  
                 Text="Move 2" TextColor="Aqua"
                 BorderColor="Aqua"
                 CornerRadius="45"
                 Margin="5"
+                Clicked="move2_Clicked"
                 BackgroundColor="Transparent"
                 Grid.Row="19" Grid.Column="6"
                 Grid.RowSpan="3"
@@ -205,13 +209,14 @@
             </Button>
 
             <Button
-                x:Name="btn7"
-                WidthRequest="{Binding Height, Source={x:Reference btn7}}"
+                x:Name="Deselect"
+                WidthRequest="{Binding Height, Source={x:Reference Deselect}}"
                 VerticalOptions="Fill"
                 HorizontalOptions="CenterAndExpand"                  
                 Text="Deselect" TextColor="Aqua"
                 BorderColor="Aqua"
                 Margin="5"
+                Clicked="Deselect_Clicked"
                 BackgroundColor="Transparent"
                 Grid.Row="19" Grid.Column="8"
                 Grid.RowSpan="3"
