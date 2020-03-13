@@ -186,9 +186,10 @@ namespace PrimeAssault.Engine
             BattleMessagesModel.DamageOutput = string.Empty;
             BattleMessagesModel.ExperienceEarned = string.Empty;
             BattleMessagesModel.DamageAmount = 0;
+            BattleMessagesModel.LevelUpMessage = string.Empty;
 
             // Remember Current Player
-            BattleMessagesModel.PlayerType = PlayerTypeEnum.Monster;
+            BattleMessagesModel.PlayerType = Attacker.PlayerType;
 
             // Choose who to attack
 
@@ -537,11 +538,13 @@ namespace PrimeAssault.Engine
         /// <returns></returns>
         public List<ItemModel> GetRandomMonsterItemDrops(int round)
         {
+            // TODO: Teams, You need to implement your own modification to the Logic cannot use mine as is.
+
             // You decide how to drop monster items, level, etc.
 
-            // The Number drop can be Up to the Round Count, but may be less.  
+            // The Number can only be the round count.  
             // Negative results in nothing dropped
-            var NumberToDrop = (DiceHelper.RollDice(1, round+1)-1);
+            var NumberToDrop = (DiceHelper.RollDice(1, 3));
 
             var result = new List<ItemModel>();
 

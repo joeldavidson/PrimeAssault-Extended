@@ -31,13 +31,18 @@ namespace PrimeAssault.Engine
         /// <returns></returns>
         public bool StartBattle(bool isAutoBattle)
         {
+            
+            
             // Reset the Score so it is fresh
             BattleScore = new ScoreModel
             {
                 AutoBattle = isAutoBattle
             };
 
-            BattleRunning = true;
+            if (isAutoBattle)
+            {
+                BattleRunning = true;
+            }
 
             NewRound();
 

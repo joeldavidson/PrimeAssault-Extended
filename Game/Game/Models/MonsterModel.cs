@@ -10,9 +10,9 @@ namespace PrimeAssault.Models
     {
         //Default monster image
         const string DEFAULT_URI = "sewer_gator.png";
-        
+
         //Item that is dropped by the monster
-        ItemModel Drop = new ItemModel(); //should be retrieved at random?
+        ItemModel UniqueItem; //should be retrieved at random?
 
 
         override public bool Update(MonsterModel data)
@@ -63,7 +63,7 @@ namespace PrimeAssault.Models
         //The monster (inherits from base) and its default monster stats
         public MonsterModel() : base()
         {
-            //UniqueItem = null;
+            UniqueItem = null;
             PlayerType = PlayerTypeEnum.Monster;
             ImageURI = DEFAULT_URI;
             Name = RandomPlayerHelper.GetMonsterName();
@@ -77,7 +77,6 @@ namespace PrimeAssault.Models
             ImageURI = DEFAULT_URI;
             ExperienceTotal = 0;
             ExperienceRemaining = LevelTableHelper.Instance.LevelDetailsList[Level + 1].Experience - 1;
-
 
             X = 0;
             Y = 0;

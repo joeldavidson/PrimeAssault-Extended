@@ -35,7 +35,7 @@ namespace PrimeAssault.Views
 		// HTML Formatting for message output box
 		public HtmlWebViewSource htmlSource = new HtmlWebViewSource();
 
-        public ImageButton GoldArrow = new ImageButton
+        public Image GoldArrow = new Image
         {
             Source = "GoldArrow.png",
             HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -45,7 +45,7 @@ namespace PrimeAssault.Views
             IsVisible = false,
         };
 
-        public ImageButton RedArrow = new ImageButton
+        public Image RedArrow = new Image
         {
             Source = "RedArrow.png",
             HorizontalOptions = LayoutOptions.FillAndExpand,
