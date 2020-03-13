@@ -564,12 +564,14 @@ namespace PrimeAssault.Engine
                 Predicate<PlayerInfoModel> nameFinder = (PlayerInfoModel p) => { return p.Name == Attacker.Name; };
 
                 PlayerInfoModel Leveler= CharacterList.Find(nameFinder);
+                //Have to write changes back to original character in characterlist as well as the copy created for the round
                 var LevelUp = Leveler.AddExperience(experienceEarned);
                 Attacker.ExperienceRemaining = Leveler.ExperienceRemaining;
                 Attacker.ExperienceTotal = Leveler.ExperienceTotal;
+                Attacker.Level = Leveler.Level;
                 if (LevelUp)
                 {
-                    BattleMessagesModel.LevelUpMessage = Attacker.Name + " is now Level " + Attacker.Level + " With Health Max of " + Attacker.GetHealthMax();
+                    BattleMessagesModel.LevelUpMessage = Attacker.Name + " is now Level " + Leveler.Level + " With Health Max of " + Attacker.GetHealthMax();
                     Debug.WriteLine(BattleMessagesModel.LevelUpMessage);
                 }
 
