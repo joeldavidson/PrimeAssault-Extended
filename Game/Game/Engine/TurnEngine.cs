@@ -214,11 +214,11 @@ namespace PrimeAssault.Engine
             }
             else
             {
-                if (Attacker.Moves[0].isChosen)
+                if (BattleMessagesModel.move1ATK)
                 {
                     moveUsed = Attacker.Moves[0];
                 }
-                else if (Attacker.Moves[1].isChosen)
+                else if (BattleMessagesModel.move2ATK)
                 {
                     moveUsed = Attacker.Moves[1];
                 }
