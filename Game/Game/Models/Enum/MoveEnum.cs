@@ -6,11 +6,13 @@ namespace PrimeAssault.Models
     //</summary>
     public enum MoveEnum
     {
+        None = 0,
+
         //Ranged attack
-        Crackshot = 0,
+        Crackshot = 1,
 
         //Physical attack
-        Iron_Grip = 1,
+        Iron_Grip = 2,
 
 
     }

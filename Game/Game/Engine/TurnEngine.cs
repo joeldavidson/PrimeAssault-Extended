@@ -6,6 +6,10 @@ using PrimeAssault.Services;
 using PrimeAssault.Models;
 using PrimeAssault.Helpers;
 using PrimeAssault.ViewModels;
+
+using System.IO;
+using System.Reflection;
+using Plugin.SimpleAudioPlayer;
 using System;
 
 namespace PrimeAssault.Engine
@@ -26,6 +30,9 @@ namespace PrimeAssault.Engine
    
     public class TurnEngine : BaseEngine
     {
+        //Creates an audioplayer object
+        AudioHelper AudioCenter = new AudioHelper();
+
         //variable which determines likelihood that an "AI" will use a move on any given turn. 1 = 10%, 3 = 30%, etc...
         public static int PROBABILITY_OF_MOVE = 3; 
 
@@ -259,6 +266,8 @@ namespace PrimeAssault.Engine
                 case HitStatusEnum.Miss:
                     // It's a Miss
 
+                    //Play Miss sound effect
+                    AudioCenter.Miss_Sound();
                     break;
 
                 case HitStatusEnum.Hit:
@@ -266,6 +275,10 @@ namespace PrimeAssault.Engine
                     //Calculate Damage
                     int damage = Attacker.GetDamageRollValue();
                     BattleMessagesModel.DamageAmount = (damage);
+
+                    //Play attack sound effect
+                    AudioCenter.Attack_Sound();
+
 
                     Target.AugmentHealth(damage);
                     BattleMessagesModel.CurrentHealth = Target.CurrentHealth;
@@ -418,6 +431,10 @@ namespace PrimeAssault.Engine
         /// <param name="Target"></param>
         public bool TargetDied(PlayerInfoModel Target)
         {
+
+            //Play Dead sound effect
+            AudioCenter.Death_Sound();
+            
             // Mark Status in output
             BattleMessagesModel.TurnMessageSpecial = " and causes death. ";
 
