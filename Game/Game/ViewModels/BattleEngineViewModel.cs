@@ -56,6 +56,7 @@ namespace PrimeAssault.ViewModels
         // Have the Database Character List point to the Character View Model List
         public ObservableCollection<CharacterModel> DatabaseCharacterList { get; set; } = CharacterIndexViewModel.Instance.Dataset;
 
+        public PlayerAttackModel CurrentPlayerAttack = new PlayerAttackModel();
         #region Constructor
 
         /// <summary>
@@ -63,6 +64,9 @@ namespace PrimeAssault.ViewModels
         /// </summary>
         public BattleEngineViewModel()
         {
+            //MUST SUBSCRIBE TO 2 BUTTONS
+            //MOVE BUTTONS
+            //ENEMY BUTTONS
         }
 
         #endregion Constructor

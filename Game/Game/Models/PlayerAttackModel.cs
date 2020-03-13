@@ -4,10 +4,15 @@ using System.Text;
 
 namespace PrimeAssault.Models
 {
-    class PlayerAttackModel
+    public class PlayerAttackModel
     {
+        // The target of the attack
         public PlayerInfoModel Target;
+
+        // the character making the attack
         public PlayerInfoModel Attacker;
+
+        //The what move the character used
         public MoveEnum Move;
 
         public PlayerAttackModel()
