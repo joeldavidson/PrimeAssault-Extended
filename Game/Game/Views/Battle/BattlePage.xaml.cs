@@ -300,9 +300,11 @@ namespace PrimeAssault.Views
 			{
 				// Show the New Monster List, and Items Gained
 				EngineViewModel.Engine.NewRound();
-				ShowModalNewRoundPage();
-				Debug.WriteLine("New Round");
-			}
+                ShowModalNewRoundPage();
+                ShowModalRoundOverPage();
+				Debug.WriteLine("Round Over");
+
+            }
 
 			// Check for Game Over
 			if (RoundCondition == RoundEnum.PrimeAssaultOver)
@@ -372,6 +374,7 @@ namespace PrimeAssault.Views
         {
             await Navigation.PushModalAsync(new RoundOverPage());
         }
+
 
         /// <summary>
         /// Battle Over
