@@ -215,6 +215,8 @@ namespace PrimeAssault.Views
                     AttackButton.Clicked += (sender, args) => UnitAttacks(data, PlayerImage);
                     AttackButton.Clicked += (sender, args) => UnitGetsHit(data, PlayerImage);
                     AttackButton.Clicked += (sender, args) => UnitDies(data, PlayerImage);
+                    AttackButton.Clicked += (sender, args) => slaveSelectToAttacker();
+                    AttackButton.Clicked += (sender, args) => slaveSelectToDefender();
                 }
                 return PlayerStack;
             }
@@ -327,11 +329,12 @@ namespace PrimeAssault.Views
         //applies visual indicators of who is selected
         public bool MonsterSelected(PlayerInfoModel data, bool clicked = false)
         {
-            currentMonster = data;
             if (clicked) 
             {
                 deselectMonster();
             }
+
+            currentMonster = data;
             RedArrow.IsVisible = true;
             ShowMonsterStats(data);
             Grid.SetRow(RedArrow, data.X);
@@ -344,7 +347,7 @@ namespace PrimeAssault.Views
         //removes visual indicators of who is selected
         public void deselectMonster()
         {
-            if (RedArrow.IsVisible == true && Grid.GetColumn(RedArrow) == currentMonster.Y)
+            if (RedArrow.IsVisible == true && (Grid.GetColumn(RedArrow) == currentMonster.Y))
             {
                 RedArrow.IsVisible = false;
                 HidePlayerStats(currentMonster);
@@ -381,11 +384,12 @@ namespace PrimeAssault.Views
         //applies visual indicators of who is selected
         public bool PlayerSelected(PlayerInfoModel data, bool clicked = false)
         {
-            currentAndroid = data;
             if (clicked)
             {
                 deselectPlayer();
             }
+
+            currentAndroid = data;
             GoldArrow.IsVisible = true;
             ShowPlayerStats(data);
             Grid.SetRow(GoldArrow, data.X);
@@ -498,6 +502,10 @@ namespace PrimeAssault.Views
 		{
             
             bool enemyTurn = EngineViewModel.Engine.BattleMessagesModel.EnemyTurn;
+            if (!currentAndroid.Alive)
+            {
+                deselectPlayer();
+            }
             if ((!currentMonster.selected && !enemyTurn) || !currentMonster.Alive)
             {
                 await DisplayAlert("No target", "Select an Enemy to attack", "Continue", "Cancel");
@@ -576,14 +584,14 @@ namespace PrimeAssault.Views
 
                 // Monsters turn, so auto pick a Character to Attack
                 EngineViewModel.Engine.CurrentDefender = EngineViewModel.Engine.AttackChoice(EngineViewModel.Engine.CurrentAttacker);
-
-                if (!enemyTurn)
-                {
-                    deselectMonster();
-                }
                 
             }
+            if (!EngineViewModel.Engine.BattleMessagesModel.EnemyTurn)
+            {
+                deselectMonster();
+            }
             Deselect_Clicked(sender, e);
+
         }
         #region PageHandelers
 
