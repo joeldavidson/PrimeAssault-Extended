@@ -295,9 +295,6 @@
     <BundleResource Include="Resources\battleback.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\raygun-BW.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\scoredelete.jpg" />
   </ItemGroup>
   <ItemGroup>

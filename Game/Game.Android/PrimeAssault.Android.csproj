@@ -239,9 +239,6 @@
     <AndroidResource Include="Resources\drawable\battleback.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\raygun-BW.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\scoreread.jpg" />
   </ItemGroup>
   <ItemGroup>
