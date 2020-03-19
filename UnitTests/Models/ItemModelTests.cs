@@ -85,10 +85,10 @@ namespace UnitTests.Models
         {
             // Arrange
             var dataOriginal = new ItemModel();
-            dataOriginal.Value = 1;
+            dataOriginal.Damage += 10;
 
             var dataNew = new ItemModel();
-            dataNew.Value = 2;
+            int testAgainst = dataNew.GetValue();
 
             // Act
             var result = dataOriginal.Update(dataNew);
@@ -96,7 +96,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert 
-            Assert.AreEqual(2, dataOriginal.Value);
+            Assert.AreEqual(testAgainst, dataOriginal.Value);
         }
 
         [Test]

@@ -91,6 +91,10 @@ namespace PrimeAssault.Models
         /// <param name="newData">The new data</param>
         override public bool Update(ItemModel data)
         {
+            if (data == null)
+            {
+                return false;
+            }
             Name = data.Name;
             Description = data.Description;
             Location = data.Location;
@@ -112,7 +116,7 @@ namespace PrimeAssault.Models
         }
 
         //Gets the cash value of an item. This is the amount the item will be sold for. 
-        int GetValue()
+        public int GetValue()
         {
             return (int)((attackValue + defenseValue + rangedDefenseValue + speedValue + healthValue) * (1 + attackMult + defenseMult + rangedDefenseMult + speedMult + healthMult));
         }

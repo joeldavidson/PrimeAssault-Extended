@@ -46,13 +46,13 @@ namespace UnitTests.Engine
         {
             // Arrange
             var PlayerInfo = new PlayerInfoModel(new CharacterModel());
-
+            Engine.CharacterList.Add(PlayerInfo);
             // Act
             var result = Engine.Attack(PlayerInfo);
 
             // Reset
             Engine.StartBattle(false);   // Clear the Engine
-
+            Engine.CharacterList.Remove(PlayerInfo);
             // Assert
             Assert.AreEqual(true, result);
         }
@@ -213,7 +213,9 @@ namespace UnitTests.Engine
         {
             // Arrange
             var PlayerInfo = new PlayerInfoModel();
-            Engine.MonsterList.Add(new PlayerInfoModel(new MonsterModel()));
+            var insert = new PlayerInfoModel(new MonsterModel());
+            insert.selected = true;
+            Engine.MonsterList.Add(insert);
 
             // Act
             var result = Engine.SelectMonsterToAttack();
@@ -311,10 +313,14 @@ namespace UnitTests.Engine
             // Arrange
             var PlayerInfo = new PlayerInfoModel(new CharacterModel());
 
+            Engine.CharacterList.Add(PlayerInfo);
+
             // Act
             var result = Engine.TakeAutoTurn(PlayerInfo);
 
             // Reset
+
+            Engine.CharacterList.Remove(PlayerInfo);
 
             // Assert
             Assert.AreEqual(true, result);

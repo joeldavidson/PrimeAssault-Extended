@@ -83,6 +83,7 @@ namespace PrimeAssault.Engine
         /// <returns></returns>
         public bool Attack(PlayerInfoModel Attacker, bool IsAutoBattle = true)
         {
+
             var Target = AttackChoice(Attacker);
             // For Attack, Choose Who
             if (IsAutoBattle)
