@@ -217,7 +217,7 @@ namespace PrimeAssault.Engine
             // Attack the Weakness (lowest HP) MonsterModel first 
             var Defender = MonsterList
                 .Where(m => m.Alive)
-                .Where(m => m.selected)
+                .OrderBy(m => m.selected) //changed to ORDERBY rather than WHERE because it was perhaps problemeatic for autobattle
                 .OrderBy(m => m.GetHealthCurrent())
                 .OrderBy(m => m.GetAttack()).FirstOrDefault();
 
