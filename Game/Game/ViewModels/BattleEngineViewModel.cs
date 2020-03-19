@@ -64,9 +64,7 @@ namespace PrimeAssault.ViewModels
         /// </summary>
         public BattleEngineViewModel()
         {
-            //MUST SUBSCRIBE TO 2 BUTTONS
-            //MOVE BUTTONS
-            //ENEMY BUTTONS
+
         }
 
         #endregion Constructor
