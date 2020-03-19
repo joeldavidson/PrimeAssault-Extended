@@ -588,7 +588,7 @@ namespace PrimeAssault.Views
             }
             if (!EngineViewModel.Engine.BattleMessagesModel.EnemyTurn)
             {
-                deselectMonster();
+                //deselectMonster();
             }
             Deselect_Clicked(sender, e);
 

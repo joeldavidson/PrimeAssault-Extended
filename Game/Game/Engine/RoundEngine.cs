@@ -350,7 +350,7 @@ namespace PrimeAssault.Engine
             //Attack must be processed
             //continue as normal
             
-            var result = Attack(Attacker, false);
+            var result = Attack(Attacker);
 
             BattleScore.TurnCount++;
 
