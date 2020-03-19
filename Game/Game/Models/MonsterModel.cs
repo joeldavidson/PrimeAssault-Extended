@@ -54,6 +54,10 @@ namespace PrimeAssault.Models
             Moves[1] = data.Moves[1];
             Ability = data.Ability;
 
+            lastToAttack = data.lastToAttack;
+            lastToGetHit = data.lastToGetHit;
+            flip = data.flip;
+
             X = data.X;
             Y = data.Y;
             selected = data.selected;
@@ -78,6 +82,10 @@ namespace PrimeAssault.Models
             ImageURI = DEFAULT_URI;
             ExperienceTotal = 0;
             ExperienceRemaining = LevelTableHelper.Instance.LevelDetailsList[Level + 1].Experience - 1;
+
+            lastToAttack = false;
+            lastToGetHit = false;
+            flip = 0;
 
             X = 0;
             Y = 0;

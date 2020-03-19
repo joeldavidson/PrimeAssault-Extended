@@ -78,7 +78,6 @@ namespace PrimeAssault.Models
         {
             PrimeAssaultDate = DateTime.Now;    // Set to be now by default.
             AutoBattle = false;         //assume user battle
-
             TurnCount = 0;
             RoundCount = 0;
             ExperienceGainedTotal = 0;

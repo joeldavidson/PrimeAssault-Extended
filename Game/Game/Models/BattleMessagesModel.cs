@@ -56,6 +56,12 @@
 
         public bool move2ATK { get; set; } = false;
 
+        public bool EnemyTurn { get; set; } = false;
+
+        public PlayerInfoModel attackingUnit { get; set; } = new PlayerInfoModel();
+
+        public PlayerInfoModel defendingUnit { get; set; } = new PlayerInfoModel();
+
         /// <summary>
         /// Return formatted string
         /// </summary>

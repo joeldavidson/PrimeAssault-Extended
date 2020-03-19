@@ -5,6 +5,7 @@ using Xamarin.Forms.Xaml;
 using PrimeAssault.Models;
 using System.Linq;
 using PrimeAssault.ViewModels;
+using PrimeAssault.Helpers;
 
 
 namespace PrimeAssault.Views
@@ -20,44 +21,46 @@ namespace PrimeAssault.Views
 		public BattleEngineViewModel EngineViewModel = BattleEngineViewModel.Instance;
 
 		#region PageHandelerVariables
-		// Hold the Selected Characters
-		public PickCharactersPage ModalPickCharactersPage;
+		    // Hold the Selected Characters
+		    public PickCharactersPage ModalPickCharactersPage;
 
-		// Hold the New Round Page where monsters are shown
-		public NewRoundPage ModalNewRoundPage;
+		    // Hold the New Round Page where monsters are shown
+		    public NewRoundPage ModalNewRoundPage;
 
-		// Hold Round Over Page
-		public RoundOverPage ModalRoundOverPage;
+		    // Hold Round Over Page
+		    public RoundOverPage ModalRoundOverPage;
 
-		// Hold the Game Over Page where the Final Score is shown
-		public ScorePage ModalBattleGameOverPage;
+		    // Hold the Game Over Page where the Final Score is shown
+		    public ScorePage ModalBattleGameOverPage;
 
-		// HTML Formatting for message output box
-		public HtmlWebViewSource htmlSource = new HtmlWebViewSource();
+		    // HTML Formatting for message output box
+		    public HtmlWebViewSource htmlSource = new HtmlWebViewSource();
 
-        public PlayerInfoModel currentMonster = new PlayerInfoModel();
+            public PlayerInfoModel currentMonster = new PlayerInfoModel();
 
-        public PlayerInfoModel currentAndroid = new PlayerInfoModel();
+            public PlayerInfoModel currentAndroid = new PlayerInfoModel();
 
-        public Image GoldArrow = new Image
-        {
-            Source = "GoldArrow.png",
-            HorizontalOptions = LayoutOptions.FillAndExpand,
-            VerticalOptions = LayoutOptions.FillAndExpand,
-            HeightRequest = 50,
-            WidthRequest = 50,
-            IsVisible = false,
-        };
+            int potions;
 
-        public Image RedArrow = new Image
-        {
-            Source = "RedArrow.png",
-            HorizontalOptions = LayoutOptions.FillAndExpand,
-            VerticalOptions = LayoutOptions.FillAndExpand,
-            HeightRequest = 50,
-            WidthRequest = 50,
-            IsVisible = false,
-        };
+            public Image GoldArrow = new Image
+            {
+                Source = "GoldArrow.png",
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                HeightRequest = 50,
+                WidthRequest = 50,
+                IsVisible = false,
+            };
+
+            public Image RedArrow = new Image
+            {
+                Source = "RedArrow.png",
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                HeightRequest = 50,
+                WidthRequest = 50,
+                IsVisible = false,
+            };
 
         #endregion PageHandelerVariables
 
@@ -68,7 +71,7 @@ namespace PrimeAssault.Views
 		{
 			InitializeComponent ();
 
-			BindingContext = EngineViewModel;
+            BindingContext = EngineViewModel;
 
 			// Clear the Screen
 
@@ -83,10 +86,10 @@ namespace PrimeAssault.Views
 			ShowModalNewRoundPage();
             initializeAllMonsters();
             initializeAllCharacters();
-
+            potions = EngineViewModel.Engine.MaxNumberPotions;
+            PotionsLeft.Text = potions.ToString();
         }
 
-        //places monsters on the screen
         public void initializeAllMonsters()
         {
             int x = 0;
@@ -107,10 +110,12 @@ namespace PrimeAssault.Views
                 if (y < 3)
                 {
                     Grid.SetRow(monster, x++);
+
                 }
                 else
                 {
                     monster.RotationY = flip;
+                    data.flip = flip;
                     Grid.SetRow(monster, --x);
                 }
                 data.Y = y;
@@ -120,7 +125,6 @@ namespace PrimeAssault.Views
             }
         }
 
-        //places characters on the screen
         public void initializeAllCharacters()
         {
             // Add Players to Display
@@ -143,16 +147,16 @@ namespace PrimeAssault.Views
                 {
                     //  Grid.SetColumn(ArrowImage, x);
                     Grid.SetRow(character, x--);
-
                 }
                 else
                 {
                     character.RotationY = flip;
                     Grid.SetRow(character, ++x);
+                    data.flip = flip;
                 }
                 data.Y = y;
                 data.X = x;
-                if(data.X < 0)
+                if (data.X < 0)
                 {
                     data.X = 0;
                 }
@@ -160,6 +164,7 @@ namespace PrimeAssault.Views
                 y++;
             }
         }
+
         /// <summary>
         /// Return a stack layout with the Player information inside
         /// </summary>
@@ -190,21 +195,6 @@ namespace PrimeAssault.Views
                 ClickableButton = false;
             }
 
-            if (ClickableButton)
-            {
-                if (data.PlayerType == PlayerTypeEnum.Character)
-                {
-                    // Add a event to the user can click the item and see more
-                    PlayerImage.Clicked += (sender, args) => PlayerSelected(data);
-                }
-                else
-                {
-                    // Add a event to the user can click the item and see more
-                    PlayerImage.Clicked += (sender, args) => MonsterSelected(data);
-                }
-            }
-
-
             // Put the Image Button and Text inside a layout
             if (data.PlayerType == PlayerTypeEnum.Character)
             {
@@ -219,6 +209,15 @@ namespace PrimeAssault.Views
                     },
 
                 };
+                if (ClickableButton)
+                {
+                    PlayerImage.Clicked += (sender, args) => PlayerSelected(data, true);
+                    AttackButton.Clicked += (sender, args) => UnitAttacks(data, PlayerImage);
+                    AttackButton.Clicked += (sender, args) => UnitGetsHit(data, PlayerImage);
+                    AttackButton.Clicked += (sender, args) => UnitDies(data, PlayerImage);
+                    AttackButton.Clicked += (sender, args) => slaveSelectToAttacker();
+                    AttackButton.Clicked += (sender, args) => slaveSelectToDefender();
+                }
                 return PlayerStack;
             }
             else
@@ -234,11 +233,72 @@ namespace PrimeAssault.Views
                     },
 
                 };
+                if (ClickableButton)
+                {                        // Add a event to the user can click the item and see more
+                    PlayerImage.Clicked += (sender, args) => MonsterSelected(data, true);
+                    AttackButton.Clicked += (sender, args) => UnitAttacks(data, PlayerImage);
+                    AttackButton.Clicked += (sender, args) => UnitGetsHit(data, PlayerImage);
+                    AttackButton.Clicked += (sender, args) => UnitDies(data, PlayerImage);
+                    AttackButton.Clicked += (sender, args) => slaveSelectToAttacker();
+                    AttackButton.Clicked += (sender, args) => slaveSelectToDefender();
+                }
                 return PlayerStack;
             }
-            
         }
 
+        public void UnitDies(PlayerInfoModel data, ImageButton PlayerImage)
+        {
+            if (data.CurrentHealth < 1)
+            {
+                PlayerImage.RotateTo(90);
+            }
+        }
+
+        public void UnitAttacks(PlayerInfoModel data, ImageButton PlayerImage)
+        {
+            if (data.lastToAttack)
+            {
+                rotateHit(data, PlayerImage);
+                data.lastToAttack = false;
+            }
+        }
+
+
+        public void UnitGetsHit(PlayerInfoModel data, ImageButton PlayerImage)
+        {
+            if (data.lastToGetHit)
+            {
+                rotateGetsHit(data, PlayerImage);
+                data.lastToGetHit = false;
+            }
+        }
+
+        public async void rotateHit(PlayerInfoModel data, ImageButton PlayerImage)
+        {
+            int tValY = 100;
+            int tValX = 100;
+            if (data.PlayerType == PlayerTypeEnum.Character)
+            {
+                tValY *= -1;
+            }
+            if (data.flip < 180)
+            {
+                tValX *= -1;
+            }
+            await PlayerImage.TranslateTo(data.X + tValX, data.Y + tValY, 500, Easing.SpringOut);
+            await PlayerImage.TranslateTo(data.X, data.Y, 500, Easing.Linear);
+        }
+
+        public async void rotateGetsHit(PlayerInfoModel data, ImageButton PlayerImage)
+        {
+            int rVal = -20;
+            if (data.flip > 0)
+            {
+                rVal *= -1;
+            }
+            await PlayerImage.RotateTo(rVal, 500, Easing.SpringOut);
+            await PlayerImage.RotateTo(0, 500, Easing.CubicIn);
+        }
 
         //Assigns the selected monsters stats to their respective labels
         public void ShowMonsterStats(PlayerInfoModel data)
@@ -267,31 +327,32 @@ namespace PrimeAssault.Views
         }
 
         //applies visual indicators of who is selected
-        public bool MonsterSelected(PlayerInfoModel data)
+        public bool MonsterSelected(PlayerInfoModel data, bool clicked = false)
         {
-            deselectMonster();
-            if (RedArrow.IsVisible == true && Grid.GetColumn(RedArrow) == data.Y)
+            if (clicked) 
             {
-                RedArrow.IsVisible = false;
-                HideMonsterStats(data);
+                deselectMonster();
             }
-            else
-            {
-                RedArrow.IsVisible = true;
-                ShowMonsterStats(data);
-                Grid.SetRow(RedArrow, data.X);
-                Grid.SetColumn(RedArrow, data.Y);
-                MonsterListGrid.Children.Add(RedArrow);
-                currentMonster = data;
-                currentMonster.selected = true;
-            }
+
+            currentMonster = data;
+            RedArrow.IsVisible = true;
+            ShowMonsterStats(data);
+            Grid.SetRow(RedArrow, data.X);
+            Grid.SetColumn(RedArrow, data.Y);
+            MonsterListGrid.Children.Add(RedArrow);
+            currentMonster.selected = true;
             return currentMonster.selected;
         }
 
         //removes visual indicators of who is selected
         public void deselectMonster()
         {
-            currentMonster.selected = false;
+            if (RedArrow.IsVisible == true && (Grid.GetColumn(RedArrow) == currentMonster.Y))
+            {
+                RedArrow.IsVisible = false;
+                HidePlayerStats(currentMonster);
+                currentMonster.selected = false;
+            }
         }
 
 
@@ -321,24 +382,20 @@ namespace PrimeAssault.Views
         }
 
         //applies visual indicators of who is selected
-        public bool PlayerSelected(PlayerInfoModel data)
+        public bool PlayerSelected(PlayerInfoModel data, bool clicked = false)
         {
-            deselectPlayer();
-            if (GoldArrow.IsVisible == true && Grid.GetColumn(GoldArrow) == data.Y)
+            if (clicked)
             {
-                GoldArrow.IsVisible = false;
-                HidePlayerStats(data);
+                deselectPlayer();
             }
-            else
-            {
-                GoldArrow.IsVisible = true;
-                ShowPlayerStats(data);
-                Grid.SetRow(GoldArrow, data.X);
-                Grid.SetColumn(GoldArrow, data.Y);
-                PartyListGrid.Children.Add(GoldArrow);
-                currentAndroid = data;
-                currentAndroid.selected = true;
-            }
+
+            currentAndroid = data;
+            GoldArrow.IsVisible = true;
+            ShowPlayerStats(data);
+            Grid.SetRow(GoldArrow, data.X);
+            Grid.SetColumn(GoldArrow, data.Y);
+            PartyListGrid.Children.Add(GoldArrow);
+            currentAndroid.selected = true;
             return currentAndroid.selected;
         }
 
@@ -346,9 +403,33 @@ namespace PrimeAssault.Views
         //removes visual indicators of who is selected
         public void deselectPlayer()
         {
-            currentAndroid.selected = false;
+            if (GoldArrow.IsVisible == true && Grid.GetColumn(GoldArrow) == currentAndroid.Y)
+            {
+                GoldArrow.IsVisible = false;
+                HidePlayerStats(currentAndroid);
+                currentAndroid.selected = false;
+            }
         }
 
+        public async void PotionButton_Clicked(object sender, EventArgs e)
+        {
+
+            if (potions > 0)
+            {
+                if (currentAndroid.CurrentHealth == currentAndroid.MaxHealth)
+                {
+                    potions--;
+                }
+                else
+                {
+                    currentAndroid.CurrentHealth = currentAndroid.MaxHealth;
+                    potions--;
+                }
+            }
+            PotionsLeft.Text = potions.ToString();
+        }
+
+        //normal attack selected
         public async void normAttack_Clicked(object sender, EventArgs e)
         {
             Deselect_Clicked(sender, e);
@@ -356,7 +437,7 @@ namespace PrimeAssault.Views
             NormAttack.BorderColor = Color.Gold;
         }
 
-
+        //move 1 selected
         public async void move1_Clicked(object sender, EventArgs e)
         {
             Deselect_Clicked(sender, e);
@@ -365,7 +446,7 @@ namespace PrimeAssault.Views
         }
 
 
-
+        //move 2 selected
         public async void move2_Clicked(object sender, EventArgs e)
         {
             Deselect_Clicked(sender, e);
@@ -373,6 +454,7 @@ namespace PrimeAssault.Views
             Move2.BorderColor = Color.Gold;
         }
 
+        //move deselected
         public async void Deselect_Clicked(object sender, EventArgs e)
         {
             EngineViewModel.Engine.BattleMessagesModel.normATK = false;
@@ -383,6 +465,33 @@ namespace PrimeAssault.Views
             Move2.BorderColor = Color.Aqua;
         }
 
+        public void slaveSelectToDefender() 
+        {
+            if(EngineViewModel.Engine.BattleMessagesModel.defendingUnit.PlayerType == PlayerTypeEnum.Character)
+            {
+                currentAndroid = EngineViewModel.Engine.BattleMessagesModel.defendingUnit;
+                PlayerSelected(currentAndroid);
+            }
+            else
+            {
+                currentMonster = EngineViewModel.Engine.BattleMessagesModel.defendingUnit;
+                MonsterSelected(currentMonster);
+            }
+        }
+
+        public void slaveSelectToAttacker()
+        {
+            if (EngineViewModel.Engine.BattleMessagesModel.attackingUnit.PlayerType == PlayerTypeEnum.Character)
+            {
+                currentAndroid = EngineViewModel.Engine.BattleMessagesModel.attackingUnit;
+                PlayerSelected(currentAndroid);
+            }
+            else
+            {
+                currentMonster = EngineViewModel.Engine.BattleMessagesModel.attackingUnit;
+                MonsterSelected(currentMonster);
+            }
+        }
 
         /// <summary>
         /// Attack Action
@@ -391,7 +500,13 @@ namespace PrimeAssault.Views
         /// <param name="e"></param>
         public async void AttackButton_Clicked(object sender, EventArgs e)
 		{
-            if (currentMonster.selected == false)
+            
+            bool enemyTurn = EngineViewModel.Engine.BattleMessagesModel.EnemyTurn;
+            if (!currentAndroid.Alive)
+            {
+                deselectPlayer();
+            }
+            if ((!currentMonster.selected && !enemyTurn) || !currentMonster.Alive)
             {
                 await DisplayAlert("No target", "Select an Enemy to attack", "Continue", "Cancel");
             }
@@ -469,11 +584,15 @@ namespace PrimeAssault.Views
 
                 // Monsters turn, so auto pick a Character to Attack
                 EngineViewModel.Engine.CurrentDefender = EngineViewModel.Engine.AttackChoice(EngineViewModel.Engine.CurrentAttacker);
-
-
-                MonsterSelected(currentMonster);
+                
             }
-		}
+            if (!EngineViewModel.Engine.BattleMessagesModel.EnemyTurn)
+            {
+                deselectMonster();
+            }
+            Deselect_Clicked(sender, e);
+
+        }
         #region PageHandelers
 
         /// <summary>

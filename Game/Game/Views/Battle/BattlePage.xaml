@@ -62,7 +62,31 @@
                 Grid.Column="10"
                 Grid.ColumnSpan="2"
                 />
-            
+
+            <Label
+                x:Name="PotionsLeft"
+                Grid.Row="19"
+                FontSize="Header"
+                Grid.RowSpan="2"
+                Grid.Column="10"
+                Grid.ColumnSpan="2"
+                HeightRequest="75"
+                WidthRequest="200"
+                />
+
+            <ImageButton 
+                x:Name="PotionButton"
+                Source="potion.png"
+                Clicked="PotionButton_Clicked"
+                Grid.Row="19"
+                Grid.RowSpan="2"
+                Grid.Column="10"
+                Grid.ColumnSpan="2"
+                HeightRequest="75"
+                WidthRequest="200"
+                />
+
+
             <Label 
                 x:Name="BattleMessages"
                 LineBreakMode="WordWrap" 

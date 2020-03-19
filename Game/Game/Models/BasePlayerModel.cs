@@ -93,6 +93,12 @@ namespace PrimeAssault.Models
         //Ability name of character
         public AbilityModel Ability { get; set; } = new AbilityModel();
 
+        public bool lastToAttack { get; set; } = false;
+
+        public bool lastToGetHit { get; set; } = false;
+
+        public int flip { get; set; } = 0;
+
         public int X { get; set; } = 0;
 
         public int Y { get; set; } = 0;
