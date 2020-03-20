@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PrimeAssault.Views.RoundOverPage">
+             x:Class="PrimeAssault.Views.RoundOverPage"
+              BackgroundImageSource="darkbackground.jpg">
 
     <ContentPage.Content>
 
@@ -37,7 +38,7 @@
                                     Wrap="Wrap"
                                     />
 
-                        <Label Text="Items Found" Style="{StaticResource MessageStyle}" HorizontalOptions="Center"/>
+                        <Label Text="Total Items Found" Style="{StaticResource MessageStyle}" HorizontalOptions="Center"/>
                         <StackLayout Style="{StaticResource HorizontalStack}" HorizontalOptions="CenterAndExpand">
                             <Label Text="Found : " Style="{StaticResource LabelStyle}"/>
                             <Label Text="0" x:Name="TotalFound" Style="{StaticResource ValueStyle}"/>
@@ -49,7 +50,7 @@
 
                         <Button Clicked="AutoAssignButton_Clicked" Text="Assign Items"/>
 
-                        <Label Text="Items Selected" Style="{StaticResource MessageStyle}" HorizontalOptions="Center"/>
+                        <Label Text="Items Equipped" Style="{StaticResource MessageStyle}" HorizontalOptions="Center"/>
                         <StackLayout Style="{StaticResource HorizontalStack}" HorizontalOptions="Center">
                             <Label Text="Selected : " Style="{StaticResource LabelStyle}" HorizontalOptions="Center"/>
                             <Label Text="0" x:Name="TotalSelected" Style="{StaticResource ValueStyle}" HorizontalOptions="Center"/>
