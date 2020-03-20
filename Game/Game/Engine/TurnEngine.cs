@@ -637,12 +637,20 @@ namespace PrimeAssault.Engine
         /// <returns></returns>
         public List<ItemModel> GetRandomMonsterItemDrops(int round)
         {
-            // TODO: Teams, You need to implement your own modification to the Logic cannot use mine as is.
+            // The maximum that can ever be dropped is two
+            var NumberToDrop = 0;
 
-            // You decide how to drop monster items, level, etc.
+            var RandomNum = (DiceHelper.RollDice(1, 10));
 
-            // The maximum that can ever be dropped is three
-            var NumberToDrop = (DiceHelper.RollDice(1, 3));
+            //30% chance to drop two items
+            if(RandomNum > 6)
+            {
+                NumberToDrop = 2;
+            }
+            else //70% chance to drop only one item
+            {
+                NumberToDrop = 1;
+            }
 
             var result = new List<ItemModel>();
 
