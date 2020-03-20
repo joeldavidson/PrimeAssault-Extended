@@ -94,6 +94,41 @@
 
                     <Label Text="More Debug Settings to come..." />
 
+                    <StackLayout
+                              HorizontalOptions="FillAndExpand"
+                              Orientation="Vertical">
+
+                        <StackLayout
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal">
+
+                            <Label
+                                        Text="Number of Items "
+                                        HorizontalTextAlignment="Start"
+                                        HorizontalOptions="Start"/>
+
+                            <Entry
+                                        x:Name="ServerItemValue"
+                                        Text="1" 
+                                        MaxLength="3"
+                                        CursorPosition="0"
+                                        SelectionLength = "3"
+                                        Keyboard="Numeric"
+                                        />
+
+                            <Button
+                                      Text="Get"
+                                      Clicked="GetItemsGet_Command"
+                                      HorizontalOptions="EndAndExpand"/>
+
+                            <Button
+                                      Text="Post"
+                                      Clicked="GetItemsPost_Command"
+                                      HorizontalOptions="EndAndExpand"/>
+
+                        </StackLayout>
+
+                    </StackLayout>
                 </StackLayout>
             </StackLayout>
         </StackLayout>
