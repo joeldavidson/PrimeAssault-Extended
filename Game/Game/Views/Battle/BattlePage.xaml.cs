@@ -534,10 +534,11 @@ namespace PrimeAssault.Views
                 if (RoundCondition == RoundEnum.NewRound)
                 {
                     // Show the New Monster List, and Items Gained
+                    MonsterListGrid.Children.Clear();
                     EngineViewModel.Engine.NewRound();
                     ShowModalNewRoundPage();
                     ShowModalRoundOverPage();
-                    MonsterListGrid.Children.Clear();
+                    initializeAllMonsters();
                     Debug.WriteLine("Round Over");
 
                 }
