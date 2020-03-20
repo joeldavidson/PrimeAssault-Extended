@@ -353,7 +353,7 @@ namespace PrimeAssault.Views
             if (RedArrow.IsVisible == true && (Grid.GetColumn(RedArrow) == currentMonster.Y))
             {
                 RedArrow.IsVisible = false;
-                HideMonsterStats(currentMonster);
+                HidePlayerStats(currentMonster);
                 currentMonster.selected = false;
             }
         }
@@ -523,11 +523,10 @@ namespace PrimeAssault.Views
                 if (RoundCondition == RoundEnum.NewRound)
                 {
                     // Show the New Monster List, and Items Gained
-                    MonsterListGrid.Children.Clear();
                     EngineViewModel.Engine.NewRound();
-                    initializeAllMonsters();
                     ShowModalNewRoundPage();
                     ShowModalRoundOverPage();
+                    MonsterListGrid.Children.Clear();
                     Debug.WriteLine("Round Over");
 
                 }
