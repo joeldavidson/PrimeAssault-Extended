@@ -61,10 +61,10 @@
                         Style="{StaticResource EntryStyle}"
                            TextColor="DarkGreen"
                            Opacity=".50"/>
+                    
+                 
 
-                    <Label Grid.Row="1" Grid.Column="0"
-                        Text="Score" 
-                        Style="{StaticResource LabelStyle}"/>
+   
 
                 </Grid>
             </StackLayout>
