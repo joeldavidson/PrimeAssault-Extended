@@ -309,7 +309,18 @@ namespace PrimeAssault.Engine
         /// <param name="setLocation"></param>
         public bool GetItemFromPoolIfBetter(PlayerInfoModel character, ItemLocationEnum setLocation)
         {
-            var myList = ItemPool.Where(a => a.Location == setLocation)
+            var thisLocation = setLocation;
+            if (setLocation == ItemLocationEnum.RightFinger)
+            {
+                thisLocation = ItemLocationEnum.Finger;
+            }
+
+            if (setLocation == ItemLocationEnum.LeftFinger)
+            {
+                thisLocation = ItemLocationEnum.Finger;
+            }
+
+            var myList = ItemPool.Where(a => a.Location == thisLocation)
                 .OrderByDescending(a => a.Value)
                 .ToList();
 
@@ -322,8 +333,7 @@ namespace PrimeAssault.Engine
             var CharacterItem = character.GetItemByLocation(setLocation);
             if (CharacterItem == null)
             {
-                // If no ItemModel in the slot then put on the first in the list
-                character.AddItem(setLocation, myList.FirstOrDefault().Id);
+                SwapCharacterItem(character, setLocation, myList.FirstOrDefault());
                 return true;
             }
 
@@ -331,21 +341,43 @@ namespace PrimeAssault.Engine
             {
                 if (PoolItem.Value > CharacterItem.Value)
                 {
-                    // Put on the new ItemModel, which drops the one back to the pool
-                    var droppedItem = character.AddItem(setLocation, PoolItem.Id);
-
-                    // Remove the ItemModel just put on from the pool
-                    ItemPool.Remove(PoolItem);
-
-                    if (droppedItem != null)
-                    {
-                        // Add the dropped ItemModel to the pool
-                        ItemPool.Add(droppedItem);
-                    }
+                    SwapCharacterItem(character, setLocation, PoolItem);
+                    return true;
                 }
             }
 
             return true;
+        }
+
+
+        /// <summary>
+        /// Swap the Item the character has for one from the pool
+        /// 
+        /// Drop the current item back into the Pool
+        /// 
+        /// </summary>
+        /// <param name="character"></param>
+        /// <param name="setLocation"></param>
+        /// <param name="PoolItem"></param>
+        /// <returns></returns>
+        public ItemModel SwapCharacterItem(PlayerInfoModel character, ItemLocationEnum setLocation, ItemModel PoolItem)
+        {
+            // Put on the new ItemModel, which drops the one back to the pool
+            var droppedItem = character.AddItem(setLocation, PoolItem.Id);
+
+            // Add the PoolItem to the list of selected items
+            BattleScore.ItemModelSelectList.Add(PoolItem);
+
+            // Remove the ItemModel just put on from the pool
+            ItemPool.Remove(PoolItem);
+
+            if (droppedItem != null)
+            {
+                // Add the dropped ItemModel to the pool
+                ItemPool.Add(droppedItem);
+            }
+
+            return droppedItem;
         }
 
         public bool TakeManualTurn(PlayerInfoModel Attacker)
