@@ -345,6 +345,17 @@ namespace PrimeAssault.Engine
             return true;
         }
 
+
+        /// <summary>
+        /// Swap the Item the character has for one from the pool
+        /// 
+        /// Drop the current item back into the Pool
+        /// 
+        /// </summary>
+        /// <param name="character"></param>
+        /// <param name="setLocation"></param>
+        /// <param name="PoolItem"></param>
+        /// <returns></returns>
         public ItemModel SwapCharacterItem(PlayerInfoModel character, ItemLocationEnum setLocation, ItemModel PoolItem)
         {
             // Put on the new ItemModel, which drops the one back to the pool
