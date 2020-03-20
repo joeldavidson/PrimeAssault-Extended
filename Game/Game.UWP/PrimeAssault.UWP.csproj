@@ -177,7 +177,6 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
-    <Content Include="raygun-BW.png" />
     <Content Include="raygun.png" />
     <Content Include="Records.png" />
     <Content Include="RedArrow.png" />

@@ -31,29 +31,29 @@ namespace PrimeAssault.Helpers
 
             //Assigning soundeffects to be played by AudioPlayer objects
             var stream = GetStreamFromFile("attack_se.ogg");
-            AttackSE.Load(stream);
+            //AttackSE.Load(stream);
 
             stream = GetStreamFromFile("miss_se.ogg");
-            MissSE.Load(stream);
+            //MissSE.Load(stream);
 
             stream = GetStreamFromFile("death_se.ogg");
-            DeathSE.Load(stream);
+            //DeathSE.Load(stream);
 
         }
 
         public void Attack_Sound()
         {
-            AttackSE.Play();
+            //AttackSE.Play();
         }
 
         public void Miss_Sound()
         {
-            MissSE.Play();
+            //MissSE.Play();
         }
 
         public void Death_Sound()
         {
-            DeathSE.Play();
+            //DeathSE.Play();
         }
 
     }

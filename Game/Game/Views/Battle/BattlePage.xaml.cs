@@ -506,8 +506,8 @@ namespace PrimeAssault.Views
             {
                 deselectPlayer();
             }
-            if ((!currentMonster.selected && !enemyTurn) || !currentMonster.Alive)
-            {
+            if ((!currentMonster.selected && !enemyTurn) || !currentMonster.Alive && !(EngineViewModel.Engine.MonsterList.Count < 1))
+            { 
                 await DisplayAlert("No target", "Select an Enemy to attack", "Continue", "Cancel");
             }
             else
@@ -588,7 +588,7 @@ namespace PrimeAssault.Views
             }
             if (!EngineViewModel.Engine.BattleMessagesModel.EnemyTurn)
             {
-                deselectMonster();
+                //deselectMonster();
             }
             Deselect_Clicked(sender, e);
 

@@ -81,15 +81,12 @@ namespace PrimeAssault.Engine
         /// </summary>
         /// <param name="Attacker"></param>
         /// <returns></returns>
-        public bool Attack(PlayerInfoModel Attacker, bool IsAutoBattle = true)
+        public bool Attack(PlayerInfoModel Attacker)
         {
-            var Target = AttackChoice(Attacker);
-            // For Attack, Choose Who
-            if (IsAutoBattle)
-            {
-                Target = AttackChoice(Attacker, IsAutoBattle); //
-            }
 
+            var Target = AttackChoice(Attacker);
+            // For Attack, Choose Who            {
+           Target = AttackChoice(Attacker); //
 
             if (Target == null)
             {
@@ -98,7 +95,7 @@ namespace PrimeAssault.Engine
 
 
             // Do Attack
-            TurnAsAttack(Attacker, Target, IsAutoBattle);
+            TurnAsAttack(Attacker, Target);
 
             CurrentAttacker = new PlayerInfoModel(Attacker);
             CurrentDefender = new PlayerInfoModel(Target);
@@ -114,9 +111,9 @@ namespace PrimeAssault.Engine
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public PlayerInfoModel AttackChoice(PlayerInfoModel data, bool IsAutoBattle = false)
+        public PlayerInfoModel AttackChoice(PlayerInfoModel data)
         {
-            if (IsAutoBattle)
+            if (BattleScore.AutoBattle)
             {
                 switch (data.PlayerType)
                 {
@@ -216,7 +213,7 @@ namespace PrimeAssault.Engine
             // Attack the Weakness (lowest HP) MonsterModel first 
             var Defender = MonsterList
                 .Where(m => m.Alive)
-                .Where(m => m.selected)
+                .Where(m => m.selected) 
                 .OrderBy(m => m.GetHealthCurrent())
                 .OrderBy(m => m.GetAttack()).FirstOrDefault();
 
@@ -231,7 +228,7 @@ namespace PrimeAssault.Engine
         /// <param name="Target"></param>
         /// <param name="DefenseScore"></param>
         /// <returns></returns>
-        public bool TurnAsAttack(PlayerInfoModel Attacker, PlayerInfoModel Target, bool IsAutoBattle = true) //Kind of monolothic, consider decomposing
+        public bool TurnAsAttack(PlayerInfoModel Attacker, PlayerInfoModel Target) //Kind of monolothic, consider decomposing
         {
             if (Attacker == null)
             {
@@ -242,6 +239,8 @@ namespace PrimeAssault.Engine
             {
                 return false;
             }
+
+            bool IsAutoBattle = BattleScore.AutoBattle;
 
             // Set Messages to empty
             BattleMessagesModel.TurnMessage = string.Empty;
@@ -271,14 +270,15 @@ namespace PrimeAssault.Engine
                 CharacterList.Find(nameFinder).lastToAttack = true;
             }
 
-            //checks for if move can potentially be used...
+            //checks for if move can potentially be used, but only if in autobattle
             MoveModel moveUsed = null;
             if ((Attacker.Moves[0].Uses != 0 || Attacker.Moves[1].Uses != 0) && IsAutoBattle) //Assumes attackers always have two moves
             {
                 //uses move...
                 moveUsed = UseMove(Attacker);
             }
-            else
+            //checks if the player selected a move to use
+            else if (!IsAutoBattle)
             {
                 if (BattleMessagesModel.move1ATK)
                 {
@@ -358,7 +358,6 @@ namespace PrimeAssault.Engine
 
                     //Play attack sound effect
                     AudioCenter.Attack_Sound();
-
 
                     Target.AugmentHealth(damage);
                     BattleMessagesModel.CurrentHealth = Target.CurrentHealth;
@@ -640,8 +639,7 @@ namespace PrimeAssault.Engine
 
             // You decide how to drop monster items, level, etc.
 
-            // The Number can only be the round count.  
-            // Negative results in nothing dropped
+            // The maximum that can ever be dropped is three
             var NumberToDrop = (DiceHelper.RollDice(1, 3));
 
             var result = new List<ItemModel>();

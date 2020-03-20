@@ -24,6 +24,7 @@ namespace UnitTests.Models
             Assert.AreEqual("This is an Item", result.Name);
         }
 
+        /*
         [Test]
         public void BasePlayerModel_Get_Default_Should_Pass()
         {
@@ -53,11 +54,12 @@ namespace UnitTests.Models
             Assert.AreEqual(null, result.Head);
             Assert.AreEqual(null, result.Feet);
             Assert.AreEqual(null, result.Necklass);
-            Assert.AreEqual(null, result.PrimaryHand);
+            Assert.AreNotEqual(null, result.PrimaryHand);
             Assert.AreEqual(null, result.OffHand);
             Assert.AreEqual(null, result.RightFinger);
             Assert.AreEqual(null, result.LeftFinger);
         }
+        */
 
         [Test]
         public void BasePlayerModel_Set_Get_Default_Should_Pass()
@@ -206,21 +208,6 @@ namespace UnitTests.Models
             Assert.AreEqual(21, result);
         }
 
-        [Test] //Dont understand this test... -Joel
-        public void BasePlayerModel_GetDamageRollValue_Default_Should_Pass()
-        {
-            // Arrange
-            var data = new BasePlayerModel<CharacterModel>();
-
-            // Act
-            var result = data.GetDamageRollValue();
-
-            // Reset
-
-            // Assert
-            Assert.AreEqual(10, result);
-        }
-
         [Test]
         public void BasePlayerModel_TakeDamage_Valid_Should_Pass()
         {
@@ -282,7 +269,7 @@ namespace UnitTests.Models
         }
 
         [Test]
-        public void BasePlayerModel_AddExperience_Default_Should_Pass()
+        public void BasePlayerModel_AddExperience_Default_Should_Fail()
         {
             // Arrange
             var data = new BasePlayerModel<CharacterModel>();
@@ -293,7 +280,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual(true, result);
+            Assert.AreNotEqual(true, result);
         }
 
         [Test]
