@@ -23,6 +23,8 @@ namespace UnitTests.Engine
         {
         }
 
+ 
+
         [Test]
         public void AutoBattleEngine_Constructor_Default_Should_Pass()
         {
