@@ -69,6 +69,7 @@ namespace PrimeAssault.Views
         /// </summary>
         public BattlePage ()
 		{
+
 			InitializeComponent ();
 
             BindingContext = EngineViewModel;
@@ -83,11 +84,17 @@ namespace PrimeAssault.Views
 			EngineViewModel.Engine.CurrentDefender = EngineViewModel.Engine.PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Monster).FirstOrDefault();
 			EngineViewModel.Engine.CurrentAttacker = EngineViewModel.Engine.PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Character).FirstOrDefault();
 
+            
+
 			ShowModalNewRoundPage();
             initializeAllMonsters();
             initializeAllCharacters();
+            PlayerSelected(EngineViewModel.Engine.GetNextPlayerTurn());
             potions = EngineViewModel.Engine.MaxNumberPotions;
             PotionsLeft.Text = potions.ToString();
+            Move1.Text = currentAndroid.Move1;
+            Move2.Text = currentAndroid.Move2;
+
         }
 
         public void initializeAllMonsters()
@@ -220,6 +227,7 @@ namespace PrimeAssault.Views
                     AttackButton.Clicked += (sender, args) => UnitDies(data, PlayerImage);
                     AttackButton.Clicked += (sender, args) => slaveSelectToAttacker();
                     AttackButton.Clicked += (sender, args) => slaveSelectToDefender();
+                    Move1.Clicked += (sender, args) => PlayerSelected(EngineViewModel.Engine.GetNextPlayerTurn(), true);
                 }
                 return PlayerStack;
             }
@@ -445,6 +453,7 @@ namespace PrimeAssault.Views
         {
             Deselect_Clicked(sender, e);
             EngineViewModel.Engine.BattleMessagesModel.move1ATK = true;
+            Move1.Text = currentAndroid.Move1;
             Move1.BorderColor = Color.Gold;
         }
 
@@ -504,6 +513,8 @@ namespace PrimeAssault.Views
 		{
             
             bool enemyTurn = EngineViewModel.Engine.BattleMessagesModel.EnemyTurn;
+            Move1.Text = currentAndroid.Move1;
+            Move2.Text = currentAndroid.Move2;
             if (!currentAndroid.Alive)
             {
                 deselectPlayer();
@@ -523,10 +534,11 @@ namespace PrimeAssault.Views
                 if (RoundCondition == RoundEnum.NewRound)
                 {
                     // Show the New Monster List, and Items Gained
+                    MonsterListGrid.Children.Clear();
                     EngineViewModel.Engine.NewRound();
                     ShowModalNewRoundPage();
                     ShowModalRoundOverPage();
-                    MonsterListGrid.Children.Clear();
+                    initializeAllMonsters();
                     Debug.WriteLine("Round Over");
 
                 }
@@ -534,21 +546,28 @@ namespace PrimeAssault.Views
                 // Check for Game Over
                 if (RoundCondition == RoundEnum.PrimeAssaultOver)
                 {
-                    Debug.WriteLine("Game Over");
 
                     // Wrap up
                     EngineViewModel.Engine.EndBattle();
 
                     // Let the Player Know it is over
-                    bool answer = await DisplayAlert("Game Over", "Enjoy", "Yes", "Cancel");
+
+                    var Score = EngineViewModel.Engine.BattleScore.ScoreTotal;
+                    MessagingCenter.Send(this, "AddData", Score);
+
+                    var outputString = "Game Over! Score " + Score.ToString();
+                    Debug.WriteLine(outputString);
+
+
+
 
                     // Clear the players from the center of the board
 
-                    // Change to the Game Over Button
 
                     // Save the Score to the Score View Model, by sending a message to it.
-                    var Score = EngineViewModel.Engine.BattleScore;
-                    MessagingCenter.Send(this, "AddData", Score);
+
+                    ShowModalPageGameOver();
+                    
 
                     return;
                 }
@@ -594,7 +613,6 @@ namespace PrimeAssault.Views
                 //deselectMonster();
             }
             Deselect_Clicked(sender, e);
-
         }
         #region PageHandelers
 
@@ -755,16 +773,17 @@ namespace PrimeAssault.Views
             App.Current.ModalPopping += HandleModalPopping;
             ModalBattleGameOverPage = new ScorePage();
             await Navigation.PushModalAsync(ModalBattleGameOverPage);
+
         }
         #endregion PageHandelers
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////                                        //////////////////////////////////////////
-/////////////////////////////////////////////////            Character Select            //////////////////////////////////////////
-/////////////////////////////////////////////////                                        //////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////                                        //////////////////////////////////////////
+        /////////////////////////////////////////////////            Character Select            //////////////////////////////////////////
+        /////////////////////////////////////////////////                                        //////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     }
 }

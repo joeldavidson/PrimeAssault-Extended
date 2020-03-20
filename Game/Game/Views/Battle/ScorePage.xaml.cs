@@ -22,7 +22,7 @@ namespace PrimeAssault.Views
         public ScorePage()
         {
             InitializeComponent();
-          //  DrawOutput();
+           DrawOutput();
         }
 
         /// <summary>
@@ -31,32 +31,15 @@ namespace PrimeAssault.Views
         /// Monster
         /// Item
         /// </summary>
-        //public void DrawOutput()
-        //{
+        public void DrawOutput()
+      {
 
-        //    // Draw the Characters
-        //    foreach (var data in EngineViewModel.Engine.BattleScore.CharacterModelDeathList)
-        //    {
-        //        CharacterListFrame.Children.Add(CreateCharacterDisplayBox(data));
-        //    }
-
-        //    // Draw the Monsters
-        //    foreach (var data in EngineViewModel.Engine.BattleScore.MonsterModelDeathList)
-        //    {
-        //        MonsterListFrame.Children.Add(CreateMonsterDisplayBox(data));
-        //    }
-
-        //    // Draw the Items
-        //    foreach (var data in EngineViewModel.Engine.BattleScore.ItemModelDropList)
-        //    {
-        //        ItemListFrame.Children.Add(CreateItemDisplayBox(data));
-        //    }
-
-        //    // Update Values in the UI
-        //    //TotalKilled.Text = EngineViewModel.Engine.BattleScore.MonsterModelDeathList.Count().ToString();
-        //   // TotalCollected.Text = EngineViewModel.Engine.BattleScore.ItemModelDropList.Count().ToString();
-        //   // TotalScore.Text = EngineViewModel.Engine.BattleScore.ExperienceGainedTotal.ToString();
-        //}
+            // Update Values in the UI
+            TotalKilled.Text = EngineViewModel.Engine.BattleScore.MonsterModelDeathList.Count().ToString();
+            TotalCollected.Text = EngineViewModel.Engine.BattleScore.ItemModelDropList.Count().ToString();
+           TotalScore.Text = EngineViewModel.Engine.BattleScore.ExperienceGainedTotal.ToString();
+            TotalRound.Text = BattleEngineViewModel.Instance.Engine.BattleScore.RoundCount.ToString();
+        }
 
         /// <summary>
         /// Return a stack layout for the Characters
