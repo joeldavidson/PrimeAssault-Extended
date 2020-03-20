@@ -9,15 +9,29 @@
             <StackLayout Style="{StaticResource OuterBoxStack}"
             Spacing="20" Padding="15,20,15,20">
 
+                <Label
+                    HorizontalOptions="Center"
+                    Style="{StaticResource HeaderStyle}">
+                    
+                    GAME OVER
+                </Label>
+                
                 <Image
                         Source="beffjezos.png"
                         Style="{StaticResource ImageLargeStyle}"
                        />
-                <Label
+                <Frame
+                BackgroundColor="#263238"
+            Opacity="0.8"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                >
+                    <Label
                     Style="{StaticResource LabelStyle}">
-                    "Heh, you really thought you could stop me?
+                        "Heh, you really thought you could stop me?
                     Alexa, play Despacito."
-                </Label>
+                    </Label>
+                </Frame>
                 <Frame
                 BackgroundColor="#263238"
             Opacity="0.9"
