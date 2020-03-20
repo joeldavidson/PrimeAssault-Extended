@@ -326,51 +326,6 @@ namespace UnitTests.Engine
             Assert.AreEqual(true, result);
         }
 
-        [Test]
-        public void TurnEngine_DropItems_No_Items_Should_Return_0()
-        {
-            // Arrange
-            var player = new CharacterModel();
-
-            var PlayerInfo = new PlayerInfoModel(player);
-
-            DiceHelper.EnableRandomValues();
-            DiceHelper.SetForcedRandomValue(0);
-
-            // Act
-            var result = Engine.DropItems(PlayerInfo);
-
-            // Reset
-            DiceHelper.DisableRandomValues();
-
-            // Assert
-            Assert.AreEqual(0, result);
-        }
-
-        [Test]
-        public void TurnEngine_DropItems_Character_Items_2_Should_Return_2()
-        {
-            // Arrange
-            var player = new CharacterModel
-            {
-                Head = ItemIndexViewModel.Instance.Dataset.FirstOrDefault().Id,
-                Feet = ItemIndexViewModel.Instance.Dataset.FirstOrDefault().Id,
-            };
-
-            var PlayerInfo = new PlayerInfoModel(player);
-
-            DiceHelper.EnableRandomValues();
-            DiceHelper.SetForcedRandomValue(0);
-
-            // Act
-            var result = Engine.DropItems(PlayerInfo);
-
-            // Reset
-            DiceHelper.DisableRandomValues();
-
-            // Assert
-            Assert.AreEqual(2, result);
-        }
 
         [Test]
         public void TurnEngine_DropItems_Monster_Items_0_Random_Drop_1_Should_Return_1()
@@ -602,57 +557,6 @@ namespace UnitTests.Engine
             // Assert
             Assert.AreEqual(true, result);
         }
-
-        [Test]
-        public void TurnEngine_RemoveIfDead_Dead_True_Should_Return_False()
-        {
-            // Arrange
-            var Monster = new MonsterModel
-            {
-                CurrentHealth = 1,
-                Alive = true,
-                Guid="me"
-            };
-
-            var PlayerInfo = new PlayerInfoModel(Monster);
-
-            Engine.MonsterList.Clear();
-            Engine.MonsterList.Add(PlayerInfo);
-            Engine.MakePlayerList();
-
-            // Act
-            var result = Engine.RemoveIfDead(PlayerInfo);
-
-            // Reset
-
-            // Assert
-            Assert.AreEqual(false, result);
-        }
-
-        [Test]
-        public void TurnEngine_RemoveIfDead_Dead_false_Should_Return_true()
-        {
-            // Arrange
-            var Monster = new MonsterModel
-            {
-                CurrentHealth = 1,
-                Alive = true,
-                Guid = "me"
-            };
-
-            var PlayerInfo = new PlayerInfoModel(Monster);
-
-            Engine.MonsterList.Clear();
-            Engine.MonsterList.Add(PlayerInfo);
-            Engine.MakePlayerList();
-
-            // Act
-            var result = Engine.RemoveIfDead(PlayerInfo);
-
-            // Reset
-
-            // Assert
-            Assert.AreEqual(false, result);
-        }
+        
     }
 }

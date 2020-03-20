@@ -25,7 +25,7 @@ namespace PrimeAssault.Helpers
         /// <returns></returns>
         public static string GetMonsterUniqueItem()
         {
-            var result = ItemIndexViewModel.Instance.Dataset.ElementAt(DiceHelper.RollDice(1, ItemIndexViewModel.Instance.Dataset.Count()) - 1).Id;
+            var result = ItemIndexViewModel.Instance.Dataset.ElementAt(DiceHelper.RollDice(1, ItemIndexViewModel.Instance.Dataset.Count())-1).Id;
 
             return result;
         }
