@@ -527,7 +527,6 @@ namespace PrimeAssault.Views
                     ShowModalNewRoundPage();
                     ShowModalRoundOverPage();
                     MonsterListGrid.Children.Clear();
-                    initializeAllMonsters();
                     Debug.WriteLine("Round Over");
 
                 }
