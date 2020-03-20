@@ -524,6 +524,7 @@ namespace PrimeAssault.Views
                     EngineViewModel.Engine.NewRound();
                     ShowModalNewRoundPage();
                     ShowModalRoundOverPage();
+                    initializeAllMonsters();
                     Debug.WriteLine("Round Over");
 
                 }
