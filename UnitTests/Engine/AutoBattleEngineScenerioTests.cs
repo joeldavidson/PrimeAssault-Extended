@@ -25,39 +25,7 @@ namespace Scenario
         {
         }
 
-        //////5 Unique Scenarios//////
-
-        [Test]
-        public void AutoBattleEngine_RunAutoBattle_Character_Levels_Should_Pass()
-        {
-            //Arrange
-
-            // Need to set the Monster count to 1, so the battle goes to Next Round Faster
-            Engine.MaxNumberPartyCharacters = 1;
-
-            var CharacterPlayerMike = new PlayerInfoModel(
-                            new CharacterModel
-                            {
-                                Speed = 5000,
-                                Level = 1,
-                                CurrentHealth = 10,
-                                ExperienceTotal = 299,
-                                ExperiencePoints = 1,
-                                Name = "Big Boi",
-                                ListOrder = 1,
-                            });
-
-            Engine.CharacterList.Add(CharacterPlayerMike);
-
-            //Act
-            Engine.RunAutoBattle();
-            bool leveled = (CharacterPlayerMike.Level > 1);
-
-            //Reset
-
-            //Assert
-            Assert.IsTrue(leveled);
-        }
+        //////5 Distinct Scenarios//////
 
         [Test]
         public void AutoBattleEngine_Constructor_Default_Should_Pass()
