@@ -99,7 +99,10 @@ namespace PrimeAssault.Views
             foreach (var data in EngineViewModel.Engine.MonsterList)
             {
                 StackLayout monster = CreatePlayerDisplayBox(data);
-
+                if(y == 0)
+                {
+                    MonsterSelected(data, true);
+                }
                 if (y == 3)
                 {
                     y++;
@@ -524,6 +527,7 @@ namespace PrimeAssault.Views
                     EngineViewModel.Engine.NewRound();
                     ShowModalNewRoundPage();
                     ShowModalRoundOverPage();
+                    initializeAllMonsters();
                     Debug.WriteLine("Round Over");
 
                 }
