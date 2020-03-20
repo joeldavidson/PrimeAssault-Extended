@@ -107,7 +107,25 @@ namespace PrimeAssault.Services
             {
                 foreach (var ItemModel in myList)
                 {
-                    // Call to the View Model (that is where the datasource is set, and have it then save
+                    // Call to the View Model (that is where the datasource is set, and have it then save)
+                    switch (ItemModel.Attribute)
+                    {
+                        case AttributeEnum.Attack:
+                            ItemModel.attackValue = ItemModel.Value;
+                            break;
+
+                        case AttributeEnum.Defense:
+                            ItemModel.defenseValue = ItemModel.Value;
+                            break;
+
+                        case AttributeEnum.Speed:
+                            ItemModel.speedValue = ItemModel.Value;
+                            break;
+
+                        case AttributeEnum.MaxHealth:
+                            ItemModel.healthValue = ItemModel.Value;
+                            break;
+                    }
                     await ItemIndexViewModel.Instance.CreateUpdateAsync(ItemModel);
                 }
 
