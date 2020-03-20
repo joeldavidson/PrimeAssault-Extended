@@ -57,11 +57,15 @@ namespace PrimeAssault.Engine
         public int AddMonstersToRound()
         {
             int i;
-            for (i = MonsterList.Count(); i < MaxNumberPartyCharacters; i++)
+            for (i = MonsterList.Count(); i < MaxNumberPartyMonsters; i++)
             {
                 foreach (var data in MonsterIndexViewModel.Instance.Dataset)
                 {
-                    MonsterList.Add(new PlayerInfoModel(data));
+                    if (i < MaxNumberPartyMonsters)
+                    {
+                        MonsterList.Add(new PlayerInfoModel(data));
+                    }
+                    ++i;
                 }
                 break;
             }

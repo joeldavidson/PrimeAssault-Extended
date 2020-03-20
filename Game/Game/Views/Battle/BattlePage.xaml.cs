@@ -495,7 +495,6 @@ namespace PrimeAssault.Views
                 MonsterSelected(currentMonster);
             }
         }
-
         /// <summary>
         /// Attack Action
         /// </summary>
@@ -527,6 +526,7 @@ namespace PrimeAssault.Views
                     EngineViewModel.Engine.NewRound();
                     ShowModalNewRoundPage();
                     ShowModalRoundOverPage();
+                    MonsterListGrid.Children.Clear();
                     initializeAllMonsters();
                     Debug.WriteLine("Round Over");
 
