@@ -579,6 +579,8 @@ namespace PrimeAssault.Engine
 
             BattleMessagesModel.TurnMessageSpecial += DroppedMessage;
 
+            BattleScore.ItemModelDropList.AddRange(myItemList);
+
             return myItemList.Count();
         }
 
