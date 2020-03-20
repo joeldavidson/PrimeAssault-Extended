@@ -35,10 +35,13 @@ namespace PrimeAssault.Views
       {
 
             // Update Values in the UI
-            TotalKilled.Text = EngineViewModel.Engine.BattleScore.MonsterModelDeathList.Count().ToString();
+            TotalKilled.Text = EngineViewModel.Engine.BattleScore.MonsterSlainNumber.ToString();
             TotalCollected.Text = EngineViewModel.Engine.BattleScore.ItemModelDropList.Count().ToString();
-           TotalScore.Text = EngineViewModel.Engine.BattleScore.ExperienceGainedTotal.ToString();
+           TotalXP.Text = EngineViewModel.Engine.BattleScore.ExperienceGainedTotal.ToString();
             TotalRound.Text = BattleEngineViewModel.Instance.Engine.BattleScore.RoundCount.ToString();
+            TotalTurn.Text = EngineViewModel.Engine.BattleScore.TurnCount.ToString();
+            // Set to the curent date and time
+            CurrentDateTime.Text = DateTime.Now.ToString("MM/dd/yy hh:mm:ss");
         }
 
         /// <summary>

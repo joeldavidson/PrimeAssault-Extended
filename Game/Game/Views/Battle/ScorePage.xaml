@@ -2,74 +2,48 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PrimeAssault.Views.ScorePage"
-            BackgroundImageSource="darkbackground.jpg">
+            BackgroundImageSource="battleback.png">
 
     <ContentPage.Content>
         <AbsoluteLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
             <StackLayout Style="{StaticResource OuterBoxStack}"
             Spacing="20" Padding="15,20,15,20">
 
+                <Image
+                        Source="beffjezos.png"
+                        Style="{StaticResource ImageLargeStyle}"
+                       />
+                <Label
+                    Style="{StaticResource LabelStyle}">
+                    "Heh, you really thought you could stop me?
+                    Alexa, play Despacito."
+                </Label>
                 <Frame
-                BackgroundColor="#33f4a460"
-            Opacity=".80"
+                BackgroundColor="#263238"
+            Opacity="0.9"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
                 >
+                   
 
                     <StackLayout Style="{StaticResource OuterBoxStack}"
             Spacing="10">
-                        <Label Text="Scores" Style="{StaticResource HeaderStyle}"
+                        <Label Text="Your Scores" Style="{StaticResource HeaderStyle}"
                                  />
 
+
+
                         <StackLayout Style="{StaticResource HorizontalStack}">
                             <Label 
-                            Opacity="2"
-                   Text="Name : " 
+                    Text="Operation Date:"
                     Style="{StaticResource LabelStyle}"/>
+
                             <Label 
-                    Text="{Binding Data.Name}" 
+                                x:Name="CurrentDateTime"
+                    Text="-"
                     Style="{StaticResource ValueStyle}"/>
                         </StackLayout>
-
-                        <StackLayout Style="{StaticResource HorizontalStack}">
-                            <Label 
-                    Text="PrimeAssault Date:"
-                    Style="{StaticResource LabelStyle}"/>
-
-                            <Label 
-                    Text="{Binding Data.PrimeAssaultDate}"
-                    Style="{StaticResource ValueStyle}"/>
-                        </StackLayout>
-
-                        <StackLayout Style="{StaticResource HorizontalStack}">
-                            <Label 
-                    Text="AutoBattle:"                      
-                    Style="{StaticResource LabelStyle}"/>
-
-                            <Label 
-                    Text="{Binding Data.AutoBattle}"
-                    Style="{StaticResource ValueStyle}"/>
-                        </StackLayout>
-
-
-                        <StackLayout Style="{StaticResource HorizontalStack}">
-                            <Label 
-                    Text="Score:" 
-                    Style="{StaticResource LabelStyle}"/>
-                        </StackLayout>
-
-
-                        <StackLayout Style="{StaticResource HorizontalStack}">
-                            <Label 
-                                    x:Name="TotalScore"
-                    Text="0" 
-                    Style="{StaticResource LabelStyle}"/>
-                            <Label 
-                    Text="{Binding Data.ScoreTotal}"
-                    Style="{StaticResource ValueStyle}"/>
-                        </StackLayout>
-
-
+                        
                         <StackLayout Style="{StaticResource HorizontalStack}">
                             <Label 
                     Text="Number of Rounds:"                      
@@ -90,7 +64,8 @@
                     Style="{StaticResource LabelStyle}"/>
 
                             <Label 
-                    Text="{Binding Data.TurnCount}"
+                                x:Name="TotalTurn"
+                    Text="0"
                     Style="{StaticResource ValueStyle}"/>
                         </StackLayout>
 
@@ -101,7 +76,8 @@
                     Style="{StaticResource LabelStyle}"/>
 
                             <Label 
-                    Text="{Binding Data.ExperienceGainedTotal}" 
+                                x:Name="TotalXP"
+                    Text="0" 
                     Style="{StaticResource ValueStyle}"/>
                         </StackLayout>
 
