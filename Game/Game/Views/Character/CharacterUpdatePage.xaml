@@ -181,6 +181,7 @@
                 <Entry  Text ="{Binding Data.Name}"  Placeholder="Name" FontSize="Small" />
                 <Picker x:Name="pick"
                     Style="{StaticResource ClassPicker}"
+                        TextColor="Black"
             Title="Class"
             SelectedItem="{Binding Data.JobClass}"
             >
