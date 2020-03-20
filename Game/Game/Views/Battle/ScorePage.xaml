@@ -28,7 +28,7 @@
                 >
                     <Label
                     Style="{StaticResource LabelStyle}">
-                        "Heh, you really thought you could stop me?
+                        "Heh, you really thought you could defeat me?
                     Alexa, play Despacito."
                     </Label>
                 </Frame>
